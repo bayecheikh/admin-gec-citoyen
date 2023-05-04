@@ -8,8 +8,8 @@ export default {
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - Sirat',
-    title: 'Sirat',
+    titleTemplate: '%s - GEC CITOYEN',
+    title: 'GEC CITOYEN',
     htmlAttrs: {
       lang: 'fr'
     },

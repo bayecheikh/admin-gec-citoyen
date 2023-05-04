@@ -5,7 +5,7 @@
     color="#fff"
   >   
       <nuxt-link class="customTopNav flex text-sm-left" to="/">
-        <img src="@/static/logo.png" width="170" alt="Espace Senegal Service">
+        <img src="@/static/logo.png" width="250" alt="GEC CITOYEN">
       </nuxt-link>
 
       <nuxt-link class="customTopNav flex text-sm-center" v-for="(item,i) in layout" :key="i" :to="item.href? item.href : null">

@@ -7,7 +7,7 @@
             <v-card flat class="elevation-0 pl-5 pr-5 pt-0 pb-0 border-grey">
               <v-card-text>
                 <div class="layout column align-center py-5">
-                  <img src="@/static/logo.png" alt="Espace Senegal Service" width="150" height="">
+                  <img src="@/static/logo.png" alt="Espace Senegal Service" width="250" height="">
                   <p class="flex my-8 custom-font-mark">Connectez-vous</p>
                 </div>
                 <v-form class="row text-align-center pt-0" ref="form">

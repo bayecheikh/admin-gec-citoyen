@@ -4,32 +4,14 @@
   "menuItems":[
     {
       "icon": "mdi-cog-outline",
-      "href": "/categories",
-      "title": "Categories",
+      "href": "/roles",
+      "title": "Roles",
       "name": "gerer-parametres"
     },
     {
       "icon": "mdi-cog-outline",
-      "href": "/contenus",
-      "title": "Contenus",
-      "name": "gerer-parametres"
-    },
-    {
-      "icon": "mdi-cog-outline",
-      "href": "/marchepublics",
-      "title": "Marchés publics",
-      "name": "gerer-parametres"
-    },
-    {
-      "icon": "mdi-cog-outline",
-      "href": "/postepeages",
-      "title": "Poste de péages",
-      "name": "gerer-parametres"
-    },
-    {
-      "icon": "mdi-cog-outline",
-      "href": "/gestionrhs",
-      "title": "Gestion RH",
+      "href": "/permissions",
+      "title": "Permissions",
       "name": "gerer-parametres"
     }
   ]
