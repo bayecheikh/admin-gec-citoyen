@@ -5,7 +5,7 @@
   </div> 
   <div class="custom-container mt-5">
     <v-card class="container" flat>  
-      <list-Gestionrh></list-Gestionrh>
+      <list-gestionrh></list-gestionrh>
     </v-card>
   </div> 
 </div>
@@ -14,7 +14,7 @@
 <script>
 import LeftMenu from '@/components/LeftMenu';
 import PageHeader from '@/components/PageHeader';
-import ListGestionrh from '@/components/Gestionrhs/ListGestionrh'
+import ListGestionrh from '@/components/gestionrhs/ListGestionrh'
   export default {
     layout: "dashboard",
     middleware: function ({redirect,$hasPermission}) {
