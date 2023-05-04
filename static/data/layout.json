@@ -1,0 +1,18 @@
+{
+  "role":"admin",
+  "homePage":"/parametres",
+  "menuItems":[
+    {
+      "icon": "mdi-account-group-outline",
+      "href": "/utilisateurs",
+      "title": "Utilisateurs",
+      "name": "gerer-utilisateurs"
+    },
+    {
+      "icon": "mdi-cog-outline",
+      "href": "/parametres",
+      "title": "Paramétrage",
+      "name": "gerer-parametres"
+    }
+  ]
+ }
