@@ -163,15 +163,15 @@
             v-model="model.country_code"
             :rules="rules.country_codeRules"
           ></v-text-field>
-        </v-col>
-        <v-col md="4" lg="4" sm="12">
+        </v-col>-->
+        <v-col md="6" lg="6" sm="12">
           <v-text-field
             label="Téléphone"
             outlined dense
             v-model="model.telephone"
             :rules="rules.telephoneRules"
           ></v-text-field>
-        </v-col>-->
+        </v-col>
         <v-col
           lg="6"
           md="6"
@@ -185,7 +185,7 @@
               dense
               multiple
               small-chips
-              label="Role"
+              label="Rôle"
               item-text="description"
               item-value="id"
               clearable
@@ -268,65 +268,72 @@
           structure_id:null
         },
         rules:{
-          firstnameRules: [
-            v => !!v || 'Prénom est obligatoire',
-            v => (v && v.length <= 50) || 'Prénom doit etre inférieur à 20 caratères',
-          ],
-          lastnameRules: [
-            v => !!v || 'Nom est obligatoire',
-            v => (v && v.length <= 50) || 'Nom doit etre inférieur à 10 caratères',
-          ],
-          emailRules: [
-            v => !!v || 'E-mail est obligatoire',
-            v => /.+@.+\..+/.test(v) || 'E-mail mdoit etre valide',
-          ],
-          usernameRules: [
-            v => !!v || 'Login est obligatoire',
-            v => (v && v.length <= 10) || 'Nom doit etre inférieur à 10 caratères',
-          ],
-          rolesRules: [
-            v => (v && !!v.length) || 'Role est obligatoire',
-          ],
-          telephoneRules: [
-            v => !!v || 'Téléphone est obligatoire',
-          ],
-          country_codeRules: [
-            v => !!v || 'L\'indicatif du pays est obligatoire',
-          ],
-          fournisseur_services_idRules: [
-            v => (!!v) || 'Fournisseur est obligatoire',
-          ],
-          structure_idRules: [
-            v => (!!v) || 'Structure est obligatoire',
-          ],
-          adresseRules: [
-            v => !!v || 'Adresse est obligatoire',
-            v => (v && v.length <= 100) || 'Adresse doit etre inférieur à 50 caratères',
-          ],
-          nationalityRules: [
-            v => !!v || 'Nationalité est obligatoire',
-            v => (v && v.length <= 50) || 'Nationalité doit etre inférieur à 15 caratères',
-          ],
-          date_of_birthRules: [
-            v => !!v || 'Date de naissance est obligatoire',
-          ],
-          place_of_birthRules: [
-            v => !!v || 'Lieu de naissance est obligatoire',
-            v => (v && v.length <= 50) || 'Lieu de naissance doit etre inférieur à 20 caratères',
-          ],
-          /* sexeRules: [
-            v => !!v || 'Civilité est obligatoire',
-          ], */
-          type_identificationRules: [
-            v => !!v || 'Type d\'identification est obligatoire',
-          ],
-          numero_identificationRules: [
-            v => !!v || 'Numéro d\'identification est obligatoire'
-          ],
-          fonctionRules: [
-            v => !!v || 'Fonction est obligatoire'
-          ]
-        },
+        firstnameRules: [
+          (v) => !!v || 'Le prénom est obligatoire',
+          (v) => /^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/.test(v) || "Le prénom ne doit contenir que des caractères alphabétiques et des caractères spéciaux tels que des espaces, des tirets et des apostrophes",
+          (v) => (v && v.length <= 50) || "Le prénom ne doit pas dépasser 50 caractères",
+          (v) => (v && v.length >= 2) || "Le prénom doit contenir au moins 2 caractères"
+        ],
+        lastnameRules: [
+          (v) => !!v || 'Le nom est obligatoire',
+          (v) => /^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/.test(v) || "Le nom ne doit contenir que des caractères alphabétiques et des caractères spéciaux tels que des espaces, des tirets et des apostrophes",
+          (v) => (v && v.length <= 50) || "Le nom ne doit pas dépasser 50 caractères",
+          (v) => (v && v.length >= 2) || "Le nom doit contenir au moins 2 caractères"
+        ],
+        emailRules: [
+          v => !!v || 'L\'adresse e-mail est obligatoire',
+          v => /.+@.+\..+/.test(v) || 'L\'adresse e-mail doit être valide',
+        ],
+        usernameRules: [
+          v => !!v || 'Login est obligatoire',
+          v => (v && v.length <= 10) || 'Login doit être inférieur à 10 caractères',
+        ],
+        rolesRules: [
+          v => (v && !!v.length) || 'Le rôle est obligatoire',
+        ],
+        telephoneRules: [
+        (v) => !!v || 'Le numéro de téléphone est obligatoire',
+        (v) => /^[0-9]+$/.test(v) || "Le numéro de téléphone ne doit contenir que des chiffres",
+        (v) => (v && v.length >= 8 && v.length <= 20) || "Le numéro de téléphone doit contenir entre 8 et 20 chiffres"
+        ],
+        country_codeRules: [
+          v => !!v || 'L\'indicatif du pays est obligatoire',
+        ],
+        fournisseur_services_idRules: [
+          v => (!!v) || 'Fournisseur est obligatoire',
+        ],
+        structure_idRules: [
+          v => (!!v) || 'Structure est obligatoire',
+        ],
+        adresseRules: [
+          v => !!v || 'Adresse est obligatoire',
+          v => (v && v.length <= 100) || 'Adresse doit être inférieur à 50 caractères',
+        ],
+        nationalityRules: [
+          v => !!v || 'Nationalité est obligatoire',
+          v => (v && v.length <= 50) || 'Nationalité doit être inférieur à 15 caractères',
+        ],
+        date_of_birthRules: [
+          v => !!v || 'Date de naissance est obligatoire',
+        ],
+        place_of_birthRules: [
+          v => !!v || 'Lieu de naissance est obligatoire',
+          v => (v && v.length <= 50) || 'Lieu de naissance doit être inférieur à 50 caractères',
+        ],
+        /* sexeRules: [
+          v => !!v || 'Civilité est obligatoire',
+        ], */
+        type_identificationRules: [
+          v => !!v || 'Type d\'identification est obligatoire',
+        ],
+        numero_identificationRules: [
+          v => !!v || 'Numéro d\'identification est obligatoire'
+        ],
+        fonctionRules: [
+          v => !!v || 'Fonction est obligatoire'
+        ]
+      },
+  
   
         imageData:null,
       }),

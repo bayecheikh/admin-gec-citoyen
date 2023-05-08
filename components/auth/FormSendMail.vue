@@ -11,7 +11,7 @@
         v-bind="attrs"
         @click="dialog = true"
         >
-            Mot de passe oublié
+            Mot de passe oublié ?
         </a>
       </template>
       <v-card>

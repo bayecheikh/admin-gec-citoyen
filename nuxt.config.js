@@ -9,7 +9,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - GEC CITOYEN',
-    title: 'GEC CITOYEN',
+    title: 'BACK-OFFICE',
     htmlAttrs: {
       lang: 'fr'
     },

@@ -35,13 +35,13 @@ import FormUpdatePermission from '@/components/permissions/modifier/FormUpdatePe
         ],
         headerItems: [
         {
-          text: 'Permissions',
+          text: 'Permission',
           disabled: false,
           to: '/permissions',
           exact: true
         },
         {
-          text: 'Detail permission',
+          text: 'Modifier permission',
           disabled: true,
           to: '/permissions/94',
           exact: true

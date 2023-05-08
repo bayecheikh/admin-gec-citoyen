@@ -51,7 +51,7 @@ import ActionsPermission from '@/components/permissions/detail/ActionsPermission
           exact: true
         },
         {
-          text: 'Detail permission',
+          text: 'Détail permission',
           disabled: true,
           to: '/permissions/94',
           exact: true

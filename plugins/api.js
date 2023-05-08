@@ -1,30 +1,36 @@
 export default function ({ $axios, store ,redirect}, inject) {
     const token = localStorage.getItem('msasToken')
-    
+    const gecApi = $axios.create({
+        baseURL: 'https://api-gec-citoyen.fly.dev/api/v1',
+        headers : {
+            common: {
+                Accept: 'application/json'
+            }
+        }
+    });
     const msasApi = $axios.create({
             baseURL: process.env.baseUrl,
             headers : {
                 common: {
-                Accept: 'application/json'/* ,
-                Authorization: 'Bearer ' + token */
+                Accept: 'application/json' ,
+                Authorization: `Bearer ${token}`,
                 }
             }
         }        
     )
 
-    msasApi.onRequest(config => {
-        //Ajoute le token avant chaque request
-        const token = localStorage.getItem('msasToken')
-        config.headers.common['Authorization'] = `Bearer ${token}`; 
-    })
+
 
     msasApi.onResponse((response) => {
         /* if (response.status === 404) {
             console.log('Page 404')
         } */
-        console.log('Reponse ----- : ',response.data.mmsasage)
+        console.log('Reponse ----- : ',response.data.message)
     })
-
+    msasApi.onError((error) => {
+        console.log('**************************-----------------error: ',error)
+    })
+    
     msasApi.onError((error) => {
         console.log('**************************-----------------error: ',error.response)
         let code = parseInt(error.response && error.response.status)
@@ -68,7 +74,7 @@ export default function ({ $axios, store ,redirect}, inject) {
         /* if (response.status === 404) {
             console.log('Page 404')
         } */
-        console.log('Reponse ----- : ',response.data.mmsasage)
+        console.log('Reponse ----- : ',response.data.message)
     })
 
     msasFileApi.onError(error => {
@@ -115,6 +121,8 @@ export default function ({ $axios, store ,redirect}, inject) {
     })
 
     inject('msasApi', msasApi)
+    inject('gecApi', gecApi)
+
     inject('msasFileApi', msasFileApi)
     inject('msasExportApi', msasFileApi)
     

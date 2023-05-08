@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-card-title class="col-12">
-      <recherche-user></recherche-user>
-      <!-- <v-text-field
+  
+      <v-card-title class="col-6">
+    <v-text-field
         v-model="search"
         append-icon="mdi-magnify"
         label="Rechercher"
@@ -10,8 +10,9 @@
         rounded
         dense
         hide-details
-      ></v-text-field> -->
-    </v-card-title>
+      ></v-text-field>
+</v-card-title>
+   
     <v-data-table
      v-model="selected"
       :headers="headers"

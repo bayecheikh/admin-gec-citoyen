@@ -13,8 +13,8 @@ export default () => ({
         { text: 'Prénom et Nom', value: 'name' },
         { text: 'Email', value: 'email' },
         /* { text: 'Telephone', value: 'telephone' }, */
-        { text: 'Roles', value: 'roles' },
-        { text: 'Status', value: 'status' },
+        { text: 'Rôles', value: 'roles' },
+        { text: 'Statut', value: 'status' },
         { text: 'Actions', value: 'actions', sortable: false },
     ],
     detailutilisateur :{},

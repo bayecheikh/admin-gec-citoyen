@@ -11,39 +11,39 @@
         depressed
         rounded
         color="primary"
-        @click="goToAddRole"
+        @click="goToAddQR"
         >
           <v-icon left>
             mdi-plus
           </v-icon>
-          Nouveau rôle
+          Ajouter une question/réponse
         </v-btn>
       </div>
     </div>
     
     <v-tabs-items v-model="tab">
       <v-tab-item v-for="item in tabItems"  :key="item.value" >
-          <table-role :tab="item.value"></table-role> 
+          <table-foire-aux-questions :tab="item.value"></table-foire-aux-questions> 
       </v-tab-item>          
     </v-tabs-items>
   </div>
 </template>
 <script>
-import TableRole from '@/components/roles/TableRole'
+import TableFoireAuxQuestions from '@/components/foireauxquestions/TableFoireAuxQuestions'
   export default {
     components: {
-      TableRole
+      TableFoireAuxQuestions
     },
     data: () => ({
       tab: null,
       tabItems: [
-        {title:'Tout',value:'tout'}
+        {title:'Tout',value:'tout'}, {title:'Actifs',value:'actif'}, {title:'Inactifs',value:'inactif'}
       ],
       selected: []
     }),
     methods:{
-      goToAddRole() {      
-        this.$router.push('/roles/addRole');
+      goToAddQR() {      
+        this.$router.push('/foireauxquestions/addFaq');
       },
     }
   }

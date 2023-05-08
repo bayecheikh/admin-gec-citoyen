@@ -5,7 +5,7 @@
     {
       "icon": "mdi-cog-outline",
       "href": "/roles",
-      "title": "Roles",
+      "title": "Rôles",
       "name": "gerer-parametres"
     },
     {
@@ -13,6 +13,13 @@
       "href": "/permissions",
       "title": "Permissions",
       "name": "gerer-parametres"
+    },
+    {
+      "icon": "mdi-comment-text-multiple-outline",
+      "href": "/foireauxquestions",
+      "title": "Foire aux questions",
+      "name": "gerer-parametres",
+      "slug": "foire-aux-questions"
     }
   ]
  }

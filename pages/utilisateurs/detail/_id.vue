@@ -53,7 +53,7 @@ import ActionsUtilisateur from '@/components/utilisateurs/detail/ActionsUtilisat
           exact: true
         },
         {
-          text: 'Detail utilisateur',
+          text: 'Détail utilisateur',
           disabled: true,
           to: '/utilisateurs/94',
           exact: true

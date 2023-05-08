@@ -122,7 +122,7 @@
             dense
             multiple
             small-chips
-            label="Role"
+            label="Rôle"
             item-text="description"
             item-value="id"
             clearable
@@ -202,26 +202,32 @@ import { mapMutations, mapGetters } from 'vuex'
       },
       rules:{
         firstnameRules: [
-          v => !!v || 'Prénom est obligatoire',
-          v => (v && v.length <= 50) || 'Prénom doit etre inférieur à 20 caratères',
+          (v) => !!v || 'Le prénom est obligatoire',
+          (v) => /^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/.test(v) || "Le prénom ne doit contenir que des caractères alphabétiques et des caractères spéciaux tels que des espaces, des tirets et des apostrophes",
+          (v) => (v && v.length <= 50) || "Le prénom ne doit pas dépasser 50 caractères",
+          (v) => (v && v.length >= 2) || "Le prénom doit contenir au moins 2 caractères"
         ],
         lastnameRules: [
-          v => !!v || 'Nom est obligatoire',
-          v => (v && v.length <= 50) || 'Nom doit etre inférieur à 10 caratères',
+          (v) => !!v || 'Le nom est obligatoire',
+          (v) => /^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/.test(v) || "Le nom ne doit contenir que des caractères alphabétiques et des caractères spéciaux tels que des espaces, des tirets et des apostrophes",
+          (v) => (v && v.length <= 50) || "Le nom ne doit pas dépasser 50 caractères",
+          (v) => (v && v.length >= 2) || "Le nom doit contenir au moins 2 caractères"
         ],
         emailRules: [
-          v => !!v || 'E-mail est obligatoire',
-          v => /.+@.+\..+/.test(v) || 'E-mail mdoit etre valide',
+          v => !!v || 'L\'adresse e-mail est obligatoire',
+          v => /.+@.+\..+/.test(v) || 'L\'adresse e-mail doit être valide',
         ],
         usernameRules: [
           v => !!v || 'Login est obligatoire',
-          v => (v && v.length <= 10) || 'Nom doit etre inférieur à 10 caratères',
+          v => (v && v.length <= 10) || 'Login doit être inférieur à 10 caractères',
         ],
         rolesRules: [
-          v => (v && !!v.length) || 'Role est obligatoire',
+          v => (v && !!v.length) || 'Le rôle est obligatoire',
         ],
         telephoneRules: [
-          v => !!v || 'Téléphone est obligatoire',
+        (v) => !!v || 'Le numéro de téléphone est obligatoire',
+        (v) => /^[0-9]+$/.test(v) || "Le numéro de téléphone ne doit contenir que des chiffres",
+        (v) => (v && v.length >= 8 && v.length <= 20) || "Le numéro de téléphone doit contenir entre 8 et 20 chiffres"
         ],
         country_codeRules: [
           v => !!v || 'L\'indicatif du pays est obligatoire',
@@ -234,18 +240,18 @@ import { mapMutations, mapGetters } from 'vuex'
         ],
         adresseRules: [
           v => !!v || 'Adresse est obligatoire',
-          v => (v && v.length <= 100) || 'Adresse doit etre inférieur à 50 caratères',
+          v => (v && v.length <= 100) || 'Adresse doit être inférieur à 50 caractères',
         ],
         nationalityRules: [
           v => !!v || 'Nationalité est obligatoire',
-          v => (v && v.length <= 50) || 'Nationalité doit etre inférieur à 15 caratères',
+          v => (v && v.length <= 50) || 'Nationalité doit être inférieur à 15 caractères',
         ],
         date_of_birthRules: [
           v => !!v || 'Date de naissance est obligatoire',
         ],
         place_of_birthRules: [
           v => !!v || 'Lieu de naissance est obligatoire',
-          v => (v && v.length <= 50) || 'Lieu de naissance doit etre inférieur à 20 caratères',
+          v => (v && v.length <= 50) || 'Lieu de naissance doit être inférieur à 50 caractères',
         ],
         /* sexeRules: [
           v => !!v || 'Civilité est obligatoire',
@@ -260,6 +266,7 @@ import { mapMutations, mapGetters } from 'vuex'
           v => !!v || 'Fonction est obligatoire'
         ]
       },
+
 
       imageData:null,
     }),

@@ -39,13 +39,13 @@ import FormAddRole from '@/components/roles/FormAddRole';
         ],
         headerItems: [
         {
-          text: 'Roles',
+          text: 'Rôles',
           disabled: false,
           to: '/roles',
           exact: true
         },
         {
-          text: 'Nouveau role',
+          text: 'Nouveau rôle',
           disabled: false,
           to: '/roles/addRole',
           exact: true
