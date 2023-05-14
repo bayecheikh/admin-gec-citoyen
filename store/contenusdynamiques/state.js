@@ -1,16 +1,16 @@
 export default () => ({
-    listfoireauxquestions: [],
+    listcontenusdynamiques: [],
 
-    headerfoireauxquestions : [
+    headercontenusdynamiques : [
         /* {
             text: 'Nom',
             align: 'start',
             sortable: true,
             value: 'name',
         }, */
-        { text: 'Questions', value: 'question' },
-        { text: 'Catégorie', value: 'categorie.name' },
+        { text: 'Titre', value: 'title' },
+        { text: 'Catégorie', value: 'categorie.libelle' },
         { text: 'Actions', value: 'actions', sortable: false },
     ],
-    detailfoireauxquestions :{}
+    detailcontenudynamique :{}
 })

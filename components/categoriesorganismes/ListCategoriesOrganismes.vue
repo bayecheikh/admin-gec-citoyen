@@ -11,39 +11,39 @@
         depressed
         rounded
         color="primary"
-        @click="goToAddQR"
+        @click="goToAddCategorieOrganisme"
         >
           <v-icon left>
             mdi-plus
           </v-icon>
-          Ajouter une question/réponse
+          Ajouter un type d'organisme
         </v-btn>
       </div>
     </div>
     
     <v-tabs-items v-model="tab">
       <v-tab-item v-for="item in tabItems"  :key="item.value" >
-          <table-foire-aux-questions :tab="item.value"></table-foire-aux-questions> 
+          <table-categories-organismes :tab="item.value"></table-categories-organismes> 
       </v-tab-item>          
     </v-tabs-items>
   </div>
 </template>
 <script>
-import TableFoireAuxQuestions from '@/components/foireauxquestions/TableFoireAuxQuestions'
+import TableCategoriesOrganismes from '@/components/categoriesorganismes/TableCategoriesOrganismes'
   export default {
     components: {
-      TableFoireAuxQuestions
+      TableCategoriesOrganismes
     },
     data: () => ({
       tab: null,
       tabItems: [
-        {title:'Tout',value:'tout'}
+        {title:'Tout',value:'tout'}, {title:'Actifs',value:'actif'}, {title:'Inactifs',value:'inactif'}
       ],
       selected: []
     }),
     methods:{
-      goToAddQR() {      
-        this.$router.push('/foireauxquestions/addFaq');
+      goToAddCategorieOrganisme() {      
+        this.$router.push('/categoriesorganismes/addCategorieOrganisme');
       },
     }
   }

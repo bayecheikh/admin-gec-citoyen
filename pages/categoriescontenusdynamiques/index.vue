@@ -5,7 +5,7 @@
   </div> 
   <div class="custom-container mt-5">
     <v-card class="container" flat>  
-      <list-foire-aux-questions></list-foire-aux-questions>
+      <list-categories-contenus-dynamiques></list-categories-contenus-dynamiques>
     </v-card>
   </div> 
 </div>
@@ -14,7 +14,7 @@
 <script>
 import LeftMenu from '@/components/LeftMenu';
 import PageHeader from '@/components/PageHeader';
-import ListFoireAuxQuestions from '@/components/foireauxquestions/ListFoireAuxQuestions'
+import ListCategoriesContenusDynamiques from '@/components/categoriescontenusdynamiques/ListCategoriesContenusDynamiques'
   export default {
     layout: "dashboard",
     middleware: function ({redirect,$hasPermission}) {
@@ -25,23 +25,23 @@ import ListFoireAuxQuestions from '@/components/foireauxquestions/ListFoireAuxQu
     components: {
       LeftMenu,
       PageHeader,
-      ListFoireAuxQuestions
+      ListCategoriesContenusDynamiques
     },
     mounted: function() {
-      this.$store.dispatch('foireauxquestions/getList')
+      this.$store.dispatch('categoriescontenusdynamiques/getList')
     },
     data () {
       return {
         selectedItem: 0,
         leftmenuItems: [
           { text: 'Rôles', icon: 'mdi-lock',link:'/roles',position:1  },
-          { text: 'foireauxquestions', icon: 'mdi-lock',link:'/foireauxquestions',position:2  }
+          { text: 'categoriescontenusdynamiques', icon: 'mdi-lock',link:'/categoriescontenusdynamiques',position:2  }
         ],
         headerItems: [
           {
-            text: 'Liste des questions/réponses',
+            text: 'Liste des catégories de contenu',
             disabled: true,
-            to: '/foireauxquestions',
+            to: '/categoriescontenusdynamiques',
             exact: true
           }
         ]

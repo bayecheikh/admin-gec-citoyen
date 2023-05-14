@@ -11,28 +11,28 @@
         depressed
         rounded
         color="primary"
-        @click="goToAddQR"
+        @click="goToAddOrganisme"
         >
           <v-icon left>
             mdi-plus
           </v-icon>
-          Ajouter une question/réponse
+          Ajouter un organisme
         </v-btn>
       </div>
     </div>
     
     <v-tabs-items v-model="tab">
       <v-tab-item v-for="item in tabItems"  :key="item.value" >
-          <table-foire-aux-questions :tab="item.value"></table-foire-aux-questions> 
+          <table-organismes :tab="item.value"></table-organismes> 
       </v-tab-item>          
     </v-tabs-items>
   </div>
 </template>
 <script>
-import TableFoireAuxQuestions from '@/components/foireauxquestions/TableFoireAuxQuestions'
+import TableOrganismes from '@/components/organismes/TableOrganismes'
   export default {
     components: {
-      TableFoireAuxQuestions
+      TableOrganismes
     },
     data: () => ({
       tab: null,
@@ -42,8 +42,8 @@ import TableFoireAuxQuestions from '@/components/foireauxquestions/TableFoireAux
       selected: []
     }),
     methods:{
-      goToAddQR() {      
-        this.$router.push('/foireauxquestions/addFaq');
+      goToAddOrganisme() {      
+        this.$router.push('/organismes/addOrganisme');
       },
     }
   }

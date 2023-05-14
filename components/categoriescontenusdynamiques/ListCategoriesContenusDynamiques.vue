@@ -11,28 +11,28 @@
         depressed
         rounded
         color="primary"
-        @click="goToAddQR"
+        @click="goToAddCategorieContenuDynamique"
         >
           <v-icon left>
             mdi-plus
           </v-icon>
-          Ajouter une question/réponse
+          Ajouter une catégorie de contenu
         </v-btn>
       </div>
     </div>
     
     <v-tabs-items v-model="tab">
       <v-tab-item v-for="item in tabItems"  :key="item.value" >
-          <table-foire-aux-questions :tab="item.value"></table-foire-aux-questions> 
+          <table-categories-contenus-dynamiques :tab="item.value"></table-categories-contenus-dynamiques> 
       </v-tab-item>          
     </v-tabs-items>
   </div>
 </template>
 <script>
-import TableFoireAuxQuestions from '@/components/foireauxquestions/TableFoireAuxQuestions'
+import TableCategoriesContenusDynamiques from '@/components/categoriescontenusdynamiques/TableCategoriesContenusDynamiques'
   export default {
     components: {
-      TableFoireAuxQuestions
+      TableCategoriesContenusDynamiques
     },
     data: () => ({
       tab: null,
@@ -42,8 +42,8 @@ import TableFoireAuxQuestions from '@/components/foireauxquestions/TableFoireAux
       selected: []
     }),
     methods:{
-      goToAddQR() {      
-        this.$router.push('/foireauxquestions/addFaq');
+      goToAddCategorieContenuDynamique() {      
+        this.$router.push('/categoriescontenusdynamiques/addCategorieContenuDynamique');
       },
     }
   }

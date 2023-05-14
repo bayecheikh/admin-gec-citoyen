@@ -1,16 +1,16 @@
 export default () => ({
-    listfoireauxquestions: [],
+    listorganismes: [],
 
-    headerfoireauxquestions : [
+    headerorganismes : [
         /* {
             text: 'Nom',
             align: 'start',
             sortable: true,
             value: 'name',
         }, */
-        { text: 'Questions', value: 'question' },
-        { text: 'Catégorie', value: 'categorie.name' },
+        { text: 'Organismes', value: 'description' },
+        { text: 'Type', value: 'typeStructure.name' },
         { text: 'Actions', value: 'actions', sortable: false },
     ],
-    detailfoireauxquestions :{}
+    detailorganisme :{}
 })

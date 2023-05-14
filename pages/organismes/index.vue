@@ -5,7 +5,7 @@
   </div> 
   <div class="custom-container mt-5">
     <v-card class="container" flat>  
-      <list-foire-aux-questions></list-foire-aux-questions>
+      <list-organismes></list-organismes>
     </v-card>
   </div> 
 </div>
@@ -14,7 +14,7 @@
 <script>
 import LeftMenu from '@/components/LeftMenu';
 import PageHeader from '@/components/PageHeader';
-import ListFoireAuxQuestions from '@/components/foireauxquestions/ListFoireAuxQuestions'
+import ListOrganismes from '@/components/organismes/ListOrganismes'
   export default {
     layout: "dashboard",
     middleware: function ({redirect,$hasPermission}) {
@@ -25,23 +25,23 @@ import ListFoireAuxQuestions from '@/components/foireauxquestions/ListFoireAuxQu
     components: {
       LeftMenu,
       PageHeader,
-      ListFoireAuxQuestions
+      ListOrganismes
     },
     mounted: function() {
-      this.$store.dispatch('foireauxquestions/getList')
+      this.$store.dispatch('organismes/getList')
     },
     data () {
       return {
         selectedItem: 0,
         leftmenuItems: [
           { text: 'Rôles', icon: 'mdi-lock',link:'/roles',position:1  },
-          { text: 'foireauxquestions', icon: 'mdi-lock',link:'/foireauxquestions',position:2  }
+          { text: 'organismes', icon: 'mdi-lock',link:'/organismes',position:2  }
         ],
         headerItems: [
           {
-            text: 'Liste des questions/réponses',
+            text: 'Liste des organismes',
             disabled: true,
-            to: '/foireauxquestions',
+            to: '/organismes',
             exact: true
           }
         ]

@@ -39,7 +39,7 @@
   outlined
   dense
   small-chips
-  label="Categorie"
+  label="Catégorie"
   item-text="name"
   item-value="id"
   return-object
@@ -82,6 +82,7 @@
         
         mounted: function() {
           this.getDetail(this.$nuxt._route.params.id)
+          this.$store.dispatch('faqcategories/getList')
         },
   
         computed: mapGetters({
@@ -185,6 +186,14 @@
           imageData:null,
         }),
         methods: {
+          async changeCategorie(value) {
+        console.log("VALUEE : ++++++++++++ ",value)
+        this.model.categorie = value.id
+       
+
+        //this.selectedRegions.push(value.id)
+        
+      },
          async getDetail(id){
             this.progress=true
             await this.$gecApi.$get('/faqs/'+id)
