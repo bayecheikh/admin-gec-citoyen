@@ -141,7 +141,7 @@
     <v-footer height="auto" class="white pa-3">
       <span class="caption">&copy; {{ new Date().getFullYear() }}</span>
       <v-spacer></v-spacer>
-      <span class="caption mr-1">&copy; {{ new Date().getFullYear() }} SIRAT</span>
+      <span class="caption mr-1">&copy; {{ new Date().getFullYear() }} GEC CITOYEN</span>
     </v-footer>
   </v-app>
 </template>

@@ -24,7 +24,7 @@
               </v-card-text>              
             </v-card>
             <div class="layout column align-center py-5">
-              <span class="caption mr-1">&copy; {{ new Date().getFullYear() }} SIRAT</span>
+              <span class="caption mr-1">&copy; {{ new Date().getFullYear() }} GEC CITOYEN</span>
             </div> 
           </v-flex>
         </v-layout>
