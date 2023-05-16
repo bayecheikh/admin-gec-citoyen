@@ -40,12 +40,12 @@ export default function ({ $axios, store ,redirect}, inject) {
 
         //Deconnecte l'utilisateur si le token n'est plus valide
         if (code === 401) {
-            // localStorage.removeItem('msasToken')
-            // localStorage.removeItem('loggedInUser')
-            // localStorage.removeItem('layout')
-            // localStorage.removeItem('isAuthenticated') 
-            // this.$toast.show('Votre session a expiré. Veuillez vous reconnecter!').goAway(4000)
-            // this.$router.push('/login');
+            localStorage.removeItem('msasToken')
+            localStorage.removeItem('loggedInUser')
+            localStorage.removeItem('layout')
+            localStorage.removeItem('isAuthenticated') 
+            this.$toast.show('Votre session a expiré. Veuillez vous reconnecter!').goAway(4000)
+            this.$router.push('/login');
         }
     })
 
