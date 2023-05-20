@@ -124,11 +124,11 @@ import { mapMutations, mapGetters } from 'vuex'
         let validation = this.$refs.form.validate()
         let selectedPermissions = this.selected.map((item)=>{return item.id})
         let id = this.model.id
-        console.log('Donées formulaire ++++++ : ',{...this.model,permissions:selectedPermissions})
+        console.log('Données formulaire ++++++ : ',{...this.model,permissions:selectedPermissions})
         
-        validation && this.$msasApi.put('/roles/'+id, {...this.model,permissions:selectedPermissions})
+        validation && this.$gecApi.put('/roles/'+id, {...this.model,permissions:selectedPermissions})
           .then((res) => {    
-            this.$store.dispatch('toast/getMessage',{type:'success',text:res.data.message || 'Modification réussie'})
+            this.$store.dispatch('toast/getMessage',{type:'success',text:res.data.message || 'modification réussie'})
             this.$router.push('/roles');
           })
           .catch((error) => {
@@ -136,7 +136,7 @@ import { mapMutations, mapGetters } from 'vuex'
               this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de l\'ajout '})
           }).finally(() => {
             this.loading = false;
-            console.log('Requette envoyé ')
+            console.log('Requête envoyée ')
         });
       },
       resetForm () {

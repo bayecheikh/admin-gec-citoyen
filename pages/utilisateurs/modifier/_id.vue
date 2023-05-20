@@ -61,8 +61,7 @@ import FormUpdateUser from '@/components/utilisateurs/modifier/FormUpdateUser';
         menu2: false,
         menu3: false,
         modal: false,
-        roles: ['Sperviseur national'],
-        localisations: ['Thiès','Dakar'],
+   
 
       }
     }

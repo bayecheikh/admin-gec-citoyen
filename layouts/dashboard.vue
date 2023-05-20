@@ -65,7 +65,7 @@
     <v-app-bar elevation="0" app color="#fff">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title class="custom-top-title pl-12"><!--PLATEFORME NUMERIQUE DE SUIVI DU FINANCEMENT DE LA SANTE AU SENEGAL--></v-toolbar-title>
+      <v-toolbar-title class="custom-top-title pl-12"><!--Plateforme GEC CITOYEN--></v-toolbar-title>
       <v-spacer></v-spacer>
 
       <v-menu class="hidden-sm-and-down"
@@ -78,7 +78,7 @@
               v-on="on"
             >
               <v-avatar size="30px">
-                <img src="@/static/avatar/default-user.png" alt="avatar"/>
+                <img src="@/static/avatar/user.png" alt="avatar"/>
               </v-avatar>
             </v-btn>
           </template>
@@ -91,7 +91,7 @@
                   tile
                 >
                     <v-avatar size="60px">
-                      <img src="@/static/avatar/default-user.png" alt="avatar"/>
+                      <img src="@/static/avatar/user.png" alt="avatar"/>
                     </v-avatar>
                 </v-card>
                 <v-card
@@ -107,7 +107,7 @@
                   flat
                   tile
                 >
-                  <v-btn text deprmsased @click="goToProfile" class="customTopNav pop-user-button flex text-sm-center">
+                  <v-btn text depressed @click="goToProfile" class="customTopNav pop-user-button flex text-sm-center">
                     Parametres
                   </v-btn> 
                 </v-card>
@@ -183,15 +183,15 @@
       async logout() {
         try {
             this.loading = true; 
-            //this.$store.dispatch('toast/getMmsasage',{type:'procmsasing',text:'Deconnexion en cours ...'})
-            await this.$msasApi.$post('/logout').then(async (response) => { 
+           
+            await this.$gecApi.$post('/logout').then(async (response) => { 
             this.$loggout()
             this.loading = false;
-            //this.$store.dispatch('toast/getMmsasage',{type:'succmsas',text:'Deconnexion réussie'})   
+            
             this.$router.push('/login');
           })
         } catch (e) {
-          this.$store.dispatch('toast/getMmsasage',{type:'error',text:e})
+          this.$store.dispatch('toast/getMessage',{type:'error',text:e})
           console.log(e)
           this.loading = false;
         }

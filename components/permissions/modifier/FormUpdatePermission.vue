@@ -77,10 +77,10 @@ import { mapMutations, mapGetters } from 'vuex'
       submitForm () {
         this.loading = true;
         let validation = this.$refs.form.validate()
-        console.log('Donées formulaire ++++++ : ',{...this.model})
+        console.log('Données formulaire ++++++ : ',{...this.model})
         this.loading = false;
         
-        validation && this.$msasApi.put('/permissions/'+this.model.id, {...this.model})
+        validation && this.$gecApi.put('/permissions/'+this.model.id, {...this.model})
           .then((res) => {    
             this.$store.dispatch('toast/getMessage',{type:'success',text:res.data.message || 'Ajout réussi'})
             this.$router.push('/permissions');
@@ -90,7 +90,7 @@ import { mapMutations, mapGetters } from 'vuex'
               this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de l\'ajout '})
           }).finally(() => {
             this.loading = false;
-            console.log('Requette envoyé ')
+            console.log('Requête envoyée ')
         });
       },
       resetForm () {

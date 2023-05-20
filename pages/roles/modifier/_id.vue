@@ -60,8 +60,7 @@ import FormUpdateRole from '@/components/roles/modifier/FormUpdateRole';
         menu2: false,
         menu3: false,
         modal: false,
-        roles: ['Sperviseur national'],
-        localisations: ['Thiès','Dakar'],
+  
 
       }
     }

@@ -1,6 +1,6 @@
 export default {
     getList({commit}){
-        this.$msasApi.$get('roles')
+        this.$gecApi.$get('roles')
         .then(async (response) => { 
         console.log('Données reçu+++++++++++',response)
             await commit('initlist', response.data)
@@ -8,7 +8,7 @@ export default {
             }).catch((error) => {
                 console.log('Code error ++++++: ', error?.response?.data?.message)
             }).finally(() => {
-            console.log('Requette envoyé ')
+            console.log('Requête envoyée ')
         });
     },
 
@@ -21,7 +21,7 @@ export default {
             }).catch((error) => {
                 console.log('Code error ++++++: ', error?.response?.data?.message)
             }).finally(() => {
-            console.log('Requette envoyé ')
+            console.log('Requête envoyée ')
         }); */
         console.log('Données detail reçu +++++++++++',payload)
         await commit('initdetail', payload)

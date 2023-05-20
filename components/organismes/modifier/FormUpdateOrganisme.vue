@@ -228,7 +228,7 @@
                this.$toast.error(error?.response?.data?.message).goAway(3000)
               console.log('Code error ++++++: ', error?.response?.data?.message)
           }).finally(() => {
-              console.log('Requette envoyé ')
+              console.log('Requête envoyée ')
               console.log("QUESTION", this.model.question)
           });
         },
@@ -240,7 +240,7 @@
     
             validation && this.$gecApi.patch('/structures/'+this.model.id, {...this.model})
               .then((res) => {
-                this.$store.dispatch('toast/getMessage',{type:'success',text:res.data.message || 'Modification réussi'})
+                this.$store.dispatch('toast/getMessage',{type:'success',text:res.data.message || 'modification réussie'})
                 this.$router.push('/organismes');
               })
               .catch((error) => {
@@ -248,7 +248,7 @@
                   this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de la modification '})
               }).finally(() => {
                 this.loading = false;
-                console.log('Requette envoyé ')
+                console.log('Requête envoyée ')
             });
           },
           resetForm () {

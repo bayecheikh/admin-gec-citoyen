@@ -8,7 +8,7 @@
               <v-card-text>
                 <Notification :message="message" :color="color" v-if="message"/>
                 <div class="layout column align-center py-5">
-                  <img src="@/static/logo.png" alt="Espace Senegal Service" width="250" height="">
+                  <img src="@/static/logo.png" alt="Plateforme GEC CITOYEN" width="250" height="">
                   <p class="flex my-8 custom-font-mark">Mot de passe oublié</p>
                 </div>
                 <v-form class="row text-align-center pt-0"  v-model="valid" ref="form" lazy-validation>
@@ -36,7 +36,7 @@
 <script>
 import Notification from '@/components/Notification'
 import layoutadmin from '@/static/data/layoutadmin'
-import layoutchargeclientel from '@/static/data/layoutchargeclientel'
+
 import { mapMutations, mapGetters } from 'vuex'
   export default {
     /* middleware:'guest', */
@@ -85,7 +85,7 @@ import { mapMutations, mapGetters } from 'vuex'
     methods: {
       submitForm () {
         let validation = this.$refs.form.validate()
-        console.log('Donées formulaire++++++: ',{...this.model,token:this.tokenTemporaire})
+        console.log('Données formulaire++++++: ',{...this.model,token:this.tokenTemporaire})
 
         this.loading = true;
         
@@ -93,7 +93,7 @@ import { mapMutations, mapGetters } from 'vuex'
           .then((res) => {    
             this.message = res.data.message
             this.color = 'success'
-            console.log('Donées reçus ++++++: ',res.data)
+            console.log('Données reçues ++++++: ',res.data)
             setTimeout(() => {
               this.$router.push('/login');
             }, 1000);
@@ -104,7 +104,7 @@ import { mapMutations, mapGetters } from 'vuex'
               this.color='red'
           }).finally(() => {
             this.loading = false;
-            console.log('Requette envoyé ')
+            console.log('Requête envoyée ')
         }); 
       },
     }

@@ -4,7 +4,7 @@ export default function ({ $auth, redirect,$hasRole }) {
     if(!$hasRole(roles,'admin')){
     return redirect('/')
     } */
-    let roles = JSON.parse(localStorage.getItem('auth.loggedInUser'))?.roles 
+    let roles = JSON.parse(localStorage.getItem('gecAdminLoggedInUser'))?.roles 
     console.log('USER: ++++++++++++++++ ',roles)
     if(!$hasRole('admin')){
       return redirect('/')

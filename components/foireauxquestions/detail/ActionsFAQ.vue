@@ -95,15 +95,15 @@ import { mapMutations, mapGetters } from 'vuex'
     methods: {
      submitForm () {
         let validation = this.$refs.form.validate()
-        console.log('Donées formulaire++++++: ',{...this.model,token:this.tokenTemporaire})
+        console.log('Données formulaire++++++: ',{...this.model,token:this.tokenTemporaire})
 
         this.loading = true;
         
-        validation && this.$msasApi.post('/update_password', {...this.model})
+        validation && this.$gecApi.post('/update_password', {...this.model})
           .then((res) => {    
             this.message = res.data.message
             this.color = 'success'
-            console.log('Donées reçus ++++++: ',res.data)
+            console.log('Données reçues ++++++: ',res.data)
             this.$store.dispatch('toast/getMessage',{type:'success',text:res.data.message})
           })
           .catch((error) => {
@@ -112,7 +112,7 @@ import { mapMutations, mapGetters } from 'vuex'
               this.color='red'
           }).finally(() => {
             this.loading = false;
-            console.log('Requette envoyé ')
+            console.log('Requête envoyée ')
             this.dialog = false
         }); 
       },

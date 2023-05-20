@@ -8,7 +8,7 @@
             <img :src="imageData" alt="Avatar"/>
           </v-avatar>
           <v-avatar size="100px" v-else>
-            <img src="@/static/avatar/default-user.png" alt="Cheikh Gueye"/>
+            <img src="@/static/avatar/user.png" alt="Cheikh Gueye"/>
           </v-avatar>
         </div>
       </div>
@@ -333,7 +333,7 @@
       methods: {
         getDetail(id){
           this.progress=true
-          this.$msasApi.$get('/users/'+id)
+          this.$gecApi.$get('/users/'+id)
         .then(async (response) => {
             console.log('Detail ++++++++++',response)
             this.$store.dispatch('utilisateurs/getDetail',response.data)
@@ -350,7 +350,7 @@
              this.$toast.error(error?.response?.data?.message).goAway(3000)
             console.log('Code error ++++++: ', error?.response?.data?.message)
         }).finally(() => {
-            console.log('Requette envoyé ')
+            console.log('Requête envoyée ')
         });
         //console.log('total items++++++++++',this.paginationstructure)
       },
@@ -404,9 +404,9 @@
           formData.append("fonction",this.model.fonction),
           formData.append("structure_id",this.model.structure_id) */
   
-          validation && this.$msasFileApi.put('/users/'+this.model.id,{...this.model,roles:selectedRoles,...this.model.avatar})
+          validation && this.$gecFileApi.put('/users/'+this.model.id,{...this.model,roles:selectedRoles,...this.model.avatar})
             .then((res) => {
-              this.$store.dispatch('toast/getMessage',{type:'success',text:res.data.message || 'Modification réussi'})
+              this.$store.dispatch('toast/getMessage',{type:'success',text:res.data.message || 'modification réussie'})
               this.$router.push('/utilisateurs');
             })
             .catch((error) => {
@@ -414,7 +414,7 @@
                 this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de la modification '})
             }).finally(() => {
               this.loading = false;
-              console.log('Requette envoyé ')
+              console.log('Requête envoyée ')
           });
         },
         resetForm () {

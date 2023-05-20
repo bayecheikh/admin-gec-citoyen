@@ -18,11 +18,11 @@
 <script>
   export default {
     layout: "dashboard",
-    middleware: function ({redirect,$hasPermission}) {
-      if(!$hasPermission('gerer-parametres')){
-        return redirect('/')
-      }
-    },
+    // middleware: function ({redirect,$hasPermission}) {
+    //   // if(!$hasPermission('gerer-parametres')){
+    //   //   return redirect('/')
+    //   // }
+    // },
     components: {
     },
     mounted: function() {

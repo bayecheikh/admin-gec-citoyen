@@ -135,7 +135,7 @@ import { mapMutations, mapGetters } from 'vuex'
        deleteItem (item) {
         this.dialog=false   
         this.$store.dispatch('toast/getMessage',{type:'processing',text:'Traitement en cours ...'}) 
-        this.$msasApi.$delete('/permissions/'+this.activeItem.id)
+        this.$gecApi.$delete('/permissions/'+this.activeItem.id)
         .then(async (response) => { 
             this.$store.dispatch('permissions/deletePermission',this.activeItem.id)
             this.$store.dispatch('toast/getMessage',{type:'success',text:response.data.message || 'Suppression réussie'})
@@ -144,7 +144,7 @@ import { mapMutations, mapGetters } from 'vuex'
               console.log('Code error ++++++: ', error)
             }).finally(() => {
               
-            console.log('Requette envoyé ')
+            console.log('Requête envoyée ')
         });
         /* alert('Supprimer '+item.id) */
       },

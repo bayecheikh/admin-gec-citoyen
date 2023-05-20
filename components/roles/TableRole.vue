@@ -159,7 +159,7 @@ import { mapMutations, mapGetters } from 'vuex'
       deleteItem (item) {
         this.dialog=false   
         this.$store.dispatch('toast/getMessage',{type:'processing',text:'Traitement en cours ...'}) 
-        this.$msasApi.$delete('/roles/'+this.activeItem.id)
+        this.$gecApi.$delete('/roles/'+this.activeItem.id)
         .then(async (response) => { 
             this.$store.dispatch('roles/deleteRole',this.activeItem.id)
             this.$store.dispatch('toast/getMessage',{type:'success',text:response.data.message || 'Suppression réussie'})
@@ -168,7 +168,7 @@ import { mapMutations, mapGetters } from 'vuex'
               console.log('Code error ++++++: ', error)
             }).finally(() => {
               
-            console.log('Requette envoyé ')
+            console.log('Requête envoyée ')
         });
       },
       exporterItem (item) {

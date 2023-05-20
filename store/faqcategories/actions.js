@@ -8,7 +8,7 @@ export default {
               console.log('Code error ++++++: ', error?.response?.data?.data?.message)
               this.$toast.error(error?.response?.data?.data?.message).goAway(3000)
           }).finally(() => {
-            console.log('Requette envoyé ')
+            console.log('Requête envoyée ')
           });
     },
     async getDetail({commit},payload){

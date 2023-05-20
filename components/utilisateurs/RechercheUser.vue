@@ -265,18 +265,18 @@ import { mapMutations, mapGetters } from 'vuex'
         dataSearch:'',
         firstname: '',
         lastname: '',
-        email: 'tesdddddddddt@adie.sn',
+        email: 'tesdddddddddt@gouv.bj',
         username: '',
         type_profil_id: 'citoyen',
         telephone: '0554525152',
-        address: 'dakar',
-        nationality: 'senegalaise',
+        address: 'Cotonou',
+        nationality: 'béninoise',
         date_of_birth: '1988-09-24',
-        place_of_birth: 'Dakar',
+        place_of_birth: '',
         type_identification: 'cin',
         numero_identification: '',
         fonction: 'Devops',
-        structure_id:JSON.parse(localStorage.getItem('loggedInUser')).id
+        structure_id:JSON.parse(localStorage.getItem('gecAdminLoggedInUser')).id
       },
        rules:{
          dataSearchRules: [
@@ -355,7 +355,7 @@ import { mapMutations, mapGetters } from 'vuex'
         this.page=1
         this.progress=true
         this.$store.dispatch('utilisateurs/getDataSearch',null)
-         this.$msasApi.$get('/users?page=1')
+         this.$gecApi.$get('/users?page=1')
         .then(async (response) => {
           this.page=1
             let totalPages = Math.ceil(response.data.data.total / response.data.data.per_page)
@@ -367,7 +367,7 @@ import { mapMutations, mapGetters } from 'vuex'
              this.$toast.error(error?.response?.data?.message).goAway(3000)
             console.log('Code error ++++++: ', error?.response?.data?.message)
         }).finally(() => {
-            console.log('Requette envoyé ')
+            console.log('Requête envoyée ')
             this.progress=false
         });
         console.log('total items++++++++++',this.paginationUtilisateur)
@@ -375,9 +375,9 @@ import { mapMutations, mapGetters } from 'vuex'
       getResult(page,param){
         this.page=1
          this.progress=true
-         this.$msasApi.get('/user-multiple-search/'+param+'?page='+page)
+         this.$gecApi.get('/user-multiple-search/'+param+'?page='+page)
           .then(async (response) => {
-            console.log('Données reçus++++++++++++',response.data.data.data)
+            console.log('Données reçues++++++++++++',response.data.data.data)
             await this.$store.dispatch('utilisateurs/getList',response.data.data.data)
             let totalPages = Math.ceil(response.data.data.total / response.data.data.per_page)
             this.$store.dispatch('utilisateurs/getTotalPage',totalPages)
@@ -388,7 +388,7 @@ import { mapMutations, mapGetters } from 'vuex'
             this.$toast.error(error?.response?.data?.message).goAway(3000)
             console.log('Code error ++++++: ', error?.response?.data?.message)
         }).finally(() => {
-            console.log('Requette envoyé')
+            console.log('Requête envoyée')
              this.progress=false;
              this.loading = false;
         });

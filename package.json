@@ -1,5 +1,5 @@
 {
-  "name": "sirat-admin",
+  "name": "gec-admin",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -29,7 +29,9 @@
     "webpack": "^4.46.0"
   },
   "devDependencies": {
-    "@nuxtjs/vuetify": "^1.12.3"
+    "@nuxtjs/vuetify": "^1.12.3",
+    "postcss-preset-env": "^8.4.1",
+    "postcss-selector-parser": "^6.0.13"
   },
   "engines": {
     "node": "16.x"

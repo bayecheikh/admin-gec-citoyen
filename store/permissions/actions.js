@@ -1,6 +1,6 @@
 export default {
     getList({commit}){
-      this.$msasApi.$get('/permissions')
+      this.$gecApi.$get('/permissions')
       .then(async (response) => { 
         console.log('Données reçu+++++++++++',response)
             await commit('initlist', response.data)
@@ -8,7 +8,7 @@ export default {
               console.log('Code error ++++++: ', error?.response?.data?.message)
               this.$toast.error(error?.response?.data?.message).goAway(3000)
           }).finally(() => {
-            console.log('Requette envoyé ')
+            console.log('Requête envoyée ')
           });
     },
     async getDetail({commit},payload){

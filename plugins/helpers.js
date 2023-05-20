@@ -3,15 +3,15 @@ import layoutadmin from '@/static/data/layoutadmin'
 export default function ({store ,redirect}, inject) { 
 
     const getToken = () => {
-        return localStorage.getItem('msasToken')
+        return localStorage.getItem('gecAdminToken')
     }
     
     const getUser = () => {
-        return JSON.parse(localStorage.getItem('loggedInUser'));
+        return JSON.parse(localStorage.getItem('gecAdminLoggedInUser'));
     }
     
     const isLogged = () => {
-        return JSON.parse(localStorage.getItem('isAuthenticated'))
+        return JSON.parse(localStorage.getItem('gecAdminIsAuthenticated'))
     }
 
     /* const verifySession = () => {
@@ -58,12 +58,13 @@ export default function ({store ,redirect}, inject) {
     }
 
     const hasPermission = (permission_name) => {
-        let permissions = getUserPermissions()
-        let checkpermission = permissions?.filter(item => item.name === permission_name).length;
-        if(checkpermission==1)
+        // let permissions = getUserPermissions()
+        // let checkpermission = permissions?.filter(item => item.name === permission_name).length;
+        // if(checkpermission==1)
+        // return true
+        // else
+        // return false
         return true
-        else
-        return false
     }
 
     const hasRole = (role_name) => {
@@ -109,10 +110,10 @@ export default function ({store ,redirect}, inject) {
     }
     
     const loggout = async () => {
-        await localStorage.removeItem('msasToken')
-        await localStorage.removeItem('loggedInUser')
+        await localStorage.removeItem('gecAdminToken')
+        await localStorage.removeItem('gecAdminLoggedInUser')
         await localStorage.removeItem('layout')
-        await localStorage.removeItem('isAuthenticated') 
+        await localStorage.removeItem('gecAdminIsAuthenticated') 
     }
 
 

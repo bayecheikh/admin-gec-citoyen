@@ -47,7 +47,7 @@
 <script>
 import Notification from '@/components/Notification'
 import layoutadmin from '@/static/data/layoutadmin'
-import layoutchargeclientel from '@/static/data/layoutchargeclientel'
+
   export default {
     /* middleware:'guest', */
     layout: 'default',
@@ -81,12 +81,12 @@ import layoutchargeclientel from '@/static/data/layoutchargeclientel'
         let validation = this.$refs.form.validate()
         this.loading = true;
         this.color="success"
-        console.log('Donées formulaire ++++++ : ',{...this.model})
+        console.log('Données formulaire ++++++ : ',{...this.model})
         
         validation && this.$axios.post('/forget_password',{...this.model})
           .then((res) => {    
             this.$toast.success(res.data.message || 'Vérifiez votre boite de récéption').goAway(4000)
-            console.log('Donées reçus ++++++: ',res.data)
+            console.log('Données reçues ++++++: ',res.data)
              setTimeout(() => {
               this.$router.push('/login');
             }, 1000);
@@ -97,7 +97,7 @@ import layoutchargeclientel from '@/static/data/layoutchargeclientel'
           }).finally(() => {
             this.loading = false;
             this.dialog = false
-            console.log('Requette envoyé ')
+            console.log('Requête envoyée ')
         }); 
       }
     }

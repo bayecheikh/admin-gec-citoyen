@@ -55,8 +55,6 @@ import FormAddUser from '@/components/utilisateurs/FormAddUser';
         menu2: false,
         menu3: false,
         modal: false,
-        roles: ['Sperviseur national'],
-        localisations: ['Thiès','Dakar'],
 
       }
     }

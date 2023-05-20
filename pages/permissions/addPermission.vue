@@ -56,9 +56,7 @@ import FormAddPermission from '@/components/permissions/FormAddPermission';
         menu2: false,
         menu3: false,
         modal: false,
-        permissions: ['Sperviseur national'],
-        localisations: ['Thiès','Dakar'],
-
+     
       }
     }
 

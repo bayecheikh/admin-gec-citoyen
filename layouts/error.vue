@@ -7,9 +7,9 @@
             <v-card flat class="elevation-0 pl-5 pr-5 pt-0 pb-0">
               <v-card-text>
                 <div class="layout column align-center py-5">
-                  <img v-if="error.statusCode === 404" src="@/static/404.png" alt="Espace Senegal Service" width="600" height="">
+                  <img v-if="error.statusCode === 404" src="@/static/404.png" alt="Plateforme GEC CITOYEN" width="600" height="">
                   <div v-else  class="layout column align-center py-5">
-                    <img  src="@/static/error.png" alt="Espace Senegal Service" width="100" height="">
+                    <img  src="@/static/error.png" alt="Plateforme GEC CITOYEN" width="100" height="">
                     <v-spacer></v-spacer>
                     <p>
                       {{ otherError }}

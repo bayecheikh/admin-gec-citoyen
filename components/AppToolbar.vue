@@ -38,7 +38,7 @@
               v-on="on"
             >
               <v-avatar size="30px">
-                <img src="@/static/avatar/default-user.png" alt="avatar"/>
+                <img src="@/static/avatar/user.png" alt="avatar"/>
               </v-avatar>
             </v-btn>
           </template>
@@ -51,7 +51,7 @@
                   tile
                 >
                     <v-avatar size="60px">
-                      <img src="@/static/avatar/default-user.png" alt="avatar"/>
+                      <img src="@/static/avatar/user.png" alt="avatar"/>
                     </v-avatar>
                 </v-card>
                 <v-card
@@ -67,7 +67,7 @@
                   flat
                   tile
                 >
-                  <v-btn text  deprmsased @click="goToProfile" class="customTopNav pop-user-button flex text-sm-center">
+                  <v-btn text  depressed @click="goToProfile" class="customTopNav pop-user-button flex text-sm-center">
                     Parametres
                   </v-btn> 
                 </v-card>
@@ -115,20 +115,9 @@
     },
     methods: {
       async logout() {
-        try {
-            this.loading = true; 
-            //this.$store.dispatch('toast/getMmsasage',{type:'procmsasing',text:'Deconnexion en cours ...'})
-            await this.$msasApi.$post('/logout').then(async (response) => { 
-            this.$loggout()
-            this.loading = false;
-            //this.$store.dispatch('toast/getMmsasage',{type:'succmsas',text:'Deconnexion réussie'})   
-            this.$router.push('/login');
-          })
-        } catch (e) {
-          this.$store.dispatch('toast/getMmsasage',{type:'error',text:e})
-          console.log(e)
-          this.loading = false;
-        }
+        await localStorage.removeItem('gecAdminToken')
+        await localStorage.removeItem('gecAdminLoggedInUser')
+        await localStorage.removeItem('gecAdminIsAuthenticated') 
       },
       goToProfile(){ 
         this.$router.push('/profil/'+this.loggedInUser.id);      

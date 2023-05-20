@@ -8,7 +8,7 @@
       </v-col>
       <v-col md="9" lg="9" sm="12" class="full-height">
           <page-header :items="headerItems"></page-header>
-          <div>Error lors de la connection</div>
+          <div>Error lors de la connexion</div>
       </v-col>
     </v-row>
   </v-container>
@@ -18,13 +18,13 @@
 <script>
 import LeftMenu from '@/components/LeftMenu';
 import PageHeader from '@/components/PageHeader';
-import ListUsager from '@/components/usagers/ListUsager'
+
   export default {
     layout: "dashboard",
     components: {
       LeftMenu,
       PageHeader,
-      ListUsager
+     
     },
     data () {
       return {

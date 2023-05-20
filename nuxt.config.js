@@ -55,7 +55,7 @@ export default {
   ],
 
   axios: {
-    baseURL: 'https://ip3dev.com/api-sirat/public/api',
+    baseURL: 'https://api-gec-citoyen.fly.dev',
   },
   
   auth: {
@@ -119,10 +119,15 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: ['vuetify/lib', "tiptap-vuetify"]
+    transpile: ['vuetify/lib', 'tiptap-vuetify'],
+    postcss: {
+      preset: {
+        autoprefixer: {},
+      },
+    },
   },
 
   env: {
-    baseUrl: 'https://ip3dev.com/api-sirat/public/api',
+    baseUrl: 'https://api-gec-citoyen.fly.dev',
   }
 }

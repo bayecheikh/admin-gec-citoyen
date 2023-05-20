@@ -185,7 +185,7 @@
                   this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de la création '})
               }).finally(() => {
                 this.loading = false;
-                console.log('Requette envoyé ')
+                console.log('Requête envoyée ')
             });
           },
           resetForm () {

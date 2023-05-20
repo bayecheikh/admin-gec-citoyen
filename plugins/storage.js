@@ -1,15 +1,15 @@
 export default function ({store ,redirect}, inject) { 
 
     const getToken = () => {
-        return localStorage.getItem('auth.essToken')
+        return localStorage.getItem('gecToken')
     }
     
     const getUser = () => {
-        return JSON.parse(localStorage.getItem('auth.loggedInUser'));
+        return JSON.parse(localStorage.getItem('gecAdminLoggedInUser'));
     }
     
     const isLogged = () => {
-        return JSON.parse(localStorage.getItem('auth.isAuthenticated'))
+        return JSON.parse(localStorage.getItem('gecAdminIsAuthenticated'))
     }
 
     const getUserRoles = () => {
@@ -24,12 +24,13 @@ export default function ({store ,redirect}, inject) {
     }
 
     const hasPermission = (permission_name) => {
-        let permissions = getUserPermissions()
-        let checkpermission = permissions.filter(item => item.name === permission_name).length;
-        if(checkpermission==1)
+        // let permissions = getUserPermissions()
+        // let checkpermission = permissions.filter(item => item.name === permission_name).length;
+        // if(checkpermission==1)
+        // return true
+        // else
+        // return false
         return true
-        else
-        return false
     }
 
     const hasRole = (role_name) => {
@@ -75,10 +76,10 @@ export default function ({store ,redirect}, inject) {
     }
     
     const loggout = async () => {
-        await localStorage.removeItem('auth.essToken')
-        await localStorage.removeItem('auth.loggedInUser')
-        await localStorage.removeItem('auth.layout')
-        await localStorage.removeItem('auth.isAuthenticated') 
+        await localStorage.removeItem('gecAdminToken')
+        await localStorage.removeItem('gecAdminLoggedInUser')
+        await localStorage.removeItem('layout')
+        await localStorage.removeItem('gecAdminIsAuthenticated') 
     }
 
 

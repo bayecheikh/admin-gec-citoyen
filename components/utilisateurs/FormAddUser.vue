@@ -304,7 +304,7 @@ import { mapMutations, mapGetters } from 'vuex'
         let selectedRoles = this.model.roles && this.model.roles.map((item)=>{return item.id})
         this.model.roles=selectedRoles
         this.loading = true;
-        console.log('Donées formulaire++++++: ',{...this.model,roles:selectedRoles})
+        console.log('Données formulaire++++++: ',{...this.model,roles:selectedRoles})
 
 
         /* let formData = new FormData();
@@ -326,14 +326,14 @@ import { mapMutations, mapGetters } from 'vuex'
         formData.append("fonction",this.model.fonction),
         formData.append("structure_id",this.model.structure_id)
 
-        console.log('Donées formulaire files ++++++: ',formData) */
+        console.log('Données formulaire files ++++++: ',formData) */
 
         //console.log('Données formulaire +++++',{...this.model,roles:selectedRoles,structure_id:this.model.structure_id?.id})
         console.log('Données formulaire +++++',{...this.model,roles:selectedRoles,structure_id:this.model.structure_id?.id})
 
-       validation && this.$msasFileApi.post('/users',{...this.model,roles:selectedRoles,structure_id:this.model.structure_id?.id})
+       validation && this.$gecFileApi.post('/users',{...this.model,roles:selectedRoles,structure_id:this.model.structure_id?.id})
           .then((res) => {           
-            console.log('Donées reçus ++++++: ',res.data)
+            console.log('Données reçues ++++++: ',res.data)
             this.$store.dispatch('toast/getMessage',{type:'success',text:res.data.message})
             this.$router.push('/utilisateurs');
           })
@@ -342,7 +342,7 @@ import { mapMutations, mapGetters } from 'vuex'
               this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de l\'ajout '})
           }).finally(() => {
             this.loading = false;
-            console.log('Requette envoyé ')
+            console.log('Requête envoyée ')
         });
       },
       resetForm () {

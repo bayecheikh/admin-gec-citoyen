@@ -67,7 +67,7 @@
 <script>
 import FormSendMail from '@/components/auth/FormSendMail'
 import layoutadmin from '@/static/data/layoutadmin'
-import layoutchargeclientel from '@/static/data/layoutchargeclientel'
+
   export default {
     /* middleware:'guest', */
     components: {
@@ -102,23 +102,25 @@ import layoutchargeclientel from '@/static/data/layoutchargeclientel'
               email: this.model.email,
               password: this.model.password
             })
-          validation && await this.$gecApi('/users/login', {
+          validation && await this.$gecApi.post('users/login', {
               email: this.model.email,
               password: this.model.password
           }).then(async (response) => { 
-            console.log('Utilisateur connecté++++++++++++++++++++++++++',response.data)
+            console.log('Utilisateur conjnecté++++++++++++++++++++++++++',response.data)
 
-            await localStorage.setItem('msasToken', response.data.token)
-            await localStorage.setItem('loggedInUser', JSON.stringify(response.data.user))
-            await localStorage.setItem('isAuthenticated', true)       
-            this.$router.push('/parametres');
+           localStorage.setItem('gecAdminToken', response.data.token)
+            localStorage.setItem('gecAdminLoggedInUser', JSON.stringify(response.data.data.user))
+            localStorage.setItem('gecAdminIsAuthenticated', true)       
+
+            this.$router.push({ path: '/parametres' });
+
           }).
           catch((error) => {
               console.log('Code error ++++++: ', error.response)
               this.$store.dispatch('toast/getMessage',{type:'error',text:error.response.data.message || 'Echec de la connexion'})
           }).finally(() => {
             this.loading = false;
-            console.log('Requette envoyé ')
+            console.log('Requête envoyée ')
           }); 
       }
     }

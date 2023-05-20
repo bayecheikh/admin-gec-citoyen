@@ -1,6 +1,6 @@
 export default (context, inject) => {
     const hasPermission = (permission_name) => {
-        let permissions = JSON.parse(localStorage.getItem('auth.loggedInUser')).roles.permissions
+        let permissions = JSON.parse(localStorage.getItem('gecAdminLoggedInUser')).roles.permissions
         let checkpermission = permissions.filter(item => item.name === permission_name).length;
         if(checkpermission==1)
         return true
