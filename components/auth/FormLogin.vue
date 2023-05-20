@@ -102,7 +102,7 @@ import layoutchargeclientel from '@/static/data/layoutchargeclientel'
               email: this.model.email,
               password: this.model.password
             })
-          validation && await this.$axios.post('login', {
+          validation && await this.$gecApi('/users/login', {
               email: this.model.email,
               password: this.model.password
           }).then(async (response) => { 
