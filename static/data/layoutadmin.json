@@ -55,6 +55,20 @@
       "title": "Catégories de contenu",
       "name": "gerer-parametres",
       "slug": "categories-contenus-dynamiques"
+    },
+    {
+      "icon": "mdi-cog-outline",
+      "href": "/modelescourriers",
+      "title": "Modèles de courrier",
+      "name": "gerer-parametres",
+      "slug": "modeles-courriers"
+    },
+    {
+      "icon": "mdi-cog-outline",
+      "href": "/categoriesmodelescourriers",
+      "title": "Catégories Modèles courrier",
+      "name": "gerer-parametres",
+      "slug": "categories-modeles-courriers"
     }
   ]
  }

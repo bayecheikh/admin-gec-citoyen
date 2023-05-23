@@ -33,15 +33,15 @@ import FormUpdateContenuDynamique from '@/components/contenusdynamiques/modifier
       return {
         headerItems: [
         {
-          text: 'Question/Réponse',
+          text: 'Contenu dynamique',
           disabled: false,
-          to: '/dimensions',
+          to: '/contenusdynamiques',
           exact: true
         },
         {
           text: 'Détail',
           disabled: true,
-          to: '/dimensions/94',
+          to: '/',
           exact: true
         }
         

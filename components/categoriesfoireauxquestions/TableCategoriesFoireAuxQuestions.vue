@@ -90,7 +90,7 @@
 
           <v-list shaped>
             <v-item-group>
-              <!-- <v-list-item @click="visualiserItem(item)" link class="custom-v-list-action pl-2 pr-1">
+              <v-list-item @click="visualiserItem(item)" link class="custom-v-list-action pl-2 pr-1">
                 <v-list-item-title>
                   <v-icon
                     small
@@ -100,14 +100,14 @@
                     mdi-information-outline
                   </v-icon>Détail
                 </v-list-item-title>
-              </v-list-item> -->
+              </v-list-item>
               <v-list-item @click="editItem(item)" link class="custom-v-list-action pl-2 pr-1">
                 <v-list-item-title> 
                   <v-icon small class="mr-2"> mdi-pencil-outline </v-icon
                   >Modifier
                 </v-list-item-title>
               </v-list-item>
-              <v-list-item v-if="$hasRole('super_admin')" @click="opendialog(item)" class="custom-v-list-action pl-2 pr-1" >
+              <v-list-item @click="opendialog(item)" class="custom-v-list-action pl-2 pr-1" >
                 <v-list-item-title>
                   <v-icon small class="mr-2" v-bind="attrs" v-on="on">
                     mdi-delete-outline </v-icon
@@ -142,8 +142,8 @@ import { mapMutations, mapGetters } from 'vuex'
     },
     methods: {
       visualiserItem (item) {   
-        this.$store.dispatch('contenus/getDetail',item)
-        this.$router.push('/contenus/detail/'+item.id);
+        this.$store.dispatch('categoriesfoireauxquestions/getDetail',item)
+        this.$router.push('/categoriesfoireauxquestions/detail/'+item.id);
       },
       editItem (item) {
         this.$store.dispatch('categoriesfoireauxquestions/getDetail',item)
@@ -174,8 +174,8 @@ import { mapMutations, mapGetters } from 'vuex'
         alert('Veuillez sélectionner un élément')
         else{
           let contenu = this.selected.map(function(value){ return value})[0]
-          this.$store.commit('contenus/initdetail',contenu)
-          this.$router.push('/contenus/detail/'+contenu.id);
+          this.$store.commit('categoriesfoireauxquestions/initdetail',contenu)
+          this.$router.push('/categoriesfoireauxquestions/detail/'+contenu.id);
         }
       },
       modifier(){
@@ -183,8 +183,8 @@ import { mapMutations, mapGetters } from 'vuex'
         alert('Veuillez sélectionner un élément')
         else{
           let contenu = this.selected.map(function(value){ return value})[0]
-          this.$store.commit('contenus/initdetail',contenu)
-          this.$router.push({path: '/contenus/modifier/'+contenu.id, query: {categorie_href: "foireauxquestions"}});
+          this.$store.commit('categoriesfoireauxquestions/initdetail',contenu)
+          this.$router.push({path: '/categoriesfoireauxquestions/modifier/'+contenu.id, query: {categorie_href: "categoriesfoireauxquestions"}});
         }
       },
       supprimer(){

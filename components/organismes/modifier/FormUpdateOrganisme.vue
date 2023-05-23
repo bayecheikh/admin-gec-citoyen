@@ -218,7 +218,7 @@
               this.model.baseUrl= response.data.data.baseUrl
               this.model.gedUrl= response.data.data.gedUrl
               this.model.gecUrl= response.data.data.gecUrl
-              this.model.typeStructure= response.data.data.typeStructure.name
+              this.model.typeStructure= response.data.data.typeStructure.id
               this.selected= response.data.data.typeStructure
               this.model.user_webservice= response.data.data.user_webservice
               this.model.user_ws_password= response.data.data.user_ws_password
@@ -257,15 +257,7 @@
           resetValidationForm () {
             this.$refs.form.resetValidation()
           },
-          async changeRole() {
-  
-          let checkRole = this.model.roles.filter(item => (item && item.name === 'point_focal' || item && item.name === 'admin_structure' || item && item.name === 'DGES' || item && item.name === 'directeur_eps')).length;
-          if(checkRole==1)
-          this.showFournisseur=true
-          else
-          this.showFournisseur=false
-          console.log('************',checkRole)
-          },
+        
           },
         metaInfo () {
           return {

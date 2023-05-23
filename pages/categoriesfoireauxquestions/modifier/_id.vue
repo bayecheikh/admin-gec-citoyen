@@ -35,13 +35,13 @@ import FormUpdateCategorieFaq from '@/components/categoriesfoireauxquestions/mod
         {
           text: 'Catégorie de Question/Réponse',
           disabled: false,
-          to: '/dimensions',
+          to: '/categoriesfoireauxquestions',
           exact: true
         },
         {
           text: 'Détail',
           disabled: true,
-          to: '/dimensions/94',
+          to: '/',
           exact: true
         }
         

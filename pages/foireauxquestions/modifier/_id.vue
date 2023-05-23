@@ -35,13 +35,13 @@ import FormUpdateFaq from '@/components/foireauxquestions/modifier/FormUpdateFaq
         {
           text: 'Question/Réponse',
           disabled: false,
-          to: '/dimensions',
+          to: '/foireauxquestions',
           exact: true
         },
         {
           text: 'Détail',
           disabled: true,
-          to: '/dimensions/94',
+          to: '/',
           exact: true
         }
         

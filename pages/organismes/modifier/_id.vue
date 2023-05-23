@@ -35,13 +35,13 @@ import FormUpdateOrganisme from '@/components/organismes/modifier/FormUpdateOrga
         {
           text: 'Organisme',
           disabled: false,
-          to: '/dimensions',
+          to: '/organismes',
           exact: true
         },
         {
           text: 'Détail',
           disabled: true,
-          to: '/dimensions/94',
+          to: '/',
           exact: true
         }
         

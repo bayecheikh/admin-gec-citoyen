@@ -12,21 +12,20 @@
         </v-col>
         <v-col md="12" lg="12" sm="12">
           <v-textarea
-            label="Résumé"
+            label="Résumé *"
             outlined dense
             v-model="model.resume"
             :rules="rules.resumeRules"
           ></v-textarea>
         </v-col>
-        <v-col md="12" lg="12" sm="12">
-          <p>Body</p>
-          <template>
-            <ClientOnly>
-              <!-- Use the component in the right place of the template -->
-              <tiptap-vuetify v-model="model.body" :extensions="extensions" :card-props="{ flat: false, color: '' }"/>
-            </ClientOnly>
-          </template>
-        </v-col>
+        <!-- <v-col md="12" lg="12" sm="12">
+          <v-textarea
+            label="Body"
+            outlined dense
+            v-model="model.body"
+            :rules="rules.bodyRules"
+          ></v-textarea>
+        </v-col> -->
         <v-col
         lg="6"
         md="6"
@@ -52,6 +51,7 @@
             label="Lien externe"
             outlined dense
             v-model="model.link"
+            :rules="rules.lienRules"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -138,22 +138,34 @@
           message:null,
           model: {
       
-        title: '',
-        resume: '',
-        body: ``,
-        categories: [],
-        categorie:'',
-        id_categorie:'',
-        link:''
-      },
+            title: '',
+            resume: '',
+            body: '',
+            categories: [],
+            categorie:'',
+            id_categorie:'',
+            link:''
+          },
       rules:{
         titreRules: [
           v => !!v || 'Le titre est obligatoire',
+          v => (v.length <= 50) || 'Le titre ne doit pas dépasser 50 caractères',
        
         ],
-        descriptionRules: [
-          v => !!v || 'Description est obligatoire'
+        resumeRules: [
+          v => !!v || 'Le résumé est obligatoire',
+          v => (v.length <= 200) || 'Le résumé ne doit pas dépasser 200 caractères',
         ],
+        // bodyRules: [
+        //   v => (v.length <= 200) || 'Le body ne doit pas dépasser 200 caractères',
+        // ],
+        categoriesRules: [
+          v => !!v || 'La catégorie est obligatoire'
+        ],
+        lienRules: [
+  v => !v || /^(https?:\/\/|www\.)?([\w\d\-]+\.)+\w{2,}(\/[\w\d\-./?%=&]*)?$/i.test(v) || 'Le lien n\'est pas valide'
+],
+        
       },
     
           imageData:null,

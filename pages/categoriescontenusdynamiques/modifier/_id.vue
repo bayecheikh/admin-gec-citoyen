@@ -35,13 +35,13 @@ import FormUpdateCategorieContenuDynamique from '@/components/categoriescontenus
         {
           text: 'Catégorie de contenu',
           disabled: false,
-          to: '/dimensions',
+          to: '/categoriescontenusdynamiques',
           exact: true
         },
         {
           text: 'Détail',
           disabled: true,
-          to: '/dimensions/94',
+          to: '/',
           exact: true
         }
         

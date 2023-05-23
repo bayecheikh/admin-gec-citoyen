@@ -35,13 +35,13 @@ import FormUpdateCategorieOrganisme from '@/components/categoriesorganismes/modi
         {
           text: 'Type d\'organisme',
           disabled: false,
-          to: '/dimensions',
+          to: '/categoriesorganismes',
           exact: true
         },
         {
           text: 'Détail',
           disabled: true,
-          to: '/dimensions/94',
+          to: '/',
           exact: true
         }
         
