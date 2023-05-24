@@ -78,7 +78,7 @@
               v-on="on"
             >
               <v-avatar size="30px">
-                <img src="@/static/avatar/user.png" alt="avatar"/>
+                <img src="@/static/avatar/default-user.png" alt="avatar"/>
               </v-avatar>
             </v-btn>
           </template>
@@ -91,7 +91,7 @@
                   tile
                 >
                     <v-avatar size="60px">
-                      <img src="@/static/avatar/user.png" alt="avatar"/>
+                      <img src="@/static/avatar/default-user.png" alt="avatar"/>
                     </v-avatar>
                 </v-card>
                 <v-card
@@ -181,20 +181,24 @@
     }),
     methods: {
       async logout() {
-        try {
-            this.loading = true; 
+        // try {
+        //     this.loading = true; 
            
-            await this.$gecApi.$post('/logout').then(async (response) => { 
-            this.$loggout()
-            this.loading = false;
+        //     await this.$gecApi.$post('/logout').then(async (response) => { 
+        //     this.$loggout()
+        //     this.loading = false;
             
-            this.$router.push('/login');
-          })
-        } catch (e) {
-          this.$store.dispatch('toast/getMessage',{type:'error',text:e})
-          console.log(e)
-          this.loading = false;
-        }
+        //     this.$router.push('/login');
+        //   })
+        // } catch (e) {
+        //   this.$store.dispatch('toast/getMessage',{type:'error',text:e})
+        //   console.log(e)
+        //   this.loading = false;
+        // }
+        await localStorage.removeItem('gecAdminToken')
+        await localStorage.removeItem('gecAdminLoggedInUser')
+        await localStorage.removeItem('gecAdminIsAuthenticated') 
+        this.$router.push('login')
       },
       goToProfile(){ 
         this.$router.push('/profil/'+this.loggedInUser.id);   

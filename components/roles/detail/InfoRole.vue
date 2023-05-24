@@ -3,7 +3,7 @@
     <v-card-text>
       <v-row>
         <v-col md="3" sm="12" lg="3" text-md-center>
-          <img src="@/static/avatar/user.png" class="user-profil" alt="Plateforme GEC CITOYEN">
+          <img src="@/static/avatar/default-user.png" class="user-profil" alt="Plateforme GEC CITOYEN">
         </v-col>
         <v-col md="9" sm="12" lg="9" text-md-left>
           <div class="row">

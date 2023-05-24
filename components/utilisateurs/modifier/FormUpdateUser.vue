@@ -8,7 +8,7 @@
             <img :src="imageData" alt="Avatar"/>
           </v-avatar>
           <v-avatar size="100px" v-else>
-            <img src="@/static/avatar/user.png" alt="Cheikh Gueye"/>
+            <img src="@/static/avatar/default-user.png" alt="Cheikh Gueye"/>
           </v-avatar>
         </div>
       </div>

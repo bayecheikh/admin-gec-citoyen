@@ -3,13 +3,13 @@
     <v-card-text>
       <v-row>
         <v-col md="3" sm="12" lg="3" text-md-center>
-          <!-- <img src="@/static/avatar/user.png" class="user-profil" alt="Plateforme GEC CITOYEN"> -->
+          <!-- <img src="@/static/avatar/default-user.png" class="user-profil" alt="Plateforme GEC CITOYEN"> -->
           <div class="headline">
             <v-avatar v-if="detailUtilisateur.avatar" tile style="border: solid 2px #d8d8d8;" size="150px">
               <img :src="detailUtilisateur.avatar" alt="Avatar"/>
             </v-avatar>
             <v-avatar size="100px" v-else>
-              <img src="@/static/avatar/user.png" alt="Cheikh Gueye"/>
+              <img src="@/static/avatar/default-user.png" alt="Cheikh Gueye"/>
             </v-avatar>
           </div>
         </v-col>

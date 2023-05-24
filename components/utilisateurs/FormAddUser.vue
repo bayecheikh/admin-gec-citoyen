@@ -3,7 +3,7 @@
   <v-form class="text-sm-center" v-model="valid" ref="form" enctype="multipart/form-data"
     >
     <v-row>
-      <v-col md="6" lg="6" sm="12">
+    <v-col md="6" lg="6" sm="12">
         <v-text-field
           label="Prénom"
           outlined dense
@@ -18,6 +18,14 @@
           v-model="model.lastname"
           :rules="rules.lastnameRules"
         ></v-text-field>
+      </v-col> 
+      <v-col md="6" lg="6" sm="12">
+        <v-text-field
+          label="Sexe"
+          outlined dense
+          v-model="model.sexe"
+          :rules="rules.sexeRules"
+        ></v-text-field>
       </v-col>
       <v-col md="6" lg="6" sm="12">
         <v-text-field
@@ -27,81 +35,7 @@
           :rules="rules.emailRules"
         ></v-text-field>
       </v-col>
-     <!-- <v-col md="6" lg="6" sm="12">
-        <v-text-field
-          label="Fonction"
-          outlined dense
-          v-model="model.fonction"
-          :rules="rules.fonctionRules"
-        ></v-text-field>
-      </v-col>-->
-      <!-- <v-col lg="6" sm="12" md="6">
-        <v-menu
-          v-model="menu1"
-          :close-on-content-click="false"
-          :nudge-right="40"
-          transition="scale-transition"
-          offset-y
-          min-width="auto"
-        >
-          <template v-slot:activator="{ on, attrs }">
-            <v-text-field
-              v-model="model.date_of_birth"
-              label="Date de naissance"
-              append-icon="mdi-calendar"
-              readonly
-              v-bind="attrs"
-              v-on="on"
-              outlined dense
-            ></v-text-field>
-          </template>
-          <v-date-picker
-            v-model="model.date_of_birth"
-            @input="menu1 = false"
-          ></v-date-picker>
-        </v-menu>
-      </v-col> -->
-      <!-- <v-col md="6" lg="6" sm="12">
-        <v-text-field
-          label="Lieu de naissance"
-          outlined dense
-          v-model="model.place_of_birth"
-          :rules="rules.place_of_birthRules"
-        ></v-text-field>
-      </v-col> -->
-     <!--  <v-col md="6" lg="6" sm="12">
-        <v-text-field
-          label="Adresse"
-          outlined dense
-          v-model="model.adresse"
-          :rules="rules.adresseRules"
-        ></v-text-field>
-      </v-col>-->
-      <!-- <v-col md="6" lg="6" sm="12">
-        <vue-tel-input-vuetify label="Téléphone"
-          outlined dense
-          v-model="model.telephone"
-          :rules="rules.telephoneRules">
-
-        </vue-tel-input-vuetify>
-      </v-col>
-      <v-col md="6" lg="6" sm="12">
-        <v-text-field
-          label="Indicatif"
-          dense outlined
-          v-model="model.country_code"
-          :rules="rules.country_codeRules"
-        ></v-text-field>
-      </v-col> -->
-      <!--<v-col md="2" lg="2" sm="12">
-        <v-text-field
-          label="Indicatif"
-          dense outlined
-          v-model="model.country_code"
-          :rules="rules.country_codeRules"
-        ></v-text-field>
-      </v-col>-->
-      <v-col md="6" lg="6" sm="12">
+    <v-col md="6" lg="6" sm="12">
         <v-text-field
           label="Téléphone"
           outlined dense
@@ -109,47 +43,50 @@
           :rules="rules.telephoneRules"
         ></v-text-field>
       </v-col>
-      <v-col
+      <v-col md="6" lg="6" sm="12">
+        <v-text-field
+          label="Adresse"
+          outlined dense
+          v-model="model.adresse"
+          :rules="rules.adresseRules"
+        ></v-text-field>
+      </v-col>
+      <v-col md="6" lg="6" sm="12">
+    <v-text-field
+      label="Mot de passe"
+      outlined
+      dense
+      v-model="model.password"
+      :append-icon="passwordVisible ? 'mdi-eye' : 'mdi-eye-off'"
+      :type="passwordVisible ? 'text' : 'password'"
+      @click:append="togglePasswordVisibility"
+      :rules="rules.passwordRules"
+    ></v-text-field>
+  </v-col>
+  <v-col md="6" lg="6" sm="12">
+    <v-text-field
+      label="Confirmer mot de passe"
+      outlined
+      dense
+      v-model="model.passwordConfirm"
+      :append-icon="passwordConfirmVisible ? 'mdi-eye' : 'mdi-eye-off'"
+      :type="passwordConfirmVisible ? 'text' : 'password'"
+      @click:append="togglePasswordConfirmVisibility"
+      :rules="getPasswordConfirmRules"
+    ></v-text-field>
+  </v-col>
+       <!-- <v-col
         lg="6"
         md="6"
         sm="12"
       >
-        <v-autocomplete
-            v-model="model.roles"
-            :items="listroles.filter(item => (item && item.name != 'super_admin'))"
-            :rules="rules.rolesRules"
-            outlined
-            dense
-            multiple
-            small-chips
-            label="Rôle"
-            item-text="description"
-            item-value="id"
-            clearable
-            return-object
-            @change="changeRole"
-          >
-        </v-autocomplete>
-      </v-col>
-      <v-col
-        lg="6"
-        md="6"
-        sm="12"
-      >
-        <v-autocomplete
-            v-model="model.structure_id"
-            :rules="this.showFournisseur==true?rules.fournisseur_services_idRules:null"
-            :items="liststructures"
-            outlined
-            dense
-            label="Structure"
-            item-text="nom_structure"
-            item-value="id"
-            return-object
-            v-if="showFournisseur"
-          >
-        </v-autocomplete>
-      </v-col>
+      <v-text-field
+          label="Rôle"
+          dense outlined
+          v-model="model.role"
+          :rules="rules.roleRules"
+        ></v-text-field>
+      </v-col> -->
     </v-row>
 
     <v-btn
@@ -172,169 +109,87 @@ import { mapMutations, mapGetters } from 'vuex'
     components: {
       Notification
     },
-    mounted: function() {
-      this.$store.dispatch('roles/getList')
-      this.$store.dispatch('structures/getSelectList')
-      /* this.$store.dispatch('structures/getList')
-      this.$store.dispatch('fournisseurs/getList') */
-    },
     computed: {
-      ...mapGetters({
-      listroles: 'roles/selectlistroles',
-      liststructures: 'structures/selectliststructures'
-      /* listfournisseurs: 'fournisseurs/selectlistfournisseurs',
-      liststructures: 'structures/selectliststructures', */
-    })},
+    getPasswordConfirmRules() {
+      return [
+        (value) => !!value || 'Veuillez confirmer le mot de passe',
+        (value) => value === this.model.password || 'Les mots de passe ne correspondent pas'
+      ];
+    }
+  },
     data: () => ({
       loading: false,
       message:null,
       color:null,
       valid: true,
-      showFournisseur: false,
       message:null,
+    
       model: {
-        structure_id:'',
         firstname: '',
         lastname: '',
-        email: '',
-        roles: null,       
+        adresse: '',
         telephone: '',
+        role: 'user',
+        passwordConfirm : '',
+        sexe:'',
+    
+        email: '',
+          
+        password: '',
       },
+      passwordVisible: false,
+      passwordConfirmVisible: false,
       rules:{
         firstnameRules: [
           (v) => !!v || 'Le prénom est obligatoire',
           (v) => /^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/.test(v) || "Le prénom ne doit contenir que des caractères alphabétiques et des caractères spéciaux tels que des espaces, des tirets et des apostrophes",
-          (v) => (v && v.length <= 50) || "Le prénom ne doit pas dépasser 50 caractères",
+          (v) => (v && v.length <= 100) || "Le prénom ne doit pas dépasser 100 caractères",
           (v) => (v && v.length >= 2) || "Le prénom doit contenir au moins 2 caractères"
         ],
         lastnameRules: [
           (v) => !!v || 'Le nom est obligatoire',
           (v) => /^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/.test(v) || "Le nom ne doit contenir que des caractères alphabétiques et des caractères spéciaux tels que des espaces, des tirets et des apostrophes",
-          (v) => (v && v.length <= 50) || "Le nom ne doit pas dépasser 50 caractères",
+          (v) => (v && v.length <= 100) || "Le nom ne doit pas dépasser 100 caractères",
           (v) => (v && v.length >= 2) || "Le nom doit contenir au moins 2 caractères"
+        ],
+  
+    
+        roleRules: [
+          v => (v && !!v.length) || 'Le rôle est obligatoire',
+        ],
+        telephoneRules: [
+      
+        (v) => /^[0-9]+$/.test(v) || "Le numéro de téléphone ne doit contenir que des chiffres",
+        (v) => (v.length >= 8 && v.length <= 20) || "Le numéro de téléphone doit contenir entre 8 et 20 chiffres"
         ],
         emailRules: [
           v => !!v || 'L\'adresse e-mail est obligatoire',
           v => /.+@.+\..+/.test(v) || 'L\'adresse e-mail doit être valide',
         ],
-        usernameRules: [
-          v => !!v || 'Login est obligatoire',
-          v => (v && v.length <= 10) || 'Login doit être inférieur à 10 caractères',
+      
+       passwordRules: [
+        (v) => !!v || 'Le mot de passe est obligatoire',
+        (v) => (v && v.length >= 8) || "Le mot de passe doit contenir au moins 8 caractères",
+      
         ],
-        rolesRules: [
-          v => (v && !!v.length) || 'Le rôle est obligatoire',
-        ],
-        telephoneRules: [
-        (v) => !!v || 'Le numéro de téléphone est obligatoire',
-        (v) => /^[0-9]+$/.test(v) || "Le numéro de téléphone ne doit contenir que des chiffres",
-        (v) => (v && v.length >= 8 && v.length <= 20) || "Le numéro de téléphone doit contenir entre 8 et 20 chiffres"
-        ],
-        country_codeRules: [
-          v => !!v || 'L\'indicatif du pays est obligatoire',
-        ],
-        fournisseur_services_idRules: [
-          v => (!!v) || 'Fournisseur est obligatoire',
-        ],
-        structure_idRules: [
-          v => (!!v) || 'Structure est obligatoire',
-        ],
-        adresseRules: [
-          v => !!v || 'Adresse est obligatoire',
-          v => (v && v.length <= 100) || 'Adresse doit être inférieur à 50 caractères',
-        ],
-        nationalityRules: [
-          v => !!v || 'Nationalité est obligatoire',
-          v => (v && v.length <= 50) || 'Nationalité doit être inférieur à 15 caractères',
-        ],
-        date_of_birthRules: [
-          v => !!v || 'Date de naissance est obligatoire',
-        ],
-        place_of_birthRules: [
-          v => !!v || 'Lieu de naissance est obligatoire',
-          v => (v && v.length <= 50) || 'Lieu de naissance doit être inférieur à 50 caractères',
-        ],
-        /* sexeRules: [
-          v => !!v || 'Civilité est obligatoire',
-        ], */
-        type_identificationRules: [
-          v => !!v || 'Type d\'identification est obligatoire',
-        ],
-        numero_identificationRules: [
-          v => !!v || 'Numéro d\'identification est obligatoire'
-        ],
-        fonctionRules: [
-          v => !!v || 'Fonction est obligatoire'
-        ]
+    
+      
       },
-
-
-      imageData:null,
     }),
     methods: {
-      handleFileUpload(e){         
-        //Recupère le fichier
-        const input = this.$refs.file
-        const files = input.files
-
-        //Recupère l'extension
-        let idxDot = files[0].name.lastIndexOf(".") + 1;
-        let extFile = files[0].name.substr(idxDot, files[0].name.length).toLowerCase(); 
-        let size = files[0].size/1024/1024 //La taille en Mbit
-        console.log('Size-------------- ',size)
-
-        if (size <= 2 && (extFile=="jpg" || extFile=="jpeg" || extFile=="png")){
-          //Affecté le fichier image au model avatar
-          this.model.avatar = e.target.files[0];
-
-          //Prévisualise l'image
-          if (files && files[0]) {
-            const reader = new FileReader
-            reader.onload = e => {
-              this.imageData = e.target.result
-            }
-            reader.readAsDataURL(files[0])
-            this.$emit('input', files[0])
-          }
-        }else{
-          alert("Seul les images jpg/jpeg png et de taille inférieur à 2Mb sont acceptés!");
-        }  
-      },
+      togglePasswordVisibility() {
+      this.passwordVisible = !this.passwordVisible;
+    },
+    togglePasswordConfirmVisibility() {
+      this.passwordConfirmVisible = !this.passwordConfirmVisible;
+    },
       submitForm () {
         let validation = this.$refs.form.validate()
-        let selectedRoles = this.model.roles && this.model.roles.map((item)=>{return item.id})
-        this.model.roles=selectedRoles
         this.loading = true;
-        console.log('Données formulaire++++++: ',{...this.model,roles:selectedRoles})
-
-
-        /* let formData = new FormData();
-        formData.append("avatar", this.model.avatar);
-        formData.append("name",this.model.name );
-        formData.append("firstname",this.model.firstname );
-        formData.append("lastname",this.model.lastname);
-        formData.append("email",this.model.email);
-        formData.append("roles",this.model.roles);
-
-        if(this.model.fournisseur_services_id != null)
-        {
-          formData.append("fournisseur_services_id",this.model.fournisseur_services_id);
-        }
-
-        formData.append("country_code",this.model.country_code),
-        formData.append("telephone",this.model.telephone),
-        formData.append("adresse",this.model.adresse),
-        formData.append("fonction",this.model.fonction),
-        formData.append("structure_id",this.model.structure_id)
-
-        console.log('Données formulaire files ++++++: ',formData) */
-
-        //console.log('Données formulaire +++++',{...this.model,roles:selectedRoles,structure_id:this.model.structure_id?.id})
-        console.log('Données formulaire +++++',{...this.model,roles:selectedRoles,structure_id:this.model.structure_id?.id})
-
-       validation && this.$gecFileApi.post('/users',{...this.model,roles:selectedRoles,structure_id:this.model.structure_id?.id})
+      validation && this.$gecApi.post('/users/signup',{...this.model})
           .then((res) => {           
             console.log('Données reçues ++++++: ',res.data)
-            this.$store.dispatch('toast/getMessage',{type:'success',text:res.data.message})
+            this.$store.dispatch('toast/getMessage',{type:'success',text:res.data?.message})
             this.$router.push('/utilisateurs');
           })
           .catch((error) => {
@@ -351,15 +206,7 @@ import { mapMutations, mapGetters } from 'vuex'
       resetValidationForm () {
         this.$refs.form.resetValidation()
       },
-      async changeRole(role) {
-
-        let checkRole = this.model.roles.filter(item => (item && item.name === 'point_focal' || item && item.name === 'admin_structure' || item && item.name === 'DGES' || item && item.name === 'directeur_eps')).length;
-        if(checkRole==1)
-        this.showFournisseur=true
-        else
-        this.showFournisseur=false
-        console.log('************',checkRole)
-      },
+ 
     },
     metaInfo () {
       return {

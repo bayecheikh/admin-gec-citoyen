@@ -38,7 +38,7 @@
               v-on="on"
             >
               <v-avatar size="30px">
-                <img src="@/static/avatar/user.png" alt="avatar"/>
+                <img src="@/static/avatar/default-user.png" alt="avatar"/>
               </v-avatar>
             </v-btn>
           </template>
@@ -51,7 +51,7 @@
                   tile
                 >
                     <v-avatar size="60px">
-                      <img src="@/static/avatar/user.png" alt="avatar"/>
+                      <img src="@/static/avatar/default-user.png" alt="avatar"/>
                     </v-avatar>
                 </v-card>
                 <v-card

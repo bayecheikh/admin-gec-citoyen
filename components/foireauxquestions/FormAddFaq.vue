@@ -9,6 +9,7 @@
       outlined dense
       v-model="model.question"
       :rules="rules.questionRules"
+     
     ></v-textarea>
   </v-col>
   <v-col md="6" lg="6" sm="12">
@@ -44,6 +45,7 @@
   item-value="id"
   return-object
   @change="changeCategorie"
+  :rules="[v => !!v || 'La catégorie est obligatoire']"
 >
   <template v-slot:item="{ item }">
     <div>{{ item.name }}</div>
@@ -66,7 +68,7 @@
     
         <v-btn
           :loading="loading"
-          :disabled="!valid"
+          :disabled="!valid || !isCategorieSelected"
           class="mr-4 text-white" color="#1B73E8"
           @click="submitForm"
         >
@@ -80,17 +82,24 @@
     import { mapMutations, mapGetters } from 'vuex'
       export default {
  
-        computed: mapGetters({
-      listfaqcategories: 'faqcategories/listfaqcategories',
-      headers: 'faqcategories/headerfaqcategories'
-    }),
+        computed: {
+  ...mapGetters({
+    listfaqcategories: 'faqcategories/listfaqcategories',
+    headers: 'faqcategories/headerfaqcategories'
+  }),
+
+  isCategorieSelected() {
+    return !!this.selected;
+  },
+},
         mounted: function() {
          
          this.$store.dispatch('faqcategories/getList')
         },
     
         data: () => ({
-            selected: {},
+   
+          selected: null,
           loading: false,
           message:null,
           color:null,
@@ -209,8 +218,14 @@
                 this.$router.push('/foireauxquestions');
               })
               .catch((error) => {
-                  console.log('Code error ++++++: ', error)
-                  this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de la création '})
+                console.log("ERROR RESPONSE", error.response)
+                if (error.response && error.response?.status === 500 && error.response?.data &&  error.response?.data?.message.includes('duplicate key error')) {
+       error = 'Cette question existe déjà.';
+      } 
+        
+        console.log('Code error ++++++: ', error);
+        this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de la création' });
+      
               }).finally(() => {
                 this.loading = false;
                 console.log('Requête envoyée ')

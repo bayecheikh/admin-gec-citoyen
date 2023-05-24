@@ -49,7 +49,7 @@
           {
             text: 'Mon profil',
             disabled: true,
-            to: '/utilisateurs/94',
+            to: '/utilisateurs',
             exact: true
           }
           

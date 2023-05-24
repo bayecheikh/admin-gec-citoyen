@@ -206,7 +206,8 @@ html {
   color: #fff !important;
 }
 .bg-title-grey {
-  background-color: #047486 !important;
+  /* background-color: #047486 !important; */
+  background-color: #0a3764 !important;
   color: #fff;
 }
 
@@ -222,5 +223,5 @@ html {
 }
 .v-navigation-drawer--fixed {
   position: fixed;
-  border-right: solid #047486 !important;
+  border-right: solid #0a3764 !important;
 }

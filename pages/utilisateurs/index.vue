@@ -59,7 +59,8 @@ import { mapActions} from 'vuex'
 
 <style scoped>
 .bg-title-grey {
-  background-color: rgb(7, 127, 147) !important;
+  background-color: #0a3764 !important;
+  /* background-color: rgb(7, 127, 147) !important; */
   color: #6F96AA;
 }
 
