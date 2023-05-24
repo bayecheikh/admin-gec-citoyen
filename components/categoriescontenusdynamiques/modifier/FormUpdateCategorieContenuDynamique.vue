@@ -87,10 +87,10 @@
             (v) => (v && v.length >= 2) || "Le libellé de la catégorie doit contenir au moins 2 caractères"
           ],
           descriptionRules: [
-            (v) => !!v || 'La description est obligatoire',
-            (v) => (v && v.length <= 500) || "La description ne doit pas dépasser 500 caractères",
-            (v) => (v && v.length >= 2) || "La description doit contenir au moins 2 caractères"
-          ],
+        
+        (v) => (!v || v.length <= 500) || "La description ne doit pas dépasser 500 caractères",
+  
+      ],
 
         },
     

@@ -64,7 +64,7 @@
   
       <v-btn
         :loading="loading"
-        :disabled="!valid"
+        :disabled="!valid || !isCategorieSelected"
         class="mr-4 text-white" color="#1B73E8"
         @click="submitForm"
       >
@@ -85,14 +85,18 @@
           this.$store.dispatch('faqcategories/getList')
         },
   
-        computed: mapGetters({
+        computed: {
+          ...mapGetters({
           detailfoireauxquestions:'foireauxquestions/detailfoireauxquestions',
           listfaqcategories: 'faqcategories/listfaqcategories',
           headers: 'faqcategories/headerfaqcategories'
         
         }),
+        isCategorieSelected() {
+    return !!this.selected;
+  }},
         data: () => ({
-          selected: {},
+          selected: null,
           loading: false,
           message:null,
           color:null,
@@ -119,7 +123,7 @@
           rules:{
           questionRules: [
             (v) => !!v || 'L\'intitulé de la question est obligatoire',
-            (v) => (v && v.length <= 50) || "L\'intitulé de la question ne doit pas dépasser 100 caractères",
+            (v) => (v && v.length <= 100) || "L\'intitulé de la question ne doit pas dépasser 100 caractères",
             (v) => (v && v.length >= 2) || "L\'intitulé de la question doit contenir au moins 2 caractères"
           ],
           reponseRules: [
@@ -128,58 +132,12 @@
             (v) => (v && v.length >= 2) || "La réponse doit contenir au moins 2 caractères"
           ],
        
-          emailRules: [
-            v => !!v || 'L\'adresse e-mail est obligatoire',
-            v => /.+@.+\..+/.test(v) || 'L\'adresse e-mail doit être valide',
+          
+          descriptionRules: [
+           
+            v => (!v || v.length <= 500) || 'La description ne doit pas dépasser 500 caractères',
           ],
-          usernameRules: [
-            v => !!v || 'Login est obligatoire',
-            v => (v && v.length <= 10) || 'Login doit être inférieur à 10 caractères',
-          ],
-          rolesRules: [
-            v => (v && !!v.length) || 'Le rôle est obligatoire',
-          ],
-          telephoneRules: [
-          (v) => !!v || 'Le numéro de téléphone est obligatoire',
-          (v) => /^[0-9]+$/.test(v) || "Le numéro de téléphone ne doit contenir que des chiffres",
-          (v) => (v && v.length >= 8 && v.length <= 20) || "Le numéro de téléphone doit contenir entre 8 et 20 chiffres"
-          ],
-          country_codeRules: [
-            v => !!v || 'L\'indicatif du pays est obligatoire',
-          ],
-          fournisseur_services_idRules: [
-            v => (!!v) || 'Fournisseur est obligatoire',
-          ],
-          structure_idRules: [
-            v => (!!v) || 'Structure est obligatoire',
-          ],
-          adresseRules: [
-            v => !!v || 'Adresse est obligatoire',
-            v => (v && v.length <= 100) || 'Adresse doit être inférieur à 50 caractères',
-          ],
-          nationalityRules: [
-            v => !!v || 'Nationalité est obligatoire',
-            v => (v && v.length <= 50) || 'Nationalité doit être inférieur à 15 caractères',
-          ],
-          date_of_birthRules: [
-            v => !!v || 'Date de naissance est obligatoire',
-          ],
-          place_of_birthRules: [
-            v => !!v || 'Lieu de naissance est obligatoire',
-            v => (v && v.length <= 50) || 'Lieu de naissance doit être inférieur à 50 caractères',
-          ],
-          /* sexeRules: [
-            v => !!v || 'Civilité est obligatoire',
-          ], */
-          type_identificationRules: [
-            v => !!v || 'Type d\'identification est obligatoire',
-          ],
-          numero_identificationRules: [
-            v => !!v || 'Numéro d\'identification est obligatoire'
-          ],
-          fonctionRules: [
-            v => !!v || 'Fonction est obligatoire'
-          ]
+      
         },
     
     
@@ -190,8 +148,6 @@
         console.log("VALUEE : ++++++++++++ ",value)
         this.model.categorie = value.id
        
-
-        //this.selectedRegions.push(value.id)
         
       },
          async getDetail(id){

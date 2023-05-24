@@ -67,7 +67,7 @@
   
       <v-btn
         :loading="loading"
-        :disabled="!valid"
+        :disabled="!valid || !isCategorieSelected"
         class="mr-4 text-white" color="#1B73E8"
         @click="submitForm"
       >
@@ -88,15 +88,19 @@
           this.getDetail(this.$nuxt._route.params.id)
         },
   
-        computed: mapGetters({
+        computed: {
+          ...mapGetters({
           listmodelescourrierscategories: 'modelescourrierscategories/listmodelescourrierscategories',
           detailmodelecourrier:'modelescourriers/detailmodelecourrier',
        
           headers: 'modelescourrierscategories/headermodelescourrierscategories'
         
         }),
+        isCategorieSelected(){
+        return !!this.selected;
+      }},
         data: () => ({
-          selected: {},
+          selected: null,
           loading: false,
           message:null,
           color:null,

@@ -57,7 +57,7 @@
       "slug": "categories-contenus-dynamiques"
     },
     {
-      "icon": "mdi-cog-outline",
+      "icon": "mdi-email-outline",
       "href": "/modelescourriers",
       "title": "Modèles de courrier",
       "name": "gerer-parametres",

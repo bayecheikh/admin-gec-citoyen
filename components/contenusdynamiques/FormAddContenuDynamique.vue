@@ -58,7 +58,7 @@
 
       <v-btn
       :loading="loading"
-        :disabled="!valid"
+      :disabled="!valid || !isCategorieSelected"
         depressed
         class="mr-4 text-white" color="#1B73E8"
         @click="submitForm"
@@ -94,10 +94,17 @@
         components: {
       TiptapVuetify
     },
-        computed: mapGetters({
-      listcontenuscategories: 'contenuscategories/listcontenuscategories',
+  
+    computed: {
+  ...mapGetters({
+    listcontenuscategories: 'contenuscategories/listcontenuscategories',
       headers: 'contenuscategories/headercontenuscategories'
-    }),
+  }),
+
+  isCategorieSelected() {
+    return !!this.selected;
+  },
+},
         mounted: function() {
          
          this.$store.dispatch('contenuscategories/getList')
@@ -129,7 +136,7 @@
       Paragraph,
       HardBreak
       ],
-            selected: {},
+            selected: null,
           loading: false,
           message:null,
           color:null,
