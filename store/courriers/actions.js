@@ -2,7 +2,7 @@ export default {
     getList({commit}){
       this.$gecApi.$get('/courriers')
       .then(async (response) => { 
-        console.log('Données reçues contenu+++++++++++',response)
+        console.log('Données reçues COURRIERS+++++++++++',response)
             await commit('initlist', response.data.data)
           }).catch((error) => {
            console.log("ERROR GEC", error)

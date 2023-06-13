@@ -3,83 +3,81 @@ import { Bar } from "vue-chartjs";
 import { mapState } from 'vuex'
 export default {
   computed: {
-  ...mapState('filtres', ['listcourriers']),
+    ...mapState('filtres', ['listcourriers']),
 
   },
- 
+
   extends: Bar,
-methods:{
-  async initializeChart() {
- console.log("EXEC++++")
-    this.courriersParMois = [];
-    this.intitulesMois = [];
-    this.courriersMensuels = [];
-   
-    
-    for (let i = 0; i < 12; i++) {
+  methods: {
+    async initializeChart() {
+      console.log("EXEC++++")
+      this.courriersParMois = [];
+      this.intitulesMois = [];
+      this.courriersMensuels = [];
 
 
-      
-      this.nombreTotalCourriers = this.listcourriers.length
-      const totalCourriersMensuels = await this.listcourriers.filter(courrier => {
-        const courrierMonth = new Date(courrier.createdAt).getMonth();
-        return courrierMonth === i;
-      })
+      for (let i = 0; i < 12; i++) {
 
-      const nombreCourriersMensuels = await totalCourriersMensuels.length
-      const moisItem = await this.mois.find(item => item.id === i);
-     
-      this.courriersParMois.push({
-        mois: moisItem.libelle,
-        courriers: nombreCourriersMensuels
-      });
-    
-    }
+        this.nombreTotalCourriers = this.listcourriers.length
+        const totalCourriersMensuels = await this.listcourriers.filter(courrier => {
+          const courrierMonth = new Date(courrier.createdAt).getMonth();
+          return courrierMonth === i;
+        })
 
+        const nombreCourriersMensuels = await totalCourriersMensuels.length
+        const moisItem = await this.mois.find(item => item.id === i);
 
-    for (let i = 0; i < this.courriersParMois.length; i++) {
-  const courrier = this.courriersParMois[i];
-  this.intitulesMois.push(courrier.mois);
-  this.courriersMensuels.push(courrier.courriers);
-}
-    let maxCourriers = 0;
-    for (let i = 0; i < this.courriersMensuels.length; i++) {
-      if (this.courriersMensuels[i] > maxCourriers) {
-        maxCourriers = this.courriersMensuels[i];
-        this.moisAvecPlusCourriers = i;
+        this.courriersParMois.push({
+          mois: moisItem.libelle,
+          courriers: nombreCourriersMensuels
+        });
+
       }
-    }
- 
-    this.barChartOptions = {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          },
-          gridLines: {
-            display: true
-          }
-        }],
-        xAxes: [{
-          ticks: {
-            fontSize: 12
-          },
-          gridLines: {
-            display: false
-          }
-        }]
+
+
+      for (let i = 0; i < this.courriersParMois.length; i++) {
+        const courrier = this.courriersParMois[i];
+        this.intitulesMois.push(courrier.mois);
+        this.courriersMensuels.push(courrier.courriers);
+      }
+      let maxCourriers = 0;
+      for (let i = 0; i < this.courriersMensuels.length; i++) {
+        if (this.courriersMensuels[i] > maxCourriers) {
+          maxCourriers = this.courriersMensuels[i];
+          this.moisAvecPlusCourriers = i;
+        }
+      }
+
+      this.barChartOptions = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+            gridLines: {
+              display: true
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              fontSize: 12
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+        legend: {
+          display: true,
+          position: 'bottom',
+          align: "start"
+        },
+        responsive: true,
+        maintainAspectRatio: false
       },
-      legend: {
-        display: true,
-        position: 'bottom',
-        align: "start"
-      },
-      responsive: true,
-      maintainAspectRatio: false
-    },
-    
-console.log("RPD++++++++++++", this.intitulesMois)
-console.log("MOIS++++++++++++", this.courriersMensuels)
+
+        console.log("RPD++++++++++++", this.intitulesMois)
+      console.log("MOIS++++++++++++", this.courriersMensuels)
       this.repartitionMensuelleData = {
         labels: this.intitulesMois,
         datasets: [{
@@ -91,12 +89,12 @@ console.log("MOIS++++++++++++", this.courriersMensuels)
           data: this.courriersMensuels
         }]
       };
-    this.renderChart(this.repartitionMensuelleData, this.barChartOptions);
-  }
-},
+      this.renderChart(this.repartitionMensuelleData, this.barChartOptions);
+    }
+  },
   mounted: async function () {
-   
-  this.mois = [
+
+    this.mois = [
       { id: 0, libelle: "Janv" },
       { id: 1, libelle: "Fev" },
       { id: 2, libelle: "Mars" },

@@ -5,15 +5,15 @@
         <v-row class="d-flex align-items-center mb-6 bg-maroon pl-6 py-6 pr-6">
 
           <v-col md="6" lg="6" sm="12" class="border-right-chart">
-                <h4 class="card-title custom-font">Les 3 ministères les plus sollicités</h4>
-                <div class="custom-pie-chart mx-auto text-center">
-                  <PieChart :courriers="listcourriers"/>
-                </div>
-              
+            <h4 class="card-title custom-font">Les 3 ministères les plus sollicités</h4>
+            <div class="custom-pie-chart mx-auto text-center">
+              <PieChart :courriers="listcourriers" />
+            </div>
+
           </v-col>
           <v-col md="6" lg="6" sm="12" class="border-left-chart">
             <h4 class="card-title custom-font">Répartition mensuelle des courriers</h4>
-            <BarChart  :courriers="listcourriers"/>
+            <BarChart :courriers="listcourriers" />
           </v-col>
         </v-row>
       </v-col>
@@ -29,8 +29,8 @@ import { mapMutations, mapGetters } from 'vuex'
 import { mapState, mapActions } from 'vuex';
 export default {
 
-computed: {
-  ...mapState('filtres', ['listcourriers']),
+  computed: {
+    ...mapState('filtres', ['listcourriers']),
 
   },
   components: { BarChart, LeftMenu, PieChart },
@@ -41,11 +41,11 @@ computed: {
 </script>
 
 <style scoped>
-
-.bg-marron{
+.bg-marron {
   border-radius: 5px;
   background-color: #fff;
 }
+
 path {
   fill: #ffffff;
   cursor: pointer;
@@ -138,7 +138,7 @@ path:hover {
 
 .custom-pie-chart {
   width: 250px;
- 
+
 }
 
 .custom-card-box {
@@ -172,11 +172,12 @@ path:hover {
 }
 
 .border-right-chart {
-  
+
   border-right: solid 1px #aeb4b7;
   margin-bottom: 40px;
   background-color: #fff;
 }
+
 .border-left-chart {
   background-color: #fff;
   margin-bottom: 40px;

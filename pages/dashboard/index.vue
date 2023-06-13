@@ -32,19 +32,23 @@
               <span class="icon custom-icon-organismes">
                 <svg xmlns="http://www.w3.org/2000/svg" width="55.83" height="55.639" viewBox="0 0 55.83 55.639">
 
-<g id="Groupe_7558" data-name="Groupe 7558" transform="translate(-1759.104 -345)">
+                  <g id="Groupe_7558" data-name="Groupe 7558" transform="translate(-1759.104 -345)">
 
-  <g id="Groupe_7388" data-name="Groupe 7388" transform="translate(1759.104 391)">
+                    <g id="Groupe_7388" data-name="Groupe 7388" transform="translate(1759.104 391)">
 
-    <path id="Tracé_6969" data-name="Tracé 6969" d="M54.5,2.02H51.64V-2.17A1.1,1.1,0,0,0,50.5-3.313H47.64v-22.57h6.952a1.2,1.2,0,0,0,1.143-.857.945.945,0,0,0-.476-1.238L28.5-45.786a1,1,0,0,0-1.238,0L.5-27.977a1.24,1.24,0,0,0-.476,1.238,1.23,1.23,0,0,0,1.143.857H8.119v22.57H5.262A1.1,1.1,0,0,0,4.119-2.17V2.02H1.262A1.1,1.1,0,0,0,.119,3.163V8.5A1.1,1.1,0,0,0,1.262,9.639H54.687A1.1,1.1,0,0,0,55.83,8.5V3.163A1.5,1.5,0,0,0,54.5,2.02ZM45.354-3.313H42.307v-22.57h3.047Zm-13.809,0v-22.57h8.38v22.57Zm-16,0v-22.57h8.38v22.57Zm10.666-22.57H29.26v22.57H26.213ZM27.737-43.5,50.687-28.168H4.786ZM10.214-25.882h3.047v22.57H10.214Zm-4,24.855H49.259V2.02H6.214Zm47.139,8.38H2.215V4.306H53.354ZM26.594-40.929v-.286a1.1,1.1,0,0,1,1.143-1.143,1.1,1.1,0,0,1,1.143,1.143v.286a1.1,1.1,0,0,1-1.143,1.143A1.158,1.158,0,0,1,26.594-40.929Zm2.286,10.761v.286a1.1,1.1,0,0,1-1.143,1.143,1.1,1.1,0,0,1-1.143-1.143v-.286a1.1,1.1,0,0,1,1.143-1.143A1.158,1.158,0,0,1,28.879-30.168Zm.191-3.809a.2.2,0,0,0,.19-.191.2.2,0,0,0-.19-.19H26.4a2.521,2.521,0,0,1-2.476-2.476A2.521,2.521,0,0,1,26.4-39.31h3.9a1.1,1.1,0,0,1,1.143,1.143,1.1,1.1,0,0,1-1.143,1.143H26.4a.2.2,0,0,0-.19.191.2.2,0,0,0,.19.19H29.07a2.521,2.521,0,0,1,2.476,2.476,2.521,2.521,0,0,1-2.476,2.476h-4a1.1,1.1,0,0,1-1.143-1.143,1.1,1.1,0,0,1,1.143-1.143Z" transform="translate(0)" fill="#757971" fill-rule="evenodd"/>
+                      <path id="Tracé_6969" data-name="Tracé 6969"
+                        d="M54.5,2.02H51.64V-2.17A1.1,1.1,0,0,0,50.5-3.313H47.64v-22.57h6.952a1.2,1.2,0,0,0,1.143-.857.945.945,0,0,0-.476-1.238L28.5-45.786a1,1,0,0,0-1.238,0L.5-27.977a1.24,1.24,0,0,0-.476,1.238,1.23,1.23,0,0,0,1.143.857H8.119v22.57H5.262A1.1,1.1,0,0,0,4.119-2.17V2.02H1.262A1.1,1.1,0,0,0,.119,3.163V8.5A1.1,1.1,0,0,0,1.262,9.639H54.687A1.1,1.1,0,0,0,55.83,8.5V3.163A1.5,1.5,0,0,0,54.5,2.02ZM45.354-3.313H42.307v-22.57h3.047Zm-13.809,0v-22.57h8.38v22.57Zm-16,0v-22.57h8.38v22.57Zm10.666-22.57H29.26v22.57H26.213ZM27.737-43.5,50.687-28.168H4.786ZM10.214-25.882h3.047v22.57H10.214Zm-4,24.855H49.259V2.02H6.214Zm47.139,8.38H2.215V4.306H53.354ZM26.594-40.929v-.286a1.1,1.1,0,0,1,1.143-1.143,1.1,1.1,0,0,1,1.143,1.143v.286a1.1,1.1,0,0,1-1.143,1.143A1.158,1.158,0,0,1,26.594-40.929Zm2.286,10.761v.286a1.1,1.1,0,0,1-1.143,1.143,1.1,1.1,0,0,1-1.143-1.143v-.286a1.1,1.1,0,0,1,1.143-1.143A1.158,1.158,0,0,1,28.879-30.168Zm.191-3.809a.2.2,0,0,0,.19-.191.2.2,0,0,0-.19-.19H26.4a2.521,2.521,0,0,1-2.476-2.476A2.521,2.521,0,0,1,26.4-39.31h3.9a1.1,1.1,0,0,1,1.143,1.143,1.1,1.1,0,0,1-1.143,1.143H26.4a.2.2,0,0,0-.19.191.2.2,0,0,0,.19.19H29.07a2.521,2.521,0,0,1,2.476,2.476,2.521,2.521,0,0,1-2.476,2.476h-4a1.1,1.1,0,0,1-1.143-1.143,1.1,1.1,0,0,1,1.143-1.143Z"
+                        transform="translate(0)" fill="#757971" fill-rule="evenodd" />
 
-  </g>
+                    </g>
 
-  <path id="Tracé_6970" data-name="Tracé 6970" d="M13046.249,2626.784c-5.753,5.946-8.914,9.583-8.914,9.583v3.671l2.144.631,3.331-.894,1.813.894,2.124.767,2.7-.767,3.49-5.1.289-2.89-2.428-3.28-2.26-1.413-1.795-1.206Z" transform="translate(-11260 -2278.884)" fill="#fff"/>
+                    <path id="Tracé_6970" data-name="Tracé 6970"
+                      d="M13046.249,2626.784c-5.753,5.946-8.914,9.583-8.914,9.583v3.671l2.144.631,3.331-.894,1.813.894,2.124.767,2.7-.767,3.49-5.1.289-2.89-2.428-3.28-2.26-1.413-1.795-1.206Z"
+                      transform="translate(-11260 -2278.884)" fill="#fff" />
 
-</g>
+                  </g>
 
-</svg>
+                </svg>
               </span>
             </div>
           </div>
@@ -64,21 +68,26 @@
               <span class="icon custom-icon-recus">
                 <svg xmlns="http://www.w3.org/2000/svg" width="60" height="49.58" viewBox="0 0 60 49.58">
 
-<g id="Groupe_2109" data-name="Groupe 2109" transform="translate(-1738.5 -304.5)">
+                  <g id="Groupe_2109" data-name="Groupe 2109" transform="translate(-1738.5 -304.5)">
 
-  <g id="archive" transform="translate(1740 306)">
+                    <g id="archive" transform="translate(1740 306)">
 
-    <path id="Tracé_2496" data-name="Tracé 2496" d="M49.346,8V41.472H3V8" transform="translate(2.219 5.108)" fill="none" stroke="#7d7e7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                      <path id="Tracé_2496" data-name="Tracé 2496" d="M49.346,8V41.472H3V8"
+                        transform="translate(2.219 5.108)" fill="none" stroke="#7d7e7f" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="3" />
 
-    <rect id="Rectangle_2700" data-name="Rectangle 2700" width="57" height="13" transform="translate(0 0)" fill="none" stroke="#7d7e7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                      <rect id="Rectangle_2700" data-name="Rectangle 2700" width="57" height="13"
+                        transform="translate(0 0)" fill="none" stroke="#7d7e7f" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="3" />
 
-    <line id="Ligne_510" data-name="Ligne 510" x2="11" transform="translate(23 23)" fill="none" stroke="#7d7e7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                      <line id="Ligne_510" data-name="Ligne 510" x2="11" transform="translate(23 23)" fill="none"
+                        stroke="#7d7e7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
 
-  </g>
+                    </g>
 
-</g>
+                  </g>
 
-</svg>
+                </svg>
 
               </span>
             </div>
@@ -99,15 +108,20 @@
               <span class="icon custom-icon-traites">
                 <svg xmlns="http://www.w3.org/2000/svg" width="55.616" height="50.354" viewBox="0 0 55.616 50.354">
 
-<g id="Groupe_7556" data-name="Groupe 7556" transform="translate(-1237.453 -304.953)">
+                  <g id="Groupe_7556" data-name="Groupe 7556" transform="translate(-1237.453 -304.953)">
 
-  <path id="folder" d="M54.616,45.093a5.262,5.262,0,0,1-5.262,5.262H7.262A5.262,5.262,0,0,1,2,45.093V8.262A5.262,5.262,0,0,1,7.262,3H20.416l5.262,7.892H49.354a5.262,5.262,0,0,1,5.262,5.262Z" transform="translate(1236.953 303.453)" fill="none" stroke="#7d7e7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                    <path id="folder"
+                      d="M54.616,45.093a5.262,5.262,0,0,1-5.262,5.262H7.262A5.262,5.262,0,0,1,2,45.093V8.262A5.262,5.262,0,0,1,7.262,3H20.416l5.262,7.892H49.354a5.262,5.262,0,0,1,5.262,5.262Z"
+                      transform="translate(1236.953 303.453)" fill="none" stroke="#7d7e7f" stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="3" />
 
-  <path id="Tracé_2493" data-name="Tracé 2493" d="M17,16.1l7.1,7.1L38.295,9" transform="translate(1237.614 318.744)" fill="none" stroke="#7d7e7f" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                    <path id="Tracé_2493" data-name="Tracé 2493" d="M17,16.1l7.1,7.1L38.295,9"
+                      transform="translate(1237.614 318.744)" fill="none" stroke="#7d7e7f" stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="3" />
 
-</g>
+                  </g>
 
-</svg>
+                </svg>
 
 
 
@@ -125,13 +139,15 @@
               <span class="icon custom-icon-taux">
                 <svg xmlns="http://www.w3.org/2000/svg" width="63.735" height="63.996" viewBox="0 0 63.735 63.996">
 
-<g id="Groupe_7386" data-name="Groupe 7386" transform="translate(-0.5 47.5)">
+                  <g id="Groupe_7386" data-name="Groupe 7386" transform="translate(-0.5 47.5)">
 
-  <path id="Tracé_6961" data-name="Tracé 6961" d="M51.721-7.119a5.121,5.121,0,0,0,1.3-3.343,5.033,5.033,0,0,0-4.992-4.96H33.816l1.953-5.607c0-.108.108-.324.108-.431v-2.264a9.59,9.59,0,0,0-2.17-6.038,9.95,9.95,0,0,0-7.814-3.774h-.977a1.25,1.25,0,0,0-1.3,1.294v9.166L17.863-10.03H14.607L14.5-11.108a1.287,1.287,0,0,0-1.3-1.078H1.8A1.25,1.25,0,0,0,.5-10.893V15.2A1.25,1.25,0,0,0,1.8,16.5H16.995a1.379,1.379,0,0,0,.977-.431,1.814,1.814,0,0,0,.326-1.078l2.279,1.186a1.385,1.385,0,0,0,.651.108H44.993a5.033,5.033,0,0,0,4.992-4.96,4.784,4.784,0,0,0-.868-2.8,4.892,4.892,0,0,0,2.93-4.529,4.786,4.786,0,0,0-.868-2.8A4.937,4.937,0,0,0,54-3.237,5.583,5.583,0,0,0,51.721-7.119ZM3.1,14.016V-9.491H12l.108.755v.324l3.147,21.35h0l.109.97ZM48.791-.757H45.21a1.25,1.25,0,0,0-1.3,1.294h0a1.25,1.25,0,0,0,1.3,1.294h1.628A2.4,2.4,0,0,1,49.225,4.2a2.4,2.4,0,0,1-2.387,2.372h-2.93a1.25,1.25,0,0,0-1.3,1.294h0a1.25,1.25,0,0,0,1.3,1.294h.868a2.372,2.372,0,1,1,0,4.744H21.336l-3.69-1.941L14.933-7.226h3.8a1.335,1.335,0,0,0,1.194-.755l6.186-14.126a.967.967,0,0,0,.108-.539v-8.195a7.327,7.327,0,0,1,5.318,2.7,7.273,7.273,0,0,1,1.519,4.421v2.049l-2.388,7.117a1.169,1.169,0,0,0,.217,1.186,1.338,1.338,0,0,0,1.085.539H48.032a2.4,2.4,0,0,1,2.388,2.372,2.4,2.4,0,0,1-2.388,2.372H44.776a1.25,1.25,0,0,0-1.3,1.294,1.25,1.25,0,0,0,1.3,1.294H48.9a2.4,2.4,0,0,1,2.388,2.372A2.575,2.575,0,0,1,48.791-.757ZM64.2-38.6a1.309,1.309,0,0,0-1.3-.863H55.194l-2.388-7.224a1.367,1.367,0,0,0-2.5,0l-2.387,7.224h-7.7a1.411,1.411,0,0,0-1.3.863,1.328,1.328,0,0,0,.434,1.51l6.186,4.421-2.388,7.224a1.328,1.328,0,0,0,.434,1.509,1.31,1.31,0,0,0,1.519,0l6.186-4.421,6.186,4.421a1.037,1.037,0,0,0,.759.216,1.574,1.574,0,0,0,.76-.216,1.328,1.328,0,0,0,.434-1.509l-2.388-7.224,6.186-4.421C64.2-37.526,64.31-38.065,64.2-38.6Zm-9.007,4.313a1.328,1.328,0,0,0-.434,1.51l1.411,4.313-3.69-2.7a1.31,1.31,0,0,0-1.519,0l-3.69,2.7,1.411-4.313a1.329,1.329,0,0,0-.434-1.51l-3.69-2.7h4.558a1.41,1.41,0,0,0,1.3-.863l1.411-4.313,1.411,4.313a1.308,1.308,0,0,0,1.3.863H59.1Z" transform="translate(0 0)" fill="#757971" fill-rule="evenodd"/>
+                    <path id="Tracé_6961" data-name="Tracé 6961"
+                      d="M51.721-7.119a5.121,5.121,0,0,0,1.3-3.343,5.033,5.033,0,0,0-4.992-4.96H33.816l1.953-5.607c0-.108.108-.324.108-.431v-2.264a9.59,9.59,0,0,0-2.17-6.038,9.95,9.95,0,0,0-7.814-3.774h-.977a1.25,1.25,0,0,0-1.3,1.294v9.166L17.863-10.03H14.607L14.5-11.108a1.287,1.287,0,0,0-1.3-1.078H1.8A1.25,1.25,0,0,0,.5-10.893V15.2A1.25,1.25,0,0,0,1.8,16.5H16.995a1.379,1.379,0,0,0,.977-.431,1.814,1.814,0,0,0,.326-1.078l2.279,1.186a1.385,1.385,0,0,0,.651.108H44.993a5.033,5.033,0,0,0,4.992-4.96,4.784,4.784,0,0,0-.868-2.8,4.892,4.892,0,0,0,2.93-4.529,4.786,4.786,0,0,0-.868-2.8A4.937,4.937,0,0,0,54-3.237,5.583,5.583,0,0,0,51.721-7.119ZM3.1,14.016V-9.491H12l.108.755v.324l3.147,21.35h0l.109.97ZM48.791-.757H45.21a1.25,1.25,0,0,0-1.3,1.294h0a1.25,1.25,0,0,0,1.3,1.294h1.628A2.4,2.4,0,0,1,49.225,4.2a2.4,2.4,0,0,1-2.387,2.372h-2.93a1.25,1.25,0,0,0-1.3,1.294h0a1.25,1.25,0,0,0,1.3,1.294h.868a2.372,2.372,0,1,1,0,4.744H21.336l-3.69-1.941L14.933-7.226h3.8a1.335,1.335,0,0,0,1.194-.755l6.186-14.126a.967.967,0,0,0,.108-.539v-8.195a7.327,7.327,0,0,1,5.318,2.7,7.273,7.273,0,0,1,1.519,4.421v2.049l-2.388,7.117a1.169,1.169,0,0,0,.217,1.186,1.338,1.338,0,0,0,1.085.539H48.032a2.4,2.4,0,0,1,2.388,2.372,2.4,2.4,0,0,1-2.388,2.372H44.776a1.25,1.25,0,0,0-1.3,1.294,1.25,1.25,0,0,0,1.3,1.294H48.9a2.4,2.4,0,0,1,2.388,2.372A2.575,2.575,0,0,1,48.791-.757ZM64.2-38.6a1.309,1.309,0,0,0-1.3-.863H55.194l-2.388-7.224a1.367,1.367,0,0,0-2.5,0l-2.387,7.224h-7.7a1.411,1.411,0,0,0-1.3.863,1.328,1.328,0,0,0,.434,1.51l6.186,4.421-2.388,7.224a1.328,1.328,0,0,0,.434,1.509,1.31,1.31,0,0,0,1.519,0l6.186-4.421,6.186,4.421a1.037,1.037,0,0,0,.759.216,1.574,1.574,0,0,0,.76-.216,1.328,1.328,0,0,0,.434-1.509l-2.388-7.224,6.186-4.421C64.2-37.526,64.31-38.065,64.2-38.6Zm-9.007,4.313a1.328,1.328,0,0,0-.434,1.51l1.411,4.313-3.69-2.7a1.31,1.31,0,0,0-1.519,0l-3.69,2.7,1.411-4.313a1.329,1.329,0,0,0-.434-1.51l-3.69-2.7h4.558a1.41,1.41,0,0,0,1.3-.863l1.411-4.313,1.411,4.313a1.308,1.308,0,0,0,1.3.863H59.1Z"
+                      transform="translate(0 0)" fill="#757971" fill-rule="evenodd" />
 
-</g>
+                  </g>
 
-</svg>
+                </svg>
               </span>
             </div>
           </div>
@@ -145,7 +161,7 @@
 </template>
   
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 
 import ListChart from "@/components/statistiques/charts/ListChart";
 import LeftMenu from "@/components/LeftMenu";
@@ -158,13 +174,19 @@ export default {
     LeftMenu,
     ListChart,
   },
-computed: {
-  ...mapState('filtres', ['listcourriers']),
+  computed: {
+    ...mapState('filtres', ['listcourriers']),
+    ...mapState('filtresannees', ['listcourriersannee']),
+    // ...mapGetters({
+    //     initiallistcourriers:'courriers/listcourriers',
+    //     listorganismes:'organismes/listorganismes',
+    // }),
 
-},
+  },
 
   mounted: async function () {
-    
+    await this.$store.dispatch('organismes/getList')
+    await this.$store.dispatch('courriers/getList')
     this.initiallistcourriers = [
       {
         'structure': '64354ed846bf128b4c58e646',
@@ -344,18 +366,19 @@ computed: {
 
     ]
 
-   
-  
 
+
+    console.log('COURRIERS++++++++++', this.initiallistcourriers)
+
+    console.log('ORGANISMES++++++++++', this.listorganismes)
     this.listannees = [
       { id: 2022, libelle_annee: 2022 },
       { id: 2023, libelle_annee: 2023 },
       { id: 2024, libelle_annee: 2024 },
       { id: 2025, libelle_annee: 2025 }
     ]
-    // await this.$store.dispatch('organismes/getList')
-    // await this.$store.dispatch('courriers/getList')
-   
+
+
     this.nombreOrganismes = this.listorganismes.length
     this.nombreCourriers = this.initiallistcourriers.length
     const traitelist = await this.initiallistcourriers?.filter((item) => item.traitement_status_slug == "traite")
@@ -364,11 +387,13 @@ computed: {
       this.tauxDeReponse = ((this.nombreCourriersTraites / this.nombreCourriers) * 100).toFixed(0);
     }
     await this.updateListCourriers(this.initiallistcourriers);
+    const listannee = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == "2023")
+    await this.updateListCourriersAnnee(listannee);
   },
 
   data() {
     return {
-    
+
       annee: '',
       listorganismes: [
         { id: '64354ed846bf128b4c58e646', intitule: 'MAEC' },
@@ -387,22 +412,26 @@ computed: {
   },
   methods: {
     ...mapActions('filtres', ['updateListCourriers']),
- 
+    ...mapActions('filtresannees', ['updateListCourriersAnnee']),
+
     async changeAnnee(value) {
-     
+
       console.log(value)
       this.updateCourrier(value, 'annee')
 
     },
     async changeOrganisme(value) {
-      
+
       console.log(value)
       this.updateCourrier(value, 'organisme')
     },
-    onClearClicked() {
+    async onClearClicked() {
       this.organisme = ''
       this.annee = ''
       this.updateListCourriers(this.initiallistcourriers);
+      const listannee = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == "2023")
+      await this.updateListCourriersAnnee(listannee);
+
     },
     async updateCourrier(value, type) {
       var list = []
@@ -410,7 +439,10 @@ computed: {
       if (type == 'organisme') {
         this.organisme = value
         if (this.annee != '') {
-          list = this.initiallistcourriers.filter((item) => (this.getYearFromCreatedAt(item.createdAt) == this.annee && item.structure == value))
+          const newlist = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == this.annee)
+          await this.updateListCourriersAnnee(newlist);
+          list = await this.initiallistcourriers.filter((item) => (this.getYearFromCreatedAt(item.createdAt) == this.annee && item.structure == value))
+          
         } else {
           list = this.initiallistcourriers.filter((item) => (item.structure == value))
         }
@@ -422,8 +454,11 @@ computed: {
         if (this.organisme != '') {
           list = this.initiallistcourriers.filter((item) => (item.structure == this.organisme && this.getYearFromCreatedAt(item.createdAt) == value))
         } else {
-          list = this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == value)
+          list = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == value)
+
         }
+        const newlist = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == this.annee)
+        await this.updateListCourriersAnnee(newlist);
       }
       console.log(list)
       await this.updateStat(list)
@@ -435,8 +470,8 @@ computed: {
     },
     async updateStat(newlist) {
       await this.updateListCourriers(newlist);
-  
-  
+
+
       console.log('Change list ++++ ', newlist)
       this.nombreCourriers = await newlist?.length;
       const newtraitelist = await newlist?.filter((item) => item.traitement_status_slug == "traite")
@@ -462,19 +497,24 @@ computed: {
 .custom-stat-boxes:hover .custom-icon-traites svg path {
   stroke: #fff;
 }
+
 .custom-stat-boxes:hover .custom-icon-organismes svg path:first-child {
   fill: #fff;
 }
+
 .custom-stat-boxes:hover .custom-icon-organismes svg path:nth-child(2) {
   fill: #0a3764;
 }
-.custom-stat-boxes:hover .custom-icon-recus svg rect{
+
+.custom-stat-boxes:hover .custom-icon-recus svg rect {
   stroke: #fff;
 }
-.custom-stat-boxes:hover .custom-icon-recus svg path{
+
+.custom-stat-boxes:hover .custom-icon-recus svg path {
   stroke: #fff;
 }
-.custom-stat-boxes:hover .custom-icon-recus svg line{
+
+.custom-stat-boxes:hover .custom-icon-recus svg line {
   stroke: #fff;
 }
 
@@ -484,8 +524,9 @@ computed: {
   align-items: center;
   padding-top: 50px
 }
+
 .custom-stat-boxes {
-height: 210px;
+  height: 210px;
 }
 
 .custom-stat-boxes:hover,
@@ -543,6 +584,5 @@ height: 210px;
   background-color: #fff;
   margin-left: 0.3px;
   margin-right: 0.3px;
-}
-</style>
+}</style>
   
