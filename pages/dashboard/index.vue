@@ -177,194 +177,194 @@ export default {
   computed: {
     ...mapState('filtres', ['listcourriers']),
     ...mapState('filtresannees', ['listcourriersannee']),
-    // ...mapGetters({
-    //     initiallistcourriers:'courriers/listcourriers',
-    //     listorganismes:'organismes/listorganismes',
-    // }),
+    ...mapGetters({
+        initiallistcourriers:'courriers/listcourriers',
+        listorganismes:'organismes/listorganismes',
+    }),
 
   },
 
   mounted: async function () {
     await this.$store.dispatch('organismes/getList')
     await this.$store.dispatch('courriers/getList')
-    this.initiallistcourriers = [
-      {
-        'structure': '64354ed846bf128b4c58e646',
-        'createdAt': '2022-06-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '64354ed846bf128b4c58e646',
-        'createdAt': '2022-06-07T16:35:54.766Z',
-        'traitement_status_slug': 'traite'
-      },
-      {
-        'structure': '64354ed846bf128b4c58e646',
-        'createdAt': '2023-06-07T16:35:54.766Z',
-        'traitement_status_slug': 'traite'
-      },
-      {
-        'structure': '64354ed846bf128b4c58e646',
-        'createdAt': '2023-06-07T16:35:54.766Z',
-        'traitement_status_slug': 'traite'
-      },
-      {
-        'structure': '64354ed846bf128b4c58e646',
-        'createdAt': '2023-06-07T16:35:54.766Z',
-        'traitement_status_slug': 'traite'
-      },
-      {
-        'structure': '64354ed846bf128b4c58e646',
-        'createdAt': '2023-06-07T16:35:54.766Z',
-        'traitement_status_slug': 'traite'
-      },
-      {
-        'structure': '64354ed846bf128b4c58e646',
-        'createdAt': '2023-06-07T16:35:54.766Z',
-        'traitement_status_slug': 'traite'
-      },
-      {
-        'structure': '64354ed846bf128b4c58e646',
-        'createdAt': '2023-06-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '64354ed846bf128b4c58e646',
-        'createdAt': '2023-06-07T16:35:54.766Z',
-        'traitement_status_slug': 'traite'
-      },
-      {
-        'structure': '64354ed846bf128b4c58e646',
-        'createdAt': '2023-06-07T16:35:54.766Z',
-        'traitement_status_slug': 'traite'
-      },
-      {
-        'structure': '6435542246bf128b4c58e647',
-        'createdAt': '2023-05-07T16:35:54.766Z',
-        'traitement_status_slug': 'traite'
-      },
-      {
-        'structure': '6435542246bf128b4c58e647',
-        'createdAt': '2023-05-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '6435542246bf128b4c58e647',
-        'createdAt': '2023-05-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '6435542246bf128b4c58e647',
-        'createdAt': '2023-05-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '6435542246bf128b4c58e647',
-        'createdAt': '2023-05-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '6435542246bf128b4c58e647',
-        'createdAt': '2023-05-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '6435542246bf128b4c58e647',
-        'createdAt': '2023-05-07T16:35:54.766Z',
-        'traitement_status_slug': 'traite'
-      },
-      {
-        'structure': '6435542246bf128b4c58e647',
-        'createdAt': '2023-05-07T16:35:54.766Z',
-        'traitement_status_slug': 'traite'
-      },
-      {
-        'structure': '6435542246bf128b4c58e647',
-        'createdAt': '2023-05-07T16:35:54.766Z',
-        'traitement_status_slug': 'traite'
-      },
-      {
-        'structure': '6435542246bf128b4c58e647',
-        'createdAt': '2023-05-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '6435542246bf128b4c58e647',
-        'createdAt': '2023-05-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '6435542246bf128b4c58e647',
-        'createdAt': '2023-05-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '6435542246bf128b4c58e647',
-        'createdAt': '2023-05-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '6435542246bf128b4c58e647',
-        'createdAt': '2023-05-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '6435542246bf128b4c58e647',
-        'createdAt': '2023-05-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '6478fa901b5abb021edeb08b',
-        'createdAt': '2023-04-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '6478fa901b5abb021edeb08b',
-        'createdAt': '2023-04-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '6478fa901b5abb021edeb08b',
-        'createdAt': '2023-04-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '6478fa901b5abb021edeb08b',
-        'createdAt': '2023-04-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '6478fa901b5abb021edeb08b',
-        'createdAt': '2023-04-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '123',
-        'createdAt': '2023-04-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '123',
-        'createdAt': '2023-04-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '123',
-        'createdAt': '2023-04-07T16:35:54.766Z',
-        'traitement_status_slug': 'traite'
-      },
-      {
-        'structure': '456',
-        'createdAt': '2023-04-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      },
-      {
-        'structure': '456',
-        'createdAt': '2023-04-07T16:35:54.766Z',
-        'traitement_status_slug': 'en-cours-de-traitement'
-      }
+    // this.initiallistcourriers = [
+    //   {
+    //     'structure': '64354ed846bf128b4c58e646',
+    //     'createdAt': '2022-06-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '64354ed846bf128b4c58e646',
+    //     'createdAt': '2022-06-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'traite'
+    //   },
+    //   {
+    //     'structure': '64354ed846bf128b4c58e646',
+    //     'createdAt': '2023-06-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'traite'
+    //   },
+    //   {
+    //     'structure': '64354ed846bf128b4c58e646',
+    //     'createdAt': '2023-06-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'traite'
+    //   },
+    //   {
+    //     'structure': '64354ed846bf128b4c58e646',
+    //     'createdAt': '2023-06-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'traite'
+    //   },
+    //   {
+    //     'structure': '64354ed846bf128b4c58e646',
+    //     'createdAt': '2023-06-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'traite'
+    //   },
+    //   {
+    //     'structure': '64354ed846bf128b4c58e646',
+    //     'createdAt': '2023-06-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'traite'
+    //   },
+    //   {
+    //     'structure': '64354ed846bf128b4c58e646',
+    //     'createdAt': '2023-06-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '64354ed846bf128b4c58e646',
+    //     'createdAt': '2023-06-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'traite'
+    //   },
+    //   {
+    //     'structure': '64354ed846bf128b4c58e646',
+    //     'createdAt': '2023-06-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'traite'
+    //   },
+    //   {
+    //     'structure': '6435542246bf128b4c58e647',
+    //     'createdAt': '2023-05-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'traite'
+    //   },
+    //   {
+    //     'structure': '6435542246bf128b4c58e647',
+    //     'createdAt': '2023-05-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '6435542246bf128b4c58e647',
+    //     'createdAt': '2023-05-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '6435542246bf128b4c58e647',
+    //     'createdAt': '2023-05-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '6435542246bf128b4c58e647',
+    //     'createdAt': '2023-05-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '6435542246bf128b4c58e647',
+    //     'createdAt': '2023-05-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '6435542246bf128b4c58e647',
+    //     'createdAt': '2023-05-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'traite'
+    //   },
+    //   {
+    //     'structure': '6435542246bf128b4c58e647',
+    //     'createdAt': '2022-05-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'traite'
+    //   },
+    //   {
+    //     'structure': '6435542246bf128b4c58e647',
+    //     'createdAt': '2022-05-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'traite'
+    //   },
+    //   {
+    //     'structure': '6435542246bf128b4c58e647',
+    //     'createdAt': '2022-05-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '6435542246bf128b4c58e647',
+    //     'createdAt': '2022-05-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '6435542246bf128b4c58e647',
+    //     'createdAt': '2023-05-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '6435542246bf128b4c58e647',
+    //     'createdAt': '2023-05-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '6435542246bf128b4c58e647',
+    //     'createdAt': '2023-05-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '6435542246bf128b4c58e647',
+    //     'createdAt': '2023-05-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '6478fa901b5abb021edeb08b',
+    //     'createdAt': '2023-04-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '6478fa901b5abb021edeb08b',
+    //     'createdAt': '2023-04-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '6478fa901b5abb021edeb08b',
+    //     'createdAt': '2023-04-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '6478fa901b5abb021edeb08b',
+    //     'createdAt': '2023-04-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '6478fa901b5abb021edeb08b',
+    //     'createdAt': '2023-04-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '123',
+    //     'createdAt': '2023-04-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '123',
+    //     'createdAt': '2023-04-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '123',
+    //     'createdAt': '2023-04-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'traite'
+    //   },
+    //   {
+    //     'structure': '456',
+    //     'createdAt': '2023-04-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   },
+    //   {
+    //     'structure': '456',
+    //     'createdAt': '2023-04-07T16:35:54.766Z',
+    //     'traitement_status_slug': 'en-cours-de-traitement'
+    //   }
 
-    ]
+    // ]
 
 
 
@@ -387,21 +387,14 @@ export default {
       this.tauxDeReponse = ((this.nombreCourriersTraites / this.nombreCourriers) * 100).toFixed(0);
     }
     await this.updateListCourriers(this.initiallistcourriers);
-    const listannee = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == "2023")
-    await this.updateListCourriersAnnee(listannee);
+
+    await this.updateListCourriersAnnee(this.initiallistcourriers);
   },
 
   data() {
     return {
 
-      annee: '',
-      listorganismes: [
-        { id: '64354ed846bf128b4c58e646', intitule: 'MAEC' },
-        { id: '123', intitule: 'ABC' },
-        { id: '456', intitule: 'DEF' },
-        { id: '6435542246bf128b4c58e647', intitule: 'MND' },
-        { id: '6478fa901b5abb021edeb08b', intitule: 'MTFP' },
-      ],
+      annee: new Date().getFullYear(),
       listannees: [],
       nombreOrganismes: 0,
       tauxDeReponse: 0,
@@ -429,8 +422,8 @@ export default {
       this.organisme = ''
       this.annee = ''
       this.updateListCourriers(this.initiallistcourriers);
-      const listannee = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == "2023")
-      await this.updateListCourriersAnnee(listannee);
+    
+      await this.updateListCourriersAnnee(this.initiallistcourriers);
 
     },
     async updateCourrier(value, type) {

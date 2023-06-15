@@ -10,6 +10,52 @@ export default {
   extends: Bar,
   methods: {
     async initializeChart() {
+      if (this.listcourriers.length === 0) {
+      // La liste des courriers est vide, afficher "Aucun courrier" dans le diagramme en barres
+      this.intitulesMois = ["Aucun courrier"];
+      this.courriersMensuels = [0];
+
+      this.barChartOptions = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+            gridLines: {
+              display: true
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              fontSize: 12
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+        legend: {
+          display: true,
+          position: 'bottom',
+          align: "start"
+        },
+        responsive: true,
+        maintainAspectRatio: false
+      };
+
+      this.repartitionMensuelleData = {
+        labels: this.intitulesMois,
+        datasets: [{
+          label: 'Aucun courrier',
+          borderWidth: 1,
+          backgroundColor: ['#999999'],
+          data: this.courriersMensuels
+        }]
+      };
+
+      this.renderChart(this.repartitionMensuelleData, this.barChartOptions);
+      return;
+    }
       console.log("EXEC++++")
       this.courriersParMois = [];
       this.intitulesMois = [];

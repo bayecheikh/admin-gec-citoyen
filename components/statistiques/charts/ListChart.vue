@@ -7,13 +7,13 @@
           <v-col md="6" lg="6" sm="12" class="border-right-chart">
             <h4 class="card-title custom-font">Les 3 ministères les plus sollicités</h4>
             <div class="custom-pie-chart mx-auto text-center">
-              <PieChart :courriers="listcourriers" />
+              <PieChart />
             </div>
 
           </v-col>
           <v-col md="6" lg="6" sm="12" class="border-left-chart">
             <h4 class="card-title custom-font">Répartition mensuelle des courriers</h4>
-            <BarChart :courriers="listcourriers" />
+            <BarChart />
           </v-col>
         </v-row>
       </v-col>
@@ -29,10 +29,7 @@ import { mapMutations, mapGetters } from 'vuex'
 import { mapState, mapActions } from 'vuex';
 export default {
 
-  computed: {
-    ...mapState('filtres', ['listcourriers']),
 
-  },
   components: { BarChart, LeftMenu, PieChart },
 
 
