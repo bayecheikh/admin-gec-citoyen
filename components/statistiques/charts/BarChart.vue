@@ -1,9 +1,14 @@
 <script>
 import { Bar } from "vue-chartjs";
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
   computed: {
-    ...mapState('filtres', ['listcourriers']),
+    // ...mapState('filtres', ['listcourriers']),
+    ...mapGetters({
+      listorganismes: 'organismes/listorganismes',
+      listcourriers: 'courriers/listcourriers'
+    }),
+
 
   },
 

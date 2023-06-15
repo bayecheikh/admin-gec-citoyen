@@ -1,19 +1,20 @@
 export default () => ({
-    listcourriers: [],
-    listcourrierspie: [],
-    initiallistcourriers: [],
-    listcourrierstraites: [],
+    listannees: [
+        { id: 2022, libelle_annee: 2022 },
+        { id: 2023, libelle_annee: 2023 },
+      
+      ],
 
-    headercourriers : [
+    headerannees : [
         /* {
             text: 'Nom',
             align: 'start',
             sortable: true,
             value: 'name',
         }, */
-        { text: 'courriers', value: 'description' },
-
+       
+        { text: 'Annee', value: 'libelle_annee' },
         { text: 'Actions', value: 'actions', sortable: false },
     ],
-    detailcourrier :{}
+    detailannee :{}
 })

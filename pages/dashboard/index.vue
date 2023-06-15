@@ -26,7 +26,7 @@
 
               <h1 class="custom-stat-boxes-number">
                 {{
-                  nombreOrganismes
+                  listorganismes.length
                 }}
               </h1>
               <span class="icon custom-icon-organismes">
@@ -60,7 +60,7 @@
 
               <h1 class="custom-stat-boxes-number">
                 {{
-                  nombreCourriers
+                  listcourriers.length
                 }}
 
 
@@ -101,7 +101,7 @@
               <h1 class="custom-stat-boxes-number">
 
                 {{
-                  nombreCourriersTraites
+                  listcourrierstraites.length
                 }}
 
               </h1>
@@ -118,13 +118,8 @@
                     <path id="Tracé_2493" data-name="Tracé 2493" d="M17,16.1l7.1,7.1L38.295,9"
                       transform="translate(1237.614 318.744)" fill="none" stroke="#7d7e7f" stroke-linecap="round"
                       stroke-linejoin="round" stroke-width="3" />
-
                   </g>
-
                 </svg>
-
-
-
               </span>
             </div>
           </div>
@@ -134,7 +129,8 @@
           <div class="custom-stat-boxes bg-marron pl-4 pr-5 pt-5 pb-5 text-sm-center">
             <h4 class="custom-stat-boxes-title color-yellow">Taux de réponse</h4>
             <div class="custom-stat-boxes-bloc mt-5">
-              <h1 class="custom-stat-boxes-number color-yellow">{{ tauxDeReponse }} %</h1>
+              <h1 class="custom-stat-boxes-number color-yellow" v-show="listcourriers.length">{{ ((listcourrierstraites.length / listcourriers.length) * 100).toFixed(0) }} %</h1>
+              <h1 class="custom-stat-boxes-number color-yellow" v-show="!listcourrierstraites.length || listcourrierstraites.length==0">0 %</h1>
 
               <span class="icon custom-icon-taux">
                 <svg xmlns="http://www.w3.org/2000/svg" width="63.735" height="63.996" viewBox="0 0 63.735 63.996">
@@ -155,7 +151,7 @@
       </v-row>
     </div>
     <div class="custom-container mt-5 mr-8 ml-8 pl-4 pr-1 pt-5 pb-5">
-      <list-chart :data="listcourriers"></list-chart>
+      <list-chart ></list-chart>
     </div>
   </div>
 </template>
@@ -168,6 +164,7 @@ import LeftMenu from "@/components/LeftMenu";
 
 
 export default {
+
   layout: "dashboard",
   components: {
 
@@ -175,11 +172,14 @@ export default {
     ListChart,
   },
   computed: {
-    ...mapState('filtres', ['listcourriers']),
-    ...mapState('filtresannees', ['listcourriersannee']),
+    // ...mapState('filtres', ['listcourriers']),
+    // ...mapState('filtresannees', ['listcourriersannee']),
     ...mapGetters({
-        initiallistcourriers:'courriers/listcourriers',
+        listcourriers:'courriers/listcourriers',
+        initiallistcourriers:'courriers/initiallistcourriers',
+        listcourrierstraites:'courriers/listcourrierstraites',
         listorganismes:'organismes/listorganismes',
+        listannees:'annees/listannees',
     }),
 
   },
@@ -187,215 +187,32 @@ export default {
   mounted: async function () {
     await this.$store.dispatch('organismes/getList')
     await this.$store.dispatch('courriers/getList')
-    // this.initiallistcourriers = [
-    //   {
-    //     'structure': '64354ed846bf128b4c58e646',
-    //     'createdAt': '2022-06-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '64354ed846bf128b4c58e646',
-    //     'createdAt': '2022-06-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'traite'
-    //   },
-    //   {
-    //     'structure': '64354ed846bf128b4c58e646',
-    //     'createdAt': '2023-06-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'traite'
-    //   },
-    //   {
-    //     'structure': '64354ed846bf128b4c58e646',
-    //     'createdAt': '2023-06-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'traite'
-    //   },
-    //   {
-    //     'structure': '64354ed846bf128b4c58e646',
-    //     'createdAt': '2023-06-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'traite'
-    //   },
-    //   {
-    //     'structure': '64354ed846bf128b4c58e646',
-    //     'createdAt': '2023-06-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'traite'
-    //   },
-    //   {
-    //     'structure': '64354ed846bf128b4c58e646',
-    //     'createdAt': '2023-06-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'traite'
-    //   },
-    //   {
-    //     'structure': '64354ed846bf128b4c58e646',
-    //     'createdAt': '2023-06-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '64354ed846bf128b4c58e646',
-    //     'createdAt': '2023-06-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'traite'
-    //   },
-    //   {
-    //     'structure': '64354ed846bf128b4c58e646',
-    //     'createdAt': '2023-06-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'traite'
-    //   },
-    //   {
-    //     'structure': '6435542246bf128b4c58e647',
-    //     'createdAt': '2023-05-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'traite'
-    //   },
-    //   {
-    //     'structure': '6435542246bf128b4c58e647',
-    //     'createdAt': '2023-05-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '6435542246bf128b4c58e647',
-    //     'createdAt': '2023-05-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '6435542246bf128b4c58e647',
-    //     'createdAt': '2023-05-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '6435542246bf128b4c58e647',
-    //     'createdAt': '2023-05-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '6435542246bf128b4c58e647',
-    //     'createdAt': '2023-05-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '6435542246bf128b4c58e647',
-    //     'createdAt': '2023-05-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'traite'
-    //   },
-    //   {
-    //     'structure': '6435542246bf128b4c58e647',
-    //     'createdAt': '2022-05-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'traite'
-    //   },
-    //   {
-    //     'structure': '6435542246bf128b4c58e647',
-    //     'createdAt': '2022-05-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'traite'
-    //   },
-    //   {
-    //     'structure': '6435542246bf128b4c58e647',
-    //     'createdAt': '2022-05-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '6435542246bf128b4c58e647',
-    //     'createdAt': '2022-05-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '6435542246bf128b4c58e647',
-    //     'createdAt': '2023-05-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '6435542246bf128b4c58e647',
-    //     'createdAt': '2023-05-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '6435542246bf128b4c58e647',
-    //     'createdAt': '2023-05-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '6435542246bf128b4c58e647',
-    //     'createdAt': '2023-05-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '6478fa901b5abb021edeb08b',
-    //     'createdAt': '2023-04-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '6478fa901b5abb021edeb08b',
-    //     'createdAt': '2023-04-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '6478fa901b5abb021edeb08b',
-    //     'createdAt': '2023-04-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '6478fa901b5abb021edeb08b',
-    //     'createdAt': '2023-04-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '6478fa901b5abb021edeb08b',
-    //     'createdAt': '2023-04-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '123',
-    //     'createdAt': '2023-04-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '123',
-    //     'createdAt': '2023-04-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '123',
-    //     'createdAt': '2023-04-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'traite'
-    //   },
-    //   {
-    //     'structure': '456',
-    //     'createdAt': '2023-04-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   },
-    //   {
-    //     'structure': '456',
-    //     'createdAt': '2023-04-07T16:35:54.766Z',
-    //     'traitement_status_slug': 'en-cours-de-traitement'
-    //   }
+    await this.$store.dispatch('courriers/getListTraites')
+    await this.$store.dispatch('annees/getList')
+    // const currentYear = await new Date().getFullYear();
+    // this.changeAnnee(currentYear)
+    // const currentYear = new Date().getFullYear();
+    // const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
+    // await this.$store.dispatch('courriers/updateListPie', newlistpie)
+    // console.log('COURRIERS++++++++++', this.listcourriers)
+    // console.log('ORGANISMES++++++++++', this.listorganismes)
 
-    // ]
+    // this.nombreOrganismes = this.listorganismes.length
+    // this.nombreCourriers = this.listcourriers.length
+    // const traitelist = await this.listcourriers?.filter((item) => item.traitement_status_slug == "traite")
+    // this.nombreCourriersTraites = await traitelist?.length
+    // if (this.nombreCourriersTraites && this.nombreCourriers) {
+    //   this.tauxDeReponse = ((this.nombreCourriersTraites / this.nombreCourriers) * 100).toFixed(0);
+    // }
+    // await this.updateListCourriers(this.listcourriers);
 
-
-
-    console.log('COURRIERS++++++++++', this.initiallistcourriers)
-
-    console.log('ORGANISMES++++++++++', this.listorganismes)
-    this.listannees = [
-      { id: 2022, libelle_annee: 2022 },
-      { id: 2023, libelle_annee: 2023 },
-      { id: 2024, libelle_annee: 2024 },
-      { id: 2025, libelle_annee: 2025 }
-    ]
-
-
-    this.nombreOrganismes = this.listorganismes.length
-    this.nombreCourriers = this.initiallistcourriers.length
-    const traitelist = await this.initiallistcourriers?.filter((item) => item.traitement_status_slug == "traite")
-    this.nombreCourriersTraites = await traitelist?.length
-    if (this.nombreCourriersTraites && this.nombreCourriers) {
-      this.tauxDeReponse = ((this.nombreCourriersTraites / this.nombreCourriers) * 100).toFixed(0);
-    }
-    await this.updateListCourriers(this.initiallistcourriers);
-
-    await this.updateListCourriersAnnee(this.initiallistcourriers);
+    // await this.updateListCourriersAnnee(this.listcourriers);
   },
 
   data() {
     return {
 
-      annee: new Date().getFullYear(),
-      listannees: [],
+      annee: this.getYearFromCreatedAt(),
       nombreOrganismes: 0,
       tauxDeReponse: 0,
       nombreCourriers: 0,
@@ -404,12 +221,16 @@ export default {
     };
   },
   methods: {
-    ...mapActions('filtres', ['updateListCourriers']),
-    ...mapActions('filtresannees', ['updateListCourriersAnnee']),
+    // ...mapActions('filtres', ['updateListCourriers']),
+    // ...mapActions('filtresannees', ['updateListCourriersAnnee']),
 
     async changeAnnee(value) {
 
       console.log(value)
+   
+      const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == value)
+      await this.$store.dispatch('courriers/updateListPie', newlistpie)
+
       this.updateCourrier(value, 'annee')
 
     },
@@ -421,10 +242,16 @@ export default {
     async onClearClicked() {
       this.organisme = ''
       this.annee = ''
-      this.updateListCourriers(this.initiallistcourriers);
+      // await this.updateListCourriers(this.listcourriers);
     
-      await this.updateListCourriersAnnee(this.initiallistcourriers);
-
+      // await this.updateListCourriersAnnee(this.listcourriers);
+    //   this.nombreOrganismes = this.listorganismes.length
+    // this.nombreCourriers = this.listcourriers.length
+    // const traitelist = await this.listcourriers?.filter((item) => item.traitement_status_slug == "traite")
+    // this.nombreCourriersTraites = await traitelist?.length
+    // if (this.nombreCourriersTraites && this.nombreCourriers) {
+    //   this.tauxDeReponse = ((this.nombreCourriersTraites / this.nombreCourriers) * 100).toFixed(0);
+    // }
     },
     async updateCourrier(value, type) {
       var list = []
@@ -433,7 +260,7 @@ export default {
         this.organisme = value
         if (this.annee != '') {
           const newlist = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == this.annee)
-          await this.updateListCourriersAnnee(newlist);
+          // await this.updateListCourriersAnnee(newlist);
           list = await this.initiallistcourriers.filter((item) => (this.getYearFromCreatedAt(item.createdAt) == this.annee && item.structure == value))
           
         } else {
@@ -451,7 +278,7 @@ export default {
 
         }
         const newlist = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == this.annee)
-        await this.updateListCourriersAnnee(newlist);
+        // await this.updateListCourriersAnnee(newlist);
       }
       console.log(list)
       await this.updateStat(list)
@@ -462,20 +289,21 @@ export default {
       return date.getFullYear()
     },
     async updateStat(newlist) {
-      await this.updateListCourriers(newlist);
-
-
+      // await this.updateListCourriers(newlist);
+      await this.$store.dispatch('courriers/updateList', newlist)
+      await this.$store.dispatch('courriers/updateListTraites', newlist)
+  
       console.log('Change list ++++ ', newlist)
-      this.nombreCourriers = await newlist?.length;
-      const newtraitelist = await newlist?.filter((item) => item.traitement_status_slug == "traite")
-      this.nombreCourriersTraites = await newtraitelist?.length
-      if (this.nombreCourriers) {
-        this.tauxDeReponse = ((this.nombreCourriersTraites / this.nombreCourriers) * 100).toFixed(0)
-      }
-      else {
-        this.tauxDeReponse = 0
-      }
-
+      // this.nombreCourriers = await newlist?.length;
+      // const newtraitelist = await newlist?.filter((item) => item.traitement_status_slug == "traite")
+      // this.nombreCourriersTraites = await newtraitelist?.length
+      // if (this.nombreCourriers) {
+      //   this.tauxDeReponse = ((this.nombreCourriersTraites / this.nombreCourriers) * 100).toFixed(0)
+      // }
+      // else {
+      //   this.tauxDeReponse = 0
+      // }
+     
     },
   },
 

@@ -4,9 +4,10 @@ import { mapGetters, mapState } from 'vuex'
 export default {
   extends: Pie,
   computed: {
-    ...mapState('filtresannees', ['listcourriersannee']),
+    // ...mapState('filtresannees', ['listcourriersannee']),
     ...mapGetters({
       listorganismes: 'organismes/listorganismes',
+      listcourrierspie: 'courriers/listcourrierspie'
     }),
 
   },
@@ -23,11 +24,13 @@ async initializeChart(){
   //     {id: '6435542246bf128b4c58e647', intitule:'MND'},
   //     {id: '6478fa901b5abb021edeb08b', intitule:'MTFP'},
   //   ]
-    this.nombreTotalCourriers = this.listcourriersannee.length;
+
+  console.log("LIST COURRIERS PIE", this.listcourrierspie)
+    this.nombreTotalCourriers = this.listcourrierspie.length;
    console.log("Nombre total courriers",   this.nombreTotalCourriers )
 if( this.nombreTotalCourriers!=0){
    for (let i = 0; i < this.listorganismes.length; i++) {
-     let courriersOrganisme = await this.listcourriersannee.filter((item) => item.structure == this.listorganismes[i].id);
+     let courriersOrganisme = await this.listcourrierspie.filter((item) => item.structure == this.listorganismes[i].id);
      let nombreCourriersOrganisme = parseFloat(courriersOrganisme.length);
     
      let pourcentageCourriers = ((nombreCourriersOrganisme / this.nombreTotalCourriers) * 100).toFixed(2);
@@ -46,7 +49,9 @@ if( this.nombreTotalCourriers!=0){
      this.pourcentageCourriersParOrganisme.push(parseFloat(organisme.pourcentage));
    }
    let troisPremiersPourcentages = this.pourcentageCourriersParOrganisme.slice(0, 3);
-   let sommePourcentagesRestants = parseFloat((this.pourcentageCourriersParOrganisme.slice(3).reduce((a, b) => a + b, 0)).toFixed(2));
+   let somme = troisPremiersPourcentages.reduce((acc, pourcentage) => acc + pourcentage, 0);
+   const sommePourcentagesRestants = parseFloat((100 - somme).toFixed(2))
+
    this.pourcentageCourriersParOrganisme = [...troisPremiersPourcentages, sommePourcentagesRestants];
    let troisPremiersOrganismes = this.intitulesOrganismes.slice(0, 3);
    this.intitulesOrganismes = [...troisPremiersOrganismes, 'Autres'];
@@ -114,7 +119,7 @@ if( this.nombreTotalCourriers!=0){
  
   },
   watch: {
-    listcourriersannee: {
+    listcourrierspie: {
       immediate: false,
       handler() {
         this.initializeChart();
