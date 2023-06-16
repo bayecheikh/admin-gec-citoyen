@@ -189,11 +189,10 @@ export default {
     await this.$store.dispatch('courriers/getList')
     await this.$store.dispatch('courriers/getListTraites')
     await this.$store.dispatch('annees/getList')
-    // const currentYear = await new Date().getFullYear();
-    // this.changeAnnee(currentYear)
-    // const currentYear = new Date().getFullYear();
-    // const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
-    // await this.$store.dispatch('courriers/updateListPie', newlistpie)
+    
+    const currentYear = new Date().getFullYear();
+    const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
+    await this.$store.dispatch('courriers/updateListPie', newlistpie)
     // console.log('COURRIERS++++++++++', this.listcourriers)
     // console.log('ORGANISMES++++++++++', this.listorganismes)
 
