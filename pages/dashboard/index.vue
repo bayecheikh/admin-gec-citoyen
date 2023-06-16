@@ -130,7 +130,7 @@
             <h4 class="custom-stat-boxes-title color-yellow">Taux de réponse</h4>
             <div class="custom-stat-boxes-bloc mt-5">
               <h1 class="custom-stat-boxes-number color-yellow" v-show="listcourriers.length">{{ ((listcourrierstraites.length / listcourriers.length) * 100).toFixed(0) }} %</h1>
-              <h1 class="custom-stat-boxes-number color-yellow" v-show="!listcourrierstraites.length || listcourrierstraites.length==0">0 %</h1>
+             
 
               <span class="icon custom-icon-taux">
                 <svg xmlns="http://www.w3.org/2000/svg" width="63.735" height="63.996" viewBox="0 0 63.735 63.996">
@@ -185,14 +185,15 @@ export default {
   },
 
   mounted: async function () {
+    const currentYear = new Date().getFullYear();
+    const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
+    await this.$store.dispatch('courriers/updateListPie', newlistpie)
     await this.$store.dispatch('organismes/getList')
     await this.$store.dispatch('courriers/getList')
     await this.$store.dispatch('courriers/getListTraites')
     await this.$store.dispatch('annees/getList')
     
-    const currentYear = new Date().getFullYear();
-    const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
-    await this.$store.dispatch('courriers/updateListPie', newlistpie)
+  
     // console.log('COURRIERS++++++++++', this.listcourriers)
     // console.log('ORGANISMES++++++++++', this.listorganismes)
 
