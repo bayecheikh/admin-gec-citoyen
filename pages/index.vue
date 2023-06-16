@@ -24,6 +24,7 @@
       
       // this.$store.dispatch('courriers/getListTraites')
       this.$store.dispatch('annees/getList')
+      this.$store.dispatch('mois/getList')
       await this.$store.dispatch('courriers/getList')
       const currentYear = new Date().getFullYear();
       const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)

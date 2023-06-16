@@ -29,7 +29,7 @@
                   listorganismes.length
                 }}
               </h1>
-              <h1 v-show="!listorganismes" class="custom-stat-boxes-number">
+              <h1 v-show="!listorganismes || !listorganismes.length" class="custom-stat-boxes-number">
                 <svg class="custom-svg" width="50" height="50" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#999999">
                       <g fill="none" fill-rule="evenodd">
                           <g transform="translate(1 1)" stroke-width="2">
@@ -247,7 +247,8 @@ export default {
  
      this.$store.dispatch('courriers/getListTraites')
 
-    this.$store.dispatch('annees/getList')
+     this.$store.dispatch('annees/getList')
+      this.$store.dispatch('mois/getList')
     await this.$store.dispatch('courriers/getList')
     const currentYear = new Date().getFullYear();
     const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)

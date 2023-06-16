@@ -6,14 +6,15 @@ export default {
     // ...mapState('filtres', ['listcourriers']),
     ...mapGetters({
       listorganismes: 'organismes/listorganismes',
-      listcourriers: 'courriers/listcourriers'
+      listcourriers: 'courriers/listcourriers',
+      listmois: 'mois/listmois'
     }),
   },
 
   extends: Bar,
   methods: {
     async initializeChart() {
-      if (this.listcourriers.length === 0) {
+      if (this.listcourriers?.length === 0) {
       // La liste des courriers est vide, afficher "Aucun courrier" dans le diagramme en barres
       this.intitulesMois = ["Aucun courrier"];
       this.courriersMensuels = [0];
@@ -75,7 +76,7 @@ export default {
         })
 
         const nombreCourriersMensuels = await totalCourriersMensuels.length
-        const moisItem = await this.mois.find(item => item.id === i);
+        const moisItem = await this.listmois.find(item => item.id === i);
 
         this.courriersParMois.push({
           mois: moisItem.libelle,
@@ -147,20 +148,7 @@ export default {
   },
   mounted: async function () {
 
-    this.mois = [
-      { id: 0, libelle: "Janv" },
-      { id: 1, libelle: "Fev" },
-      { id: 2, libelle: "Mars" },
-      { id: 3, libelle: "Avril" },
-      { id: 4, libelle: "Mai" },
-      { id: 5, libelle: "Juin" },
-      { id: 6, libelle: "Juil" },
-      { id: 7, libelle: "Août" },
-      { id: 8, libelle: "Sept" },
-      { id: 9, libelle: "Oct" },
-      { id: 10, libelle: "Nov" },
-      { id: 11, libelle: "Dec" }
-    ]
+    this.initializeChart();
 
 
   },
@@ -176,7 +164,7 @@ export default {
     return {
       courriersParMois: [],
       moisAvecPlusCourriers: null,
-      mois: [],
+      
 
       repartitionMensuelleData: {
 
