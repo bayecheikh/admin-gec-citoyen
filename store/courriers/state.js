@@ -3,6 +3,8 @@ export default () => ({
     listcourrierspie: [],
     initiallistcourriers: [],
     listcourrierstraites: [],
+    ispieloading: true,
+    isbarloading: true,
 
     headercourriers : [
         /* {

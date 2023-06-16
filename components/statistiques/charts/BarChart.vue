@@ -55,8 +55,9 @@ export default {
           data: this.courriersMensuels
         }]
       };
-
-      this.renderChart(this.repartitionMensuelleData, this.barChartOptions);
+      await this.$store.dispatch('courriers/updateIsBarLoading', true)
+  
+      await this.renderChart(this.repartitionMensuelleData, this.barChartOptions);
       return;
     }
       console.log("EXEC++++")
@@ -138,7 +139,10 @@ export default {
           data: this.courriersMensuels
         }]
       };
-      this.renderChart(this.repartitionMensuelleData, this.barChartOptions);
+
+      await this.$store.dispatch('courriers/updateIsBarLoading', false)
+      await  this.renderChart(this.repartitionMensuelleData, this.barChartOptions);
+      return
     }
   },
   mounted: async function () {

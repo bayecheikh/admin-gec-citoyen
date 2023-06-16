@@ -2,6 +2,12 @@ export default {
     initlist(state, newlist) {
         state.listcourriers = newlist
     },
+    ispieloading(state, newispieloading) {
+        state.ispieloading = newispieloading
+    },
+    isbarloading(state, newisbarloading) {
+        state.isbarloading = newisbarloading
+    },
     initlistpie(state, newlist) {
         state.listcourrierspie = newlist
     },

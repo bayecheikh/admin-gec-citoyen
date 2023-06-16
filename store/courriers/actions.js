@@ -16,6 +16,18 @@ export default {
       console.log('Requête envoyée');
     }
   },
+  async updateIsPieLoading({ commit }, ispieloading) {
+
+  
+      commit('ispieloading', ispieloading);
+     
+  },
+  async updateIsBarLoading({ commit }, isbarloading) {
+
+  
+    commit('isbarloading', isbarloading);
+   
+},
   async getListTraites({ commit }) {
  
     try {

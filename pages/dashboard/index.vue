@@ -24,7 +24,7 @@
 
             <div class="custom-stat-boxes-bloc mt-5">
 
-              <h1 v-show="listorganismes" class="custom-stat-boxes-number">
+              <h1 v-show="listorganismes&& listorganismes.length" class="custom-stat-boxes-number">
                 {{
                   listorganismes.length
                 }}
@@ -71,14 +71,14 @@
             <h4 class="custom-stat-boxes-title">Total courriers reçus</h4>
             <div class="custom-stat-boxes-bloc mt-5">
 
-              <h1 v-show="listcourriers" class="custom-stat-boxes-number">
+              <h1 v-show="listcourriers&&listcourriers.length" class="custom-stat-boxes-number">
                 {{
                   listcourriers.length
                 }}
 
 
               </h1>
-              <h1 v-show="!listcourriers" class="custom-stat-boxes-number">
+              <h1 v-show="!listcourriers || !listcourriers.length " class="custom-stat-boxes-number">
               
                 <svg class="custom-svg" width="50" height="50" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#999999">
                             <g fill="none" fill-rule="evenodd">
@@ -125,14 +125,14 @@
           <div class="custom-stat-boxes bg-marron mr-3 pl-4 pr-5 pt-5 pb-5 text-sm-center">
             <h4 class="custom-stat-boxes-title">Total courriers traités</h4>
             <div class="custom-stat-boxes-bloc mt-5">
-              <h1 v-show="listcourrierstraites" class="custom-stat-boxes-number">
+              <h1 v-show="listcourrierstraites && listcourrierstraites.length " class="custom-stat-boxes-number">
 
                 {{
                   listcourrierstraites.length
                 }}
 
               </h1>
-              <h1 v-show="!listcourrierstraites" class="custom-stat-boxes-number">
+              <h1 v-show="!listcourrierstraites  || !listcourrierstraites.length" class="custom-stat-boxes-number">
                 <svg class="custom-svg" width="50" height="50" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#999999">
                     <g fill="none" fill-rule="evenodd">
                         <g transform="translate(1 1)" stroke-width="2">
@@ -169,9 +169,9 @@
           <div class="custom-stat-boxes bg-marron pl-4 pr-5 pt-5 pb-5 text-sm-center">
             <h4 class="custom-stat-boxes-title color-yellow">Taux de réponse</h4>
             <div class="custom-stat-boxes-bloc mt-5">
-              <h1 class="custom-stat-boxes-number color-yellow" v-show="listcourriers&&listcourriers.length&&listcourrierstraites">{{ ((listcourrierstraites.length / listcourriers.length) * 100).toFixed(0) }} %</h1>
-              <h1 class="custom-stat-boxes-number color-yellow" v-show="!listcourriers.length">0 %</h1>
-              <h1 class="custom-stat-boxes-number color-yellow" v-show="!listcourriers || !listcourrierstraites">
+              <h1 class="custom-stat-boxes-number color-yellow" v-show="listcourrierstraites.length&&listcourriers.length">{{ ((listcourrierstraites.length / listcourriers.length) * 100).toFixed(0) }} %</h1>
+            
+              <h1 class="custom-stat-boxes-number color-yellow" v-show="!listcourriers.length || !listcourrierstraites.length">
                 <svg class="custom-svg" width="50" height="50" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#999999">
                     <g fill="none" fill-rule="evenodd">
                         <g transform="translate(1 1)" stroke-width="2">
@@ -230,6 +230,7 @@ export default {
     // ...mapState('filtresannees', ['listcourriersannee']),
     ...mapGetters({
         listcourriers:'courriers/listcourriers',
+        isloading:'courriers/isloading',
         initiallistcourriers:'courriers/initiallistcourriers',
         listcourrierstraites:'courriers/listcourrierstraites',
         listorganismes:'organismes/listorganismes',
@@ -241,16 +242,16 @@ export default {
 
   mounted: async function () {
  
+    
+     this.$store.dispatch('organismes/getList')
+ 
+     this.$store.dispatch('courriers/getListTraites')
+
+    this.$store.dispatch('annees/getList')
     await this.$store.dispatch('courriers/getList')
     const currentYear = new Date().getFullYear();
     const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
     this.$store.dispatch('courriers/updateListPie', newlistpie)
-    //  this.$store.dispatch('organismes/getList')
- 
-    //  this.$store.dispatch('courriers/getListTraites')
-
-    // this.$store.dispatch('annees/getList')
-    
     
   
     // console.log('COURRIERS++++++++++', this.listcourriers)

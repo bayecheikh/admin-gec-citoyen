@@ -2,6 +2,12 @@ export default {
     listcourriers (state) {
       return state.listcourriers
     },
+    ispieloading (state) {
+      return state.ispieloading
+    },
+    isbarloading (state) {
+      return state.isbarloading
+    },
     listcourrierspie (state) {
       return state.listcourrierspie
     },

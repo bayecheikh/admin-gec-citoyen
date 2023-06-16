@@ -3,12 +3,15 @@ import { Pie } from 'vue-chartjs';
 import { mapGetters, mapState } from 'vuex'
 export default {
   extends: Pie,
+  
+ 
   computed: {
     // ...mapState('filtresannees', ['listcourriersannee']),
     ...mapGetters({
       listorganismes: 'organismes/listorganismes',
       listcourrierspie: 'courriers/listcourrierspie',
-      initiallistcourriers: 'courriers/initiallistcourriers'
+      initiallistcourriers: 'courriers/initiallistcourriers',
+      
     }),
 
   },
@@ -83,7 +86,10 @@ if( this.nombreTotalCourriers!=0){
        }
        ]
      }
-   this.renderChart(this.repartitionParOrganismeData, this.pieChartOptions);
+   await this.$store.dispatch('courriers/updateIsPieLoading', false)
+   await this.renderChart(this.repartitionParOrganismeData, this.pieChartOptions);
+   return
+   
   }
   else{
     this.intitulesOrganismes = ["Aucun courrier"];
@@ -108,19 +114,20 @@ if( this.nombreTotalCourriers!=0){
       data: this.pourcentageCourriersParOrganisme
     }]
   };
-
-  this.renderChart(this.repartitionParOrganismeData, this.pieChartOptions);
+  await this.$store.dispatch('courriers/updateIsPieLoading', true)
+  await this.renderChart(this.repartitionParOrganismeData, this.pieChartOptions);
+  
 
   }
    
   }
   },
   mounted: async function () {
- await this.$store.dispatch('organismes/getList')
- await this.$store.dispatch('courriers/getList')
- const currentYear = new Date().getFullYear();
- const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
- this.$store.dispatch('courriers/updateListPie', newlistpie)
+//  await this.$store.dispatch('organismes/getList')
+//  await this.$store.dispatch('courriers/getList')
+//  const currentYear = new Date().getFullYear();
+//  const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
+//  this.$store.dispatch('courriers/updateListPie', newlistpie)
   
 
    

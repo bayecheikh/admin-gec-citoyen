@@ -6,14 +6,43 @@
 
           <v-col md="6" lg="6" sm="12" class="border-right-chart">
             <h4 class="card-title custom-font">Les 3 ministères les plus sollicités</h4>
-            <div class="custom-pie-chart mx-auto text-center">
+            <div v-show="!ispieloading" class="custom-pie-chart mx-auto text-center">
               <PieChart />
+            </div>
+            <div v-show="isbarloading" class="custom-pie-chart-loader mx-auto mt-5 text-center">
+              <svg class="custom-svg" width="250" height="250" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#4a7197">
+                      <g fill="none" fill-rule="evenodd">
+                          <g transform="translate(1 1)" stroke-width="0.5">
+                              <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
+                              <path d="M36 18c0-9.94-8.06-18-18-18">
+                                  <animateTransform attributeName="transform" type="rotate" from="0 18 18"
+                                      to="360 18 18" dur="1s" repeatCount="indefinite" />
+                              </path>
+                          </g>
+                      </g>
+                    </svg>
             </div>
 
           </v-col>
           <v-col md="6" lg="6" sm="12" class="border-left-chart">
             <h4 class="card-title custom-font">Répartition mensuelle des courriers</h4>
-            <BarChart />
+            <div v-show="!isbarloading">
+              <BarChart/>
+            </div>
+            <div v-show="isbarloading" class="loader-bar-chart  mx-auto mt-5 text-center">
+              <!-- <svg class="custom-svg" width="250" height="250" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#0a3764">
+                      <g fill="none" fill-rule="evenodd">
+                          <g transform="translate(1 1)" stroke-width="0.5">
+                              <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
+                              <path d="M36 18c0-9.94-8.06-18-18-18">
+                                  <animateTransform attributeName="transform" type="rotate" from="0 18 18"
+                                      to="360 18 18" dur="1s" repeatCount="indefinite" />
+                              </path>
+                          </g>
+                      </g>
+                    </svg> -->
+            </div>
+           
           </v-col>
         </v-row>
       </v-col>
@@ -29,7 +58,14 @@ import { mapMutations, mapGetters } from 'vuex'
 
 export default {
 
-
+  computed: {
+    // ...mapState('filtresannees', ['listcourriersannee']),
+    ...mapGetters({
+      ispieloading: 'courriers/ispieloading',
+      isbarloading: 'courriers/isbarloading',
+      
+    })
+  },
   components: { BarChart, LeftMenu, PieChart },
 
    
@@ -40,6 +76,30 @@ export default {
 </script>
 
 <style scoped>
+
+.loader-bar-chart {
+    height: 350px;
+    width: 500px;
+    background-color:  #4a7197;
+    /* Couleur verte */
+    animation: loaderAnimation 1s ease-in-out infinite;
+    /* Animation */
+}
+
+@keyframes loaderAnimation {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0.75;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
 .bg-marron {
   border-radius: 5px;
   background-color: #fff;
@@ -137,6 +197,11 @@ path:hover {
 
 .custom-pie-chart {
   width: 250px;
+
+}
+.custom-pie-chart-loader > svg {
+  width: 250px;
+  margin-top: 40px;
 
 }
 
