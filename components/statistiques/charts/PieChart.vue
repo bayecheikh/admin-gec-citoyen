@@ -7,11 +7,17 @@ export default {
     // ...mapState('filtresannees', ['listcourriersannee']),
     ...mapGetters({
       listorganismes: 'organismes/listorganismes',
-      listcourrierspie: 'courriers/listcourrierspie'
+      listcourrierspie: 'courriers/listcourrierspie',
+      initiallistcourriers: 'courriers/initiallistcourriers'
     }),
 
   },
   methods:{
+    
+    getYearFromCreatedAt(createdAt) {
+      const date = new Date(createdAt)
+      return date.getFullYear()
+    },
 async initializeChart(){
   this.pourcentageCourriersParOrganisme = [];
       this.intitulesOrganismes = [];
@@ -110,9 +116,13 @@ if( this.nombreTotalCourriers!=0){
   }
   },
   mounted: async function () {
+ await this.$store.dispatch('organismes/getList')
+ await this.$store.dispatch('courriers/getList')
+ const currentYear = new Date().getFullYear();
+ const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
+ this.$store.dispatch('courriers/updateListPie', newlistpie)
+  
 
-    await this.$store.dispatch('organismes/getList')
-    await this.$store.dispatch('courriers/getList')
    
   
     this.initializeChart();

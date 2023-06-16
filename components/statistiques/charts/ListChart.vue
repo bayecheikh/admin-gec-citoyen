@@ -26,12 +26,14 @@ import LeftMenu from '@/components/LeftMenu';
 import BarChart from "@/components/statistiques/charts/BarChart";
 import PieChart from "@/components/statistiques/charts/PieChart";
 import { mapMutations, mapGetters } from 'vuex'
-import { mapState, mapActions } from 'vuex';
+
 export default {
 
 
   components: { BarChart, LeftMenu, PieChart },
 
+   
+ 
 
 };
 

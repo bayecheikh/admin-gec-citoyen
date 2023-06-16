@@ -8,8 +8,6 @@ export default {
       listorganismes: 'organismes/listorganismes',
       listcourriers: 'courriers/listcourriers'
     }),
-
-
   },
 
   extends: Bar,

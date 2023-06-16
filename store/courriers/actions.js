@@ -6,7 +6,8 @@ export default {
       console.log('Données reçues COURRIERS+++++++++++', response);
       commit('initlist', response.data.data);
       commit('initinitiallist', response.data.data);
-     
+      const listtraites =  response.data.data.filter((item) => item.traitement_status_slug == "traite")
+      commit('initlisttraites', listtraites);
 
     } catch (error) {
       console.log('ERROR GEC', error);
