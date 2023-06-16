@@ -185,13 +185,14 @@ export default {
   },
 
   mounted: async function () {
-    const currentYear = new Date().getFullYear();
-    const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
-    await this.$store.dispatch('courriers/updateListPie', newlistpie)
+   
     await this.$store.dispatch('organismes/getList')
     await this.$store.dispatch('courriers/getList')
     await this.$store.dispatch('courriers/getListTraites')
     await this.$store.dispatch('annees/getList')
+    const currentYear = new Date().getFullYear();
+    const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
+    await this.$store.dispatch('courriers/updateListPie', newlistpie)
     
   
     // console.log('COURRIERS++++++++++', this.listcourriers)
