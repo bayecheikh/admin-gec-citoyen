@@ -32,7 +32,7 @@
 
 </v-row>
 <v-row>
-  <v-col md="6" lg="6" sm="12">
+  <!-- <v-col md="6" lg="6" sm="12">
     <v-autocomplete
   v-model="selected"
   :items="listfaqcategories"
@@ -49,16 +49,16 @@
     <div>{{ item.name }}</div>
   </template>
 </v-autocomplete>
-</v-col>
-<v-col md="6" lg="6" sm="12">
+</v-col> -->
+<!-- <v-col md="6" lg="6" sm="12">
   
   <v-text-field
-    label="Link"
+    label="Lien"
     outlined dense
     v-model="model.link"
     :rules="rules.linkRules"
   ></v-text-field>
-</v-col>
+</v-col> -->
 </v-row>
 
   

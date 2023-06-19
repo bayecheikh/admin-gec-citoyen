@@ -21,13 +21,7 @@
       "name": "gerer-parametres",
       "slug": "foire-aux-questions"
     },
-    {
-      "icon": "mdi-cog-outline",
-      "href": "/categoriesfoireauxquestions",
-      "title": "Catégories FAQ",
-      "name": "gerer-parametres",
-      "slug": "categories-foire-aux-questions"
-    },
+ 
     {
       "icon": "mdi-home-modern",
       "href": "/organismes",

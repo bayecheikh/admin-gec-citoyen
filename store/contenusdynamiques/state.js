@@ -10,6 +10,7 @@ export default () => ({
         }, */
         { text: 'Titre', value: 'title' },
         { text: 'Catégorie', value: 'categorie.libelle' },
+        // { text: 'Description', value: 'resume' },
         { text: 'Actions', value: 'actions', sortable: false },
     ],
     detailcontenudynamique :{}

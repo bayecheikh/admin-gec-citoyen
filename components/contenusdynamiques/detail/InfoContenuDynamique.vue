@@ -9,7 +9,8 @@
               
                 <p class="info-profil mb-4"><span>Catégorie : </span>{{detailcontenudynamique.categorie.libelle}}</p>
                   <p class="info-profil mb-4"><span>Titre : </span>{{detailcontenudynamique.title}}</p>
-                  <p class="info-profil mb-4"><span>Résumé : </span>{{detailcontenudynamique.resume}}</p>
+                  <p class="info-profil mb-4"><span>Description: </span>{{detailcontenudynamique.resume}}</p>
+                 
                
         
                 

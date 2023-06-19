@@ -20,15 +20,15 @@
   },
     mounted: async function () {
    
-      this.$store.dispatch('organismes/getList')
+//       this.$store.dispatch('organismes/getList')
       
-      // this.$store.dispatch('courriers/getListTraites')
-      this.$store.dispatch('annees/getList')
-      this.$store.dispatch('mois/getList')
-      await this.$store.dispatch('courriers/getList')
-      const currentYear = new Date().getFullYear();
-      const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
-      await this.$store.dispatch('courriers/updateListPie', newlistpie)
+//       // this.$store.dispatch('courriers/getListTraites')
+//       this.$store.dispatch('annees/getList')
+//       this.$store.dispatch('mois/getList')
+//        await this.$store.dispatch('courriers/getList')
+//       // const currentYear = new Date().getFullYear();
+//       // const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
+//  this.$store.dispatch('courriers/updateListPie', this.initiallistcourriers)
    
 
       

@@ -33,7 +33,7 @@
 
 </v-row>
 <v-row>
-    <v-col md="6" lg="6" sm="12">
+    <!-- <v-col md="6" lg="6" sm="12">
         <v-autocomplete
   v-model="selected"
   :items="listfaqcategories"
@@ -53,22 +53,23 @@
 </v-autocomplete>
 
      
-  </v-col>
-  <v-col md="6" lg="6" sm="12">
+  </v-col> -->
+  <!-- <v-col md="6" lg="6" sm="12">
     
     <v-text-field
-      label="Link"
+      label="Lien"
       outlined dense
       v-model="model.link"
       :rules="rules.linkRules"
     ></v-text-field>
-  </v-col>
+  </v-col> -->
 </v-row>
 
     
         <v-btn
           :loading="loading"
-          :disabled="!valid || !isCategorieSelected"
+          :disabled="!valid"
+          
           class="mr-4 text-white" color="#1B73E8"
           @click="submitForm"
         >
@@ -159,9 +160,12 @@
         //this.selectedRegions.push(value.id)
         
       },
-          submitForm () {
+        async  submitForm () {
        
         console.log('Données formulaire FAQ Catégorie ++++++ : ',{...this.model})
+        const categorieInfosGenerales = await this.listfaqcategories.find(item => item.slug =="infos-generales")
+        console.log(" categorieInfosGenerales ++++++++++++++",  categorieInfosGenerales )
+        this.model.categorie = categorieInfosGenerales.id
             let validation = this.$refs.form.validate()
           
             this.loading = true;

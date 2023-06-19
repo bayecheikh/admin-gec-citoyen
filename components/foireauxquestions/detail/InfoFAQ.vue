@@ -15,8 +15,8 @@
               
                 <p class="info-profil mb-4"><span>Description : </span>{{detailfoireauxquestions.description}}</p>
 
-              <p class="info-profil mb-4"><span>Catégorie : </span>{{detailfoireauxquestions.categorie.name}}</p>
-              <p class="info-profil mb-4"><span>Lien : </span>{{detailfoireauxquestions.link}}</p>
+              <!-- <p class="info-profil mb-4"><span>Catégorie : </span>{{detailfoireauxquestions.categorie.name}}</p> -->
+              <!-- <p class="info-profil mb-4"><span>Lien : </span>{{detailfoireauxquestions.link}}</p> -->
 
           </div>
           </div>

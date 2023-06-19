@@ -12,20 +12,20 @@
         </v-col>
         <v-col md="12" lg="12" sm="12">
           <v-textarea
-            label="Résumé *"
+            label="Description"
             outlined dense
             v-model="model.resume"
             :rules="rules.resumeRules"
           ></v-textarea>
         </v-col>
-        <!-- <v-col md="12" lg="12" sm="12">
+        <v-col md="12" lg="12" sm="12">
           <v-textarea
-            label="Body"
+            label="Body *"
             outlined dense
             v-model="model.body"
             :rules="rules.bodyRules"
           ></v-textarea>
-        </v-col> -->
+        </v-col>
         <v-col
         lg="6"
         md="6"
@@ -38,7 +38,7 @@
               outlined
               dense
               small-chips
-              label="Catégorie"
+              label="Catégorie *"
               item-text="libelle"
               item-value="id"
               return-object
@@ -160,12 +160,13 @@
        
         ],
         resumeRules: [
-          v => !!v || 'Le résumé est obligatoire',
-          v => (v.length <= 200) || 'Le résumé ne doit pas dépasser 200 caractères',
+         
+          v => (v.length <= 200) || 'La description ne doit pas dépasser 200 caractères',
         ],
-        // bodyRules: [
-        //   v => (v.length <= 200) || 'Le body ne doit pas dépasser 200 caractères',
-        // ],
+        bodyRules: [
+        v => !!v || 'Le body est obligatoire',
+          v => (v.length <= 200) || 'Le body ne doit pas dépasser 200 caractères',
+        ],
         categoriesRules: [
           v => !!v || 'La catégorie est obligatoire'
         ],

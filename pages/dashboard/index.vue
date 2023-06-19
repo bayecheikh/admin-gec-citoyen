@@ -247,48 +247,25 @@ export default {
 
   mounted: async function () {
 
-  
-    this.$store.dispatch('organismes/getList')
-      
-      // this.$store.dispatch('courriers/getListTraites')
-      this.$store.dispatch('annees/getList')
-      this.$store.dispatch('mois/getList')
-      await this.$store.dispatch('courriers/getList')
+ 
+   
+    await this.$store.dispatch('organismes/getList')
+    await this.$store.dispatch('courriers/getList')
       const currentYear = new Date().getFullYear();
       const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
       await this.$store.dispatch('courriers/updateListPie', newlistpie)
-    // this.$store.dispatch('organismes/getList')
-
-    // this.$store.dispatch('courriers/getListTraites')
-
-    // this.$store.dispatch('annees/getList')
-    // this.$store.dispatch('mois/getList')
-    // await this.$store.dispatch('courriers/getList')
-    // const currentYear = new Date().getFullYear();
-    // const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
-    // await this.$store.dispatch('courriers/updateListPie', newlistpie)
-   
+      this.$store.dispatch('courriers/getListTraites')
+     await this.$store.dispatch('annees/getList')
+     await this.$store.dispatch('mois/getList')
+     this.$store.dispatch('courriers/updateIsPieLoading', false)
+      this.$store.dispatch('courriers/updateIsBarLoading', false)
   
 
-    // console.log('COURRIERS++++++++++', this.listcourriers)
-    // console.log('ORGANISMES++++++++++', this.listorganismes)
-
-    // this.nombreOrganismes = this.listorganismes.length
-    // this.nombreCourriers = this.listcourriers.length
-    // const traitelist = await this.listcourriers?.filter((item) => item.traitement_status_slug == "traite")
-    // this.nombreCourriersTraites = await traitelist?.length
-    // if (this.nombreCourriersTraites && this.nombreCourriers) {
-    //   this.tauxDeReponse = ((this.nombreCourriersTraites / this.nombreCourriers) * 100).toFixed(0);
-    // }
-    // await this.updateListCourriers(this.listcourriers);
-
-    // await this.updateListCourriersAnnee(this.listcourriers);
   },
 
   data() {
     return {
-
-      annee: this.setDefaultAnnee(),
+      annee: '',
       nombreOrganismes: 0,
       tauxDeReponse: 0,
       nombreCourriers: 0,

@@ -56,7 +56,7 @@ export default {
           data: this.courriersMensuels
         }]
       };
-      await this.$store.dispatch('courriers/updateIsBarLoading', true)
+      // await this.$store.dispatch('courriers/updateIsBarLoading', true)
   
       await this.renderChart(this.repartitionMensuelleData, this.barChartOptions);
       return;
@@ -135,13 +135,13 @@ export default {
           label: 'Nombre de courriers',
           borderWidth: 1,
           backgroundColor: this.courriersMensuels.map((courriers, i) =>
-            courriers < 10 ? '#999999' : (i === this.moisAvecPlusCourriers ? '#008064' : '#0a3764')
+            (i === this.moisAvecPlusCourriers ? '#008064' : '#0a3764')
           ),
           data: this.courriersMensuels
         }]
       };
 
-      await this.$store.dispatch('courriers/updateIsBarLoading', false)
+      // await this.$store.dispatch('courriers/updateIsBarLoading', false)
       await  this.renderChart(this.repartitionMensuelleData, this.barChartOptions);
       return
     }
