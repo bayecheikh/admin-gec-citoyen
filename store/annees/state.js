@@ -6,12 +6,6 @@ export default () => ({
       ],
 
     headerannees : [
-        /* {
-            text: 'Nom',
-            align: 'start',
-            sortable: true,
-            value: 'name',
-        }, */
        
         { text: 'Annee', value: 'libelle_annee' },
         { text: 'Actions', value: 'actions', sortable: false },

@@ -9,7 +9,7 @@
             <div v-show="!ispieloading" class="custom-pie-chart mx-auto text-center">
               <PieChart />
             </div>
-            <div v-show="isbarloading" class="custom-pie-chart-loader mx-auto mt-5 text-center">
+            <div v-show="ispieloading" class="custom-pie-chart-loader mx-auto mt-5 text-center">
               <svg class="custom-svg" width="250" height="250" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#4a7197">
                       <g fill="none" fill-rule="evenodd">
                           <g transform="translate(1 1)" stroke-width="0.5">
@@ -22,7 +22,6 @@
                       </g>
                     </svg>
             </div>
-
           </v-col>
           <v-col md="6" lg="6" sm="12" class="border-left-chart">
             <h4 class="card-title custom-font">Répartition mensuelle des courriers</h4>
@@ -30,19 +29,7 @@
               <BarChart/>
             </div>
             <div v-show="isbarloading" class="loader-bar-chart  mx-auto mt-5 text-center">
-              <!-- <svg class="custom-svg" width="250" height="250" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#0a3764">
-                      <g fill="none" fill-rule="evenodd">
-                          <g transform="translate(1 1)" stroke-width="0.5">
-                              <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
-                              <path d="M36 18c0-9.94-8.06-18-18-18">
-                                  <animateTransform attributeName="transform" type="rotate" from="0 18 18"
-                                      to="360 18 18" dur="1s" repeatCount="indefinite" />
-                              </path>
-                          </g>
-                      </g>
-                    </svg> -->
             </div>
-           
           </v-col>
         </v-row>
       </v-col>
@@ -59,7 +46,6 @@ import { mapMutations, mapGetters } from 'vuex'
 export default {
 
   computed: {
-    // ...mapState('filtresannees', ['listcourriersannee']),
     ...mapGetters({
       ispieloading: 'courriers/ispieloading',
       isbarloading: 'courriers/isbarloading',
@@ -67,16 +53,11 @@ export default {
     })
   },
   components: { BarChart, LeftMenu, PieChart },
-
-   
- 
-
 };
 
 </script>
 
 <style scoped>
-
 .loader-bar-chart {
     height: 350px;
     width: 500px;

@@ -14,7 +14,7 @@ export default {
   extends: Bar,
   methods: {
     async initializeChart() {
-      if (this.listcourriers?.length === 0) {
+      if (!this.listcourriers?.length) {
       // La liste des courriers est vide, afficher "Aucun courrier" dans le diagramme en barres
       this.intitulesMois = ["Aucun courrier"];
       this.courriersMensuels = [0];
@@ -56,11 +56,16 @@ export default {
           data: this.courriersMensuels
         }]
       };
-      await this.$store.dispatch('courriers/updateIsBarLoading', true)
-  
+      
+      
       await this.renderChart(this.repartitionMensuelleData, this.barChartOptions);
-      return;
+      await this.$store.dispatch('courriers/updateIsBarLoading', false)
+  
+      
     }
+    else{
+
+    
       console.log("EXEC++++")
       this.courriersParMois = [];
       this.intitulesMois = [];
@@ -141,16 +146,16 @@ export default {
         }]
       };
 
-      await this.$store.dispatch('courriers/updateIsBarLoading', false)
+      
       await  this.renderChart(this.repartitionMensuelleData, this.barChartOptions);
-      return
+      await this.$store.dispatch('courriers/updateIsBarLoading', false)
+      
+    
     }
+  }
   },
   mounted: async function () {
-
     this.initializeChart();
-
-
   },
   watch: {
     listcourriers: {
@@ -164,11 +169,7 @@ export default {
     return {
       courriersParMois: [],
       moisAvecPlusCourriers: null,
-      
-
-      repartitionMensuelleData: {
-
-      },
+      repartitionMensuelleData: {},
       intitulesOrganismes: [],
       intitulesMois: [],
       courriersParOrganisme: [],

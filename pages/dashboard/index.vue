@@ -24,24 +24,25 @@
 
             <div class="custom-stat-boxes-bloc mt-5">
 
-              <h1 v-show="listorganismes&& listorganismes.length" class="custom-stat-boxes-number">
+              <h1 v-show="listorganismes" class="custom-stat-boxes-number">
                 {{
                   listorganismes.length
                 }}
               </h1>
-              <h1 v-show="!listorganismes || !listorganismes.length" class="custom-stat-boxes-number">
-                <svg class="custom-svg" width="50" height="50" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#999999">
-                      <g fill="none" fill-rule="evenodd">
-                          <g transform="translate(1 1)" stroke-width="2">
-                              <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
-                              <path d="M36 18c0-9.94-8.06-18-18-18">
-                                  <animateTransform attributeName="transform" type="rotate" from="0 18 18"
-                                      to="360 18 18" dur="1s" repeatCount="indefinite" />
-                              </path>
-                          </g>
-                      </g>
-                    </svg>
-                </h1>
+              <h1 v-show="!listorganismes" class="custom-stat-boxes-number">
+                <svg class="custom-svg" width="50" height="50" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg"
+                  stroke="#999999">
+                  <g fill="none" fill-rule="evenodd">
+                    <g transform="translate(1 1)" stroke-width="2">
+                      <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
+                      <path d="M36 18c0-9.94-8.06-18-18-18">
+                        <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s"
+                          repeatCount="indefinite" />
+                      </path>
+                    </g>
+                  </g>
+                </svg>
+              </h1>
               <span class="icon custom-icon-organismes">
                 <svg xmlns="http://www.w3.org/2000/svg" width="55.83" height="55.639" viewBox="0 0 55.83 55.639">
 
@@ -58,9 +59,7 @@
                     <path id="Tracé_6970" data-name="Tracé 6970"
                       d="M13046.249,2626.784c-5.753,5.946-8.914,9.583-8.914,9.583v3.671l2.144.631,3.331-.894,1.813.894,2.124.767,2.7-.767,3.49-5.1.289-2.89-2.428-3.28-2.26-1.413-1.795-1.206Z"
                       transform="translate(-11260 -2278.884)" fill="#fff" />
-
                   </g>
-
                 </svg>
               </span>
             </div>
@@ -71,26 +70,27 @@
             <h4 class="custom-stat-boxes-title">Total courriers reçus</h4>
             <div class="custom-stat-boxes-bloc mt-5">
 
-              <h1 v-show="listcourriers&&listcourriers.length" class="custom-stat-boxes-number">
+              <h1 v-show="listcourriers" class="custom-stat-boxes-number">
                 {{
                   listcourriers.length
                 }}
 
 
               </h1>
-              <h1 v-show="!listcourriers || !listcourriers.length " class="custom-stat-boxes-number">
-              
-                <svg class="custom-svg" width="50" height="50" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#999999">
-                            <g fill="none" fill-rule="evenodd">
-                                <g transform="translate(1 1)" stroke-width="2">
-                                    <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
-                                    <path d="M36 18c0-9.94-8.06-18-18-18">
-                                        <animateTransform attributeName="transform" type="rotate" from="0 18 18"
-                                            to="360 18 18" dur="1s" repeatCount="indefinite" />
-                                    </path>
-                                </g>
-                            </g>
-                        </svg>
+              <h1 v-show="!listcourriers" class="custom-stat-boxes-number">
+
+                <svg class="custom-svg" width="50" height="50" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg"
+                  stroke="#999999">
+                  <g fill="none" fill-rule="evenodd">
+                    <g transform="translate(1 1)" stroke-width="2">
+                      <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
+                      <path d="M36 18c0-9.94-8.06-18-18-18">
+                        <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s"
+                          repeatCount="indefinite" />
+                      </path>
+                    </g>
+                  </g>
+                </svg>
               </h1>
               <span class="icon custom-icon-recus">
                 <svg xmlns="http://www.w3.org/2000/svg" width="60" height="49.58" viewBox="0 0 60 49.58">
@@ -125,25 +125,26 @@
           <div class="custom-stat-boxes bg-marron mr-3 pl-4 pr-5 pt-5 pb-5 text-sm-center">
             <h4 class="custom-stat-boxes-title">Total courriers traités</h4>
             <div class="custom-stat-boxes-bloc mt-5">
-              <h1 v-show="listcourrierstraites && listcourrierstraites.length " class="custom-stat-boxes-number">
+              <h1 v-show="listcourrierstraites" class="custom-stat-boxes-number">
 
                 {{
                   listcourrierstraites.length
                 }}
 
               </h1>
-              <h1 v-show="!listcourrierstraites  || !listcourrierstraites.length" class="custom-stat-boxes-number">
-                <svg class="custom-svg" width="50" height="50" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#999999">
-                    <g fill="none" fill-rule="evenodd">
-                        <g transform="translate(1 1)" stroke-width="2">
-                            <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
-                            <path d="M36 18c0-9.94-8.06-18-18-18">
-                                <animateTransform attributeName="transform" type="rotate" from="0 18 18"
-                                    to="360 18 18" dur="1s" repeatCount="indefinite" />
-                            </path>
-                        </g>
+              <h1 v-show="!listcourrierstraites" class="custom-stat-boxes-number">
+                <svg class="custom-svg" width="50" height="50" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg"
+                  stroke="#999999">
+                  <g fill="none" fill-rule="evenodd">
+                    <g transform="translate(1 1)" stroke-width="2">
+                      <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
+                      <path d="M36 18c0-9.94-8.06-18-18-18">
+                        <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s"
+                          repeatCount="indefinite" />
+                      </path>
                     </g>
-                  </svg>
+                  </g>
+                </svg>
               </h1>
               <span class="icon custom-icon-traites">
                 <svg xmlns="http://www.w3.org/2000/svg" width="55.616" height="50.354" viewBox="0 0 55.616 50.354">
@@ -169,22 +170,26 @@
           <div class="custom-stat-boxes bg-marron pl-4 pr-5 pt-5 pb-5 text-sm-center">
             <h4 class="custom-stat-boxes-title color-yellow">Taux de réponse</h4>
             <div class="custom-stat-boxes-bloc mt-5">
-              <h1 class="custom-stat-boxes-number color-yellow" v-show="listcourrierstraites.length&&listcourriers.length">{{ ((listcourrierstraites.length / listcourriers.length) * 100).toFixed(0) }} %</h1>
-            
-              <h1 class="custom-stat-boxes-number color-yellow" v-show="!listcourriers.length || !listcourrierstraites.length">
-                <svg class="custom-svg" width="50" height="50" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#999999">
-                    <g fill="none" fill-rule="evenodd">
-                        <g transform="translate(1 1)" stroke-width="2">
-                            <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
-                            <path d="M36 18c0-9.94-8.06-18-18-18">
-                                <animateTransform attributeName="transform" type="rotate" from="0 18 18"
-                                    to="360 18 18" dur="1s" repeatCount="indefinite" />
-                            </path>
-                        </g>
+              <h1 class="custom-stat-boxes-number color-yellow"
+                v-show="listcourriers.length">{{ ((listcourrierstraites.length /
+                  listcourriers.length) * 100).toFixed(0) }} %</h1>
+
+              <h1 class="custom-stat-boxes-number color-yellow"
+                v-show="!listcourriers.length"> 0 %
+                <!-- <svg class="custom-svg" width="50" height="50" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg"
+                  stroke="#999999">
+                  <g fill="none" fill-rule="evenodd">
+                    <g transform="translate(1 1)" stroke-width="2">
+                      <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
+                      <path d="M36 18c0-9.94-8.06-18-18-18">
+                        <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s"
+                          repeatCount="indefinite" />
+                      </path>
                     </g>
-                  </svg>
+                  </g>
+                </svg> -->
               </h1>
-             
+
 
               <span class="icon custom-icon-taux">
                 <svg xmlns="http://www.w3.org/2000/svg" width="63.735" height="63.996" viewBox="0 0 63.735 63.996">
@@ -205,7 +210,7 @@
       </v-row>
     </div>
     <div class="custom-container mt-5 mr-8 ml-8 pl-4 pr-1 pt-5 pb-5">
-      <list-chart ></list-chart>
+      <list-chart></list-chart>
     </div>
   </div>
 </template>
@@ -229,32 +234,33 @@ export default {
     // ...mapState('filtres', ['listcourriers']),
     // ...mapState('filtresannees', ['listcourriersannee']),
     ...mapGetters({
-        listcourriers:'courriers/listcourriers',
-        isloading:'courriers/isloading',
-        initiallistcourriers:'courriers/initiallistcourriers',
-        listcourrierstraites:'courriers/listcourrierstraites',
-        listorganismes:'organismes/listorganismes',
-        listannees:'annees/listannees',
+      listcourriers: 'courriers/listcourriers',
+      isloading: 'courriers/isloading',
+      initiallistcourriers: 'courriers/initiallistcourriers',
+      listcourrierstraites: 'courriers/listcourrierstraites',
+      listorganismes: 'organismes/listorganismes',
+      listannees: 'annees/listannees',
     }),
 
   },
-  
+
 
   mounted: async function () {
- 
-    
-     this.$store.dispatch('organismes/getList')
- 
-     this.$store.dispatch('courriers/getListTraites')
 
-     this.$store.dispatch('annees/getList')
-      this.$store.dispatch('mois/getList')
-    await this.$store.dispatch('courriers/getList')
-    const currentYear = new Date().getFullYear();
-    const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
-    this.$store.dispatch('courriers/updateListPie', newlistpie)
-    
+
+    // this.$store.dispatch('organismes/getList')
+
+    // this.$store.dispatch('courriers/getListTraites')
+
+    // this.$store.dispatch('annees/getList')
+    // this.$store.dispatch('mois/getList')
+    // await this.$store.dispatch('courriers/getList')
+    // const currentYear = new Date().getFullYear();
+    // const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
+    // await this.$store.dispatch('courriers/updateListPie', newlistpie)
+   
   
+
     // console.log('COURRIERS++++++++++', this.listcourriers)
     // console.log('ORGANISMES++++++++++', this.listorganismes)
 
@@ -286,8 +292,8 @@ export default {
       const anneeActuelle = new Date().getFullYear();
 
       // Recherche de l'objet année correspondant à l'année actuelle
-      
-return anneeActuelle
+
+      return anneeActuelle
       // if (anneeParDefaut) {
       //   this.annee = anneeParDefaut;
       // }
@@ -298,7 +304,7 @@ return anneeActuelle
     async changeAnnee(value) {
 
       console.log(value)
-   
+
       const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == value)
       await this.$store.dispatch('courriers/updateListPie', newlistpie)
 
@@ -313,16 +319,18 @@ return anneeActuelle
     async onClearClicked() {
       this.organisme = ''
       this.annee = ''
+      this.$store.dispatch('courriers/updateListPie', this.initiallistcourriers)
+      this.$store.dispatch('courriers/updateList', this.initiallistcourriers)
       // await this.updateListCourriers(this.listcourriers);
-    
+
       // await this.updateListCourriersAnnee(this.listcourriers);
-    //   this.nombreOrganismes = this.listorganismes.length
-    // this.nombreCourriers = this.listcourriers.length
-    // const traitelist = await this.listcourriers?.filter((item) => item.traitement_status_slug == "traite")
-    // this.nombreCourriersTraites = await traitelist?.length
-    // if (this.nombreCourriersTraites && this.nombreCourriers) {
-    //   this.tauxDeReponse = ((this.nombreCourriersTraites / this.nombreCourriers) * 100).toFixed(0);
-    // }
+      //   this.nombreOrganismes = this.listorganismes.length
+      // this.nombreCourriers = this.listcourriers.length
+      // const traitelist = await this.listcourriers?.filter((item) => item.traitement_status_slug == "traite")
+      // this.nombreCourriersTraites = await traitelist?.length
+      // if (this.nombreCourriersTraites && this.nombreCourriers) {
+      //   this.tauxDeReponse = ((this.nombreCourriersTraites / this.nombreCourriers) * 100).toFixed(0);
+      // }
     },
     async updateCourrier(value, type) {
       var list = []
@@ -331,7 +339,7 @@ return anneeActuelle
         this.organisme = value
         if (this.annee != '') {
           list = await this.initiallistcourriers.filter((item) => (this.getYearFromCreatedAt(item.createdAt) == this.annee && item.structure == value))
-          
+
         } else {
           list = this.initiallistcourriers.filter((item) => (item.structure == value))
         }
@@ -346,10 +354,10 @@ return anneeActuelle
           list = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == value)
 
         }
-      
+
       }
       // console.log(list)
-     this.updateStat(list)
+      this.updateStat(list)
     },
 
     getYearFromCreatedAt(createdAt) {
@@ -360,7 +368,7 @@ return anneeActuelle
       // await this.updateListCourriers(newlist);
       this.$store.dispatch('courriers/updateList', newlist)
       this.$store.dispatch('courriers/updateListTraites', newlist)
-  
+
       // console.log('Change list ++++ ', newlist)
       // this.nombreCourriers = await newlist?.length;
       // const newtraitelist = await newlist?.filter((item) => item.traitement_status_slug == "traite")
@@ -371,7 +379,7 @@ return anneeActuelle
       // else {
       //   this.tauxDeReponse = 0
       // }
-     
+
     },
   },
 
