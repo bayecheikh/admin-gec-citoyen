@@ -87,6 +87,25 @@
 </v-col>
 </v-row>
 <v-row>
+<v-col md="6" lg="6" sm="12">
+  
+  <v-autocomplete
+  v-model="selectedstatus"
+  :items="listorganismesstatus"
+  outlined
+  dense
+  small-chips
+  label="Statut"
+  item-text="name"
+  item-value="id"
+  return-object
+  @change="changeStatus"
+>
+  <template v-slot:item="{ item }">
+    <div>{{ item.name }}</div>
+  </template>
+</v-autocomplete>
+</v-col>
 
 <v-col md="6" lg="6" sm="12">
   <v-textarea
@@ -126,6 +145,7 @@
         computed: {
           ...mapGetters({
           listorganismescategories: 'organismescategories/listorganismescategories',
+          listorganismesstatus: 'organismesstatus/listorganismesstatus',
           detailorganisme:'organismes/detailorganisme',
        
           headers: 'faqcategories/headerfaqcategories'
@@ -137,6 +157,7 @@
       },
         data: () => ({
           selected: null,
+          selectedstatus: null,
           loading: false,
           message:null,
           color:null,
@@ -153,6 +174,7 @@
             gedUrl: '',
             gecUrl: '',
             typeStructure: '',
+            status: '',
             country_code:'+221',
             telephone: '',
             adresse: '',
@@ -215,6 +237,12 @@
        
         
       },
+      async changeStatus(value) {
+        console.log("VALUEE : ++++++++++++ ",value)
+        this.model.status = value.id
+       
+        
+      },
         
          async getDetail(id){
             this.progress=true
@@ -233,6 +261,7 @@
               this.model.gecUrl= response.data.data.gecUrl
               this.model.typeStructure= response.data.data.typeStructure.id
               this.selected= response.data.data.typeStructure
+              this.selectedstatus= response.data.data.status
               this.model.user_webservice= response.data.data.user_webservice
               this.model.user_ws_password= response.data.data.user_ws_password
              

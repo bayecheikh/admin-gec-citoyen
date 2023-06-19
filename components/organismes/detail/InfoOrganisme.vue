@@ -22,7 +22,8 @@
               <p class="info-profil mb-4"><span>GED URL : </span>{{detailorganisme.gedUrl}}</p>
 
               <p class="info-profil mb-4"><span>GEC URL : </span>{{detailorganisme.gecUrl}}</p>
-
+              <p class="info-profil mb-4" v-show="detailorganisme.status == 1"><span>Statut : </span>Actif</p>
+              <p class="info-profil mb-4" v-show="detailorganisme.status == 0"><span>Statut : </span>Inactif</p>
           </div>
           </div>
         </v-col>

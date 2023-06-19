@@ -1,19 +1,6 @@
 <template>
 <div>
   <v-card-title class="d-flex">
-    <!--<v-autocomplete
-        v-model="search"
-        :items="listcategories"
-        :rules="rules.categoriesRules"
-        outlined
-        dense
-        small-chips
-        label="Catégorie"
-        item-text="libelle"
-        item-value="libelle"
-        clearable
-      >
-    </v-autocomplete>-->
     <v-text-field
         v-model="search"
         append-icon="mdi-magnify"
@@ -130,10 +117,23 @@
           </v-list>
         </v-menu>
       </template>
+      <template v-slot:[`item.status`]="{item}">
+  <v-switch
+    :input-value="item.status==1?true:false"
+    color="success"
+    hide-details
+    @change="activeDesactiveOrganisme(item.id,  $event)"
+
+  ></v-switch>
+  
+</template>
 </v-data-table>
 </div>
 
 </template>
+
+
+
 <script>
 import { mapMutations, mapGetters } from 'vuex'
   export default {
@@ -153,6 +153,22 @@ import { mapMutations, mapGetters } from 'vuex'
       }
     },
     methods: {
+      activeDesactiveOrganisme(id, newValue ) {
+        const nouveauStatut = newValue ? 1 : 0;
+        console.log('------------- statut organisme',id)
+        this.dialog=false   
+        this.$store.dispatch('toast/getMessage',{type:'processing',text:'Traitement en cours ...'})  
+        this.$gecApi.$patch('/structures/'+id, {'status' : nouveauStatut})
+        .then(async (response) => {   
+          console.log('-----************-------- reponse active',response)          
+            this.$store.dispatch('toast/getMessage',{type:'success',text:'Opération réussie'})
+            }).catch((error) => {
+              this.$store.dispatch('toast/getMessage',{type:'error',text:'Opération échouée'})
+              console.log('Code error ++++++: ',error)
+            }).finally(() => {              
+            console.log('Requête envoyée ')
+        }); 
+      },
       visualiserItem (item) {   
         this.$store.dispatch('organismes/getDetail',item)
         this.$router.push('/organismes/detail/'+item.id);
@@ -220,6 +236,7 @@ import { mapMutations, mapGetters } from 'vuex'
       }
     },
     data: () => ({
+      status:[0,1],
       headerorganismes : [
         /* {
             text: 'Nom',

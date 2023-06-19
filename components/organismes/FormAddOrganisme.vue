@@ -87,6 +87,25 @@
 </v-col>
 </v-row>
 <v-row>
+<v-col md="6" lg="6" sm="12">
+  
+  <v-autocomplete
+  v-model="selectedstatus"
+  :items="listorganismesstatus"
+  outlined
+  dense
+  small-chips
+  label="Statut"
+  item-text="name"
+  item-value="id"
+  return-object
+  @change="changeStatus"
+>
+  <template v-slot:item="{ item }">
+    <div>{{ item.name }}</div>
+  </template>
+</v-autocomplete>
+</v-col>
 
 <v-col md="6" lg="6" sm="12">
   <v-textarea
@@ -129,6 +148,7 @@
         computed: {
   ...mapGetters({
     listorganismescategories: 'organismescategories/listorganismescategories',
+    listorganismesstatus: 'organismesstatus/listorganismesstatus',
           detailorganisme:'organismes/detailorganisme',
           
           headers: 'faqcategories/headerfaqcategories'
@@ -141,6 +161,7 @@
      
         data: () => ({
           selected: null,
+          selectedstatus: 1,
           loading: false,
           message:null,
           color:null,
@@ -159,7 +180,6 @@
             typeStructure: '',
             user_webservice: 'bjidoc.webservice',
             user_ws_password: 'G3dassi2021', 
-            country_code:'+221',
             telephone: '',
             adresse: '',
             fonction: '',
@@ -222,6 +242,12 @@
        
 
         //this.selectedRegions.push(value.id)
+        
+      },
+      async changeStatus(value) {
+        console.log("VALUEE : ++++++++++++ ",value)
+        this.model.status = value.id
+       
         
       },
         

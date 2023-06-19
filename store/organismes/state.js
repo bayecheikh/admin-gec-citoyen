@@ -10,6 +10,7 @@ export default () => ({
         }, */
         { text: 'Organismes', value: 'description' },
         { text: 'Type', value: 'typeStructure.name' },
+        { text: 'Statut', value: 'status' },
         { text: 'Actions', value: 'actions', sortable: false },
     ],
     detailorganisme :{}
