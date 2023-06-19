@@ -22,7 +22,7 @@
    
       this.$store.dispatch('organismes/getList')
       
-      this.$store.dispatch('courriers/getListTraites')
+      // this.$store.dispatch('courriers/getListTraites')
       this.$store.dispatch('annees/getList')
       this.$store.dispatch('mois/getList')
       await this.$store.dispatch('courriers/getList')

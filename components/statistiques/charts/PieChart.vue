@@ -28,7 +28,7 @@ export default {
       console.log("LIST COURRIERS PIE", this.listcourrierspie)
       this.nombreTotalCourriers = this.listcourrierspie.length;
       console.log("Nombre total courriers", this.nombreTotalCourriers)
-      if (this.nombreTotalCourriers) {
+      if (this.nombreTotalCourriers != 0) {
         for (let i = 0; i < this.listorganismes.length; i++) {
           let courriersOrganisme = await this.listcourrierspie.filter((item) => item.structure == this.listorganismes[i].id);
           let nombreCourriersOrganisme = parseFloat(courriersOrganisme.length);
@@ -77,10 +77,9 @@ export default {
             }
             ]
           }
-          await this.renderChart(this.repartitionParOrganismeData, this.pieChartOptions);
-        this.$store.dispatch('courriers/updateIsPieLoading', false)
-     
-      
+        await this.$store.dispatch('courriers/updateIsPieLoading', false)
+        await this.renderChart(this.repartitionParOrganismeData, this.pieChartOptions);
+        return
 
       }
       else {
@@ -106,8 +105,8 @@ export default {
             data: this.pourcentageCourriersParOrganisme
           }]
         };
+        await this.$store.dispatch('courriers/updateIsPieLoading', true)
         await this.renderChart(this.repartitionParOrganismeData, this.pieChartOptions);
-        this.$store.dispatch('courriers/updateIsPieLoading', false)
 
 
       }
