@@ -216,8 +216,8 @@
             (v) => (v && v.length >= 2) || "L'URL de la GEC doit contenir au moins 2 caractères"
           ],
           baseUrlRules: [
-            (v) => !!v || 'Le Base URL est obligatoire',
-            (v) => (v && v.length >= 2) || "Le Base URL doit contenir au moins 2 caractères"
+            (v) => !!v || 'La Base URL est obligatoire',
+            (v) => (v && v.length >= 2) || "La Base URL doit contenir au moins 2 caractères"
           ],
           gedUrlRules: [
             (v) => !!v || 'L\'URL de la GED est obligatoire',
