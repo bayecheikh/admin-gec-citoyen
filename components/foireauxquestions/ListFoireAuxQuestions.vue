@@ -6,7 +6,7 @@
           <v-tab class="text-normal" v-for="item in tabItems" :key="item.value"> {{item.title}}</v-tab>
         </v-tabs>
       </div>
-      <!-- <div class="ml-auto p-2">
+      <div class="ml-auto p-2">
         <v-btn
         depressed
         rounded
@@ -18,7 +18,7 @@
           </v-icon>
           Ajouter une question/réponse
         </v-btn>
-      </div> -->
+      </div>
     </div>
     
     <v-tabs-items v-model="tab">
