@@ -13,5 +13,5 @@ export default () => ({
         { text: 'Statut', value: 'status' },
         { text: 'Actions', value: 'actions', sortable: false },
     ],
-    detailorganisme :{}
+    detailorganisme : ''
 })

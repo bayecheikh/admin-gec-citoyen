@@ -3,12 +3,12 @@
     <div class="custom-container mt-5">
       <v-row class="d-flex align-item-center bg-white justify-content-between pt-6 mb-2 mt-4 pl-5">
         <v-col lg="4" md="4" sm="12">
-          <v-autocomplete ref="inputRef" v-model="organisme" :items="listorganismes" outlined dense label="Organisme"
+          <v-autocomplete ref="inputRef" v-model="detailorganisme" :items="listorganismes" outlined dense label="Organisme"
             item-text="intitule" item-value="id" @change="changeOrganisme">
           </v-autocomplete>
         </v-col>
         <v-col lg="4" md="4" sm="12">
-          <v-autocomplete ref="inputRef" v-model="annee" :items="listannees" outlined dense label="Année"
+          <v-autocomplete ref="inputRef" v-model="detailannee" :items="listannees" outlined dense label="Année"
             item-text="libelle_annee" item-value="id" @change="changeAnnee">
           </v-autocomplete>
         </v-col>
@@ -239,6 +239,8 @@ export default {
       initiallistcourriers: 'courriers/initiallistcourriers',
       listcourrierstraites: 'courriers/listcourrierstraites',
       listorganismes: 'organismes/listorganismes',
+      detailorganisme: 'organismes/detailorganisme',
+      detailannee: 'annees/detailannee',
       listannees: 'annees/listannees',
     }),
 
@@ -249,17 +251,6 @@ export default {
 
  
    
-    await this.$store.dispatch('organismes/getList')
-    await this.$store.dispatch('courriers/getList')
-      const currentYear = new Date().getFullYear();
-      const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
-      await this.$store.dispatch('courriers/updateListPie', newlistpie)
-      this.$store.dispatch('courriers/getListTraites')
-     await this.$store.dispatch('annees/getList')
-     await this.$store.dispatch('mois/getList')
-     this.$store.dispatch('courriers/updateIsPieLoading', false)
-      this.$store.dispatch('courriers/updateIsBarLoading', false)
-  
 
   },
 
@@ -293,6 +284,7 @@ export default {
 
       const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == value)
       await this.$store.dispatch('courriers/updateListPie', newlistpie)
+      await this.$store.dispatch('annees/getDetail', value)
 
       this.updateCourrier(value, 'annee')
 
@@ -300,13 +292,16 @@ export default {
     async changeOrganisme(value) {
 
       console.log(value)
-      this.updateCourrier(value, 'organisme')
+      this.updateCourrier(value, 'organisme')*
+      await this.$store.dispatch('organismes/getDetail', value)
     },
     async onClearClicked() {
       this.organisme = ''
       this.annee = ''
       this.$store.dispatch('courriers/updateListPie', this.initiallistcourriers)
       this.$store.dispatch('courriers/updateList', this.initiallistcourriers)
+      await this.$store.dispatch('organismes/getDetail', '')
+      await this.$store.dispatch('annees/getDetail', '')
       // await this.updateListCourriers(this.listcourriers);
 
       // await this.updateListCourriersAnnee(this.listcourriers);
