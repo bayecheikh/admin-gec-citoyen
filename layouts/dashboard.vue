@@ -148,6 +148,7 @@
 
 <script>
   import AppToolbar from '@/components/AppToolbar'
+  import { mapGetters} from 'vuex';
   export default {
     /* middleware: 'auth', */
     middleware({redirect,$getToken,$getUser,$isLogged,$loggout }) {
@@ -160,10 +161,34 @@
     components: {
       AppToolbar
     },
-    mounted: function() {
+    computed: {
+   
+   ...mapGetters({
+       initiallistcourriers:'courriers/initiallistcourriers',
+   }),
+
+ },
+ methods: {
+        getYearFromCreatedAt(createdAt) {
+      const date = new Date(createdAt)
+      return date.getFullYear()
+    },
+      },
+    mounted: async function() {
+     
       this.layout= this.$getUserMenu()
       this.isAuthenticate = this.$isLogged()
       this.loggedInUser = this.$getUser() 
+      await this.$store.dispatch('organismes/getList')
+    await this.$store.dispatch('courriers/getList')
+      // const currentYear = new Date().getFullYear();
+      // const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
+      this.$store.dispatch('courriers/updateListPie', this.initiallistcourriers)
+      this.$store.dispatch('courriers/getListTraites')
+     await this.$store.dispatch('annees/getList')
+     await this.$store.dispatch('mois/getList')
+     this.$store.dispatch('courriers/updateIsPieLoading', false)
+      this.$store.dispatch('courriers/updateIsBarLoading', false)
     },
     data: () => ({
       layout:[],

@@ -250,6 +250,8 @@ export default {
 
 
   mounted: async function (){
+
+   
     
     // if(localStorage.getItem('executeMounted') == true){
     //   await this.$store.dispatch('organismes/getList')
