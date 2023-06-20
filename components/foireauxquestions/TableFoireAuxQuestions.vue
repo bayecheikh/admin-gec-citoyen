@@ -119,13 +119,13 @@
                   >Modifier
                 </v-list-item-title>
               </v-list-item>
-              <!-- <v-list-item  @click="opendialog(item)" class="custom-v-list-action pl-2 pr-1" >
+              <v-list-item  @click="opendialog(item)" class="custom-v-list-action pl-2 pr-1" >
                 <v-list-item-title>
                   <v-icon small class="mr-2" v-bind="attrs" v-on="on">
                     mdi-delete-outline </v-icon
                   >Supprimer
                 </v-list-item-title>
-              </v-list-item> -->
+              </v-list-item>
             </v-item-group>
           </v-list>
         </v-menu>
