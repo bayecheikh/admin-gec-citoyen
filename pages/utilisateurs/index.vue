@@ -26,6 +26,9 @@ import { mapActions} from 'vuex'
         return redirect('/')
       }
     },
+//     beforeMount: async function(){
+//   await localStorage.setItem('executeMounted', false)
+// },
     components: {
       LeftMenu,
       PageHeader,

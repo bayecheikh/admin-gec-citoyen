@@ -13,7 +13,7 @@
           </v-autocomplete>
         </v-col>
         <v-col lg="2" md="2" sm="12">
-          <v-btn text @click="onClearClicked" rounded color="green">Afficher tout</v-btn>
+          <v-btn text @click="onClearClicked" rounded color="green">Réinitialiser</v-btn>
         </v-col>
       </v-row>
 
@@ -225,6 +225,7 @@ import LeftMenu from "@/components/LeftMenu";
 export default {
 
   layout: "dashboard",
+  
   components: {
 
     LeftMenu,
@@ -247,11 +248,23 @@ export default {
   },
 
 
-  mounted: async function () {
 
- 
+  mounted: async function (){
+    
+    // if(localStorage.getItem('executeMounted') == true){
+    //   await this.$store.dispatch('organismes/getList')
+    //   await this.$store.dispatch('courriers/getList')
+    //   // const currentYear = new Date().getFullYear();
+    //   // const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == currentYear)
+    //   await this.$store.dispatch('courriers/updateListPie', this.initiallistcourriers)
+    //   this.$store.dispatch('courriers/getListTraites')
+    //  await this.$store.dispatch('annees/getList')
+    //  await this.$store.dispatch('mois/getList')
+    //  this.$store.dispatch('courriers/updateIsPieLoading', false)
+    //   this.$store.dispatch('courriers/updateIsBarLoading', false)
    
 
+    // }
   },
 
   data() {

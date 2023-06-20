@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
   export default {
     layout: "dashboard",
     // middleware: function ({redirect,$hasPermission}) {
@@ -25,8 +26,23 @@
     // },
     components: {
     },
-    mounted: function() {
+    computed: {
+   
+   ...mapGetters({
+       initiallistcourriers:'courriers/initiallistcourriers',
+   }),},
+
+    mounted: async function() {
       this.layoutadmin= this.$getParametreMenu()
+    
+      // localStorage.setItem('executeMounted', false)
+    },
+    methods: {
+
+getYearFromCreatedAt(createdAt) {
+  const date = new Date(createdAt)
+  return date.getFullYear()
+},
     },
     data:  function () {      
       return {
