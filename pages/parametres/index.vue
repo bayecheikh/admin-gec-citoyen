@@ -1,66 +1,53 @@
 <template>
-
   <div>
-  <div class="custom-container bg-title-grey">
-      <page-header :items="headerItems" class=""></page-header>  
-  </div> 
-  <div class="custom-container mt-5 row">
-    <v-card class="pl-10 pt-10 pb-10 pr-10 col-md-2 col-lg-2 col-sm-12 text-sm-center mb-4 mr-4 ml-4 mt-4" v-for="(item,i) in layoutadmin" :key="i">  
-      <nuxt-link class="customTopNav" :to="item.href? item.href : null">
-          <v-icon :color="$route.path==item.href?'primary':''">{{ item.icon }}</v-icon>
-          <div :class="$route.path==item.href?'text-primary':''">{{ item.title }}</div>  
-      </nuxt-link>
-    </v-card>
-  </div> 
-</div>
+    <div class="custom-container bg-title-grey">
+      <page-header :items="headerItems" class=""></page-header>
+    </div>
+    <div class="custom-container mt-5 row">
+      <v-card class="pl-10 pt-10 pb-10 pr-10 col-md-2 col-lg-2 col-sm-12 text-sm-center mb-4 mr-4 ml-4 mt-4"
+        v-for="(item, i) in layoutadmin" :key="i">
+        <nuxt-link class="customTopNav" :to="item.href ? item.href : null">
+          <v-icon :color="$route.path == item.href ? 'primary' : ''">{{ item.icon }}</v-icon>
+          <div :class="$route.path == item.href ? 'text-primary' : ''">{{ item.title }}</div>
+        </nuxt-link>
+      </v-card>
+    </div>
+  </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
-  export default {
-    layout: "dashboard",
-    // middleware: function ({redirect,$hasPermission}) {
-    //   // if(!$hasPermission('gerer-parametres')){
-    //   //   return redirect('/')
-    //   // }
-    // },
-    components: {
-    },
-    computed: {
-   
-   ...mapGetters({
-       initiallistcourriers:'courriers/initiallistcourriers',
-   }),},
+import { mapGetters } from 'vuex';
+export default {
+  layout: "dashboard",
+  // middleware: function ({redirect,$hasPermission}) {
+  //   // if(!$hasPermission('gerer-parametres')){
+  //   //   return redirect('/')
+  //   // }
+  // },
+  components: {
+  },
 
-    mounted: async function() {
-      this.layoutadmin= this.$getParametreMenu()
-    
-      // localStorage.setItem('executeMounted', false)
-    },
-    methods: {
 
-getYearFromCreatedAt(createdAt) {
-  const date = new Date(createdAt)
-  return date.getFullYear()
-},
-    },
-    data:  function () {      
-      return {
-        layoutadmin:[] ,
-        headerItems: [
-          {
-            text: 'Paramétrage',
-            disabled: false,
-            to: '/parametres',
-            exact: true
-          }
-        ]    
-      }
-    },
+  mounted: async function () {
+    this.layoutadmin = this.$getParametreMenu()
 
-  }
+  },
+
+  data: function () {
+    return {
+      layoutadmin: [],
+      headerItems: [
+        {
+          text: 'Paramétrage',
+          disabled: false,
+          to: '/parametres',
+          exact: true
+        }
+      ]
+    }
+  },
+
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

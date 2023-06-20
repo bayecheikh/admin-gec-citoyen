@@ -112,7 +112,7 @@ import layoutadmin from '@/static/data/layoutadmin'
             localStorage.setItem('gecAdminLoggedInUser', JSON.stringify(response.data.data.user))
             localStorage.setItem('gecAdminIsAuthenticated', true)       
 
-            this.$router.push({ path: '/' });
+            this.$router.push({ path: '/parametres' });
 
           }).
           catch((error) => {
