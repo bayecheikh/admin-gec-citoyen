@@ -105,8 +105,9 @@ export default {
             data: this.pourcentageCourriersParOrganisme
           }]
         };
-        await this.$store.dispatch('courriers/updateIsPieLoading', true)
+        await this.$store.dispatch('courriers/updateIsPieLoading', false)
         await this.renderChart(this.repartitionParOrganismeData, this.pieChartOptions);
+        
 
 
       }

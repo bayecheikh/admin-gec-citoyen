@@ -56,7 +56,7 @@ export default {
           data: this.courriersMensuels
         }]
       };
-      // await this.$store.dispatch('courriers/updateIsBarLoading', true)
+    
   
       await this.renderChart(this.repartitionMensuelleData, this.barChartOptions);
       return;
@@ -141,7 +141,6 @@ export default {
         }]
       };
 
-      // await this.$store.dispatch('courriers/updateIsBarLoading', false)
       await  this.renderChart(this.repartitionMensuelleData, this.barChartOptions);
       return
     }
