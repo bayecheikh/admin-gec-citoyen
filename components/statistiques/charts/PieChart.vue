@@ -107,11 +107,7 @@ export default {
         };
         await this.$store.dispatch('courriers/updateIsPieLoading', false)
         await this.renderChart(this.repartitionParOrganismeData, this.pieChartOptions);
-        
-
-
       }
-
     }
   },
   mounted: async function () {

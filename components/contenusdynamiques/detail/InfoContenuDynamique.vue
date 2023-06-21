@@ -1,27 +1,24 @@
 <template>
-  <v-card class="custom-card-user border-grey">                   
+  <v-card class="custom-card-user border-grey">
     <v-card-text>
       <v-row>
-       
+
         <v-col md="9" sm="12" lg="9" text-md-left>
           <div class="row">
-              <div class="col-md-6 border-left">
-              
-                <p class="info-profil mb-4"><span>Catégorie : </span>{{detailcontenudynamique.categorie.libelle}}</p>
-                  <p class="info-profil mb-4"><span>Titre : </span>{{detailcontenudynamique.title}}</p>
-                  <p class="info-profil mb-4"><span>Description: </span>{{detailcontenudynamique.resume}}</p>
-                 
-               
-        
-                
-              </div>
-              <div class="col-md-6 border-right">
-              
-                <p class="info-profil mb-4"><span>Body : </span>{{detailcontenudynamique.body}}</p>
+            <div class="col-md-6 border-left">
 
-              <p class="info-profil mb-4"><span>Lien : </span>{{detailcontenudynamique.link}}</p>
-            
-          </div>
+              <p class="info-profil mb-4"><span>Catégorie : </span>{{ detailcontenudynamique.categorie.libelle }}</p>
+              <p class="info-profil mb-4"><span>Titre : </span>{{ detailcontenudynamique.title }}</p>
+              <p class="info-profil mb-4"><span>Description: </span>{{ detailcontenudynamique.resume }}</p>
+
+            </div>
+            <div class="col-md-6 border-right">
+
+              <p class="info-profil mb-4"><span>Body : </span>{{ detailcontenudynamique.body }}</p>
+
+              <p class="info-profil mb-4"><span>Lien : </span>{{ detailcontenudynamique.link }}</p>
+
+            </div>
           </div>
         </v-col>
       </v-row>
@@ -53,7 +50,8 @@ export default {
 </script>
 
 <style scoped>
-.border-left{
-  border-left: solid 2px rgb(0 0 0 / 4%);;
+.border-left {
+  border-left: solid 2px rgb(0 0 0 / 4%);
+  ;
 }
 </style>

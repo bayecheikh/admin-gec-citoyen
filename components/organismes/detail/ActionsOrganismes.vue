@@ -1,26 +1,12 @@
 <template>
-  <v-row
-    align="center"
-    justify="space-around"
-  >
-    <v-btn
-      flat
-      outlined
-      rounded
-      color="primary"
-      v-on:click="retour()"
-    >
+  <v-row align="center" justify="space-around">
+    <v-btn flat outlined rounded color="primary" v-on:click="retour()">
       <v-icon left>
         mdi-arrow-left
       </v-icon>
       Retour à la liste
     </v-btn>
-    <v-btn
-      flat
-      rounded
-      outlined
-      v-on:click="modifier()"
-    >
+    <v-btn flat rounded outlined v-on:click="modifier()">
       <v-icon left>
         mdi-pencil
       </v-icon>
@@ -31,24 +17,24 @@
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
-  export default {
-    computed: mapGetters({
-      detailorganisme: 'organismes/detailorganisme'
-    }),
-    data: () => ({
+export default {
+  computed: mapGetters({
+    detailorganisme: 'organismes/detailorganisme'
+  }),
+  data: () => ({
 
-    }),
-    methods: {
-      submitForm(){
-        alert('Formulaire soumis')
-      },
-      retour(){       
-        this.$router.push('/organismes');
-      },
-      modifier(){ 
-        this.$router.push('/organismes/modifier/'+this.detailorganisme.id);      
-      },
-  
+  }),
+  methods: {
+    submitForm() {
+      alert('Formulaire soumis')
     },
-  }
+    retour() {
+      this.$router.push('/organismes');
+    },
+    modifier() {
+      this.$router.push('/organismes/modifier/' + this.detailorganisme.id);
+    },
+
+  },
+}
 </script>

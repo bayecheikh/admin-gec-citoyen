@@ -2,7 +2,7 @@
 <template>
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" app color="#fff">
-      <v-sheet color="#fff" class="pa-2" style="height:63px;">
+      <v-sheet color="#fff" class="pa-2 custom-pa-2">
         <nuxt-link to="/">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="230" height="62.986"
             viewBox="0 0 230 62.986" class="custom-drawer-logo">
@@ -202,6 +202,10 @@ export default {
 </script>
 
 <style scoped>
+.custom-pa-2 {
+  height: 63px !important;
+}
+
 .custom-drawer-logo {
   padding: 17px;
 }

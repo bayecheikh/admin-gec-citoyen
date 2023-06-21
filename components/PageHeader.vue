@@ -9,15 +9,15 @@
 </template>
 
 <script>
-  export default {
-    props: ['items'],
-    data: () => ({
-      selectedItem: 0
-    }),
-    metaInfo () {
-      return {
-        items: this.items,
-      }
+export default {
+  props: ['items'],
+  data: () => ({
+    selectedItem: 0
+  }),
+  metaInfo() {
+    return {
+      items: this.items,
     }
   }
+}
 </script>

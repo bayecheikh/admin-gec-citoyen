@@ -3,66 +3,26 @@
     <v-form class="text-sm-left" v-model="valid" ref="form">
       <v-row>
         <v-col md="12" lg="12" sm="12">
-          <v-text-field
-            label="Titre *"
-            outlined dense
-            v-model="model.title"
-            :rules="rules.titreRules"
-          ></v-text-field>
+          <v-text-field label="Titre *" outlined dense v-model="model.title" :rules="rules.titreRules"></v-text-field>
         </v-col>
         <v-col md="12" lg="12" sm="12">
-          <v-textarea
-            label="Description"
-            outlined dense
-            v-model="model.resume"
-            :rules="rules.resumeRules"
-          ></v-textarea>
+          <v-textarea label="Description" outlined dense v-model="model.resume" :rules="rules.resumeRules"></v-textarea>
         </v-col>
         <v-col md="12" lg="12" sm="12">
-          <v-textarea
-            label="Body *"
-            outlined dense
-            v-model="model.body"
-            :rules="rules.bodyRules"
-          ></v-textarea>
+          <v-textarea label="Body *" outlined dense v-model="model.body" :rules="rules.bodyRules"></v-textarea>
         </v-col>
-        <v-col
-        lg="6"
-        md="6"
-        sm="12"
-        >
-          <v-autocomplete
-              v-model="selected"
-              :items="listcontenuscategories"
-              :rules="rules.categoriesRules"
-              outlined
-              dense
-              small-chips
-              label="Catégorie *"
-              item-text="libelle"
-              item-value="id"
-              return-object
-              @change="changeCategorie"
-            >
+        <v-col lg="6" md="6" sm="12">
+          <v-autocomplete v-model="selected" :items="listcontenuscategories" :rules="rules.categoriesRules" outlined dense
+            small-chips label="Catégorie *" item-text="libelle" item-value="id" return-object @change="changeCategorie">
           </v-autocomplete>
         </v-col>
         <v-col md="12" lg="12" sm="12">
-          <v-text-field
-            label="Lien externe"
-            outlined dense
-            v-model="model.link"
-            :rules="rules.lienRules"
-          ></v-text-field>
+          <v-text-field label="Lien externe" outlined dense v-model="model.link" :rules="rules.lienRules"></v-text-field>
         </v-col>
       </v-row>
 
-      <v-btn
-      :loading="loading"
-      :disabled="!valid || !isCategorieSelected"
-        depressed
-        class="mr-4 text-white" color="#1B73E8"
-        @click="submitForm"
-      >
+      <v-btn :loading="loading" :disabled="!valid || !isCategorieSelected" depressed class="mr-4 text-white"
+        color="#1B73E8" @click="submitForm">
         Enregistrer
       </v-btn>
     </v-form>
@@ -70,9 +30,9 @@
 </template>
 
     
-    <script>
-    import { mapMutations, mapGetters } from 'vuex'
-    import {
+<script>
+import { mapMutations, mapGetters } from 'vuex'
+import {
   TiptapVuetify,
   Heading,
   Bold,
@@ -90,28 +50,28 @@
   HorizontalRule,
   History
 } from 'tiptap-vuetify'
-      export default {
-        components: {
-      TiptapVuetify
-    },
-  
-    computed: {
-  ...mapGetters({
-    listcontenuscategories: 'contenuscategories/listcontenuscategories',
-      headers: 'contenuscategories/headercontenuscategories'
-  }),
-
-  isCategorieSelected() {
-    return !!this.selected;
+export default {
+  components: {
+    TiptapVuetify
   },
-},
-        mounted: function() {
-         
-         this.$store.dispatch('contenuscategories/getList')
-        },
-    
-        data: () => ({
-          extensions: [
+
+  computed: {
+    ...mapGetters({
+      listcontenuscategories: 'contenuscategories/listcontenuscategories',
+      headers: 'contenuscategories/headercontenuscategories'
+    }),
+
+    isCategorieSelected() {
+      return !!this.selected;
+    },
+  },
+  mounted: function () {
+
+    this.$store.dispatch('contenuscategories/getList')
+  },
+
+  data: () => ({
+    extensions: [
       History,
       Blockquote,
       Link,
@@ -135,92 +95,92 @@
       HorizontalRule,
       Paragraph,
       HardBreak
-      ],
-            selected: null,
-          loading: false,
-          message:null,
-          color:null,
-          valid: true,
-          showCategorie: false,
-          message:null,
-          model: {
-      
-            title: '',
-            resume: '',
-            body: '',
-            categories: [],
-            categorie:'',
-            id_categorie:'',
-            link:''
-          },
-      rules:{
-        titreRules: [
-          v => !!v || 'Le titre est obligatoire',
-          v => (v.length <= 50) || 'Le titre ne doit pas dépasser 50 caractères',
-       
-        ],
-        resumeRules: [
-         
-          v => (v.length <= 200) || 'La description ne doit pas dépasser 200 caractères',
-        ],
-        bodyRules: [
-        v => !!v || 'Le body est obligatoire',
-          v => (v.length <= 200) || 'Le body ne doit pas dépasser 200 caractères',
-        ],
-        categoriesRules: [
-          v => !!v || 'La catégorie est obligatoire'
-        ],
-        lienRules: [
-  v => !v || /^(https?:\/\/|www\.)?([\w\d\-]+\.)+\w{2,}(\/[\w\d\-./?%=&]*)?$/i.test(v) || 'Le lien n\'est pas valide'
-],
-        
-      },
-    
-          imageData:null,
-        }),
-        methods: {
-      
-          async changeCategorie(value) {
-        console.log("id categorie : ++++++++++++ ",value)
-        // this.model.categorie = value.libelle
-        this.model.categorie = value.id
+    ],
+    selected: null,
+    loading: false,
+    message: null,
+    color: null,
+    valid: true,
+    showCategorie: false,
+    message: null,
+    model: {
 
- 
-        
-      },
-          submitForm () {
-       
-        console.log('Données formulaire contenus Catégorie ++++++ : ',{...this.model})
-            let validation = this.$refs.form.validate()
-          
-            this.loading = true;
-    
-            validation && this.$gecApi.post('/contenus/', {...this.model})
-              .then((res) => {
-                this.$store.dispatch('toast/getMessage',{type:'success',text:res.data.message || 'Ajout réussi'})
-                this.$router.push('/contenusdynamiques');
-              })
-              .catch((error) => {
-                  console.log('Code error ++++++: ', error)
-                  this.$store.dispatch('toast/getMessage',{type:'error',text:error || 'Echec de la création '})
-              }).finally(() => {
-                this.loading = false;
-                console.log('Requête envoyée ')
-            });
-          },
-          resetForm () {
-            this.$refs.form.reset()
-          },
-          resetValidationForm () {
-            this.$refs.form.resetValidation()
-          },
-       
-          },
-        metaInfo () {
-          return {
-            items: this.items,
-          }
-        }
-      }
-    </script>
+      title: '',
+      resume: '',
+      body: '',
+      categories: [],
+      categorie: '',
+      id_categorie: '',
+      link: ''
+    },
+    rules: {
+      titreRules: [
+        v => !!v || 'Le titre est obligatoire',
+        v => (v.length <= 50) || 'Le titre ne doit pas dépasser 50 caractères',
+
+      ],
+      resumeRules: [
+
+        v => (v.length <= 200) || 'La description ne doit pas dépasser 200 caractères',
+      ],
+      bodyRules: [
+        v => !!v || 'Le body est obligatoire',
+        v => (v.length <= 200) || 'Le body ne doit pas dépasser 200 caractères',
+      ],
+      categoriesRules: [
+        v => !!v || 'La catégorie est obligatoire'
+      ],
+      lienRules: [
+        v => !v || /^(https?:\/\/|www\.)?([\w\d\-]+\.)+\w{2,}(\/[\w\d\-./?%=&]*)?$/i.test(v) || 'Le lien n\'est pas valide'
+      ],
+
+    },
+
+    imageData: null,
+  }),
+  methods: {
+
+    async changeCategorie(value) {
+      console.log("id categorie : ++++++++++++ ", value)
+      // this.model.categorie = value.libelle
+      this.model.categorie = value.id
+
+
+
+    },
+    submitForm() {
+
+      console.log('Données formulaire contenus Catégorie ++++++ : ', { ...this.model })
+      let validation = this.$refs.form.validate()
+
+      this.loading = true;
+
+      validation && this.$gecApi.post('/contenus/', { ...this.model })
+        .then((res) => {
+          this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Ajout réussi' })
+          this.$router.push('/contenusdynamiques');
+        })
+        .catch((error) => {
+          console.log('Code error ++++++: ', error)
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de la création ' })
+        }).finally(() => {
+          this.loading = false;
+          console.log('Requête envoyée ')
+        });
+    },
+    resetForm() {
+      this.$refs.form.reset()
+    },
+    resetValidationForm() {
+      this.$refs.form.resetValidation()
+    },
+
+  },
+  metaInfo() {
+    return {
+      items: this.items,
+    }
+  }
+}
+</script>
     

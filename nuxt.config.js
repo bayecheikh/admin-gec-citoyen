@@ -48,7 +48,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-  
+
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     '@nuxtjs/toast',
@@ -57,7 +57,7 @@ export default {
   axios: {
     baseURL: 'https://api-gec-citoyen.fly.dev',
   },
-  
+
   auth: {
     strategies: {
       local: {
@@ -93,9 +93,9 @@ export default {
     ]
   },
 
-/*   router: {
-    middleware: ['isAdmin'],
-  }, */
+  /*   router: {
+      middleware: ['isAdmin'],
+    }, */
 
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

@@ -3,8 +3,8 @@
     <div class="custom-container mt-5">
       <v-row class="d-flex align-item-center bg-white justify-content-between pt-6 mb-2 mt-4 pl-5">
         <v-col lg="4" md="4" sm="12">
-          <v-autocomplete ref="inputRef" v-model="detailorganisme" :items="listorganismes" outlined dense label="Organisme"
-            item-text="intitule" item-value="id" @change="changeOrganisme">
+          <v-autocomplete ref="inputRef" v-model="detailorganisme" :items="listorganismes" outlined dense
+            label="Organisme" item-text="intitule" item-value="id" @change="changeOrganisme">
           </v-autocomplete>
         </v-col>
         <v-col lg="4" md="4" sm="12">
@@ -170,12 +170,11 @@
           <div class="custom-stat-boxes bg-marron pl-4 pr-5 pt-5 pb-5 text-sm-center">
             <h4 class="custom-stat-boxes-title color-yellow">Taux de réponse</h4>
             <div class="custom-stat-boxes-bloc mt-5">
-              <h1 class="custom-stat-boxes-number color-yellow"
-                v-show="listcourriers.length">{{ ((listcourrierstraites.length /
+              <h1 class="custom-stat-boxes-number color-yellow" v-show="listcourriers.length">{{
+                ((listcourrierstraites.length /
                   listcourriers.length) * 100).toFixed(0) }} %</h1>
 
-              <h1 class="custom-stat-boxes-number color-yellow"
-                v-show="!listcourriers.length"> 0 %
+              <h1 class="custom-stat-boxes-number color-yellow" v-show="!listcourriers.length"> 0 %
                 <!-- <svg class="custom-svg" width="50" height="50" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg"
                   stroke="#999999">
                   <g fill="none" fill-rule="evenodd">
@@ -225,7 +224,7 @@ import LeftMenu from "@/components/LeftMenu";
 export default {
 
   layout: "dashboard",
-  
+
   components: {
 
     LeftMenu,
@@ -249,7 +248,7 @@ export default {
 
 
 
-  mounted: async function (){
+  mounted: async function () {
 
   },
 
@@ -291,14 +290,15 @@ export default {
     async changeOrganisme(value) {
 
       console.log(value)
-      this.updateCourrier(value, 'organisme')*
-      await this.$store.dispatch('organismes/getDetail', value)
+      this.updateCourrier(value, 'organisme') *
+        await this.$store.dispatch('organismes/getDetail', value)
     },
     async onClearClicked() {
       this.organisme = ''
       this.annee = ''
       this.$store.dispatch('courriers/updateListPie', this.initiallistcourriers)
       this.$store.dispatch('courriers/updateList', this.initiallistcourriers)
+      this.$store.dispatch('courriers/updateListTraites', this.initiallistcourriers)
       await this.$store.dispatch('organismes/getDetail', '')
       await this.$store.dispatch('annees/getDetail', '')
       // await this.updateListCourriers(this.listcourriers);
@@ -461,5 +461,6 @@ export default {
   background-color: #fff;
   margin-left: 0.3px;
   margin-right: 0.3px;
-}</style>
+}
+</style>
   

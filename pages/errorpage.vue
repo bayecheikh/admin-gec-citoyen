@@ -7,38 +7,35 @@
         </v-container>
       </v-col>
       <v-col md="9" lg="9" sm="12" class="full-height">
-          <page-header :items="headerItems"></page-header>
-          <div>Error lors de la connexion</div>
+        <page-header :items="headerItems"></page-header>
+        <div>Error lors de la connexion</div>
       </v-col>
     </v-row>
   </v-container>
-  
 </template>
 
 <script>
 import LeftMenu from '@/components/LeftMenu';
 import PageHeader from '@/components/PageHeader';
 
-  export default {
-    layout: "dashboard",
-    components: {
-      LeftMenu,
-      PageHeader,
-     
-    },
-    data () {
-      return {
-        selectedItem: 0,
-        leftmenuItems: [        
-        ],
-        headerItems: [
-        ]
-      }
-    }
+export default {
+  layout: "dashboard",
+  components: {
+    LeftMenu,
+    PageHeader,
 
+  },
+  data() {
+    return {
+      selectedItem: 0,
+      leftmenuItems: [
+      ],
+      headerItems: [
+      ]
+    }
   }
+
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

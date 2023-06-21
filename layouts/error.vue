@@ -7,15 +7,16 @@
             <v-card flat class="elevation-0 pl-5 pr-5 pt-0 pb-0">
               <v-card-text>
                 <div class="layout column align-center py-5">
-                  <img v-if="error.statusCode === 404" src="@/static/404.png" alt="Plateforme GEC CITOYEN" width="600" height="">
-                  <div v-else  class="layout column align-center py-5">
-                    <img  src="@/static/error.png" alt="Plateforme GEC CITOYEN" width="100" height="">
+                  <img v-if="error.statusCode === 404" src="@/static/404.png" alt="Plateforme GEC CITOYEN" width="600"
+                    height="">
+                  <div v-else class="layout column align-center py-5">
+                    <img src="@/static/error.png" alt="Plateforme GEC CITOYEN" width="100" height="">
                     <v-spacer></v-spacer>
                     <p>
                       {{ otherError }}
                     </p>
                   </div>
-                  
+
                   <!-- <h1 v-if="error.statusCode === 404">
                     {{ pageNotFound }}
                   </h1> -->
@@ -25,8 +26,8 @@
                   <!-- <NuxtLink to="/">
                     Retour à l'accueil
                   </NuxtLink> -->
-                </div>  
-              </v-card-text>               
+                </div>
+              </v-card-text>
             </v-card>
           </v-flex>
         </v-layout>
@@ -45,16 +46,16 @@ export default {
       default: null
     }
   },
-  data () {
+  data() {
     return {
       pageNotFound: '404 Page introuvable',
-      otherError: ('Erreur '+this.error.statusCode)+' '+(this.$hasRole('admin')?this.error.message:'')
+      otherError: ('Erreur ' + this.error.statusCode) + ' ' + (this.$hasRole('admin') ? this.error.message : '')
     }
   },
-  head () {
+  head() {
     const title =
       this.error.statusCode === 404 ? this.pageNotFound : this.otherError
-      console.log('++++++++++++++erreur ',this.error)
+    console.log('++++++++++++++erreur ', this.error)
     return {
       title
     }
