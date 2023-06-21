@@ -24,20 +24,6 @@
       "title": "Types d'organisme",
       "name": "gerer-parametres",
       "slug": "categories-organismes"
-    },
-    {
-      "icon": "mdi-tag-multiple-outline",
-      "href": "/contenusdynamiques",
-      "title": "Contenus dynamiques",
-      "name": "gerer-parametres",
-      "slug": "contenus-dynamiques"
-    },
-    {
-      "icon": "mdi-cog-outline",
-      "href": "/categoriescontenusdynamiques",
-      "title": "Catégories de contenu",
-      "name": "gerer-parametres",
-      "slug": "categories-contenus-dynamiques"
     }
   ]
  }
