@@ -6,7 +6,7 @@ export default {
             await commit('initlist', response.data)
           }).catch((error) => {
               console.log('Code error ++++++: ', error?.response?.data?.message)
-              this.$toast.error(error?.response?.data?.message).goAway(3000)
+              // this.$toast.error(error?.response?.data?.message).goAway(3000)
           }).finally(() => {
             console.log('Requête envoyée ')
           });

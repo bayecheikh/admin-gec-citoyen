@@ -7,12 +7,12 @@
         </v-tabs>
       </div>
       <div class="ml-auto p-2">
-        <v-btn depressed rounded color="primary" @click="goToAddCategorieContenuDynamique">
+        <!-- <v-btn depressed rounded color="primary" @click="goToAddCategorieContenuDynamique">
           <v-icon left>
             mdi-plus
           </v-icon>
           Ajouter une catégorie de contenu
-        </v-btn>
+        </v-btn> -->
       </div>
     </div>
 

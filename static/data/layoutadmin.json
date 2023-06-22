@@ -2,7 +2,19 @@
   "role":"admin",
   "homePage":"/dashboard",
   "menuItems":[
-   
+
+    {
+      "icon": "mdi-account-settings-outline",
+      "href": "/roles",
+      "title": "Rôles",
+      "name": "gerer-parametres"
+    },
+    {
+      "icon": "mdi-security",
+      "href": "/permissions",
+      "title": "Permissions",
+      "name": "gerer-parametres"
+    },   
     {
       "icon": "mdi-comment-text-multiple-outline",
       "href": "/foireauxquestions",
@@ -24,6 +36,20 @@
       "title": "Types d'organisme",
       "name": "gerer-parametres",
       "slug": "categories-organismes"
+    },
+    {
+      "icon": "mdi-tag-multiple-outline",
+      "href": "/contenusdynamiques",
+      "title": "Contenus dynamiques",
+      "name": "gerer-parametres",
+      "slug": "contenus-dynamiques"
+    },
+    {
+      "icon": "mdi-cog-outline",
+      "href": "/categoriescontenusdynamiques",
+      "title": "Catégories de contenu",
+      "name": "gerer-parametres",
+      "slug": "categories-contenus-dynamiques"
     }
   ]
  }

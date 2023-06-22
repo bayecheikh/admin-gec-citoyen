@@ -145,7 +145,7 @@ export default {
           console.log('total page ++++++++++', response.data.total / response.data.per_page)
         }).catch((error) => {
           /* this.$toast.global.my_error().goAway(1500) */ //Using custom toast
-          this.$toast.error(error?.response?.data?.message).goAway(3000)
+          // this.$toast.error(error?.response?.data?.message).goAway(3000)
           console.log('Code error ++++++: ', error?.response?.data?.message)
         }).finally(() => {
           console.log('Requête envoyée ')
