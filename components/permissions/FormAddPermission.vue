@@ -51,7 +51,7 @@ export default {
     submitForm() {
       this.loading = true;
       let validation = this.$refs.form.validate()
-      console.log('Données formulaire ++++++ : ', { ...this.model })
+      
 
       validation && this.$gecApi.post('/permissions', { ...this.model })
         .then((res) => {
@@ -60,11 +60,11 @@ export default {
 
         })
         .catch((error) => {
-          console.log('Code error ++++++: ', error)
+          
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
-          console.log('Requête envoyée ')
+          
         });
     },
     resetForm() {

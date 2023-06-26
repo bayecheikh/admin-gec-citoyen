@@ -114,7 +114,7 @@ export default {
   }),
   methods: {
     async changeCategorie(value) {
-      console.log("VALUEE : ++++++++++++ ", value)
+      
       this.model.categorie = value.id
 
 
@@ -131,11 +131,11 @@ export default {
           this.$router.push('/modelescourriers');
         })
         .catch((error) => {
-          console.log('Code error ++++++: ', error)
+          
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
-          console.log('Requête envoyée ')
+          
         });
     },
     resetForm() {

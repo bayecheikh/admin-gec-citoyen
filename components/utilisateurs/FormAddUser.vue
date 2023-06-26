@@ -142,16 +142,16 @@ export default {
       this.loading = true;
       validation && this.$gecApi.post('/users/signup', { ...this.model })
         .then((res) => {
-          console.log('Données reçues ++++++: ', res.data)
+          
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data?.message })
           this.$router.push('/utilisateurs');
         })
         .catch((error) => {
-          console.log('Code error ++++++: ', error)
+          
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
-          console.log('Requête envoyée ')
+          
         });
     },
     resetForm() {

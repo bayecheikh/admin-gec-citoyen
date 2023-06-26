@@ -171,13 +171,13 @@ export default {
   }),
   methods: {
     async changeCategorie(value) {
-      console.log("VALUEE : ++++++++++++ ", value)
+      
       this.model.typeStructure = value.id
 
 
     },
     async changeStatus(value) {
-      console.log("VALUEE : ++++++++++++ ", value)
+      
       this.model.status = value.id
 
 
@@ -187,7 +187,7 @@ export default {
       this.progress = true
       await this.$gecApi.$get('/structures/' + id)
         .then(async (response) => {
-          console.log('Detail ++++++++++', response)
+         
           this.$store.dispatch('organismes/getDetail', response.data.data)
           this.model.id = response.data.data.id
           this.model.name = response.data.data.name
@@ -208,10 +208,10 @@ export default {
 
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
-          console.log('Code error ++++++: ', error?.response?.data?.message)
+          
         }).finally(() => {
-          console.log('Requête envoyée ')
-          console.log("QUESTION", this.model.question)
+          
+
         });
     },
 
@@ -226,11 +226,11 @@ export default {
           this.$router.push('/organismes');
         })
         .catch((error) => {
-          console.log('Code error ++++++: ', error)
+          
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de la modification ' })
         }).finally(() => {
           this.loading = false;
-          console.log('Requête envoyée ')
+          
         });
     },
     resetForm() {

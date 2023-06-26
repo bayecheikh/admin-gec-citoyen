@@ -23,7 +23,7 @@ export default {
          
     },
     async getDetail({commit},payload){
-      console.log('Données détail reçues +++++++++++',payload)
+      
       await commit('initdetail', payload)
     },
     async deletemois({commit,dispatch},payload){

@@ -135,7 +135,7 @@ import { mapGetters } from 'vuex';
 export default {
   /* middleware: 'auth', */
   middleware({ redirect, $getToken, $getUser, $isLogged, $loggout }) {
-    console.log('token: ++++++++++ ', $getToken())
+  
     if ($getToken() == null || $getUser() == null || $isLogged() == null || $isLogged() == false) {
       $loggout()
       return redirect('/login')

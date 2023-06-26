@@ -177,7 +177,7 @@ export default {
   }),
   methods: {
     async changeCategorie(value) {
-      console.log("VALUEE : ++++++++++++ ", value)
+      
       this.model.typeStructure = value.id
 
 
@@ -185,7 +185,7 @@ export default {
 
     },
     async changeStatus(value) {
-      console.log("VALUEE : ++++++++++++ ", value)
+      
       this.model.status = value.id
 
 
@@ -202,11 +202,11 @@ export default {
           this.$router.push('/organismes');
         })
         .catch((error) => {
-          console.log('Code error ++++++: ', error)
+          
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
-          console.log('Requête envoyée ')
+          
         });
     },
     resetForm() {
@@ -222,7 +222,7 @@ export default {
         this.showFournisseur = true
       else
         this.showFournisseur = false
-      console.log('************', checkRole)
+      
     },
   },
   metaInfo() {

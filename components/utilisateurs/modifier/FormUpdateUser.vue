@@ -145,7 +145,7 @@ export default {
       this.progress = true
       this.$gecApi.$get('/users/' + id)
         .then(async (response) => {
-          console.log('Detail ++++++++++', response)
+         
           this.$store.dispatch('utilisateurs/getDetail', response.data)
           this.model.id = response.data.id
 
@@ -157,9 +157,9 @@ export default {
           await this.changeRole()
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
-          console.log('Code error ++++++: ', error?.response?.data?.message)
+          
         }).finally(() => {
-          console.log('Requête envoyée ')
+          
         });
 
     },
@@ -172,7 +172,7 @@ export default {
       let idxDot = files[0].name.lastIndexOf(".") + 1;
       let extFile = files[0].name.substr(idxDot, files[0].name.length).toLowerCase();
       let size = files[0].size / 1024 / 1024 //La taille en Mbit
-      console.log('Size-------------- ', size)
+   
 
       if (size <= 2 && (extFile == "jpg" || extFile == "jpeg" || extFile == "png")) {
         //Affecté le fichier image au model avatar
@@ -202,11 +202,11 @@ export default {
           this.$router.push('/utilisateurs');
         })
         .catch((error) => {
-          console.log('Code error ++++++: ', error)
+          
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de la modification ' })
         }).finally(() => {
           this.loading = false;
-          console.log('Requête envoyée ')
+          
         });
     },
     resetForm() {
@@ -222,7 +222,7 @@ export default {
         this.showFournisseur = true
       else
         this.showFournisseur = false
-      console.log('************', checkRole)
+      
     },
   },
   metaInfo() {

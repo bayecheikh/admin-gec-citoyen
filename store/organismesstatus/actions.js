@@ -8,7 +8,7 @@ export default {
          
     },
     async getDetail({commit},payload){
-      console.log('Données detail reçu +++++++++++',payload)
+      
       await commit('initdetail', payload)
     },
     async deleteorganismestatus({commit,dispatch},payload){

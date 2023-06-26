@@ -76,7 +76,7 @@ export default {
   methods: {
     submitForm() {
       let validation = this.$refs.form.validate()
-      console.log('Données formulaire++++++: ', { ...this.model, token: this.tokenTemporaire })
+     
 
       this.loading = true;
 
@@ -84,16 +84,16 @@ export default {
         .then((res) => {
           this.message = res.data.message
           this.color = 'success'
-          console.log('Données reçues ++++++: ', res.data)
+          
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message })
         })
         .catch((error) => {
-          console.log('Code error ++++++: ', error.response.data.message)
+          
           this.message = error.response?.data?.message || 'Echec de la connection'
           this.color = 'red'
         }).finally(() => {
           this.loading = false;
-          console.log('Requête envoyée ')
+          
           this.dialog = false
         });
     },

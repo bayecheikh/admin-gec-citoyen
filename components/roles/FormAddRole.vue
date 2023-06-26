@@ -86,7 +86,7 @@ export default {
       this.loading = true;
       let validation = this.$refs.form.validate()
       let selectedPermissions = this.selected.map((item) => { return item.id })
-      console.log('Données formulaire ++++++ : ', { ...this.model, permissions: selectedPermissions })
+    
 
       validation && this.$gecApi.post('/roles', { ...this.model, permissions: selectedPermissions })
         .then((res) => {
@@ -94,11 +94,11 @@ export default {
           this.$router.push('/roles');
         })
         .catch((error) => {
-          console.log('Code error ++++++: ', error)
+          
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
-          console.log('Requête envoyée ')
+          
         });
     },
     resetForm() {

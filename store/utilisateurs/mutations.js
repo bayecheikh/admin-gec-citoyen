@@ -21,7 +21,6 @@ export default {
         state.dataSearch = newdatasearch
     },
     removeItem(state,payload) {
-        console.log('item to delete ++++++++ ',payload)
         state.listutilisateurs = state.listutilisateurs.filter(item => item.id != payload)
     }
 }

@@ -61,7 +61,7 @@ export default {
         await this.renderChart(this.repartitionMensuelleData, this.barChartOptions);
         return;
       }
-      console.log("EXEC++++")
+     
       this.courriersParMois = [];
       this.intitulesMois = [];
       this.courriersMensuels = [];
@@ -127,15 +127,14 @@ export default {
         maintainAspectRatio: false
       },
 
-        console.log("RPD++++++++++++", this.intitulesMois)
-      console.log("MOIS++++++++++++", this.courriersMensuels)
+   
       this.repartitionMensuelleData = {
         labels: this.intitulesMois,
         datasets: [{
           label: 'Nombre de courriers',
           borderWidth: 1,
           backgroundColor: this.courriersMensuels.map((courriers, i) =>
-            (i === this.moisAvecPlusCourriers ? '#008064' : '#0a3764')
+            (i === this.moisAvecPlusCourriers ? '#008064' : '#008064')
           ),
           data: this.courriersMensuels
         }]

@@ -131,7 +131,7 @@ export default {
   methods: {
 
     async changeCategorie(value) {
-      console.log("VALUEE : ++++++++++++ ", value)
+      
       this.model.categorie = value.id
 
 
@@ -140,9 +140,9 @@ export default {
     },
     async submitForm() {
 
-      console.log('Données formulaire FAQ Catégorie ++++++ : ', { ...this.model })
+   
       const categorieInfosGenerales = await this.listfaqcategories.find(item => item.slug == "infos-generales")
-      console.log(" categorieInfosGenerales ++++++++++++++", categorieInfosGenerales)
+     
       this.model.categorie = categorieInfosGenerales.id
       let validation = this.$refs.form.validate()
 
@@ -154,17 +154,17 @@ export default {
           this.$router.push('/foireauxquestions');
         })
         .catch((error) => {
-          console.log("ERROR RESPONSE", error.response)
+       
           if (error.response && error.response?.status === 500 && error.response?.data && error.response?.data?.message.includes('duplicate key error')) {
             error = 'Cette question existe déjà.';
           }
 
-          console.log('Code error ++++++: ', error);
+          ;
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de la création' });
 
         }).finally(() => {
           this.loading = false;
-          console.log('Requête envoyée ')
+          
         });
     },
     resetForm() {

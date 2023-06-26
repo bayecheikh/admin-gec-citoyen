@@ -25,9 +25,9 @@ export default {
       this.intitulesOrganismes = [];
       this.organismesPourcentageCourriers = []
 
-      console.log("LIST COURRIERS PIE", this.listcourrierspie)
+    
       this.nombreTotalCourriers = this.listcourrierspie.length;
-      console.log("Nombre total courriers", this.nombreTotalCourriers)
+   
       if (this.nombreTotalCourriers != 0) {
         for (let i = 0; i < this.listorganismes.length; i++) {
           let courriersOrganisme = await this.listcourrierspie.filter((item) => item.structure == this.listorganismes[i].id);
@@ -56,7 +56,7 @@ export default {
         let troisPremiersOrganismes = this.intitulesOrganismes.slice(0, 3);
         this.intitulesOrganismes = [...troisPremiersOrganismes, 'Autres'];
 
-        console.log("Nouveau pourcentage", this.pourcentageCourriersParOrganisme)
+       
         this.pieChartOptions = {
           responsive: true,
           maintainAspectRatio: false,

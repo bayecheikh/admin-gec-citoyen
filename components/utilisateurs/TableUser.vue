@@ -137,27 +137,27 @@ export default {
       this.progress = true
       this.$gecApi.$get('/users?page=' + page)
         .then(async (response) => {
-          console.log('Données reçu utilisateurs ++++++: ', response.data.data)
+          
           let totalPages = Math.ceil(response.data.total / response.data.per_page)
           this.$store.dispatch('utilisateurs/getTotalPage', totalPages)
           this.$store.dispatch('utilisateurs/getPerPage', response.data.per_page)
           this.$store.dispatch('utilisateurs/getList', response.data.data)
-          console.log('total page ++++++++++', response.data.total / response.data.per_page)
+  
         }).catch((error) => {
           /* this.$toast.global.my_error().goAway(1500) */ //Using custom toast
           // this.$toast.error(error?.response?.data?.message).goAway(3000)
-          console.log('Code error ++++++: ', error?.response?.data?.message)
+          
         }).finally(() => {
-          console.log('Requête envoyée ')
+          
           this.progress = false
         });
-      //console.log('total items++++++++++',this.paginationUtilisateur)
+    
     },
     getResult(page, param) {
       this.progress = true
       this.$gecApi.get('/user-multiple-search/' + param + '?page=' + page)
         .then(async (response) => {
-          console.log('Données reçues++++++++++++', response.data.data.data)
+          
           await this.$store.dispatch('utilisateurs/getList', response.data.data.data)
           let totalPages = Math.ceil(response.data.data.total / response.data.data.per_page)
           this.$store.dispatch('utilisateurs/getTotalPage', totalPages)
@@ -166,29 +166,29 @@ export default {
         }).catch((error) => {
           /* this.$toast.global.my_error().goAway(1500) */ //Using custom toast
           // this.$toast.error(error?.response?.data?.message).goAway(3000)
-          console.log('Code error ++++++: ', error?.response?.data?.message)
+          
         }).finally(() => {
-          console.log('Requête envoyée')
+          
           this.progress = false;
         });
     },
     actveDesactiveUser(id) {
-      console.log('------------- user active', id)
+   
       this.dialog = false
       this.$store.dispatch('toast/getMessage', { type: 'processing', text: 'Traitement en cours ...' })
       this.$gecApi.$get('/active_user/' + id)
         .then(async (response) => {
-          console.log('-----************-------- reponse active', response)
+      
           this.$store.dispatch('toast/getMessage', { type: 'success', text: response.data.message || 'Opération réussie' })
         }).catch((error) => {
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Opération échoué' })
-          console.log('Code error ++++++: ', error)
+          
         }).finally(() => {
-          console.log('Requête envoyée ')
+          
         });
     },
     handlePageChange(value) {
-      console.log('-------------datasearch est', this.datasearch)
+    
       if (this.datasearch == null)
         this.getList(value)
       else
@@ -212,9 +212,9 @@ export default {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: response.data.message || 'Suppression réussie' })
         }).catch((error) => {
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de la suppression' })
-          console.log('Code error ++++++: ', error)
+          
         }).finally(() => {
-          console.log('Requête envoyée ')
+          
         });
     },
     opendialog(item) {

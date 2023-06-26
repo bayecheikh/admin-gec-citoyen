@@ -15,7 +15,7 @@ export default function ({store ,redirect}, inject) {
     }
 
     /* const verifySession = () => {
-        console.log('token: ++++++++++ ',getToken())
+     
         if(isLogged() & getUser!==null & getToken!==null)
         return true
         else
@@ -30,7 +30,7 @@ export default function ({store ,redirect}, inject) {
         let permissions = []
         getUserRoles()?.map((role)=>{permissions=[...permissions,...role.permissions]})
         let allPermissions = removeDuplicates(permissions)
-        //console.log('All Permissions+++++++++++++++++++++',allPermissions)
+     
         return allPermissions
     }
     //Cette fonction permet de créer le menu a partir des permisions de l'utilisateur connecté
@@ -41,7 +41,7 @@ export default function ({store ,redirect}, inject) {
             if(hasPermission(item.name))
             menu=[...menu,item]
         })
-        console.log('Menu+++++++++++++++++++++',menu)
+      
 
         return menu
     }

@@ -64,7 +64,7 @@ export default {
       this.progress = true
       await this.$gecApi.$get('/categorie-model-courriers/' + id)
         .then(async (response) => {
-          console.log('Detail ++++++++++', response)
+         
           this.$store.dispatch('categoriesmodelescourriers/getDetail', response.data.data)
           this.model.id = response.data.data.id
           this.model.name = response.data.data.name
@@ -72,9 +72,9 @@ export default {
 
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
-          console.log('Code error ++++++: ', error?.response?.data?.message)
+          
         }).finally(() => {
-          console.log('Requête envoyée ')
+          
 
         });
     },
@@ -90,11 +90,11 @@ export default {
           this.$router.push('/categoriesmodelescourriers');
         })
         .catch((error) => {
-          console.log('Code error ++++++: ', error)
+          
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de la modification ' })
         }).finally(() => {
           this.loading = false;
-          console.log('Requête envoyée ')
+          
         });
     },
     resetForm() {

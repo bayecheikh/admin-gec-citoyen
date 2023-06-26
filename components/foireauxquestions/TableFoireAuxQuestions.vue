@@ -130,15 +130,15 @@ export default {
       this.$store.dispatch('toast/getMessage', { type: 'processing', text: 'Traitement en cours ...' })
       this.$gecApi.$delete('/faqs/' + this.activeItem.id)
         .then(async (response) => {
-          console.log('Réponse delete ++++++: ', response)
+          
           this.$store.dispatch('foireauxquestions/deletefoireauxquestions', this.activeItem.id)
           this.$store.dispatch('toast/getMessage', { type: 'success', text: response.data?.data?.message || 'Suppression réussie' })
         }).catch((error) => {
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la suppression' })
-          console.log('Code error ++++++: ', error)
+          
         }).finally(() => {
 
-          console.log('Requête envoyée ')
+          
         });
       /* alert('Supprimer '+item.id) */
     },

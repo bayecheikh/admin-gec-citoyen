@@ -278,7 +278,7 @@ export default {
 
     async changeAnnee(value) {
 
-      console.log(value)
+    
 
       const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == value)
       await this.$store.dispatch('courriers/updateListPie', newlistpie)
@@ -289,7 +289,7 @@ export default {
     },
     async changeOrganisme(value) {
 
-      console.log(value)
+  
       this.updateCourrier(value, 'organisme') *
         await this.$store.dispatch('organismes/getDetail', value)
     },
@@ -336,7 +336,7 @@ export default {
         }
 
       }
-      // console.log(list)
+ 
       this.updateStat(list)
     },
 
@@ -349,7 +349,7 @@ export default {
       this.$store.dispatch('courriers/updateList', newlist)
       this.$store.dispatch('courriers/updateListTraites', newlist)
 
-      // console.log('Change list ++++ ', newlist)
+
       // this.nombreCourriers = await newlist?.length;
       // const newtraitelist = await newlist?.filter((item) => item.traitement_status_slug == "traite")
       // this.nombreCourriersTraites = await newtraitelist?.length
