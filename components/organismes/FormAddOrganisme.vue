@@ -77,6 +77,7 @@ export default {
   },
 
   mounted: function () {
+    this.model.status = 1
 
     this.model.user_webservice = "bjidoc.webservice"
     this.model.user_ws_password = "G3dassi2021"
@@ -158,10 +159,10 @@ export default {
         (v) => !!v || 'La Base URL est obligatoire',
         (v) => (v && v.length >= 2) || "La Base URL doit contenir au moins 2 caractères"
       ],
-      gedUrlRules: [
-        (v) => !!v || 'L\'URL de la GED est obligatoire',
-        (v) => (v && v.length >= 2) || "L'URL de la GED doit contenir au moins 2 caractères"
-      ],
+      // gedUrlRules: [
+      //   (v) => !!v || 'L\'URL de la GED est obligatoire',
+      //   (v) => (v && v.length >= 2) || "L'URL de la GED doit contenir au moins 2 caractères"
+      // ],
       typeStructureRules: [
         (v) => !!v || 'Le type de l\'organisme est obligatoire',
         (v) => (v && v.length <= 100) || "Le type de l'organisme ne doit pas dépasser 100 caractères",

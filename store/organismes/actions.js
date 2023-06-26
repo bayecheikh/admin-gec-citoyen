@@ -13,6 +13,8 @@ export default {
       .then(async (response) => { 
         console.log('Données reçues contenu+++++++++++',response)
             await commit('initlist', response.data.data)
+    
+            
           }).catch((error) => {
            console.log("ERROR GEC", error)
               this.$toast.error(error).goAway(3000)
@@ -20,6 +22,8 @@ export default {
             console.log('Requête envoyée ')
       
           });
+          
+         
     },
     async getDetail({commit},payload){
       console.log('Données détail reçues +++++++++++',payload)

@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div >
     <div class="custom-container mt-5">
-      <v-row class="d-flex align-item-center bg-white justify-content-between pt-6 mb-2 mt-4 pl-5">
-        <v-col lg="4" md="4" sm="12">
+      <v-row class="d-flex align-item-center custom-dashboard-filter-row bg-white justify-content-between pt-6 mb-2 mt-4 pl-5">
+        <v-col lg="4" md="4" sm="12" class="">
           <v-autocomplete ref="inputRef" v-model="detailorganisme" :items="listorganismes" outlined dense
             label="Organisme" item-text="intitule" item-value="id" @change="changeOrganisme">
           </v-autocomplete>
@@ -367,6 +367,10 @@ export default {
 </script>
   
 <style scoped>
+.full-height {
+  height: 100vh; /* 100% de la hauteur de la fenêtre visible */
+  overflow: hidden; /* Masquer le défilement */
+}
 .custom-stat-boxes:hover .custom-icon-taux svg path {
   fill: #fff;
 }

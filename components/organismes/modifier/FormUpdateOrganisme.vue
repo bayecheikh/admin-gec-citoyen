@@ -154,10 +154,10 @@ export default {
         (v) => !!v || 'La Base URL est obligatoire',
         (v) => (v && v.length >= 2) || "La Base URL doit contenir au moins 2 caractères"
       ],
-      gedUrlRules: [
-        (v) => !!v || 'L\'URL de la GED est obligatoire',
-        (v) => (v && v.length >= 2) || "L'URL de la GED doit contenir au moins 2 caractères"
-      ],
+      // gedUrlRules: [
+      //   (v) => !!v || 'L\'URL de la GED est obligatoire',
+      //   (v) => (v && v.length >= 2) || "L'URL de la GED doit contenir au moins 2 caractères"
+      // ],
       typeStructureRules: [
         (v) => !!v || 'Le type de l\'organisme est obligatoire',
         (v) => (v && v.length <= 100) || "Le type de l'organisme ne doit pas dépasser 100 caractères",
@@ -201,6 +201,7 @@ export default {
           this.model.typeStructure = response.data.data.typeStructure.id
           this.selected = response.data.data.typeStructure
           this.selectedstatus = response.data.data.status
+          this.model.status = response.data.data.status
           this.model.user_webservice = response.data.data.user_webservice
           this.model.user_ws_password = response.data.data.user_ws_password
 
