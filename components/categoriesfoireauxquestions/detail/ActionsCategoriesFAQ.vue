@@ -32,7 +32,7 @@ export default {
       this.$router.push('/foireauxquestions');
     },
     modifier() {
-      this.$router.push('/foireauxquestions/modifier/' + this.detailfoireauxquestions.id);
+      this.$router.push('/foireauxquestions/modifier/' + this.detailcategoriefoireauxquestions.id);
     },
 
   },
