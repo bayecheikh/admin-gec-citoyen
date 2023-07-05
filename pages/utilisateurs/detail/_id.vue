@@ -19,14 +19,13 @@
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu';
+
 import PageHeader from '@/components/PageHeader';
 import InfoUtilisateur from '@/components/utilisateurs/detail/InfoUtilisateur';
 import ActionsUtilisateur from '@/components/utilisateurs/detail/ActionsUtilisateur';
 export default {
   layout: "dashboard",
   components: {
-    LeftMenu,
     PageHeader,
     InfoUtilisateur,
     ActionsUtilisateur
@@ -38,10 +37,6 @@ export default {
   },
   data() {
     return {
-      leftmenuItems: [
-        { text: 'Ajouter un utilisateur', icon: 'mdi-account-plus-outline', link: '/utilisateurs/addUser', position: 0 },
-        { text: 'Liste des utilisateurs', icon: 'mdi-account-group', link: '/utilisateurs', position: 1 }
-      ],
       headerItems: [
         {
           text: 'Utilisateurs',
@@ -64,4 +59,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

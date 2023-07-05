@@ -15,12 +15,9 @@
 
             </div>
             <div class="col-md-6 border-right">
-
               <p class="info-profil mb-4"><span>Description : </span>{{ detailorganisme.description }}</p>
-
               <p class="info-profil mb-4"><span>Base URL : </span>{{ detailorganisme.baseUrl }}</p>
               <p class="info-profil mb-4"><span>GED URL : </span>{{ detailorganisme.gedUrl }}</p>
-
               <p class="info-profil mb-4"><span>GEC URL : </span>{{ detailorganisme.gecUrl }}</p>
               <p class="info-profil mb-4" v-show="detailorganisme.status == 1"><span>Statut : </span>Actif</p>
               <p class="info-profil mb-4" v-show="detailorganisme.status == 0"><span>Statut : </span>Inactif</p>
@@ -33,25 +30,13 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   computed: mapGetters({
     detailorganisme: 'organismes/detailorganisme'
   }),
 
-  created() {
-   
-  },
-
-  methods: {
-    submitForm() {
-      alert('Formulaire soumis')
-    },
-    retour() {
-      this.$router.push('/organismes');
-    },
-  },
 }
 </script>
 

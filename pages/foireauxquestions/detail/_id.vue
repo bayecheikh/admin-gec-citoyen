@@ -19,14 +19,14 @@
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu';
+
 import PageHeader from '@/components/PageHeader';
 import InfoFaq from '@/components/foireauxquestions/detail/InfoFAQ';
 import ActionsFaq from '@/components/foireauxquestions/detail/ActionsFAQ';
 export default {
   layout: "dashboard",
   components: {
-    LeftMenu,
+    
     PageHeader,
     InfoFaq,
     ActionsFaq
@@ -38,10 +38,6 @@ export default {
   // },
   data() {
     return {
-      leftmenuItems: [
-        { text: 'Ajouter une question/réponse', icon: 'mdi-account-plus-outline', link: '/foireauxquestions/addFaq', position: 0 },
-        { text: 'Liste des questions/réponses', icon: 'mdi-account-group', link: '/foireauxquestions', position: 1 }
-      ],
       headerItems: [
         {
           text: 'Question/Réponse',
@@ -64,4 +60,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

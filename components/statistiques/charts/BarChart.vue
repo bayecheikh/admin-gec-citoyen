@@ -1,16 +1,14 @@
 <script>
 import { Bar } from "vue-chartjs";
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   computed: {
-    // ...mapState('filtres', ['listcourriers']),
     ...mapGetters({
       listorganismes: 'organismes/listorganismes',
       listcourriers: 'courriers/listcourriers',
       listmois: 'mois/listmois'
     }),
   },
-
   extends: Bar,
   methods: {
     async initializeChart() {
@@ -18,7 +16,6 @@ export default {
         // La liste des courriers est vide, afficher "Aucun courrier" dans le diagramme en barres
         this.intitulesMois = ["Aucun courrier"];
         this.courriersMensuels = [0];
-
         this.barChartOptions = {
           scales: {
             yAxes: [{
@@ -56,8 +53,6 @@ export default {
             data: this.courriersMensuels
           }]
         };
-
-
         await this.renderChart(this.repartitionMensuelleData, this.barChartOptions);
         return;
       }
@@ -65,27 +60,20 @@ export default {
       this.courriersParMois = [];
       this.intitulesMois = [];
       this.courriersMensuels = [];
-
-
       for (let i = 0; i < 12; i++) {
-
         this.nombreTotalCourriers = this.listcourriers.length
         const totalCourriersMensuels = await this.listcourriers.filter(courrier => {
           const courrierMonth = new Date(courrier.createdAt).getMonth();
           return courrierMonth === i;
         })
-
         const nombreCourriersMensuels = await totalCourriersMensuels.length
         const moisItem = await this.listmois.find(item => item.id === i);
-
         this.courriersParMois.push({
           mois: moisItem.libelle,
           courriers: nombreCourriersMensuels
         });
 
       }
-
-
       for (let i = 0; i < this.courriersParMois.length; i++) {
         const courrier = this.courriersParMois[i];
         this.intitulesMois.push(courrier.mois);
@@ -98,7 +86,6 @@ export default {
           this.moisAvecPlusCourriers = i;
         }
       }
-
       this.barChartOptions = {
         scales: {
           yAxes: [{
@@ -126,8 +113,6 @@ export default {
         responsive: true,
         maintainAspectRatio: false
       },
-
-   
       this.repartitionMensuelleData = {
         labels: this.intitulesMois,
         datasets: [{
@@ -139,7 +124,6 @@ export default {
           data: this.courriersMensuels
         }]
       };
-
       await this.renderChart(this.repartitionMensuelleData, this.barChartOptions);
       return
     }
@@ -164,9 +148,7 @@ export default {
       intitulesMois: [],
       courriersParOrganisme: [],
       courriersMensuels: [],
-      organismeData: {
-
-      },
+      organismeData: {},
 
     }
   },

@@ -14,12 +14,6 @@
         <v-row class="mb-1 border-bottom-small">
           <v-col md="6" sm="12" lg="6" class="pb-0 pt-4">
             <div class="row">
-              <!--<v-btn icon class="col-3" v-on:click="supprimer()">
-            <v-icon left class="font-small">
-              mdi-trash-can-outline
-            </v-icon>
-            <span class="font-small">Supprimer</span>
-          </v-btn>-->
             </div>
           </v-col>
           <v-col md="6" sm="12" lg="6" class="pt-0 pb-2">
@@ -59,7 +53,6 @@
               <v-icon>mdi-dots-vertical</v-icon>
             </v-btn>
           </template>
-
           <v-list shaped>
             <v-item-group>
               <v-list-item @click="visualiserItem(item)" link class="custom-v-list-action pl-2 pr-1">
@@ -88,7 +81,7 @@
   </div>
 </template>
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   mounted: function () {
     this.$store.dispatch('categories/getList')
@@ -100,11 +93,6 @@ export default {
     listcategories: 'categories/listcategories',
   }),
   props: ['tab'],
-  metaInfo() {
-    return {
-      tab: this.tab,
-    }
-  },
   methods: {
     visualiserItem(item) {
       this.$store.dispatch('categoriescontenusdynamiques/getDetail', item)
@@ -119,20 +107,12 @@ export default {
       this.$store.dispatch('toast/getMessage', { type: 'processing', text: 'Traitement en cours ...' })
       this.$gecApi.$delete('/categorie-contenu/' + this.activeItem.id)
         .then(async (response) => {
-          
           this.$store.dispatch('categoriescontenusdynamiques/deletecategoriecontenudynamique', this.activeItem.id)
           this.$store.dispatch('toast/getMessage', { type: 'success', text: response.data?.data?.message || 'Suppression réussie' })
         }).catch((error) => {
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la suppression' })
           
-        }).finally(() => {
-
-          
-        });
-      /* alert('Supprimer '+item.id) */
-    },
-    exporterItem(item) {
-      alert('Exporter ' + item.id)
+        })
     },
     visualiser() {
       if (this.selected.length != 1)
@@ -168,24 +148,9 @@ export default {
       this.dialog = true
       this.activeItem = item
     },
-    customFilter(item, search, filter) {
-      search.toString().includes(item.categories);
-    }
   },
   data: () => ({
-    headercategoriescontenusdynamiques: [
-      /* {
-          text: 'Nom',
-          align: 'start',
-          sortable: true,
-          value: 'name',
-      }, */
-      { text: 'Titre', value: 'titre' },
-      { text: 'Catégorie', value: 'categories', sortable: true },
-      { text: 'Actions', value: 'actions', sortable: false },
-    ],
     dialog: false,
-    progress: true,
     selected: [],
     search: '',
     items: [],
@@ -194,9 +159,7 @@ export default {
     pageCount: '',
     itemsPerPage: '',
     path: '',
-    totalItems: 0,
     options: {},
-    selectedItem: 0,
     activeItem: {}
   })
 }

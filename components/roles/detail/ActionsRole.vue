@@ -22,27 +22,20 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   computed: mapGetters({
     detailrole: 'roles/detailrole'
   }),
-  data: () => ({
-
-  }),
+  
   methods: {
-    submitForm() {
-      alert('Formulaire soumis')
-    },
     retour() {
       this.$router.push('/roles');
     },
     modifier() {
       this.$router.push('/roles/modifier/' + this.detailrole.id);
     },
-    reinitialiser() {
-      alert('Réinitialiser mot de passe')
-    },
+    
   },
 }
 </script>

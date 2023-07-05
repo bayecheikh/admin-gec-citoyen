@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu';
+
 import PageHeader from '@/components/PageHeader';
 import ListPermission from '@/components/permissions/ListPermission'
 export default {
@@ -23,7 +23,6 @@ export default {
     }
   },
   components: {
-    LeftMenu,
     PageHeader,
     ListPermission
   },
@@ -32,11 +31,6 @@ export default {
   },
   data() {
     return {
-      selectedItem: 0,
-      leftmenuItems: [
-        { text: 'Roles', icon: 'mdi-lock', link: '/roles', position: 1 },
-        { text: 'Permissions', icon: 'mdi-lock', link: '/permissions', position: 2 }
-      ],
       headerItems: [
         {
           text: 'Liste des permissions',
@@ -51,4 +45,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

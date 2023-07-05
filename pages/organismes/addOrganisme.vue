@@ -25,7 +25,6 @@ export default {
       return redirect('/')
     }
   },
-
   data() {
     return {
       headerItems: [
@@ -41,14 +40,11 @@ export default {
           to: '/organismes/addOrganisme',
           exact: true
         }
-
       ]
-
     }
   }
-
 }
 </script>
   
-<style scoped></style>
+
   

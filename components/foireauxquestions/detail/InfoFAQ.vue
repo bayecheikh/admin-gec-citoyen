@@ -27,25 +27,12 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   computed: mapGetters({
     detailfoireauxquestions: 'foireauxquestions/detailfoireauxquestions'
   }),
-
-  created() {
-   
-  },
-
-  methods: {
-    submitForm() {
-      alert('Formulaire soumis')
-    },
-    retour() {
-      this.$router.push('/foireauxquestions');
-    },
-  },
 }
 </script>
 

@@ -10,10 +10,3 @@ export default {
   props: ['message', 'color']
 }
 </script>
-<style scoped>
-.bottom-fixed {
-  position: fixed;
-  left: 0;
-  bottom: 50%;
-}
-</style>

@@ -19,14 +19,12 @@
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu';
 import PageHeader from '@/components/PageHeader';
 import InfoCategorieFaq from '@/components/categoriesfoireauxquestions/detail/InfoCategorieFAQ';
 import ActionsCategoriesFaq from '@/components/categoriesfoireauxquestions/detail/ActionsCategoriesFAQ';
 export default {
   layout: "dashboard",
   components: {
-    LeftMenu,
     PageHeader,
     InfoCategorieFaq,
     ActionsCategoriesFaq
@@ -38,10 +36,6 @@ export default {
   // },
   data() {
     return {
-      leftmenuItems: [
-        { text: 'Ajouter une catégorie de question/réponse', icon: 'mdi-account-plus-outline', link: '/categoriesfoireauxquestions/addCategorieFaq', position: 0 },
-        { text: 'Liste des catégories questions/réponses', icon: 'mdi-account-group', link: '/categoriesfoireauxquestions', position: 1 }
-      ],
       headerItems: [
         {
           text: 'Catégorie de Question/Réponse',
@@ -64,4 +58,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

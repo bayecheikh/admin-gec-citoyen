@@ -31,10 +31,6 @@
         </v-col>
 
       </v-row>
-
-
-
-
       <v-btn :loading="loading" :disabled="!valid || !isCategorieSelected" class="mr-4 text-white" color="#1B73E8"
         @click="submitForm">
         Enregistrer
@@ -44,17 +40,11 @@
 </template>
     
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
-  components: {
-  },
-
   mounted: function () {
-
     this.$store.dispatch('modelescourrierscategories/getList')
   },
-
-
   computed: {
     ...mapGetters({
       listmodelescourrierscategories: 'modelescourrierscategories/listmodelescourrierscategories',
@@ -73,7 +63,6 @@ export default {
     message: null,
     color: null,
     valid: true,
-    showCategorie: false,
     message: null,
     model: {
       name: '',
@@ -105,26 +94,21 @@ export default {
 
       ],
 
-
-
     },
 
 
-    imageData: null,
+    
   }),
   methods: {
     async changeCategorie(value) {
-      
-      this.model.categorie = value.id
 
+      this.model.categorie = value.id
 
     },
 
     submitForm() {
       let validation = this.$refs.form.validate()
-
       this.loading = true;
-
       validation && this.$gecApi.post('/model-courriers/', { ...this.model })
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Ajout réussi' })
@@ -132,25 +116,13 @@ export default {
         })
         .catch((error) => {
           
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de l\'ajout ' })
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
-          
         });
     },
-    resetForm() {
-      this.$refs.form.reset()
-    },
-    resetValidationForm() {
-      this.$refs.form.resetValidation()
-    },
-
   },
-  metaInfo() {
-    return {
-      items: this.items,
-    }
-  }
+  
 }
 </script>
     

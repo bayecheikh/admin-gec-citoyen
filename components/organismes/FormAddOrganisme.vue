@@ -71,10 +71,9 @@
 </template>
     
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
-  components: {
-  },
+ 
 
   mounted: function () {
     this.model.status = 1
@@ -90,8 +89,7 @@ export default {
       listorganismescategories: 'organismescategories/listorganismescategories',
       listorganismesstatus: 'organismesstatus/listorganismesstatus',
       detailorganisme: 'organismes/detailorganisme',
-
-      headers: 'faqcategories/headerfaqcategories'
+      headers: 'organismescategories/headerorganismescategories'
     }),
 
     isCategorieSelected() {
@@ -106,7 +104,6 @@ export default {
     message: null,
     color: null,
     valid: true,
-    showCategorie: false,
     message: null,
     model: {
       name: '',
@@ -168,34 +165,20 @@ export default {
         (v) => (v && v.length <= 100) || "Le type de l'organisme ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "Le type de l'organisme doit contenir au moins 2 caractères"
       ],
-
-
     },
 
-
-    imageData: null,
   }),
   methods: {
     async changeCategorie(value) {
-      
       this.model.typeStructure = value.id
-
-
-      //this.selectedRegions.push(value.id)
-
     },
     async changeStatus(value) {
-      
       this.model.status = value.id
-
-
     },
 
     submitForm() {
       let validation = this.$refs.form.validate()
-
       this.loading = true;
-
       validation && this.$gecApi.post('/structures/', { ...this.model })
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Ajout réussi' })
@@ -203,33 +186,14 @@ export default {
         })
         .catch((error) => {
           
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de l\'ajout ' })
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
-          
         });
     },
-    resetForm() {
-      this.$refs.form.reset()
-    },
-    resetValidationForm() {
-      this.$refs.form.resetValidation()
-    },
-    async changeRole() {
-
-      let checkRole = this.model.roles.filter(item => (item && item.name === 'point_focal' || item && item.name === 'admin_structure' || item && item.name === 'DGES' || item && item.name === 'directeur_eps')).length;
-      if (checkRole == 1)
-        this.showFournisseur = true
-      else
-        this.showFournisseur = false
-      
-    },
+    
   },
-  metaInfo() {
-    return {
-      items: this.items,
-    }
-  }
+  
 }
 </script>
     

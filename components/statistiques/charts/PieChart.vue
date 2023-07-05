@@ -1,18 +1,14 @@
 <script>
 import { Pie } from 'vue-chartjs';
-import { mapGetters, mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   extends: Pie,
-
   computed: {
-    // ...mapState('filtresannees', ['listcourriersannee']),
     ...mapGetters({
       listorganismes: 'organismes/listorganismes',
       listcourrierspie: 'courriers/listcourrierspie',
       initiallistcourriers: 'courriers/initiallistcourriers',
-
     }),
-
   },
   methods: {
 
@@ -112,7 +108,6 @@ export default {
   },
   mounted: async function () {
     this.initializeChart();
-
   },
   watch: {
     listcourrierspie: {

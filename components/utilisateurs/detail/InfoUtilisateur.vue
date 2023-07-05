@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   mounted: function () {
     this.getDetail(this.id)
@@ -51,12 +51,6 @@ export default {
     }
   },
   methods: {
-    submitForm() {
-      alert('Formulaire soumis')
-    },
-    retour() {
-      this.$router.push('/utilisateurs');
-    },
     getDetail(id) {
       this.progress = true
       this.$gecApi.$get('/users/' + id)

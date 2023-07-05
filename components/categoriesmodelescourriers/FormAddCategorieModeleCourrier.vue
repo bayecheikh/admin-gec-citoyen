@@ -16,16 +16,10 @@
 </template>
     
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
-  components: {
-  },
-
   computed: mapGetters({
-
     listmodelescourrierscategories: 'modelescourrierscategories/listmodelescourrierscategories',
-
-
   }),
   data: () => ({
     selected: {},
@@ -33,13 +27,11 @@ export default {
     message: null,
     color: null,
     valid: true,
-    showCategorie: false,
+    
     message: null,
     model: {
       name: '',
-
       id: null,
-
     },
     rules: {
       nameRules: [
@@ -47,15 +39,9 @@ export default {
         (v) => (v && v.length <= 100) || "Le nom de la catégorie ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "Le nom de la catégorie doit contenir au moins 2 caractères"
       ],
-
-
     },
-
-
-    imageData: null,
   }),
   methods: {
-
     submitForm() {
       let validation = this.$refs.form.validate()
 
@@ -68,25 +54,17 @@ export default {
         })
         .catch((error) => {
           
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de l\'ajout ' })
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
           
         });
     },
-    resetForm() {
-      this.$refs.form.reset()
-    },
-    resetValidationForm() {
-      this.$refs.form.resetValidation()
-    },
+    
+   
 
   },
-  metaInfo() {
-    return {
-      items: this.items,
-    }
-  }
+  
 }
 </script>
     

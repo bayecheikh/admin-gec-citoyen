@@ -28,7 +28,7 @@ export default {
     message: null,
     color: null,
     valid: true,
-    selectedItem: 0,
+    
     valid: true,
     model: {
       name: '',
@@ -51,8 +51,6 @@ export default {
     submitForm() {
       this.loading = true;
       let validation = this.$refs.form.validate()
-      
-
       validation && this.$gecApi.post('/permissions', { ...this.model })
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Ajout réussi' })
@@ -61,18 +59,14 @@ export default {
         })
         .catch((error) => {
           
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de l\'ajout ' })
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
           
         });
     },
-    resetForm() {
-      this.$refs.form.reset()
-    },
-    resetValidationForm() {
-      this.$refs.form.resetValidation()
-    },
+    
+   
   }
 }
 </script>

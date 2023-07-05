@@ -22,10 +22,9 @@
 </template>
     
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
-  components: {
-  },
+ 
 
   computed: mapGetters({
     listcontenusdynamiquescategories: 'contenusdynamiquescategories/listcontenusdynamiquescategories',
@@ -37,24 +36,10 @@ export default {
     message: null,
     color: null,
     valid: true,
-    showCategorie: false,
-    message: null,
     model: {
       libelle: '',
       description: '',
       id: null,
-      avatar: '',
-      name: '',
-      firstname: '',
-      lastname: '',
-      email: '',
-      roles: null,
-      categorie_id: null,
-      country_code: '+221',
-      telephone: '',
-      adresse: '',
-      fonction: '',
-      categorie_id: null
     },
     rules: {
       libelleRules: [
@@ -69,9 +54,6 @@ export default {
       ],
 
     },
-
-
-    imageData: null,
   }),
   methods: {
 
@@ -87,25 +69,15 @@ export default {
         })
         .catch((error) => {
           
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de l\'ajout ' })
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
           
         });
     },
-    resetForm() {
-      this.$refs.form.reset()
-    },
-    resetValidationForm() {
-      this.$refs.form.resetValidation()
-    },
-
+  
   },
-  metaInfo() {
-    return {
-      items: this.items,
-    }
-  }
+
 }
 </script>
     

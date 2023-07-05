@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   mounted: function () {
     this.model.email = this.detailUtilisateur.email
@@ -89,7 +89,7 @@ export default {
         })
         .catch((error) => {
           
-          this.message = error.response?.data?.message || 'Echec de la connection'
+          this.message = error.response?.data?.message || 'Échec de la connection'
           this.color = 'red'
         }).finally(() => {
           this.loading = false;

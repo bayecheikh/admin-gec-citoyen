@@ -56,10 +56,9 @@
 </template>
     
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
-  components: {
-  },
+ 
 
   mounted: function () {
     this.getDetail(this.$nuxt._route.params.id)
@@ -83,24 +82,15 @@ export default {
     message: null,
     color: null,
     valid: true,
-    showCategorie: false,
+    
     message: null,
     model: {
       question: '',
       response: '',
+      description: '',
+      categorie: '',
+      link: '',
       id: null,
-      avatar: '',
-      name: '',
-      firstname: '',
-      lastname: '',
-      email: '',
-      roles: null,
-      categorie_id: null,
-      country_code: '+221',
-      telephone: '',
-      adresse: '',
-      fonction: '',
-      categorie_id: null
     },
     rules: {
       questionRules: [
@@ -123,14 +113,11 @@ export default {
     },
 
 
-    imageData: null,
+    
   }),
   methods: {
     async changeCategorie(value) {
-      
       this.model.categorie = value.id
-
-
     },
     async getDetail(id) {
       this.progress = true
@@ -149,10 +136,7 @@ export default {
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
           
-        }).finally(() => {
-          
-        
-        });
+        })
     },
 
     submitForm() {
@@ -167,33 +151,15 @@ export default {
         })
         .catch((error) => {
           
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de la modification ' })
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la modification ' })
         }).finally(() => {
           this.loading = false;
           
         });
     },
-    resetForm() {
-      this.$refs.form.reset()
-    },
-    resetValidationForm() {
-      this.$refs.form.resetValidation()
-    },
-    async changeRole() {
-
-      let checkRole = this.model.roles.filter(item => (item && item.name === 'point_focal' || item && item.name === 'admin_structure' || item && item.name === 'DGES' || item && item.name === 'directeur_eps')).length;
-      if (checkRole == 1)
-        this.showFournisseur = true
-      else
-        this.showFournisseur = false
-      
-    },
+    
   },
-  metaInfo() {
-    return {
-      items: this.items,
-    }
-  }
+  
 }
 </script>
     

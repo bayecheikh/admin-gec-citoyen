@@ -85,18 +85,14 @@
   </div>
 </template>
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   computed: mapGetters({
     listpermissions: 'permissions/listpermissions',
     headers: 'permissions/headerpermissions'
   }),
   props: ['tab'],
-  metaInfo() {
-    return {
-      tab: this.tab,
-    }
-  },
+
   methods: {
     visualiserItem(item) {
       this.$store.dispatch('permissions/getDetail', item)
@@ -114,17 +110,12 @@ export default {
           this.$store.dispatch('permissions/deletePermission', this.activeItem.id)
           this.$store.dispatch('toast/getMessage', { type: 'success', text: response.data.message || 'Suppression réussie' })
         }).catch((error) => {
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de la suppression' })
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la suppression' })
           
-        }).finally(() => {
-
-          
-        });
-      /* alert('Supprimer '+item.id) */
+        })
+      
     },
-    exporterItem(item) {
-      alert('Exporter ' + item.id)
-    },
+    
     visualiser() {
       if (this.selected.length != 1)
         alert('Veuillez selectionner un element')
@@ -171,9 +162,8 @@ export default {
     pageCount: '',
     itemsPerPage: '',
     path: '',
-    totalItems: 0,
     options: {},
-    selectedItem: 0,
+    
     activeItem: {}
   })
 }

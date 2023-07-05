@@ -2,6 +2,7 @@
 
 <script>
 
+
 export default {
 
   mounted: async function () {
@@ -16,4 +17,10 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style>
+.v-application .primary {
+  background-color: #0a3764 !important;
+  border-color: #0a3764 !important;
+}
+</style>
+

@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   mounted: function () {
     this.layout = this.$getUserMenu()
@@ -97,14 +97,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.border-top {
-  border-top: solid 1px rgba(128, 128, 128, 0.219) !important;
-}
-
-.text-primary {
-  color: #1976d2 !important;
-  font-weight: 500;
-}
-</style>

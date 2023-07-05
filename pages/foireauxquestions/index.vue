@@ -10,9 +10,7 @@
     </div>
   </div>
 </template>
-
 <script>
-import LeftMenu from '@/components/LeftMenu';
 import PageHeader from '@/components/PageHeader';
 import ListFoireAuxQuestions from '@/components/foireauxquestions/ListFoireAuxQuestions'
 export default {
@@ -23,7 +21,6 @@ export default {
     }
   },
   components: {
-    LeftMenu,
     PageHeader,
     ListFoireAuxQuestions
   },
@@ -32,11 +29,7 @@ export default {
   },
   data() {
     return {
-      selectedItem: 0,
-      leftmenuItems: [
-        { text: 'Rôles', icon: 'mdi-lock', link: '/roles', position: 1 },
-        { text: 'foireauxquestions', icon: 'mdi-lock', link: '/foireauxquestions', position: 2 }
-      ],
+      
       headerItems: [
         {
           text: 'Liste des questions/réponses',
@@ -51,4 +44,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

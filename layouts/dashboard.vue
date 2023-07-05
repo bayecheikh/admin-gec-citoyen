@@ -135,7 +135,6 @@ import { mapGetters } from 'vuex';
 export default {
   /* middleware: 'auth', */
   middleware({ redirect, $getToken, $getUser, $isLogged, $loggout }) {
-  
     if ($getToken() == null || $getUser() == null || $isLogged() == null || $isLogged() == false) {
       $loggout()
       return redirect('/login')
@@ -158,13 +157,11 @@ export default {
     },
   },
   mounted: async function () {
-
     this.layout = this.$getUserMenu()
     this.isAuthenticate = this.$isLogged()
     this.loggedInUser = this.$getUser()
     await this.$store.dispatch('organismes/getList')
     await this.$store.dispatch('courriers/getList')
-
     this.$store.dispatch('courriers/updateListPie', this.initiallistcourriers)
     this.$store.dispatch('courriers/getListTraites')
     await this.$store.dispatch('annees/getList')
@@ -188,7 +185,6 @@ export default {
   }),
   methods: {
     async logout() {
-
       await localStorage.removeItem('gecAdminToken')
       await localStorage.removeItem('gecAdminLoggedInUser')
       await localStorage.removeItem('gecAdminIsAuthenticated')
@@ -210,23 +206,6 @@ export default {
   padding: 17px;
 }
 
-.container {
-  width: 100%;
-  padding: 12px;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 100%;
-  background-color: white;
-}
-
-.highlighted {
-  color: #047586 !important;
-  background: #04758617;
-}
-
-.highlighted .v-list-item__icon .v-icon {
-  color: #047586 !important;
-}
 
 .text-menu {
   font-size: 13px !important;
@@ -237,10 +216,6 @@ export default {
   font-weight: 600;
   letter-spacing: 1px;
   font-family: "Roboto";
-}
-
-.lower-case {
-  text-transform: capitalize;
 }
 
 .bg-grey {

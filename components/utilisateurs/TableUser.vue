@@ -110,7 +110,7 @@
   </div>
 </template>
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import RechercheUser from '@/components/utilisateurs/RechercheUser';
 export default {
   components: {
@@ -127,11 +127,7 @@ export default {
     datasearch: 'utilisateurs/datasearch',
   }),
   props: ['tab'],
-  metaInfo() {
-    return {
-      tab: this.tab,
-    }
-  },
+
   methods: {
     getList(page) {
       this.progress = true
@@ -211,7 +207,7 @@ export default {
           this.$store.dispatch('utilisateurs/deleteUtilisateur', this.activeItem.id)
           this.$store.dispatch('toast/getMessage', { type: 'success', text: response.data.message || 'Suppression réussie' })
         }).catch((error) => {
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de la suppression' })
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la suppression' })
           
         }).finally(() => {
           
@@ -221,9 +217,7 @@ export default {
       this.dialog = true
       this.activeItem = item
     },
-    exporterItem(item) {
-      alert('Exporter ' + item.id)
-    },
+    
     visualiser() {
       if (this.selected.length != 1)
         alert('Veuillez selectionner un element')
@@ -267,9 +261,9 @@ export default {
     pageCount: '',
     itemsPerPage: '',
     path: '',
-    totalItems: 0,
+    
     options: {},
-    selectedItem: 0,
+    
     activeItem: {}
   })
 }

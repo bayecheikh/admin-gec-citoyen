@@ -19,14 +19,14 @@
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu';
+
 import PageHeader from '@/components/PageHeader';
 import InfoCategorieOrganisme from '@/components/categoriesorganismes/detail/InfoCategorieOrganisme';
 import ActionsCategoriesOrganismes from '@/components/categoriesorganismes/detail/ActionsCategoriesOrganismes';
 export default {
   layout: "dashboard",
   components: {
-    LeftMenu,
+    
     PageHeader,
     InfoCategorieOrganisme,
     ActionsCategoriesOrganismes
@@ -38,10 +38,7 @@ export default {
   // },
   data() {
     return {
-      leftmenuItems: [
-        { text: 'Ajouter une catégorie d\'organisme', icon: 'mdi-account-plus-outline', link: '/categoriesorganismes/addCategorieOrganisme', position: 0 },
-        { text: 'Liste des catégories d\'organisme', icon: 'mdi-account-group', link: '/categoriesorganismes', position: 1 }
-      ],
+     
       headerItems: [
         {
           text: 'Catégorie d\'organisme',
@@ -64,4 +61,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

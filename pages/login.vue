@@ -7,7 +7,6 @@
   export default {
     layout: 'default',
     middleware({ redirect, $getToken, $getUser, $isLogged, $loggout }) {
-   
       if ($getToken() != null & $getUser() != null & $isLogged() != null & $isLogged() != false) {
         return redirect('/parametres')
       }
@@ -15,8 +14,5 @@
     components: {
       FormLogin
     },
-    data: () => ({
-    }),
-    methods: {}
   };
 </script>

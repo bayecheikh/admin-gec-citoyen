@@ -19,14 +19,14 @@
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu';
+
 import PageHeader from '@/components/PageHeader';
 import InfoContenuDynamique from '@/components/contenusdynamiques/detail/InfoContenuDynamique';
 import ActionsContenusDynamiques from '@/components/contenusdynamiques/detail/ActionsContenusDynamiques';
 export default {
   layout: "dashboard",
   components: {
-    LeftMenu,
+    
     PageHeader,
     InfoContenuDynamique,
     ActionsContenusDynamiques
@@ -38,10 +38,6 @@ export default {
   // },
   data() {
     return {
-      leftmenuItems: [
-        { text: 'Ajouter un contenu dynamique', icon: 'mdi-account-plus-outline', link: '/contenusdynamiques/addContenuDynamique', position: 0 },
-        { text: 'Liste des contenus dynamiques', icon: 'mdi-account-group', link: '/contenusdynamiques', position: 1 }
-      ],
       headerItems: [
         {
           text: 'Contenus dynamiques',
@@ -64,4 +60,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

@@ -87,7 +87,7 @@
   </div>
 </template>
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   mounted: function () {
     this.$store.dispatch('categories/getList')
@@ -99,11 +99,7 @@ export default {
     listcategories: 'categories/listcategories',
   }),
   props: ['tab'],
-  metaInfo() {
-    return {
-      tab: this.tab,
-    }
-  },
+
   methods: {
     visualiserItem(item) {
       this.$store.dispatch('categoriesmodelescourriers/getDetail', item)
@@ -118,21 +114,13 @@ export default {
       this.$store.dispatch('toast/getMessage', { type: 'processing', text: 'Traitement en cours ...' })
       this.$gecApi.$delete('/categorie-model-courriers/' + this.activeItem.id)
         .then(async (response) => {
-          
           this.$store.dispatch('categoriesmodelescourriers/deletecategoriemodelecourrier', this.activeItem.id)
           this.$store.dispatch('toast/getMessage', { type: 'success', text: response.data?.data?.message || 'Suppression réussie' })
         }).catch((error) => {
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la suppression' })
-          
-        }).finally(() => {
-
-          
-        });
-      /* alert('Supprimer '+item.id) */
+        })
     },
-    exporterItem(item) {
-      alert('Exporter ' + item.id)
-    },
+    
     visualiser() {
       if (this.selected.length != 1)
         alert('Veuillez sélectionner un élément')
@@ -167,22 +155,9 @@ export default {
       this.dialog = true
       this.activeItem = item
     },
-    customFilter(item, search, filter) {
-      search.toString().includes(item.categories);
-    }
+    
   },
   data: () => ({
-    headercategoriesmodelescourriers: [
-      /* {
-          text: 'Nom',
-          align: 'start',
-          sortable: true,
-          value: 'name',
-      }, */
-      { text: 'Titre', value: 'titre' },
-      { text: 'Catégorie', value: 'categories', sortable: true },
-      { text: 'Actions', value: 'actions', sortable: false },
-    ],
     dialog: false,
     progress: true,
     selected: [],
@@ -193,9 +168,8 @@ export default {
     pageCount: '',
     itemsPerPage: '',
     path: '',
-    totalItems: 0,
     options: {},
-    selectedItem: 0,
+    
     activeItem: {}
   })
 }

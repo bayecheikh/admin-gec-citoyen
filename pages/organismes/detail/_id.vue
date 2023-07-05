@@ -19,14 +19,13 @@
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu';
+
 import PageHeader from '@/components/PageHeader';
 import InfoOrganisme from '@/components/organismes/detail/InfoOrganisme';
 import ActionsOrganismes from '@/components/organismes/detail/ActionsOrganismes';
 export default {
   layout: "dashboard",
   components: {
-    LeftMenu,
     PageHeader,
     InfoOrganisme,
     ActionsOrganismes
@@ -38,10 +37,6 @@ export default {
   // },
   data() {
     return {
-      leftmenuItems: [
-        { text: 'Ajouter un organisme', icon: 'mdi-account-plus-outline', link: '/organismes/addOrganisme', position: 0 },
-        { text: 'Liste des organismes', icon: 'mdi-account-group', link: '/organismes', position: 1 }
-      ],
       headerItems: [
         {
           text: 'Organismes',
@@ -64,4 +59,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

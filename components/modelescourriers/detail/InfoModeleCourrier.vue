@@ -26,25 +26,12 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   computed: mapGetters({
     detailmodelecourrier: 'modelescourriers/detailmodelecourrier'
   }),
-
-  created() {
-   
-  },
-
-  methods: {
-    submitForm() {
-      alert('Formulaire soumis')
-    },
-    retour() {
-      this.$router.push('/modelescourriers');
-    },
-  },
 }
 </script>
 

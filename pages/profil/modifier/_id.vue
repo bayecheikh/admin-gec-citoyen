@@ -12,13 +12,13 @@
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu';
+
 import PageHeader from '@/components/PageHeader';
 import FormUpdateUser from '@/components/profil/modifier/FormUpdateUser';
 export default {
   layout: "dashboard",
   components: {
-    LeftMenu,
+    
     PageHeader,
     FormUpdateUser
   },
@@ -34,10 +34,6 @@ export default {
   },
   data() {
     return {
-      leftmenuItems: [
-        { text: 'Ajouter un utilisateur', icon: 'mdi-account-plus-outline', link: '/utilisateurs/addUser', position: 0 },
-        { text: 'Liste des utilisateurs', icon: 'mdi-account-group', link: '/utilisateurs', position: 1 }
-      ],
       headerItems: [
         {
           text: 'Modification profil',
@@ -47,20 +43,10 @@ export default {
         }
 
       ],
-      date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      date1: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      date2: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      date3: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      menu1: false,
-      menu2: false,
-      menu3: false,
-      modal: false,
-
-
     }
   }
 
 }
 </script>
 
-<style scoped></style>
+

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu';
+
 import PageHeader from '@/components/PageHeader';
 import ListModelesCourriers from '@/components/modelescourriers/ListModelesCourriers'
 export default {
@@ -23,7 +23,6 @@ export default {
     }
   },
   components: {
-    LeftMenu,
     PageHeader,
     ListModelesCourriers
   },
@@ -31,12 +30,7 @@ export default {
     this.$store.dispatch('modelescourriers/getList')
   },
   data() {
-    return {
-      selectedItem: 0,
-      leftmenuItems: [
-        { text: 'Rôles', icon: 'mdi-lock', link: '/roles', position: 1 },
-        { text: 'Modèles de courrier', icon: 'mdi-lock', link: '/modelescourriers', position: 2 }
-      ],
+    return { 
       headerItems: [
         {
           text: 'Liste des modèles de courrier',
@@ -51,4 +45,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

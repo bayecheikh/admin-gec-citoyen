@@ -34,7 +34,8 @@ export default {
   plugins: [
     '~/plugins/api.js',
     '~/plugins/helpers.js',
-    { src: '~/plugins/TiptapVuetify', mode: 'client' }
+    { src: '~/plugins/TiptapVuetify', mode: 'client' },
+    { src: '@/plugins/vuetify', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -114,7 +115,10 @@ export default {
           success: colors.green.accent3
         }
       }
-    }
+    },
+    lang: {
+      current: 'fr', // Définissez la langue sur 'fr' pour le français
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

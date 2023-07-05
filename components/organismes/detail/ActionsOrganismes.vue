@@ -16,18 +16,13 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   computed: mapGetters({
     detailorganisme: 'organismes/detailorganisme'
   }),
-  data: () => ({
-
-  }),
+  
   methods: {
-    submitForm() {
-      alert('Formulaire soumis')
-    },
     retour() {
       this.$router.push('/organismes');
     },

@@ -71,10 +71,9 @@
 </template>
     
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
-  components: {
-  },
+ 
 
   mounted: function () {
     this.$store.dispatch('organismescategories/getList')
@@ -86,8 +85,7 @@ export default {
       listorganismescategories: 'organismescategories/listorganismescategories',
       listorganismesstatus: 'organismesstatus/listorganismesstatus',
       detailorganisme: 'organismes/detailorganisme',
-
-      headers: 'faqcategories/headerfaqcategories'
+      headers: 'organismescategories/headerorganismescategories'
 
     }),
     isCategorieSelected() {
@@ -101,7 +99,6 @@ export default {
     message: null,
     color: null,
     valid: true,
-    showCategorie: false,
     message: null,
     model: {
       name: '',
@@ -114,11 +111,6 @@ export default {
       gecUrl: '',
       typeStructure: '',
       status: '',
-      country_code: '+221',
-      telephone: '',
-      adresse: '',
-      fonction: '',
-      categorie_id: null
     },
     rules: {
       nameRules: [
@@ -163,24 +155,15 @@ export default {
         (v) => (v && v.length <= 100) || "Le type de l'organisme ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "Le type de l'organisme doit contenir au moins 2 caractères"
       ],
-
-
     },
-
-    imageData: null,
+ 
   }),
   methods: {
     async changeCategorie(value) {
-      
       this.model.typeStructure = value.id
-
-
     },
     async changeStatus(value) {
-      
       this.model.status = value.id
-
-
     },
 
     async getDetail(id) {
@@ -209,10 +192,7 @@ export default {
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
           
-        }).finally(() => {
-          
-
-        });
+        })
     },
 
     submitForm() {
@@ -227,25 +207,14 @@ export default {
         })
         .catch((error) => {
           
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de la modification ' })
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la modification ' })
         }).finally(() => {
           this.loading = false;
           
         });
     },
-    resetForm() {
-      this.$refs.form.reset()
-    },
-    resetValidationForm() {
-      this.$refs.form.resetValidation()
-    },
-
   },
-  metaInfo() {
-    return {
-      items: this.items,
-    }
-  }
+  
 }
 </script>
     

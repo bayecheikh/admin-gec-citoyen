@@ -19,14 +19,14 @@
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu';
+
 import PageHeader from '@/components/PageHeader';
 import InfoCategorieModeleCourrier from '@/components/categoriesmodelescourriers/detail/InfoCategorieModeleCourrier';
 import ActionsCategoriesModelesCourriers from '@/components/categoriesmodelescourriers/detail/ActionsCategoriesModelesCourriers';
 export default {
   layout: "dashboard",
   components: {
-    LeftMenu,
+    
     PageHeader,
     InfoCategorieModeleCourrier,
     ActionsCategoriesModelesCourriers
@@ -38,10 +38,6 @@ export default {
   // },
   data() {
     return {
-      leftmenuItems: [
-        { text: 'Ajouter une catégorie de modèle courrier', icon: 'mdi-account-plus-outline', link: '/categoriesmodelescourriers/addCategorieModeleCourrier', position: 0 },
-        { text: 'Liste des catégories de modèle courrier', icon: 'mdi-account-group', link: '/categoriesmodelescourriers', position: 1 }
-      ],
       headerItems: [
         {
           text: 'Catégorie de modèle courrier',
@@ -64,4 +60,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

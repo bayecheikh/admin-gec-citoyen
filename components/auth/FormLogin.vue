@@ -104,7 +104,6 @@ export default {
       password: '',
     },
     rules: {
-
       emailRules: [
         v => !!v || 'L\'adresse e-mail est obligatoire.',
         v => /.+@.+\..+/.test(v) || 'L\'adresse e-mail doit être valide.',
@@ -122,18 +121,16 @@ export default {
         email: this.model.email,
         password: this.model.password
       }).then(async (response) => {
-  
 
         localStorage.setItem('gecAdminToken', response.data.token)
         localStorage.setItem('gecAdminLoggedInUser', JSON.stringify(response.data.data.user))
         localStorage.setItem('gecAdminIsAuthenticated', true)
-
         this.$router.push({ path: '/parametres' });
 
       }).
         catch((error) => {
           
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error.response.data.message || 'Echec de la connexion' })
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error.response.data.message || 'Échec de la connexion' })
         }).finally(() => {
           this.loading = false;
           
@@ -162,21 +159,4 @@ export default {
   color: #000;
   letter-spacing: -2px;
 }
-
-.v-btn {
-  min-width: 0 !important;
-}
-
-.v-input .v-label {
-  font-family: "MarkProBook";
-  font-size: 8px !important;
-}
-
-.text-decoration-none {
-  text-decoration: none !important;
-  color: rgba(0, 0, 0, 0.6) !important;
-}
-
-.custom-text-small {
-  font-size: 10px !important;
-}</style>
+</style>

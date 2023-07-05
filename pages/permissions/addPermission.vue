@@ -18,7 +18,6 @@ import FormAddPermission from '@/components/permissions/FormAddPermission';
 export default {
   layout: "dashboard",
   components: {
-    LeftMenu,
     PageHeader,
     FormAddPermission
   },
@@ -29,10 +28,6 @@ export default {
   },
   data() {
     return {
-      leftmenuItems: [
-        { text: 'Roles', icon: 'mdi-lock', link: '/roles', position: 1 },
-        { text: 'Permissions', icon: 'mdi-lock', link: '/permissions', position: 2 }
-      ],
       headerItems: [
         {
           text: 'Permissions',
@@ -48,14 +43,6 @@ export default {
         }
 
       ],
-      date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      date1: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      date2: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      date3: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      menu1: false,
-      menu2: false,
-      menu3: false,
-      modal: false,
 
     }
   }
@@ -63,4 +50,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

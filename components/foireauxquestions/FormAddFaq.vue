@@ -58,7 +58,7 @@
 </template>
     
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
 
   computed: {
@@ -83,7 +83,7 @@ export default {
     message: null,
     color: null,
     valid: true,
-    showCategorie: false,
+    
     message: null,
     model: {
       question: '',
@@ -92,18 +92,6 @@ export default {
       categorie: '',
       link: '',
       id: null,
-      avatar: '',
-      name: '',
-      firstname: '',
-      lastname: '',
-      email: '',
-      roles: null,
-      categorie_id: null,
-      country_code: '+221',
-      telephone: '',
-      adresse: '',
-      fonction: '',
-      categorie_id: null
     },
     rules: {
       questionRules: [
@@ -116,70 +104,40 @@ export default {
         (v) => (v && v.length <= 500) || "La réponse ne doit pas dépasser 500 caractères",
         (v) => (v && v.length >= 2) || "La réponse doit contenir au moins 2 caractères"
       ],
-
-
       descriptionRules: [
-
         v => (!v || v.length < 500) || 'La description doit être inférieure à 500 caractères',
       ],
 
     },
-
-
-    imageData: null,
   }),
   methods: {
 
     async changeCategorie(value) {
-      
       this.model.categorie = value.id
-
-
-      //this.selectedRegions.push(value.id)
-
     },
     async submitForm() {
-
-   
       const categorieInfosGenerales = await this.listfaqcategories.find(item => item.slug == "infos-generales")
-     
       this.model.categorie = categorieInfosGenerales.id
       let validation = this.$refs.form.validate()
-
       this.loading = true;
-
       validation && this.$gecApi.post('/faqs/', { ...this.model })
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Ajout réussi' })
           this.$router.push('/foireauxquestions');
         })
         .catch((error) => {
-       
           if (error.response && error.response?.status === 500 && error.response?.data && error.response?.data?.message.includes('duplicate key error')) {
             error = 'Cette question existe déjà.';
           }
-
-          ;
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de la création' });
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la création' });
 
         }).finally(() => {
           this.loading = false;
           
         });
     },
-    resetForm() {
-      this.$refs.form.reset()
-    },
-    resetValidationForm() {
-      this.$refs.form.resetValidation()
-    },
-
   },
-  metaInfo() {
-    return {
-      items: this.items,
-    }
-  }
+  
 }
 </script>
     

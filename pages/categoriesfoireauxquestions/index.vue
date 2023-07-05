@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu';
+
 import PageHeader from '@/components/PageHeader';
 import ListCategoriesFoireAuxQuestions from '@/components/categoriesfoireauxquestions/ListCategoriesFoireAuxQuestions'
 export default {
@@ -23,7 +23,7 @@ export default {
     }
   },
   components: {
-    LeftMenu,
+    
     PageHeader,
     ListCategoriesFoireAuxQuestions
   },
@@ -32,11 +32,6 @@ export default {
   },
   data() {
     return {
-      selectedItem: 0,
-      leftmenuItems: [
-        { text: 'Rôles', icon: 'mdi-lock', link: '/roles', position: 1 },
-        { text: 'categoriesfoireauxquestions', icon: 'mdi-lock', link: '/categoriesfoireauxquestions', position: 2 }
-      ],
       headerItems: [
         {
           text: 'Liste des catégories de question/réponse',
@@ -51,4 +46,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

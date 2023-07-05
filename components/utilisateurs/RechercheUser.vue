@@ -168,7 +168,7 @@
           v-model="value"
           :items="roles"
           
-          label="Roles"
+          label="Rôles"
           outlined dense
         ></v-select>
       </v-col> -->
@@ -197,7 +197,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import Notification from '@/components/Notification'
 export default {
   components: {
@@ -310,7 +310,6 @@ export default {
     },
     date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
     menu: false,
-    imageData: null,
   }),
   methods: {
     onClearClicked() {
@@ -325,12 +324,8 @@ export default {
       this.$store.commit('utilisateurs/initdatasearch', this.model.dataSearch)
       validation && this.getResult(1, this.model.dataSearch)
     },
-    resetForm() {
-      this.$refs.form.reset()
-    },
-    resetValidationForm() {
-      this.$refs.form.resetValidation()
-    },
+    
+   
     getList() {
       this.page = 1
       this.progress = true
@@ -374,10 +369,6 @@ export default {
         });
     },
   },
-  metaInfo() {
-    return {
-      items: this.items,
-    }
-  }
+  
 }
 </script>

@@ -43,8 +43,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-.border-bottom-small {
-  border-bottom: solid 1px #80808052;
-}
-</style>

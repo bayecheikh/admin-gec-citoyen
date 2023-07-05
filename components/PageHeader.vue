@@ -7,17 +7,8 @@
     </v-breadcrumbs>
   </div>
 </template>
-
 <script>
 export default {
-  props: ['items'],
-  data: () => ({
-    selectedItem: 0
-  }),
-  metaInfo() {
-    return {
-      items: this.items,
-    }
-  }
+  props: ['items'],  
 }
 </script>

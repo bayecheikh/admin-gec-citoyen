@@ -19,14 +19,12 @@
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu';
 import PageHeader from '@/components/PageHeader';
 import InfoCategorieContenuDynamique from '@/components/categoriescontenusdynamiques/detail/InfoCategorieContenuDynamique';
 import ActionsCategoriesContenusDynamiques from '@/components/categoriescontenusdynamiques/detail/ActionsCategoriesContenusDynamiques';
 export default {
   layout: "dashboard",
   components: {
-    LeftMenu,
     PageHeader,
     InfoCategorieContenuDynamique,
     ActionsCategoriesContenusDynamiques
@@ -38,10 +36,6 @@ export default {
   // },
   data() {
     return {
-      leftmenuItems: [
-        { text: 'Ajouter une catégorie de contenu dynamique', icon: 'mdi-account-plus-outline', link: '/categoriescontenusdynamiques/addCategorieContenuDynamique', position: 0 },
-        { text: 'Liste des catégories de contenu dynamique', icon: 'mdi-account-group', link: '/categoriescontenusdynamiques', position: 1 }
-      ],
       headerItems: [
         {
           text: 'Catégorie de contenu dynamique',
@@ -57,11 +51,10 @@ export default {
         }
 
       ]
-
     }
   }
 
 }
 </script>
 
-<style scoped></style>
+

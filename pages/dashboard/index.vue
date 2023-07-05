@@ -175,21 +175,7 @@
                   listcourriers.length) * 100).toFixed(0) }} %</h1>
 
               <h1 class="custom-stat-boxes-number color-yellow" v-show="!listcourriers.length"> 0 %
-                <!-- <svg class="custom-svg" width="50" height="50" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg"
-                  stroke="#999999">
-                  <g fill="none" fill-rule="evenodd">
-                    <g transform="translate(1 1)" stroke-width="2">
-                      <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
-                      <path d="M36 18c0-9.94-8.06-18-18-18">
-                        <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s"
-                          repeatCount="indefinite" />
-                      </path>
-                    </g>
-                  </g>
-                </svg> -->
               </h1>
-
-
               <span class="icon custom-icon-taux">
                 <svg xmlns="http://www.w3.org/2000/svg" width="63.735" height="63.996" viewBox="0 0 63.735 63.996">
 
@@ -215,24 +201,18 @@
 </template>
   
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 
 import ListChart from "@/components/statistiques/charts/ListChart";
-import LeftMenu from "@/components/LeftMenu";
-
 
 export default {
 
   layout: "dashboard",
 
   components: {
-
-    LeftMenu,
     ListChart,
   },
   computed: {
-    // ...mapState('filtres', ['listcourriers']),
-    // ...mapState('filtresannees', ['listcourriersannee']),
     ...mapGetters({
       listcourriers: 'courriers/listcourriers',
       isloading: 'courriers/isloading',
@@ -243,12 +223,6 @@ export default {
       detailannee: 'annees/detailannee',
       listannees: 'annees/listannees',
     }),
-
-  },
-
-
-
-  mounted: async function () {
 
   },
 
@@ -265,31 +239,17 @@ export default {
   methods: {
     setDefaultAnnee() {
       const anneeActuelle = new Date().getFullYear();
-
-      // Recherche de l'objet année correspondant à l'année actuelle
-
       return anneeActuelle
-      // if (anneeParDefaut) {
-      //   this.annee = anneeParDefaut;
-      // }
     },
-    // ...mapActions('filtres', ['updateListCourriers']),
-    // ...mapActions('filtresannees', ['updateListCourriersAnnee']),
 
     async changeAnnee(value) {
-
-    
-
       const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == value)
       await this.$store.dispatch('courriers/updateListPie', newlistpie)
       await this.$store.dispatch('annees/getDetail', value)
-
       this.updateCourrier(value, 'annee')
 
     },
     async changeOrganisme(value) {
-
-  
       this.updateCourrier(value, 'organisme') *
         await this.$store.dispatch('organismes/getDetail', value)
     },
@@ -301,16 +261,7 @@ export default {
       this.$store.dispatch('courriers/updateListTraites', this.initiallistcourriers)
       await this.$store.dispatch('organismes/getDetail', '')
       await this.$store.dispatch('annees/getDetail', '')
-      // await this.updateListCourriers(this.listcourriers);
-
-      // await this.updateListCourriersAnnee(this.listcourriers);
-      //   this.nombreOrganismes = this.listorganismes.length
-      // this.nombreCourriers = this.listcourriers.length
-      // const traitelist = await this.listcourriers?.filter((item) => item.traitement_status_slug == "traite")
-      // this.nombreCourriersTraites = await traitelist?.length
-      // if (this.nombreCourriersTraites && this.nombreCourriers) {
-      //   this.tauxDeReponse = ((this.nombreCourriersTraites / this.nombreCourriers) * 100).toFixed(0);
-      // }
+  
     },
     async updateCourrier(value, type) {
       var list = []
@@ -345,21 +296,8 @@ export default {
       return date.getFullYear()
     },
     async updateStat(newlist) {
-      // await this.updateListCourriers(newlist);
       this.$store.dispatch('courriers/updateList', newlist)
       this.$store.dispatch('courriers/updateListTraites', newlist)
-
-
-      // this.nombreCourriers = await newlist?.length;
-      // const newtraitelist = await newlist?.filter((item) => item.traitement_status_slug == "traite")
-      // this.nombreCourriersTraites = await newtraitelist?.length
-      // if (this.nombreCourriers) {
-      //   this.tauxDeReponse = ((this.nombreCourriersTraites / this.nombreCourriers) * 100).toFixed(0)
-      // }
-      // else {
-      //   this.tauxDeReponse = 0
-      // }
-
     },
   },
 
@@ -367,10 +305,7 @@ export default {
 </script>
   
 <style scoped>
-.full-height {
-  height: 100vh; /* 100% de la hauteur de la fenêtre visible */
-  overflow: hidden; /* Masquer le défilement */
-}
+
 .custom-stat-boxes:hover .custom-icon-taux svg path {
   fill: #fff;
 }
@@ -398,7 +333,6 @@ export default {
 .custom-stat-boxes:hover .custom-icon-recus svg line {
   stroke: #fff;
 }
-
 
 .custom-stat-boxes-bloc {
   display: flex;
@@ -448,16 +382,6 @@ export default {
 .bg-marron:hover {
   background-color: #0a3764;
   color: #ffffff !important;
-}
-
-
-.color-white {
-  color: #fff;
-}
-
-.border-right-solid {
-  border-right: solid 1px #ffffff59;
-  padding: 20px;
 }
 
 .bg-white {

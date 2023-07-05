@@ -12,32 +12,24 @@
       </v-icon>
       Modifier les infos
     </v-btn>
-
   </v-row>
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   computed: mapGetters({
     detailpermission: 'permissions/detailpermission'
   }),
-  data: () => ({
-
-  }),
+  
   methods: {
-    submitForm() {
-      alert('Formulaire soumis')
-    },
     retour() {
       this.$router.push('/permissions');
     },
     modifier() {
       this.$router.push('/permissions/modifier/' + this.detailpermission.id);
     },
-    reinitialiser() {
-      alert('Réinitialiser mot de passe')
-    },
+    
   },
 }
 </script>

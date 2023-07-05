@@ -51,11 +51,9 @@
 </template>
   
 <script>
-import LeftMenu from '@/components/LeftMenu';
 import BarChart from "@/components/statistiques/charts/BarChart";
 import PieChart from "@/components/statistiques/charts/PieChart";
-import { mapMutations, mapGetters } from 'vuex'
-
+import { mapGetters } from 'vuex'
 export default {
 
   computed: {
@@ -65,40 +63,12 @@ export default {
 
     })
   },
-  components: { BarChart, LeftMenu, PieChart },
+  components: { BarChart, PieChart },
 };
 
 </script>
 
 <style scoped>
-.loader-bar-chart {
-  height: 350px;
-  width: 500px;
-  background-color: #4a7197;
-  /* Couleur verte */
-  animation: loaderAnimation 1s ease-in-out infinite;
-  /* Animation */
-}
-
-@keyframes loaderAnimation {
-  0% {
-    opacity: 0.5;
-  }
-
-  50% {
-    opacity: 0.75;
-  }
-
-  100% {
-    opacity: 0.5;
-  }
-}
-
-.bg-marron {
-  border-radius: 5px;
-  background-color: #fff;
-}
-
 path {
   fill: #ffffff;
   cursor: pointer;
@@ -112,82 +82,6 @@ path:hover {
   opacity: 0.85;
 }
 
-.lan {
-  fill-opacity: 1;
-  stroke: rgb(0, 0, 0);
-  stroke-opacity: 1;
-  stroke-miterlimit: 22.926;
-  stroke-width: 0.5;
-}
-
-.description {
-  pointer-events: none;
-  position: absolute;
-  font-size: 18px;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.795);
-  padding: 50px;
-  padding-top: 15px;
-  z-index: 5;
-  height: 30px;
-  line-height: 30px;
-  margin: 0 auto;
-  color: #21669e;
-  border-radius: 5px;
-  box-shadow: 0 0 0 1px #eee;
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-
-.description.active {
-  display: block;
-}
-
-.description:after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 100%;
-  width: 0;
-  height: 0;
-  margin-left: -10px;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 10px solid white;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 400;
-  font-size: 100px;
-  color: #2E495E;
-  letter-spacing: 1px;
-  font-size: 6em;
-}
-
-.green {
-  color: #00C48D;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 1em;
-  color: #2E495E;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-
-.custom-text-btn {
-  font-size: 14px !important;
-}
 
 .custom-pie-chart {
   width: 250px;
@@ -198,36 +92,6 @@ path:hover {
   width: 250px;
   margin-top: 40px;
 
-}
-
-.custom-card-box {
-  border: solid 2px #99A9B44A;
-  padding: 27px;
-  max-height: 100%;
-}
-
-.border-right {
-  border-right: 1px;
-}
-
-.box {
-  width: 100%;
-}
-
-.custom-bg-grey {
-  background-color: #F2F2F2;
-}
-
-.custom-section {
-  background-color: #EEF3FB;
-}
-
-.bg-white {
-  background-color: #fff;
-}
-
-.custom-bloc-chart {
-  padding: 26px;
 }
 
 .border-right-chart {
@@ -242,9 +106,5 @@ path:hover {
   margin-bottom: 40px;
 }
 
-.bg-marron {
-  border-radius: 5px;
-  background-color: #fff;
-}
 </style>
   

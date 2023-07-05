@@ -31,7 +31,7 @@
 </template>
     
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import {
   TiptapVuetify,
   Heading,
@@ -102,10 +102,9 @@ export default {
     message: null,
     color: null,
     valid: true,
-    showCategorie: false,
+    
     message: null,
     model: {
-
       title: '',
       resume: '',
       body: '',
@@ -118,10 +117,8 @@ export default {
       titreRules: [
         v => !!v || 'Le titre est obligatoire',
         v => (v.length <= 50) || 'Le titre ne doit pas dépasser 50 caractères',
-
       ],
       resumeRules: [
-
         v => (v.length <= 200) || 'La description ne doit pas dépasser 200 caractères',
       ],
       bodyRules: [
@@ -135,25 +132,17 @@ export default {
         v => !v || /^(https?:\/\/|www\.)?([\w\d\-]+\.)+\w{2,}(\/[\w\d\-./?%=&]*)?$/i.test(v) || 'Le lien n\'est pas valide'
       ],
 
-
     },
-
-    imageData: null,
+    
   }),
   methods: {
     async changeCategorie(value) {
-    
-      // this.model.categorie = value.libelle
       this.model.categorie = value.id
-
-
-
     },
     async getDetail(id) {
       this.progress = true
       await this.$gecApi.$get('/contenus/' + id)
         .then(async (response) => {
-         
           this.$store.dispatch('contenusdynamiques/getDetail', response.data.data)
           this.model.id = response.data.data.id
           this.model.body = response.data.data.body
@@ -162,57 +151,28 @@ export default {
           this.model.link = response.data.data.link
           this.model.categorie = response.data.data.categorie
           this.selected = response.data.data.categorie
-
-
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
-          
-        }).finally(() => {
-          
-          
-        });
+        })
     },
 
     submitForm() {
-
       let validation = this.$refs.form.validate()
-
       this.loading = true;
-
       validation && this.$gecApi.patch('/contenus/' + this.model.id, { ...this.model })
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Modification réussie' })
           this.$router.push('/contenusdynamiques');
         })
         .catch((error) => {
-          
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de la modification ' })
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la modification ' })
         }).finally(() => {
           this.loading = false;
-          
         });
     },
-    resetForm() {
-      this.$refs.form.reset()
-    },
-    resetValidationForm() {
-      this.$refs.form.resetValidation()
-    },
-    async changeRole() {
-
-      let checkRole = this.model.roles.filter(item => (item && item.name === 'point_focal' || item && item.name === 'admin_structure' || item && item.name === 'DGES' || item && item.name === 'directeur_eps')).length;
-      if (checkRole == 1)
-        this.showFournisseur = true
-      else
-        this.showFournisseur = false
-      
-    },
+    
   },
-  metaInfo() {
-    return {
-      items: this.items,
-    }
-  }
+  
 }
 </script>
     

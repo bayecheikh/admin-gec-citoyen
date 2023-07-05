@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu';
 import PageHeader from '@/components/PageHeader';
 import ListOrganismes from '@/components/organismes/ListOrganismes'
 export default {
@@ -23,7 +22,6 @@ export default {
     }
   },
   components: {
-    LeftMenu,
     PageHeader,
     ListOrganismes
   },
@@ -32,11 +30,6 @@ export default {
   },
   data() {
     return {
-      selectedItem: 0,
-      leftmenuItems: [
-        { text: 'Rôles', icon: 'mdi-lock', link: '/roles', position: 1 },
-        { text: 'organismes', icon: 'mdi-lock', link: '/organismes', position: 2 }
-      ],
       headerItems: [
         {
           text: 'Liste des organismes',
@@ -51,4 +44,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

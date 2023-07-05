@@ -19,13 +19,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.container {
-  width: 100%;
-  padding: 12px;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 1600px;
-}
-</style>

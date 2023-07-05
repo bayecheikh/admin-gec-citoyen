@@ -24,8 +24,7 @@ export default {
   //   //   return redirect('/')
   //   // }
   // },
-  components: {
-  },
+ 
 
 
   mounted: async function () {
@@ -50,4 +49,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

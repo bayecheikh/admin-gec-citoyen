@@ -15,7 +15,6 @@
         </v-btn>
       </div>
     </div>
-
     <v-tabs-items v-model="tab">
       <v-tab-item v-for="item in tabItems" :key="item.value">
         <table-permission :tab="item.value"></table-permission>
@@ -32,9 +31,8 @@ export default {
   data: () => ({
     tab: null,
     tabItems: [
-      { title: 'Tout', value: 'tout' }, { title: 'Actifs', value: 'actif' }, { title: 'Inactifs', value: 'innactif' }
+      { title: 'Tout', value: 'tout' }
     ],
-    selected: []
   }),
   methods: {
     goToAddPermission() {
@@ -43,8 +41,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-.border-bottom-small {
-  border-bottom: solid 1px #80808052;
-}
-</style>

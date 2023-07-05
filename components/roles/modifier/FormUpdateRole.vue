@@ -41,7 +41,7 @@
 
 <script>
 import Notification from '@/components/Notification'
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   components: {
     Notification
@@ -64,7 +64,7 @@ export default {
     search: '',
     selected: [],
     search: '',
-    selectedItem: 0,
+    
     headers: [
       {
         text: 'Fonctionnalité',
@@ -95,30 +95,19 @@ export default {
   }),
   methods: {
     submitForm() {
-      //this.loading = true;
       let validation = this.$refs.form.validate()
       let selectedPermissions = this.selected.map((item) => { return item.id })
       let id = this.model.id
-    
-
       validation && this.$gecApi.put('/roles/' + id, { ...this.model, permissions: selectedPermissions })
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Modification réussie' })
           this.$router.push('/roles');
         })
         .catch((error) => {
-          
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de l\'ajout ' })
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
-          
         });
-    },
-    resetForm() {
-      this.$refs.form.reset()
-    },
-    resetValidationForm() {
-      this.$refs.form.resetValidation()
     },
   }
 }

@@ -37,10 +37,9 @@
 </template>
   
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
-  components: {
-  },
+ 
   mounted: function () {
     this.getDetail(this.$nuxt._route.params.id)
     this.$store.dispatch('structures/getSelectList')
@@ -67,7 +66,7 @@ export default {
       email: '',
       roles: null,
       fournisseur_services_id: null,
-      country_code: '+221',
+      country_code: '+229',
       telephone: '',
       adresse: '',
       fonction: '',
@@ -158,39 +157,10 @@ export default {
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
           
-        }).finally(() => {
-          
-        });
+        })
 
     },
-    handleFileUpload(e) {
-      //Recupère le fichier
-      const input = this.$refs.file
-      const files = input.files
-
-      //Recupère l'extension
-      let idxDot = files[0].name.lastIndexOf(".") + 1;
-      let extFile = files[0].name.substr(idxDot, files[0].name.length).toLowerCase();
-      let size = files[0].size / 1024 / 1024 //La taille en Mbit
-   
-
-      if (size <= 2 && (extFile == "jpg" || extFile == "jpeg" || extFile == "png")) {
-        //Affecté le fichier image au model avatar
-        this.model.avatar = e.target.files[0];
-
-        //Prévisualise l'image
-        if (files && files[0]) {
-          const reader = new FileReader
-          reader.onload = e => {
-            this.imageData = e.target.result
-          }
-          reader.readAsDataURL(files[0])
-          this.$emit('input', files[0])
-        }
-      } else {
-        alert("Seul les images jpg/jpeg png et de taille inférieur à 2Mb sont acceptés!");
-      }
-    },
+  
     submitForm() {
       let validation = this.$refs.form.validate()
       let selectedRoles = this.model.roles.map((item) => { return item.id })
@@ -203,18 +173,14 @@ export default {
         })
         .catch((error) => {
           
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de la modification ' })
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la modification ' })
         }).finally(() => {
           this.loading = false;
           
         });
     },
-    resetForm() {
-      this.$refs.form.reset()
-    },
-    resetValidationForm() {
-      this.$refs.form.resetValidation()
-    },
+    
+   
     async changeRole() {
 
       let checkRole = this.model.roles.filter(item => (item && item.name === 'point_focal' || item && item.name === 'admin_structure' || item && item.name === 'DGES' || item && item.name === 'directeur_eps')).length;
@@ -225,10 +191,6 @@ export default {
       
     },
   },
-  metaInfo() {
-    return {
-      items: this.items,
-    }
-  }
+  
 }
 </script>

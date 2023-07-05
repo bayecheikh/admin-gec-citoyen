@@ -12,10 +12,8 @@
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu';
 import PageHeader from '@/components/PageHeader';
 import ListUser from '@/components/utilisateurs/ListUser'
-import { mapActions } from 'vuex'
 export default {
   layout: "dashboard",
   middleware: function ({ redirect, $hasPermission }) {
@@ -25,7 +23,6 @@ export default {
   },
 
   components: {
-    LeftMenu,
     PageHeader,
     ListUser
   },
@@ -34,13 +31,6 @@ export default {
   },
   data() {
     return {
-      selectedItem: 0,
-      leftmenuItems: [
-        { text: 'Ajouter un utilisateur', icon: 'mdi-account-plus-outline', link: '/utilisateurs/addUser', position: 0 },
-        { text: 'Liste des utilisateurs', icon: 'mdi-account-group-outline', link: '/utilisateurs', position: 1 },
-        /* { text: 'Liste des roles', icon: 'mdi-lock',link:'/roles',position:1  }, */
-        /* { text: 'Liste des permissions', icon: 'mdi-lock',link:'/permissions',position:1  } */
-      ],
       headerItems: [
         {
           text: 'Liste des utilisateurs',

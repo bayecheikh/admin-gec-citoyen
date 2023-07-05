@@ -39,9 +39,7 @@
 
 <script>
 import Notification from '@/components/Notification'
-import layoutadmin from '@/static/data/layoutadmin'
-
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   /* middleware:'guest', */
   components: {
@@ -57,9 +55,9 @@ export default {
     }),
     confirm_passwordRules() {
       return [
-        v => !!v || 'Confirmation mot de passe est obligatoire',
-        v => (v && v.length >= 8) || 'Mot de passe doit etre superieur ou égal à 8 caracteres',
-        v => v === this.model.password || 'Les mot de passe ne sont pas identiques',
+        v => !!v || 'La confirmation du mot de passe est obligatoire',
+        v => (v && v.length >= 8) || 'Le mot de passe doit contenir au moins 8 caractères',
+        v => v === this.model.password || 'Les mots de passe ne sont pas identiques',
       ];
     },
   },
@@ -76,13 +74,9 @@ export default {
     },
     rules: {
       passwordRules: [
-        v => !!v || 'Mot de passe est obligatoire',
-        v => (v && v.length >= 8) || 'Mot de passe doit etre superieur ou égal à 8 caracteres',
+        v => !!v || 'Le mot de passe est obligatoire',
+        v => (v && v.length >= 8) || 'Le mot de passe doit contenir au moins 8 caractères',
       ],
-      emailRules: [
-        v => !!v || 'E-mail est obligatoire',
-        v => /.+@.+\..+/.test(v) || 'E-mail mdoit etre valide',
-      ]
     },
   }),
 
@@ -104,7 +98,7 @@ export default {
         })
         .catch((error) => {
           
-          this.message = error.response?.data?.message || 'Echec de la connection'
+          this.message = error.response?.data?.message || 'Échec de la connection'
           this.color = 'red'
         }).finally(() => {
           this.loading = false;
@@ -132,20 +126,4 @@ export default {
   letter-spacing: -2px;
 }
 
-.v-btn {
-  min-width: 0 !important;
-}
-
-.v-input .v-label {
-  font-family: "MarkProBook";
-  font-size: 8px !important;
-}
-
-.text-decoration-none {
-  text-decoration: none !important;
-  color: rgba(0, 0, 0, 0.6) !important;
-}
-
-.custom-text-small {
-  font-size: 10px !important;
-}</style>
+</style>

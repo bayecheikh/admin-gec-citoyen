@@ -23,11 +23,9 @@ export default {
   components: {
     LeftMenu,
     PageHeader,
-
   },
   data() {
     return {
-      selectedItem: 0,
       leftmenuItems: [
       ],
       headerItems: [
@@ -38,4 +36,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

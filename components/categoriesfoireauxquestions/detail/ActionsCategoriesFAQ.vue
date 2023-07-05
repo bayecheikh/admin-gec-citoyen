@@ -16,18 +16,12 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   computed: mapGetters({
     detailcategoriefoireauxquestions: 'categoriesfoireauxquestions/detailcategoriefoireauxquestions'
   }),
-  data: () => ({
-
-  }),
   methods: {
-    submitForm() {
-      alert('Formulaire soumis')
-    },
     retour() {
       this.$router.push('/foireauxquestions');
     },

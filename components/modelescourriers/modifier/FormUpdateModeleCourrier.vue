@@ -29,12 +29,7 @@
           <v-text-field label="Description" outlined dense v-model="model.description"
             :rules="rules.descriptionRules"></v-text-field>
         </v-col>
-
       </v-row>
-
-
-
-
       <v-btn :loading="loading" :disabled="!valid || !isCategorieSelected" class="mr-4 text-white" color="#1B73E8"
         @click="submitForm">
         Enregistrer
@@ -44,11 +39,8 @@
 </template>
     
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
-  components: {
-  },
-
   mounted: function () {
     this.$store.dispatch('modelescourrierscategories/getList')
     this.getDetail(this.$nuxt._route.params.id)
@@ -58,9 +50,7 @@ export default {
     ...mapGetters({
       listmodelescourrierscategories: 'modelescourrierscategories/listmodelescourrierscategories',
       detailmodelecourrier: 'modelescourriers/detailmodelecourrier',
-
       headers: 'modelescourrierscategories/headermodelescourrierscategories'
-
     }),
     isCategorieSelected() {
       return !!this.selected;
@@ -72,7 +62,6 @@ export default {
     message: null,
     color: null,
     valid: true,
-    showCategorie: false,
     message: null,
     model: {
       name: '',
@@ -104,12 +93,8 @@ export default {
 
       ],
 
-
-
     },
-
-
-    imageData: null,
+    
   }),
   methods: {
     async changeCategorie(value) {
@@ -123,7 +108,6 @@ export default {
       this.progress = true
       await this.$gecApi.$get('/model-courriers/' + id)
         .then(async (response) => {
-         
           this.$store.dispatch('modelescourriers/getDetail', response.data.data)
           this.model.id = response.data.data.id
           this.model.name = response.data.data.name
@@ -134,14 +118,10 @@ export default {
           this.model.categorie = response.data.data.categorie.id
           this.selected = response.data.data.categorie
 
-
-
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
           
-        }).finally(() => {
-          
-        });
+        })
     },
 
     submitForm() {
@@ -156,25 +136,15 @@ export default {
         })
         .catch((error) => {
           
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de la modification ' })
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la modification ' })
         }).finally(() => {
           this.loading = false;
           
         });
     },
-    resetForm() {
-      this.$refs.form.reset()
-    },
-    resetValidationForm() {
-      this.$refs.form.resetValidation()
-    },
-
+    
   },
-  metaInfo() {
-    return {
-      items: this.items,
-    }
-  }
+  
 }
 </script>
     

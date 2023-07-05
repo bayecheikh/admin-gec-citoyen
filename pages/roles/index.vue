@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu';
+
 import PageHeader from '@/components/PageHeader';
 import ListRole from '@/components/roles/ListRole'
 export default {
@@ -23,7 +23,6 @@ export default {
     }
   },
   components: {
-    LeftMenu,
     PageHeader,
     ListRole
   },
@@ -32,11 +31,7 @@ export default {
   },
   data() {
     return {
-      selectedItem: 0,
-      leftmenuItems: [
-        { text: 'Rôles', icon: 'mdi-lock-outline', link: '/roles', position: 1 },
-        { text: 'Permissions', icon: 'mdi-lock-outline', link: '/permissions', position: 2 }
-      ],
+      
       headerItems: [
         {
           text: 'Liste des rôles',
@@ -51,4 +46,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

@@ -55,13 +55,9 @@ export default {
       email: ''
     },
     rules: {
-      passwordRules: [
-        v => !!v || 'Mot de passe est obligatoire',
-        v => (v && v.length >= 4) || 'Mot de passe doit etre superieur a 3 caracteres',
-      ],
       emailRules: [
-        v => !!v || 'E-mail est obligatoire',
-        v => /.+@.+\..+/.test(v) || 'E-mail mdoit etre valide',
+        v => !!v || 'L\'adresse e-mail est obligatoire.',
+        v => /.+@.+\..+/.test(v) || 'L\'adresse e-mail doit être valide.',
       ]
     },
   }),
@@ -71,8 +67,6 @@ export default {
       let validation = this.$refs.form.validate()
       this.loading = true;
       this.color = "success"
-      
-
       validation && this.$axios.post('/forget_password', { ...this.model })
         .then((res) => {
           this.$toast.success(res.data.message || 'Vérifiez votre boite de réception').goAway(4000)

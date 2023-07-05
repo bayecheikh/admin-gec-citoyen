@@ -20,28 +20,6 @@
 <script>
 export default {
   props: ['items'],
-  data: () => ({
-    selectedItem: 0
-  }),
-  metaInfo() {
-    return {
-      items: this.items,
-    }
-  }
+  
 }
 </script>
-<style scoped>
-.highlighted {
-  color: #fff !important;
-  background: #0475861c !important;
-  ;
-}
-
-.highlighted .v-list-item__icon .v-icon {
-  color: #fff !important;
-}
-
-.text-menu {
-  font-size: 13px !important;
-}
-</style>

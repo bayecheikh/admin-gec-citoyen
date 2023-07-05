@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu';
 import PageHeader from '@/components/PageHeader';
 import ListCategoriesContenusDynamiques from '@/components/categoriescontenusdynamiques/ListCategoriesContenusDynamiques'
 export default {
@@ -23,7 +22,6 @@ export default {
     }
   },
   components: {
-    LeftMenu,
     PageHeader,
     ListCategoriesContenusDynamiques
   },
@@ -32,11 +30,6 @@ export default {
   },
   data() {
     return {
-      selectedItem: 0,
-      leftmenuItems: [
-        { text: 'Rôles', icon: 'mdi-lock', link: '/roles', position: 1 },
-        { text: 'categoriescontenusdynamiques', icon: 'mdi-lock', link: '/categoriescontenusdynamiques', position: 2 }
-      ],
       headerItems: [
         {
           text: 'Liste des catégories de contenu',
@@ -51,4 +44,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+

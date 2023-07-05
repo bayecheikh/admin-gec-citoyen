@@ -16,14 +16,12 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   computed: mapGetters({
     detailcategoriecontenudynamique: 'categoriescontenusdynamiques/detailcategoriecontenudynamique'
   }),
-  data: () => ({
-
-  }),
+  
   methods: {
     submitForm() {
       alert('Formulaire soumis')

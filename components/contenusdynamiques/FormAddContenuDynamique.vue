@@ -31,7 +31,7 @@
 
     
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import {
   TiptapVuetify,
   Heading,
@@ -101,10 +101,9 @@ export default {
     message: null,
     color: null,
     valid: true,
-    showCategorie: false,
+
     message: null,
     model: {
-
       title: '',
       resume: '',
       body: '',
@@ -117,10 +116,8 @@ export default {
       titreRules: [
         v => !!v || 'Le titre est obligatoire',
         v => (v.length <= 50) || 'Le titre ne doit pas dépasser 50 caractères',
-
       ],
       resumeRules: [
-
         v => (v.length <= 200) || 'La description ne doit pas dépasser 200 caractères',
       ],
       bodyRules: [
@@ -136,50 +133,29 @@ export default {
 
     },
 
-    imageData: null,
   }),
   methods: {
 
     async changeCategorie(value) {
-  
       this.model.categorie = value.id
-
-
-
     },
     submitForm() {
-
-  
       let validation = this.$refs.form.validate()
-
       this.loading = true;
-
       validation && this.$gecApi.post('/contenus/', { ...this.model })
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Ajout réussi' })
           this.$router.push('/contenusdynamiques');
         })
         .catch((error) => {
-          
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Echec de la création ' })
+
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la création ' })
         }).finally(() => {
           this.loading = false;
-          
+
         });
     },
-    resetForm() {
-      this.$refs.form.reset()
-    },
-    resetValidationForm() {
-      this.$refs.form.resetValidation()
-    },
-
   },
-  metaInfo() {
-    return {
-      items: this.items,
-    }
-  }
 }
 </script>
     

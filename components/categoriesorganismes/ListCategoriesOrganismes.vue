@@ -15,7 +15,6 @@
         </v-btn>
       </div>
     </div>
-
     <v-tabs-items v-model="tab">
       <v-tab-item v-for="item in tabItems" :key="item.value">
         <table-categories-organismes :tab="item.value"></table-categories-organismes>
@@ -34,7 +33,6 @@ export default {
     tabItems: [
       { title: 'Tout', value: 'tout' }
     ],
-    selected: []
   }),
   methods: {
     goToAddCategorieOrganisme() {
@@ -43,8 +41,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-.border-bottom-small {
-  border-bottom: solid 1px #80808052;
-}
-</style>
