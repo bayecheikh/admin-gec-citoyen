@@ -9,7 +9,7 @@
               <img :src="detailUtilisateur.avatar" alt="Avatar" />
             </v-avatar>
             <v-avatar size="100px" v-else>
-              <img src="@/static/avatar/default-user.png" alt="Cheikh Gueye" />
+              <img src="@/static/avatar/default-user.png" alt="Default Avatar" />
             </v-avatar>
           </div>
         </v-col>

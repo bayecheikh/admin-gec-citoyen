@@ -81,12 +81,12 @@
         <template>
           <div class="pop-user">
             <div class="pop-user-top">
-              <v-card class="d-flex align-center flex-column mb-3" text tile>
+              <v-card class="d-flex align-center flex-column mb-3" flat tile>
                 <v-avatar size="60px">
                   <img src="@/static/avatar/default-user.png" alt="avatar" />
                 </v-avatar>
               </v-card>
-              <v-card class="d-flex align-center flex-column" text tile>
+              <v-card class="d-flex align-center flex-column" flat tile>
                 <div class="">
                   <h5>{{ loggedInUser && loggedInUser.name }}</h5>
                 </div>
@@ -94,13 +94,13 @@
                   <p class="pb-0 mb-1">{{ loggedInUser && loggedInUser.email }}</p>
                 </div>
               </v-card>
-              <v-card class="d-flex align-center flex-column mt-1" text tile>
+              <v-card class="d-flex align-center flex-column mt-1" flat tile>
                 <v-btn text depressed @click="goToProfile" class="customTopNav pop-user-button flex text-sm-center">
-                  Parametres
+                  Paramètres
                 </v-btn>
               </v-card>
             </div>
-            <v-card class="d-flex align-center flex-column pt-0 pb-0" color="border-top" text tile>
+            <v-card class="d-flex align-center flex-column pt-0 pb-0" color="border-top" flat tile>
               <v-card-actions v-if="isAuthenticate" class="py-0">
                 <v-btn text color="#000" depressed @click="logout" :loading="loading">
                   <v-icon left>
@@ -193,6 +193,23 @@ export default {
   padding: 17px;
 }
 
+.container {
+  width: 100%;
+  padding: 12px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 100%;
+  background-color: white;
+}
+
+.highlighted {
+  color: #047586 !important;
+  background: #04758617;
+}
+
+.highlighted .v-list-item__icon .v-icon {
+  color: #047586 !important;
+}
 
 .text-menu {
   font-size: 13px !important;
@@ -203,6 +220,10 @@ export default {
   font-weight: 600;
   letter-spacing: 1px;
   font-family: "Roboto";
+}
+
+.lower-case {
+  text-transform: capitalize;
 }
 
 .bg-grey {

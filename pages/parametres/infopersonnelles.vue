@@ -18,7 +18,7 @@
                 <div>
                   <div class="headline">
                     <v-avatar size="150px">
-                      <img src="@/static/avatar/default-user.png" alt="Cheikh Gueye" />
+                      <img src="@/static/avatar/default-user.png" alt="Default Avatar" />
                     </v-avatar>
                   </div>
                   <span class="caption">Photo de profil png ou jpg max 20Mo</span>
