@@ -24,12 +24,9 @@
 </template>
 
 <script>
-import Notification from '@/components/Notification'
+
 import { mapGetters } from 'vuex'
 export default {
-  components: {
-    Notification
-  },
   mounted: function () {
     this.model.id = this.detailpermission.id
     this.model.name = this.detailpermission.name
@@ -41,9 +38,6 @@ export default {
   data: () => ({
     loading: false,
     message: null,
-    color: null,
-    valid: true,
-    
     valid: true,
     model: {
       id: null,
@@ -67,24 +61,18 @@ export default {
     submitForm() {
       this.loading = true;
       let validation = this.$refs.form.validate()
-      
       this.loading = false;
-
       validation && this.$gecApi.put('/permissions/' + this.model.id, { ...this.model })
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Ajout réussi' })
           this.$router.push('/permissions');
         })
         .catch((error) => {
-          
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
-          
         });
-    },
-    
-   
+    },   
   }
 }
 </script>

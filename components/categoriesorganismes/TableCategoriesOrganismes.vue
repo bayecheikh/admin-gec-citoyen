@@ -5,8 +5,8 @@
         hide-details></v-text-field>
     </v-card-title>
     <v-data-table :headers="headers" :items="tab == 'tout' ? listcategoriesorganismes : listcategoriesorganismes"
-      item-key="id" items-per-page="20" class="flat pt-4" :loading="listcategoriesorganismes.length ? false : true"
-      loading-text="Chargement... Patientez svp" :rows-per-page-items="[10, 20, 30, 40, 50]" hide-default-footer
+      item-key="id" class="flat pt-4" :loading="listcategoriesorganismes.length ? false : true"
+      loading-text="Chargement... Patientez svp"  hide-default-footer
       :search="search">
       <template v-slot:top="{ pagination, options, updateOptions }">
         <v-row class="mb-1 border-bottom-small">
@@ -88,13 +88,9 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  mounted: function () {
-    this.$store.dispatch('categories/getList')
-  },
   computed: mapGetters({
     listcategoriesorganismes: 'categoriesorganismes/listcategoriesorganismes',
     headers: 'categoriesorganismes/headercategoriesorganismes',
-    listcategories: 'categories/listcategories',
   }),
   props: ['tab'],
 
@@ -107,7 +103,7 @@ export default {
       this.$store.dispatch('categoriesorganismes/getDetail', item)
       this.$router.push('/categoriesorganismes/modifier/' + item.id);
     },
-    deleteItem(item) {
+    deleteItem() {
       this.dialog = false
       this.$store.dispatch('toast/getMessage', { type: 'processing', text: 'Traitement en cours ...' })
       this.$gecApi.$delete('/type-structure/' + this.activeItem.id)
@@ -138,18 +134,8 @@ export default {
         this.$router.push({ path: '/categoriesorganismes/modifier/' + contenu.id, query: { categorie_href: "organismes" } });
       }
     },
-    supprimer() {
-      if (this.selected.length >= 1)
-        alert('Supprimer ' + this.selected.map(function (value) { return value.id }))
-      else
-        alert('Veuillez sélectionner un élément')
-    },
-    exporter() {
-      if (this.selected.length >= 1)
-        alert('Exporter ' + this.selected.map(function (value) { return value.id }))
-      else
-        alert('Veuillez sélectionner un élément')
-    },
+    
+    
     opendialog(item) {
       this.dialog = true
       this.activeItem = item
@@ -157,6 +143,8 @@ export default {
     
   },
   data: () => ({
+    attrs: {},
+    on: {},
     dialog: false,
     progress: true,
     selected: [],
@@ -165,7 +153,6 @@ export default {
     page: 1,
     totalPages: 1,
     pageCount: '',
-    itemsPerPage: '',
     path: '',
     options: {},
     

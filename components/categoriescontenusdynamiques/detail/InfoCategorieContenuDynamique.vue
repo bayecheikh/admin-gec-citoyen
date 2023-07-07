@@ -2,7 +2,6 @@
   <v-card class="custom-card-user border-grey">
     <v-card-text>
       <v-row>
-
         <v-col md="9" sm="12" lg="9" text-md-left>
           <div class="row">
             <div class="col-md-6 border-left">
@@ -23,19 +22,6 @@ export default {
   computed: mapGetters({
     detailcategoriecontenudynamique: 'categoriescontenusdynamiques/detailcategoriecontenudynamique'
   }),
-
-  created() {
-    
-  },
-
-  methods: {
-    submitForm() {
-      alert('Formulaire soumis')
-    },
-    retour() {
-      this.$router.push('/categoriescontenusdynamiques');
-    },
-  },
 }
 </script>
 

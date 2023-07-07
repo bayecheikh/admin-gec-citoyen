@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+
 import Notification from '@/components/Notification'
 export default {
   components: {
@@ -76,8 +76,6 @@ export default {
     message: null,
     color: null,
     valid: true,
-    message: null,
-
     model: {
       firstname: '',
       lastname: '',
@@ -86,9 +84,7 @@ export default {
       role: 'user',
       passwordConfirm: '',
       sexe: '',
-
       email: '',
-
       password: '',
     },
     passwordVisible: false,
@@ -106,13 +102,10 @@ export default {
         (v) => (v && v.length <= 100) || "Le nom ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "Le nom doit contenir au moins 2 caractères"
       ],
-
-
       roleRules: [
         v => (v && !!v.length) || 'Le rôle est obligatoire',
       ],
       telephoneRules: [
-
         (v) => /^[0-9]+$/.test(v) || "Le numéro de téléphone ne doit contenir que des chiffres",
         (v) => (v.length >= 8 && v.length <= 20) || "Le numéro de téléphone doit contenir entre 8 et 20 chiffres"
       ],
@@ -120,14 +113,10 @@ export default {
         v => !!v || 'L\'adresse e-mail est obligatoire',
         v => /.+@.+\..+/.test(v) || 'L\'adresse e-mail doit être valide',
       ],
-
       passwordRules: [
         (v) => !!v || 'Le mot de passe est obligatoire',
         (v) => (v && v.length >= 8) || "Le mot de passe doit contenir au moins 8 caractères",
-
       ],
-
-
     },
   }),
   methods: {
@@ -142,22 +131,15 @@ export default {
       this.loading = true;
       validation && this.$gecApi.post('/users/signup', { ...this.model })
         .then((res) => {
-          
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data?.message })
           this.$router.push('/utilisateurs');
         })
         .catch((error) => {
-          
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
-          
         });
     },
-    
-   
-
   },
-  
 }
 </script>

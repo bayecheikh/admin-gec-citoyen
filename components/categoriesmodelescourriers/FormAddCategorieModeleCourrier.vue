@@ -16,19 +16,12 @@
 </template>
     
 <script>
-import { mapGetters } from 'vuex'
+
 export default {
-  computed: mapGetters({
-    listmodelescourrierscategories: 'modelescourrierscategories/listmodelescourrierscategories',
-  }),
   data: () => ({
-    selected: {},
     loading: false,
     message: null,
-    color: null,
     valid: true,
-    
-    message: null,
     model: {
       name: '',
       id: null,
@@ -44,25 +37,19 @@ export default {
   methods: {
     submitForm() {
       let validation = this.$refs.form.validate()
-
       this.loading = true;
-
       validation && this.$gecApi.post('/categorie-model-courriers/', { ...this.model })
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Ajout réussi' })
           this.$router.push('/categoriesmodelescourriers');
         })
         .catch((error) => {
-          
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
           
         });
     },
-    
-   
-
   },
   
 }

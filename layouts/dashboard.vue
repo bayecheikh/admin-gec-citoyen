@@ -81,12 +81,12 @@
         <template>
           <div class="pop-user">
             <div class="pop-user-top">
-              <v-card class="d-flex align-center flex-column mb-3" flat tile>
+              <v-card class="d-flex align-center flex-column mb-3" text tile>
                 <v-avatar size="60px">
                   <img src="@/static/avatar/default-user.png" alt="avatar" />
                 </v-avatar>
               </v-card>
-              <v-card class="d-flex align-center flex-column" flat tile>
+              <v-card class="d-flex align-center flex-column" text tile>
                 <div class="">
                   <h5>{{ loggedInUser && loggedInUser.name }}</h5>
                 </div>
@@ -94,13 +94,13 @@
                   <p class="pb-0 mb-1">{{ loggedInUser && loggedInUser.email }}</p>
                 </div>
               </v-card>
-              <v-card class="d-flex align-center flex-column mt-1" flat tile>
+              <v-card class="d-flex align-center flex-column mt-1" text tile>
                 <v-btn text depressed @click="goToProfile" class="customTopNav pop-user-button flex text-sm-center">
                   Parametres
                 </v-btn>
               </v-card>
             </div>
-            <v-card class="d-flex align-center flex-column pt-0 pb-0" color="border-top" flat tile>
+            <v-card class="d-flex align-center flex-column pt-0 pb-0" color="border-top" text tile>
               <v-card-actions v-if="isAuthenticate" class="py-0">
                 <v-btn text color="#000" depressed @click="logout" :loading="loading">
                   <v-icon left>
@@ -109,7 +109,7 @@
                 </v-btn>
               </v-card-actions>
               <!-- <v-card-actions>
-                <v-btn flat color="none" @click="logout" :loading="loading">Deconnexion</v-btn>               
+                <v-btn text color="none" @click="logout" :loading="loading">Deconnexion</v-btn>               
               </v-card-actions> -->
 
             </v-card>
@@ -144,18 +144,12 @@ export default {
     AppToolbar
   },
   computed: {
-
     ...mapGetters({
       initiallistcourriers: 'courriers/initiallistcourriers',
     }),
 
   },
-  methods: {
-    getYearFromCreatedAt(createdAt) {
-      const date = new Date(createdAt)
-      return date.getFullYear()
-    },
-  },
+
   mounted: async function () {
     this.layout = this.$getUserMenu()
     this.isAuthenticate = this.$isLogged()
@@ -174,14 +168,7 @@ export default {
     loading: false,
     isAuthenticate: false,
     loggedInUser: null,
-    cards: ['Today', 'Yesterday'],
     drawer: null,
-    links: [
-      ['mdi-inbox-arrow-down', 'Inbox'],
-      ['mdi-send', 'Send'],
-      ['mdi-delete', 'Trash'],
-      ['mdi-alert-octagon', 'Spam'],
-    ],
   }),
   methods: {
     async logout() {

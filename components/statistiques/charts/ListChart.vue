@@ -60,7 +60,6 @@ export default {
     ...mapGetters({
       ispieloading: 'courriers/ispieloading',
       isbarloading: 'courriers/isbarloading',
-
     })
   },
   components: { BarChart, PieChart },
@@ -81,7 +80,6 @@ path {
 path:hover {
   opacity: 0.85;
 }
-
 
 .custom-pie-chart {
   width: 250px;

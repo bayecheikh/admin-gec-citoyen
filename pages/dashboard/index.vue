@@ -215,7 +215,6 @@ export default {
   computed: {
     ...mapGetters({
       listcourriers: 'courriers/listcourriers',
-      isloading: 'courriers/isloading',
       initiallistcourriers: 'courriers/initiallistcourriers',
       listcourrierstraites: 'courriers/listcourrierstraites',
       listorganismes: 'organismes/listorganismes',
@@ -229,19 +228,10 @@ export default {
   data() {
     return {
       annee: '',
-      nombreOrganismes: 0,
-      tauxDeReponse: 0,
-      nombreCourriers: 0,
-      nombreCourriersTraites: 0,
       organisme: '',
     };
   },
   methods: {
-    setDefaultAnnee() {
-      const anneeActuelle = new Date().getFullYear();
-      return anneeActuelle
-    },
-
     async changeAnnee(value) {
       const newlistpie = await this.initiallistcourriers.filter((item) => this.getYearFromCreatedAt(item.createdAt) == value)
       await this.$store.dispatch('courriers/updateListPie', newlistpie)
@@ -265,17 +255,14 @@ export default {
     },
     async updateCourrier(value, type) {
       var list = []
-
       if (type == 'organisme') {
         this.organisme = value
         if (this.annee != '') {
           list = await this.initiallistcourriers.filter((item) => (this.getYearFromCreatedAt(item.createdAt) == this.annee && item.structure == value))
-
         } else {
           list = this.initiallistcourriers.filter((item) => (item.structure == value))
         }
       }
-
 
       if (type == 'annee') {
         this.annee = value
@@ -353,7 +340,6 @@ export default {
 
 .custom-stat-boxes:hover>h1 {
   color: #ffffff;
-
 }
 
 .custom-stat-boxes-title {

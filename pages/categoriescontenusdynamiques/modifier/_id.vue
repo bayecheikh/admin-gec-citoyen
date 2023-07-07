@@ -43,9 +43,7 @@ export default {
           to: '/',
           exact: true
         }
-
       ]
-
     }
   }
 

@@ -25,7 +25,6 @@ export default {
       return redirect('/')
     }
   },
-
   data() {
     return {
       headerItems: [

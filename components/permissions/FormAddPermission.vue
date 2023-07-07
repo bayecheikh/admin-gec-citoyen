@@ -18,17 +18,11 @@
 </template>
 
 <script>
-import Notification from '@/components/Notification'
+
 export default {
-  components: {
-    Notification
-  },
   data: () => ({
     loading: false,
     message: null,
-    color: null,
-    valid: true,
-    
     valid: true,
     model: {
       name: '',
@@ -55,18 +49,13 @@ export default {
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Ajout réussi' })
           this.$router.push('/permissions');
-
         })
         .catch((error) => {
-          
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
-          
         });
     },
-    
-   
   }
 }
 </script>

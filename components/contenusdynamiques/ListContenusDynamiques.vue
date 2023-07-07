@@ -34,7 +34,6 @@ export default {
     tabItems: [
       { title: 'Tout', value: 'tout' }
     ],
-    selected: []
   }),
   methods: {
     goToAddContenuDynamique() {

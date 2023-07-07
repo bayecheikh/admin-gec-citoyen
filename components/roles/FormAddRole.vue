@@ -24,7 +24,6 @@
           </template>
         </v-col>
       </v-row>
-
       <v-btn :loading="loading" :disabled="!valid" depressed class="mr-4 text-white mt-4" color="#1B73E8"
         @click="submitForm">
         Enregistrer
@@ -46,14 +45,13 @@ export default {
     headers: 'permissions/headerpermissions'
   }),
   data: () => ({
+    singleSelect: false,
+    color: null,
     loading: false,
     message: null,
-    color: null,
     valid: true,
-    search: '',
     selected: [],
     search: '',
-    
     headers: [
       {
         text: 'Fonctionnalité',
@@ -63,7 +61,6 @@ export default {
       },
       { text: 'Description', value: 'description' }
     ],
-    valid: true,
     model: {
       name: '',
       description: ''
@@ -86,8 +83,6 @@ export default {
       this.loading = true;
       let validation = this.$refs.form.validate()
       let selectedPermissions = this.selected.map((item) => { return item.id })
-    
-
       validation && this.$gecApi.post('/roles', { ...this.model, permissions: selectedPermissions })
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Ajout réussi' })
@@ -97,11 +92,8 @@ export default {
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
-          
         });
-    },
-    
-   
+    },   
   }
 }
 </script>

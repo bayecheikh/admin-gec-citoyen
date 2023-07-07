@@ -41,8 +41,6 @@ export default function ({store ,redirect}, inject) {
             if(hasPermission(item.name))
             menu=[...menu,item]
         })
-      
-
         return menu
     }
     //Cette fonction permet de créer le menu a partir des permisions de l'utilisateur connecté

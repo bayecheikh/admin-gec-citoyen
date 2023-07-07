@@ -20,17 +20,13 @@
 </template>
     
 <script>
-import { mapGetters } from 'vuex'
+
 export default {
   mounted: function () {
     this.getDetail(this.$nuxt._route.params.id)
   },
-  computed: mapGetters({
-    listcontenusdynamiquescategories: 'contenusdynamiquescategories/listcontenusdynamiquescategories',
-  }),
   data: () => ({
     loading: false,
-    color: null,
     valid: true,
     model: {
       libelle: '',
@@ -44,11 +40,8 @@ export default {
         (v) => (v && v.length >= 2) || "Le libellé de la catégorie doit contenir au moins 2 caractères"
       ],
       descriptionRules: [
-
         (v) => (!v || v.length <= 500) || "La description ne doit pas dépasser 500 caractères",
-
       ],
-
     },
   }),
   methods: {

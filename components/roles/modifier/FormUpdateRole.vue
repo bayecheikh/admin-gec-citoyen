@@ -40,12 +40,9 @@
 </template>
 
 <script>
-import Notification from '@/components/Notification'
+
 import { mapGetters } from 'vuex'
 export default {
-  components: {
-    Notification
-  },
   mounted: function () {
     this.model.id = this.detailrole.id
     this.model.name = this.detailrole.name
@@ -57,14 +54,12 @@ export default {
     listpermissions: 'permissions/listpermissions',
   }),
   data: () => ({
+    singleSelect: false,
     loading: false,
     message: null,
-    color: null,
     valid: true,
     search: '',
     selected: [],
-    search: '',
-    
     headers: [
       {
         text: 'Fonctionnalité',
@@ -74,7 +69,6 @@ export default {
       },
       { text: 'Description', value: 'description' }
     ],
-    valid: true,
     model: {
       id: null,
       name: '',

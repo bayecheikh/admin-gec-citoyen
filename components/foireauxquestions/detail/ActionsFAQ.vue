@@ -1,12 +1,12 @@
 <template>
   <v-row align="center" justify="space-around">
-    <v-btn flat outlined rounded color="primary" v-on:click="retour()">
+    <v-btn text outlined rounded color="primary" v-on:click="retour()">
       <v-icon left>
         mdi-arrow-left
       </v-icon>
       Retour à la liste
     </v-btn>
-    <v-btn flat rounded outlined v-on:click="modifier()">
+    <v-btn text rounded outlined v-on:click="modifier()">
       <v-icon left>
         mdi-pencil
       </v-icon>

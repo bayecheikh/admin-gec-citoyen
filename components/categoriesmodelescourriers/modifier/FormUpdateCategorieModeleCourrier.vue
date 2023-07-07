@@ -14,22 +14,16 @@
 </template>
     
 <script>
-import { mapGetters } from 'vuex'
+
 export default {
   mounted: function () {
     this.getDetail(this.$nuxt._route.params.id)
   },
 
-  computed: mapGetters({
-    listmodelescourrierscategories: 'modelescourrierscategories/listmodelescourrierscategories',
-  }),
   data: () => ({
-    selected: {},
     loading: false,
     message: null,
-    color: null,
     valid: true,
-    message: null,
     model: {
       name: '',
       id: null,
@@ -71,8 +65,6 @@ export default {
           this.loading = false;
         });
     },
-    
-   
 
   },
 }

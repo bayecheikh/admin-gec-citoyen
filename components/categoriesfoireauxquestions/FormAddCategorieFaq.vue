@@ -20,24 +20,16 @@
 </template>
     
 <script>
-import { mapGetters } from 'vuex'
+
 export default {
-  computed: mapGetters({
-    listfaqcategories: 'faqcategories/listfaqcategories',
-  }),
   data: () => ({
-    selected: {},
     loading: false,
     message: null,
-    color: null,
     valid: true,
-    
-    message: null,
     model: {
       name: '',
       description: '',
       id: null,
-     
     },
     rules: {
       nameRules: [
@@ -51,7 +43,6 @@ export default {
     },
   }),
   methods: {
-
     submitForm() {
       let validation = this.$refs.form.validate()
       this.loading = true;

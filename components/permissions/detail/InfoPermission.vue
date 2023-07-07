@@ -26,7 +26,6 @@ export default {
   computed: mapGetters({
     detailpermission: 'permissions/detailpermission'
   }),
-  
 }
 </script>
 <style scoped>

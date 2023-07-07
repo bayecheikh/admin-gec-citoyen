@@ -8,7 +8,7 @@
 
     <v-data-table v-model="selected" :headers="headers"
       :items="tab == 'tout' ? listUsers.filter(user => user.roles[0] && user.roles[0].name != 'super_admin') : listUsers.filter(user => user.status === tab)"
-      :single-select="singleSelect" item-key="id" :items-per-page="perpage" class="flat pt-4" :loading="progress"
+      :single-select="singleSelect" item-key="id"  class="flat pt-4" :loading="progress"
       loading-text="Loading... Please wait" hide-default-footer :search="search">
       <template v-slot:top="{}">
         <v-row class="mb-1 border-bottom-small d-flex">
@@ -250,6 +250,9 @@ export default {
     }
   },
   data: () => ({
+    singleSelect: false,
+    attrs: {},
+    on: {},
     status: ['actif', 'inactif'],
     dialog: false,
     progress: true,
@@ -259,11 +262,8 @@ export default {
     page: 1,
     totalPages: 1,
     pageCount: '',
-    itemsPerPage: '',
     path: '',
-    
     options: {},
-    
     activeItem: {}
   })
 }

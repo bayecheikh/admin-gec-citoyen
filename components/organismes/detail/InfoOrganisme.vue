@@ -31,15 +31,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
-
 export default {
   computed: mapGetters({
     detailorganisme: 'organismes/detailorganisme'
   }),
-
 }
 </script>
-
 <style scoped>
 .border-left {
   border-left: solid 2px rgb(0 0 0 / 4%);

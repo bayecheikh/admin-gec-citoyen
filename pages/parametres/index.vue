@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+
 export default {
   layout: "dashboard",
   // middleware: function ({redirect,$hasPermission}) {
@@ -25,13 +25,9 @@ export default {
   //   // }
   // },
  
-
-
   mounted: async function () {
     this.layoutadmin = this.$getParametreMenu()
-
   },
-
   data: function () {
     return {
       layoutadmin: [],

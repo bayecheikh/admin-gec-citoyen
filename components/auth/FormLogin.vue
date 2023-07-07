@@ -4,7 +4,7 @@
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md3 lg3>
-            <v-card flat class="elevation-0 pl-5 pr-5 pt-0 pb-0 border-grey">
+            <v-card text class="elevation-0 pl-5 pr-5 pt-0 pb-0 border-grey">
               <v-card-text>
                 <div class="layout column align-center py-5">
 
@@ -85,7 +85,6 @@
 
 <script>
 import FormSendMail from '@/components/auth/FormSendMail'
-import layoutadmin from '@/static/data/layoutadmin'
 
 export default {
   /* middleware:'guest', */
@@ -97,7 +96,6 @@ export default {
     dialog: false,
     checkbox: true,
     loading: false,
-    color: null,
     message: null,
     model: {
       email: '',

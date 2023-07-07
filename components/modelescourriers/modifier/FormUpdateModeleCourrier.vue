@@ -59,8 +59,6 @@ export default {
   data: () => ({
     selected: null,
     loading: false,
-    message: null,
-    color: null,
     valid: true,
     message: null,
     model: {

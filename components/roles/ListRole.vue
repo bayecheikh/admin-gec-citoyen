@@ -15,7 +15,6 @@
         </v-btn>
       </div>
     </div>
-
     <v-tabs-items v-model="tab">
       <v-tab-item v-for="item in tabItems" :key="item.value">
         <table-role :tab="item.value"></table-role>
@@ -34,7 +33,6 @@ export default {
     tabItems: [
       { title: 'Tout', value: 'tout' }
     ],
-    selected: []
   }),
   methods: {
     goToAddRole() {

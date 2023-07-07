@@ -144,12 +144,8 @@ export default {
       courriersParMois: [],
       moisAvecPlusCourriers: null,
       repartitionMensuelleData: {},
-      intitulesOrganismes: [],
       intitulesMois: [],
-      courriersParOrganisme: [],
       courriersMensuels: [],
-      organismeData: {},
-
     }
   },
 

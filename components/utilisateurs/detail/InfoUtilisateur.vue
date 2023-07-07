@@ -28,7 +28,6 @@
                 </v-chip>
               </p>
             </div>
-
           </div>
         </v-col>
       </v-row>
@@ -55,21 +54,17 @@ export default {
       this.progress = true
       this.$gecApi.$get('/users/' + id)
         .then(async (response) => {
-         
           this.$store.dispatch('utilisateurs/getDetail', response.data)
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
-          
-        }).finally(() => {
-          
-        });
-      
+        })
     },
   },
 }
 </script>
 
 <style>
+
 .custom-v-avatar {
   border: solid 2px #d8d8d8;
 }

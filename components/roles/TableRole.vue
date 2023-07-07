@@ -6,7 +6,7 @@
     </v-card-title>
     <v-data-table :headers="headers" :items="tab == 'tout' ? listroles : listroles.filter(role => role.status === tab)"
       item-key="id" class="flat pt-4" :loading="listroles.length ? false : true" loading-text="Loading... Please wait"
-      :rows-per-page-items="[10, 20, 30, 40, 50]" hide-default-footer :search="search">
+       hide-default-footer :search="search">
       <template v-slot:top="{ pagination, options, updateOptions }">
         <v-row class="mb-1 border-bottom-small">
           <v-col md="6" sm="12" lg="6" class="pb-0 pt-4">
@@ -108,7 +108,6 @@ export default {
     headers: 'roles/headerroles'
   }),
   props: ['tab'],
-
   methods: {
     visualiserItem(item) {
       this.$store.dispatch('roles/getDetail', item)
@@ -118,7 +117,7 @@ export default {
       this.$store.dispatch('roles/getDetail', item)
       this.$router.push('/roles/modifier/' + item.id);
     },
-    deleteItem(item) {
+    deleteItem() {
       this.dialog = false
       this.$store.dispatch('toast/getMessage', { type: 'processing', text: 'Traitement en cours ...' })
       this.$gecApi.$delete('/roles/' + this.activeItem.id)
@@ -127,40 +126,11 @@ export default {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: response.data.message || 'Suppression réussie' })
         }).catch((error) => {
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la suppression' })
-          
         })
-    },
-    exporterItem(item) {
-      this.$store.dispatch('roles/getDetail')
-      alert('Exporter ' + item.id)
-    },
-    visualiser() {
-      if (this.selected.length != 1)
-        alert('Veuillez selectionner un element')
-      else {
-        let role = this.selected.map(function (value) { return value })[0]
-        this.$store.dispatch('roles/getDetail', role)
-        this.$router.push('/roles/detail/' + role.id);
-      }
-    },
-    modifier() {
-      if (this.selected.length != 1)
-        alert('Veuillez selectionner un element')
-      else {
-        let role = this.selected.map(function (value) { return value })[0]
-        this.$store.dispatch('roles/getDetail', role)
-        this.$router.push('/roles/modifier/' + role.id);
-      }
     },
     supprimer() {
       if (this.selected.length >= 1)
         alert('Supprimer ' + this.selected.map(function (value) { return value.id }))
-      else
-        alert('Veuillez selectionner un element')
-    },
-    exporter() {
-      if (this.selected.length >= 1)
-        alert('Exporter ' + this.selected.map(function (value) { return value.id }))
       else
         alert('Veuillez selectionner un element')
     },
@@ -170,18 +140,13 @@ export default {
     },
   },
   data: () => ({
+    attrs: {},
+    on: {},
     dialog: false,
-    progress: true,
     selected: [],
     search: '',
     items: [],
-    page: 1,
-    totalPages: 1,
-    pageCount: '',
-    itemsPerPage: '',
-    path: '',
     options: {},
-    
     activeItem: {}
   })
 }

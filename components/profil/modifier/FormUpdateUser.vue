@@ -21,9 +21,7 @@
             dense label="Structure" item-text="nom_structure" item-value="id" return-object v-if="showFournisseur">
           </v-autocomplete>
         </v-col>
-
       </v-row>
-
       <v-btn :loading="loading" :disabled="!valid" class="mr-4 text-white" color="#1B73E8" @click="submitForm">
         Enregistrer
       </v-btn>
@@ -34,24 +32,20 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
- 
   mounted: function () {
     this.getDetail(this.$nuxt._route.params.id)
     this.$store.dispatch('structures/getSelectList')
   },
   computed:
     mapGetters({
-      detailutilisateur: 'utilisateurs/detailutilisateur',
       listroles: 'roles/selectlistroles',
       liststructures: 'structures/selectliststructures'
     }),
   data: () => ({
     loading: false,
     message: null,
-    color: null,
     valid: true,
     showFournisseur: false,
-    message: null,
     model: {
       id: null,
       avatar: '',
@@ -99,19 +93,13 @@ export default {
       structure_idRules: [
         v => (!!v) || 'Structure est obligatoire',
       ],
-  
-       
-
     },
-
-    imageData: null,
   }),
   methods: {
     getDetail(id) {
       this.progress = true
       this.$gecApi.$get('/users/' + id)
-        .then(async (response) => {
-         
+        .then(async (response) => { 
           this.$store.dispatch('utilisateurs/getDetail', response.data)
           this.model.id = response.data.id
           this.model.name = response.data.name
@@ -121,10 +109,7 @@ export default {
           await this.changeRole()
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
-          
-        }).finally(() => {
-          
-        });
+        })
     },
 
     submitForm() {
@@ -132,7 +117,6 @@ export default {
       let selectedRoles = this.model.roles.map((item) => { return item.id })
       this.model.roles = selectedRoles
       this.loading = true;
-
       validation && this.$gecFileApi.put('/users/' + this.model.id, { ...this.model, roles: selectedRoles, ...this.model.avatar })
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Modification réussie' })
@@ -143,19 +127,14 @@ export default {
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la modification ' })
         }).finally(() => {
           this.loading = false;
-          
         });
     },
-    
-   
     async changeRole() {
-
       let checkRole = this.model.roles.filter(item => (item && item.name === 'point_focal' || item && item.name === 'admin_structure' || item && item.name === 'DGES' || item && item.name === 'directeur_eps')).length;
       if (checkRole == 1)
         this.showFournisseur = true
       else
         this.showFournisseur = false
-      
     },
   },
   

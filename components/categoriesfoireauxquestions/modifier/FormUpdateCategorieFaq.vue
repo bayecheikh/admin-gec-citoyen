@@ -20,19 +20,14 @@
 </template>
     
 <script>
-import { mapGetters } from 'vuex'
+
 export default {
   mounted: function () {
     this.getDetail(this.$nuxt._route.params.id)
   },
-
-  computed: mapGetters({
-    listfaqcategories: 'faqcategories/listfaqcategories',
-  }),
   data: () => ({
     loading: false,
     message: null,
-    color: null,
     valid: true,
     model: {
       name: '',

@@ -1,12 +1,12 @@
 <template>
   <v-row align="center" justify="space-around">
-    <v-btn flat outlined rounded color="primary" v-on:click="retour()">
+    <v-btn text outlined rounded color="primary" v-on:click="retour()">
       <v-icon left>
         mdi-arrow-left
       </v-icon>
       Retour à la liste
     </v-btn>
-    <v-btn flat rounded outlined v-on:click="modifier()">
+    <v-btn text rounded outlined v-on:click="modifier()">
       <v-icon left>
         mdi-pencil
       </v-icon>
@@ -14,7 +14,7 @@
     </v-btn>
     <v-dialog v-model="dialog" max-width="800px">
       <template v-slot:activator="{}">
-        <v-btn flat outlined rounded color="red" v-on:click="reinitialiser()">
+        <v-btn text outlined rounded color="red" v-on:click="reinitialiser()">
           <v-icon left>
             mdi-lock-reset
           </v-icon>
@@ -76,24 +76,18 @@ export default {
   methods: {
     submitForm() {
       let validation = this.$refs.form.validate()
-     
-
       this.loading = true;
-
       validation && this.$gecApi.post('/update_password', { ...this.model })
         .then((res) => {
           this.message = res.data.message
           this.color = 'success'
-          
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message })
         })
         .catch((error) => {
-          
           this.message = error.response?.data?.message || 'Échec de la connection'
           this.color = 'red'
         }).finally(() => {
           this.loading = false;
-          
           this.dialog = false
         });
     },

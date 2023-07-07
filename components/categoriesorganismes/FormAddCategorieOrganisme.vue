@@ -30,7 +30,6 @@ export default {
     selected: {},
     loading: false,
     message: null,
-    color: null,
     valid: true,
     message: null,
     model: {

@@ -98,10 +98,7 @@ export default {
     ],
     selected: null,
     loading: false,
-    message: null,
-    color: null,
     valid: true,
-
     message: null,
     model: {
       title: '',

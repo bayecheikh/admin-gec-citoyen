@@ -25,8 +25,6 @@
           </v-autocomplete>
         </v-col>
       </v-row>
-
-
       <v-row>
         <v-col md="6" lg="6" sm="12">
           <v-text-field label="GEC" outlined dense v-model="model.gec" :rules="rules.gecRules"></v-text-field>
@@ -45,7 +43,6 @@
       </v-row>
       <v-row>
         <v-col md="6" lg="6" sm="12">
-
           <v-autocomplete v-model="selectedstatus" :items="listorganismesstatus" outlined dense small-chips label="Statut"
             item-text="name" item-value="id" return-object @change="changeStatus">
             <template v-slot:item="{ item }">
@@ -53,15 +50,11 @@
             </template>
           </v-autocomplete>
         </v-col>
-
         <v-col md="6" lg="6" sm="12">
           <v-textarea label="Description" outlined dense v-model="model.description"
             :rules="rules.descriptionRules"></v-textarea>
         </v-col>
       </v-row>
-
-
-
       <v-btn :loading="loading" :disabled="!valid || !isCategorieSelected" class="mr-4 text-white" color="#1B73E8"
         @click="submitForm">
         Enregistrer
@@ -73,38 +66,28 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
- 
-
   mounted: function () {
     this.model.status = 1
-
     this.model.user_webservice = "bjidoc.webservice"
     this.model.user_ws_password = "G3dassi2021"
     this.$store.dispatch('organismescategories/getList')
   },
-
-
   computed: {
     ...mapGetters({
       listorganismescategories: 'organismescategories/listorganismescategories',
       listorganismesstatus: 'organismesstatus/listorganismesstatus',
-      detailorganisme: 'organismes/detailorganisme',
-      headers: 'organismescategories/headerorganismescategories'
     }),
 
     isCategorieSelected() {
       return !!this.selected;
     },
   },
-
   data: () => ({
     selected: null,
     selectedstatus: 1,
     loading: false,
     message: null,
-    color: null,
     valid: true,
-    message: null,
     model: {
       name: '',
       ged: '',
@@ -175,7 +158,6 @@ export default {
     async changeStatus(value) {
       this.model.status = value.id
     },
-
     submitForm() {
       let validation = this.$refs.form.validate()
       this.loading = true;
@@ -184,16 +166,13 @@ export default {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Ajout réussi' })
           this.$router.push('/organismes');
         })
-        .catch((error) => {
-          
+        .catch((error) => {  
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de l\'ajout ' })
         }).finally(() => {
           this.loading = false;
         });
     },
-    
   },
-  
 }
 </script>
     

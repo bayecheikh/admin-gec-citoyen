@@ -195,50 +195,18 @@
     </v-col>
   </v-form>
 </template>
-
 <script>
-import { mapGetters } from 'vuex'
-import Notification from '@/components/Notification'
+
 export default {
-  components: {
-    Notification
-  },
-  mounted: function () {
-    //this.$store.dispatch('profils/getList')
-  },
-  /* computed: {
-    ...mapGetters({
-    listprofils: 'profils/selectlistprofils',
-  })}, */
+
   data: () => ({
     loading: false,
     message: null,
-    color: null,
     valid: true,
     progress: true,
     items: [],
     page: 1,
     totalPages: 1,
-    typeProfils: [{
-      text: "Citoyen",
-      value: 1,
-      selected: true,
-    },
-    {
-      text: "Entreprise",
-      value: 2,
-    }
-    ],
-    typePieces: [{
-      text: "Cni",
-      value: "cni",
-      selected: true,
-    },
-    {
-      text: "Passeport",
-      value: "passeport",
-    }
-    ],
     model: {
       avatar: '',
       sexe: 'Masculin',
@@ -320,12 +288,9 @@ export default {
     submitForm() {
       let validation = this.$refs.form.validate()
       this.loading = true;
-   
       this.$store.commit('utilisateurs/initdatasearch', this.model.dataSearch)
       validation && this.getResult(1, this.model.dataSearch)
     },
-    
-   
     getList() {
       this.page = 1
       this.progress = true
@@ -340,19 +305,15 @@ export default {
         }).catch((error) => {
           /* this.$toast.global.my_error().goAway(1500) */ //Using custom toast
           this.$toast.error(error?.response?.data?.message).goAway(3000)
-          
         }).finally(() => {
-          
           this.progress = false
         });
-    
     },
     getResult(page, param) {
       this.page = 1
       this.progress = true
       this.$gecApi.get('/user-multiple-search/' + param + '?page=' + page)
         .then(async (response) => {
-          
           await this.$store.dispatch('utilisateurs/getList', response.data.data.data)
           let totalPages = Math.ceil(response.data.data.total / response.data.data.per_page)
           this.$store.dispatch('utilisateurs/getTotalPage', totalPages)
@@ -363,7 +324,6 @@ export default {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
           
         }).finally(() => {
-          
           this.progress = false;
           this.loading = false;
         });

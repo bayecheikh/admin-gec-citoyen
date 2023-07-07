@@ -15,7 +15,6 @@
         </v-btn> -->
       </div>
     </div>
-
     <v-tabs-items v-model="tab">
       <v-tab-item v-for="item in tabItems" :key="item.value">
         <table-categories-contenus-dynamiques :tab="item.value"></table-categories-contenus-dynamiques>
@@ -34,7 +33,6 @@ export default {
     tabItems: [
       { title: 'Tout', value: 'tout' }
     ],
-    selected: []
   }),
   methods: {
     goToAddCategorieContenuDynamique() {

@@ -25,8 +25,6 @@
           </v-autocomplete>
         </v-col>
       </v-row>
-
-
       <v-row>
         <v-col md="6" lg="6" sm="12">
           <v-text-field label="GEC" outlined dense v-model="model.gec" :rules="rules.gecRules"></v-text-field>
@@ -59,9 +57,6 @@
             :rules="rules.descriptionRules"></v-textarea>
         </v-col>
       </v-row>
-
-
-
       <v-btn :loading="loading" :disabled="!valid || !isCategorieSelected" class="mr-4 text-white" color="#1B73E8"
         @click="submitForm">
         Enregistrer
@@ -73,8 +68,6 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
- 
-
   mounted: function () {
     this.$store.dispatch('organismescategories/getList')
     this.getDetail(this.$nuxt._route.params.id)
@@ -84,9 +77,6 @@ export default {
     ...mapGetters({
       listorganismescategories: 'organismescategories/listorganismescategories',
       listorganismesstatus: 'organismesstatus/listorganismesstatus',
-      detailorganisme: 'organismes/detailorganisme',
-      headers: 'organismescategories/headerorganismescategories'
-
     }),
     isCategorieSelected() {
       return !!this.selected;
@@ -97,9 +87,7 @@ export default {
     selectedstatus: null,
     loading: false,
     message: null,
-    color: null,
     valid: true,
-    message: null,
     model: {
       name: '',
       ged: '',
@@ -165,12 +153,10 @@ export default {
     async changeStatus(value) {
       this.model.status = value.id
     },
-
     async getDetail(id) {
       this.progress = true
       await this.$gecApi.$get('/structures/' + id)
         .then(async (response) => {
-         
           this.$store.dispatch('organismes/getDetail', response.data.data)
           this.model.id = response.data.data.id
           this.model.name = response.data.data.name
@@ -188,29 +174,22 @@ export default {
           this.model.user_webservice = response.data.data.user_webservice
           this.model.user_ws_password = response.data.data.user_ws_password
 
-
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
-          
         })
     },
-
     submitForm() {
       let validation = this.$refs.form.validate()
-
       this.loading = true;
-
       validation && this.$gecApi.patch('/structures/' + this.model.id, { ...this.model })
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Modification réussie' })
           this.$router.push('/organismes');
         })
         .catch((error) => {
-          
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la modification ' })
         }).finally(() => {
           this.loading = false;
-          
         });
     },
   },

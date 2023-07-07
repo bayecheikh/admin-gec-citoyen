@@ -26,9 +26,7 @@
             dense label="Structure" item-text="nom_structure" item-value="id" return-object v-if="showFournisseur">
           </v-autocomplete>
         </v-col>
-
       </v-row>
-
       <v-btn :loading="loading" :disabled="!valid" class="mr-4 text-white" color="#1B73E8" @click="submitForm">
         Enregistrer
       </v-btn>
@@ -46,17 +44,14 @@ export default {
   },
   computed:
     mapGetters({
-      detailutilisateur: 'utilisateurs/detailutilisateur',
       listroles: 'roles/selectlistroles',
       liststructures: 'structures/selectliststructures'
     }),
   data: () => ({
     loading: false,
     message: null,
-    color: null,
     valid: true,
     showFournisseur: false,
-    message: null,
     model: {
       id: null,
       avatar: '',
@@ -135,30 +130,22 @@ export default {
         v => !!v || 'Fonction est obligatoire'
       ]
     },
-
-
-    imageData: null,
   }),
   methods: {
     getDetail(id) {
       this.progress = true
       this.$gecApi.$get('/users/' + id)
         .then(async (response) => {
-         
           this.$store.dispatch('utilisateurs/getDetail', response.data)
           this.model.id = response.data.id
-
           this.model.name = response.data.name
-
           this.model.email = response.data.email
           this.model.roles = response.data.roles
           this.model.structure_id = response.data.structures[0]?.id
           await this.changeRole()
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
-          
         })
-
     },
   
     submitForm() {
@@ -172,25 +159,19 @@ export default {
           this.$router.push('/utilisateurs');
         })
         .catch((error) => {
-          
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la modification ' })
         }).finally(() => {
           this.loading = false;
-          
         });
     },
-    
    
     async changeRole() {
-
       let checkRole = this.model.roles.filter(item => (item && item.name === 'point_focal' || item && item.name === 'admin_structure' || item && item.name === 'DGES' || item && item.name === 'directeur_eps')).length;
       if (checkRole == 1)
         this.showFournisseur = true
       else
         this.showFournisseur = false
-      
     },
   },
-  
 }
 </script>

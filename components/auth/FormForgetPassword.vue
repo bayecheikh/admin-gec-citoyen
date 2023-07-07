@@ -4,7 +4,7 @@
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md3 lg3>
-            <v-card flat class="elevation-0 pl-5 pr-5 pt-0 pb-0 border-grey">
+            <v-card text class="elevation-0 pl-5 pr-5 pt-0 pb-0 border-grey">
               <v-card-text>
                 <Notification :message="message" :color="color" v-if="message" />
                 <div class="layout column align-center py-5">

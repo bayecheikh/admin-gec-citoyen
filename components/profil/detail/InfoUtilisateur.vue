@@ -11,8 +11,6 @@
                 </span>{{ detailUtilisateur?.lastname }}</p>
               <p class="info-profil mb-4" v-if="detailUtilisateur?.sexe"><span>Sexe : </span>{{ detailUtilisateur?.sexe }}
               </p>
-
-             
               <p class="info-profil mb-4" v-if="detailUtilisateur?.role"><span>Rôles : </span>{{ detailUtilisateur?.role }}
               </p>
             </div>
@@ -48,12 +46,6 @@ export default {
     }
   },
   methods: {
-    submitForm() {
-      alert('Formulaire soumis')
-    },
-    retour() {
-      this.$router.push('/utilisateurs');
-    },
     getDetail(id) {
       const loggedInUser = JSON.parse(localStorage.getItem('gecAdminLoggedInUser'))
      

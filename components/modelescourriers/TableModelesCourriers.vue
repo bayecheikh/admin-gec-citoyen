@@ -18,8 +18,8 @@
         hide-details></v-text-field>
     </v-card-title>
     <v-data-table :headers="headers" :items="tab == 'tout' ? listmodelescourriers : listmodelescourriers" item-key="id"
-      items-per-page="20" class="flat pt-4" :loading="listmodelescourriers.length ? false : true"
-      loading-text="Chargement... Patientez svp" :rows-per-page-items="[10, 20, 30, 40, 50]" hide-default-footer
+      class="flat pt-4" :loading="listmodelescourriers.length ? false : true"
+      loading-text="Chargement... Patientez svp"  hide-default-footer
       :search="search">
       <template v-slot:top="{ pagination, options, updateOptions }">
         <v-row class="mb-1 border-bottom-small">
@@ -101,14 +101,9 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  mounted: function () {
-    this.$store.dispatch('categories/getList')
-
-  },
   computed: mapGetters({
     listmodelescourriers: 'modelescourriers/listmodelescourriers',
     headers: 'modelescourriers/headermodelescourriers',
-    listcategories: 'categories/listcategories',
   }),
   props: ['tab'],
 
@@ -121,7 +116,7 @@ export default {
       this.$store.dispatch('modelescourriers/getDetail', item)
       this.$router.push('/modelescourriers/modifier/' + item.id);
     },
-    deleteItem(item) {
+    deleteItem() {
       this.dialog = false
       this.$store.dispatch('toast/getMessage', { type: 'processing', text: 'Traitement en cours ...' })
       this.$gecApi.$delete('/model-courriers/' + this.activeItem.id)
@@ -131,40 +126,9 @@ export default {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: response.data?.data?.message || 'Suppression réussie' })
         }).catch((error) => {
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la suppression' })
-          
         })
-      
     },
-    visualiser() {
-      if (this.selected.length != 1)
-        alert('Veuillez sélectionner un élément')
-      else {
-        let contenu = this.selected.map(function (value) { return value })[0]
-        this.$store.commit('modelescourriers/initdetail', contenu)
-        this.$router.push('/modelescourriers/detail/' + contenu.id);
-      }
-    },
-    modifier() {
-      if (this.selected.length != 1)
-        alert('Veuillez sélectionner un élément')
-      else {
-        let contenu = this.selected.map(function (value) { return value })[0]
-        this.$store.commit('modelescourriers/initdetail', contenu)
-        this.$router.push({ path: '/modelescourriers/modifier/' + contenu.id, query: { categorie_href: "modelescourriers" } });
-      }
-    },
-    supprimer() {
-      if (this.selected.length >= 1)
-        alert('Supprimer ' + this.selected.map(function (value) { return value.id }))
-      else
-        alert('Veuillez sélectionner un élément')
-    },
-    exporter() {
-      if (this.selected.length >= 1)
-        alert('Exporter ' + this.selected.map(function (value) { return value.id }))
-      else
-        alert('Veuillez sélectionner un élément')
-    },
+       
     opendialog(item) {
       this.dialog = true
       this.activeItem = item
@@ -172,18 +136,12 @@ export default {
     
   },
   data: () => ({
+    attrs: {},
+    on: {},
     dialog: false,
-    progress: true,
-    selected: [],
     search: '',
     items: [],
-    page: 1,
-    totalPages: 1,
-    pageCount: '',
-    itemsPerPage: '',
-    path: '',
     options: {},
-    
     activeItem: {}
   })
 }
