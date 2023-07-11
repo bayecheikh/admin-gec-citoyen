@@ -5,13 +5,13 @@
 
     {
       "icon": "mdi-account-settings-outline",
-      "href": "/roles",
+      "href": "/",
       "title": "Rôles",
       "name": "gerer-parametres"
     },
     {
       "icon": "mdi-security",
-      "href": "/permissions",
+      "href": "/",
       "title": "Permissions",
       "name": "gerer-parametres"
     },   

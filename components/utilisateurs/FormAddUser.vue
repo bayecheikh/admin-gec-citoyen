@@ -48,7 +48,7 @@
       </v-col> -->
       </v-row>
 
-      <v-btn :loading="loading" :disabled="!valid" class="mr-4 text-white" color="#1B73E8" @click="submitForm">
+      <v-btn :loading="loading" :disabled="true" class="mr-4 text-white" color="#1B73E8" @click="submitForm">
         Enregistrer
       </v-btn>
     </v-form>
