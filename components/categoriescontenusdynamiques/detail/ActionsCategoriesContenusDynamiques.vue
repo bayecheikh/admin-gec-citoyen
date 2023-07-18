@@ -6,12 +6,12 @@
       </v-icon>
       Retour à la liste
     </v-btn>
-    <v-btn text rounded outlined v-on:click="modifier()">
+    <!-- <v-btn text rounded outlined v-on:click="modifier()">
       <v-icon left>
         mdi-pencil
       </v-icon>
       Modifier les infos
-    </v-btn>
+    </v-btn> -->
   </v-row>
 </template>
 

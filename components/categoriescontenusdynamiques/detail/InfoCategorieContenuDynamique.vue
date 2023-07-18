@@ -5,7 +5,7 @@
         <v-col md="9" sm="12" lg="9" text-md-left>
           <div class="row">
             <div class="col-md-6 border-left">
-              <p class="info-profil mb-4"><span>Nom : </span>{{ detailcategoriecontenudynamique.libelle }}</p>
+              <p class="info-profil mb-4"><span>Libellé : </span>{{ detailcategoriecontenudynamique.libelle }}</p>
               <p class="info-profil mb-4"><span>Description : </span>{{ detailcategoriecontenudynamique.description }}</p>
             </div>
           </div>
