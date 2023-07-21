@@ -14,7 +14,7 @@
 
         <v-col lg="6" md="6" sm="12">
           <v-autocomplete v-model="selected" :items="listcontenuscategories" :rules="rules.categorieRules" outlined dense
-            small-chips label="Catégorie *" item-text="libelle" item-value="id" return-object @change="changeCategorie">
+            small-chips label="Catégorie *" item-text="libelle" item-value="id" return-object @change="changeCategorie" disabled>
           </v-autocomplete>
         </v-col>
         <v-col md="12" lg="12" sm="12">
