@@ -43,9 +43,6 @@
                   <v-col cols="6">
                     <v-select :items="items" label="Structure" outlined></v-select>
                   </v-col>
-                  <v-col cols="12">
-                    <v-select :items="items" label="Rôles" outlined></v-select>
-                  </v-col>
                 </v-row>
 
 

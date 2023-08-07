@@ -36,10 +36,8 @@
 </template>
 <script>
 import Notification from '@/components/Notification'
-import layoutadmin from '@/static/data/layoutadmin'
 
 export default {
-  /* middleware:'guest', */
   layout: 'default',
   components: {
     Notification

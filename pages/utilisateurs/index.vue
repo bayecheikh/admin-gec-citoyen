@@ -16,11 +16,7 @@ import PageHeader from '@/components/PageHeader';
 import ListUser from '@/components/utilisateurs/ListUser'
 export default {
   layout: "dashboard",
-  middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-utilisateurs')) {
-      return redirect('/')
-    }
-  },
+
 
   components: {
     PageHeader,

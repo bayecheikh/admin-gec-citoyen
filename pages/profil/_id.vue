@@ -31,11 +31,7 @@ export default {
     InfoUtilisateur,
     ActionsUtilisateur
   },
-  middleware: function ({ redirect, $hasPermission, $getUser }) {
-    if ($nuxt._route.params.id != $getUser.id) {
-      return redirect('/')
-    }
-  },
+  
   data() {
     return {
       headerItems: [

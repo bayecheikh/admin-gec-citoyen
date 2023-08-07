@@ -16,11 +16,7 @@ import PageHeader from '@/components/PageHeader';
 import ListContenusDynamiques from '@/components/contenusdynamiques/ListContenusDynamiques'
 export default {
   layout: "dashboard",
-  middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-parametres')) {
-      return redirect('/')
-    }
-  },
+  
   components: {
     PageHeader,
     ListContenusDynamiques

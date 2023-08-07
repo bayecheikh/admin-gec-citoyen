@@ -22,57 +22,28 @@ export default function ({store ,redirect}, inject) {
         return false
     } */
 
-    const getUserRoles = () => {
-        return getUser()?.roles
-    }
 
-    const getUserPermissions = () => {
-        let permissions = []
-        getUserRoles()?.map((role)=>{permissions=[...permissions,...role.permissions]})
-        let allPermissions = removeDuplicates(permissions)
-     
-        return allPermissions
-    }
-    //Cette fonction permet de créer le menu a partir des permisions de l'utilisateur connecté
+    //Cette fonction permet de créer le menu
     const getUserMenu = (array) => {
         let layoutPrincipal = layout.menuItems
         let menu = []
         layoutPrincipal?.map((item)=>{
-            if(hasPermission(item.name))
             menu=[...menu,item]
         })
         return menu
     }
-    //Cette fonction permet de créer le menu a partir des permisions de l'utilisateur connecté
+    //Cette fonction permet de créer le menu 
     const getParametreMenu = (array) => {
         let layoutPrincipal = layoutadmin.menuItems
         let menu = []
         layoutPrincipal?.map((item)=>{
-            if(hasPermission(item.name))
             menu=[...menu,item]
         })
 
         return menu
     }
 
-    const hasPermission = (permission_name) => {
-        // let permissions = getUserPermissions()
-        // let checkpermission = permissions?.filter(item => item.name === permission_name).length;
-        // if(checkpermission==1)
-        // return true
-        // else
-        // return false
-        return true
-    }
-
-    const hasRole = (role_name) => {
-        let roles = getUserRoles()
-        let checkRole = roles?.filter(item => item.name === role_name)?.length;
-        if(checkRole==1)
-        return true
-        else
-        return false
-    }
+   
 
     const removeDuplicates = (array) => {
         let uniq = {};
@@ -116,10 +87,6 @@ export default function ({store ,redirect}, inject) {
 
 
     inject('getUser', getUser)
-    inject('getUserPermissions', getUserPermissions)
-    inject('getUserRoles', getUserRoles) 
-    inject('hasRole', hasRole)
-    inject('hasPermission', hasPermission) 
     inject('getToken',getToken)
     inject('isLogged',isLogged)
     inject('loggout',loggout)

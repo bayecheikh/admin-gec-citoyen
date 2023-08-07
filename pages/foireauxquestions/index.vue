@@ -15,11 +15,7 @@ import PageHeader from '@/components/PageHeader';
 import ListFoireAuxQuestions from '@/components/foireauxquestions/ListFoireAuxQuestions'
 export default {
   layout: "dashboard",
-  middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-parametres')) {
-      return redirect('/')
-    }
-  },
+  
   components: {
     PageHeader,
     ListFoireAuxQuestions

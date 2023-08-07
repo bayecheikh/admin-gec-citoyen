@@ -11,11 +11,6 @@
             :rules="rules.emailRules"></v-text-field>
         </v-col>
         <v-col lg="6" md="6" sm="12">
-          <v-autocomplete v-model="model.roles" :items="listroles" :rules="rules.rolesRules" outlined dense multiple
-            small-chips label="Role" item-text="description" item-value="id" clearable return-object @change="changeRole">
-          </v-autocomplete>
-        </v-col>
-        <v-col lg="6" md="6" sm="12">
           <v-autocomplete v-model="model.structure_id"
             :rules="this.showFournisseur == true ? rules.fournisseur_services_idRules : null" :items="liststructures" outlined
             dense label="Structure" item-text="nom_structure" item-value="id" return-object v-if="showFournisseur">
@@ -38,7 +33,6 @@ export default {
   },
   computed:
     mapGetters({
-      listroles: 'roles/selectlistroles',
       liststructures: 'structures/selectliststructures'
     }),
   data: () => ({
@@ -53,7 +47,6 @@ export default {
       firstname: '',
       lastname: '',
       email: '',
-      roles: null,
       fournisseur_services_id: null,
       country_code: '+229',
       telephone: '',
@@ -78,9 +71,6 @@ export default {
         v => !!v || 'Login est obligatoire',
         v => (v && v.length <= 10) || 'Nom doit etre inférieur à 10 caratères',
       ],
-      rolesRules: [
-        v => (v && !!v.length) || 'Role est obligatoire',
-      ],
       telephoneRules: [
         v => !!v || 'Téléphone est obligatoire',
       ],
@@ -104,9 +94,7 @@ export default {
           this.model.id = response.data.id
           this.model.name = response.data.name
           this.model.email = response.data.email
-          this.model.roles = response.data.roles
           this.model.structure_id = response.data.structures[0]?.id
-          await this.changeRole()
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
         })
@@ -114,10 +102,9 @@ export default {
 
     submitForm() {
       let validation = this.$refs.form.validate()
-      let selectedRoles = this.model.roles.map((item) => { return item.id })
-      this.model.roles = selectedRoles
+  
       this.loading = true;
-      validation && this.$gecFileApi.put('/users/' + this.model.id, { ...this.model, roles: selectedRoles, ...this.model.avatar })
+      validation && this.$gecFileApi.put('/users/' + this.model.id, { ...this.model, ...this.model.avatar })
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Modification réussie' })
           this.$router.push('/utilisateurs');
@@ -128,13 +115,6 @@ export default {
         }).finally(() => {
           this.loading = false;
         });
-    },
-    async changeRole() {
-      let checkRole = this.model.roles.filter(item => (item && item.name === 'point_focal' || item && item.name === 'admin_structure' || item && item.name === 'DGES' || item && item.name === 'directeur_eps')).length;
-      if (checkRole == 1)
-        this.showFournisseur = true
-      else
-        this.showFournisseur = false
     },
   },
   

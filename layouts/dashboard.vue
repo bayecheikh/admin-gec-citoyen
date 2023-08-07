@@ -133,7 +133,7 @@
 import AppToolbar from '@/components/AppToolbar'
 import { mapGetters } from 'vuex';
 export default {
-  /* middleware: 'auth', */
+
   middleware({ redirect, $getToken, $getUser, $isLogged, $loggout }) {
     if ($getToken() == null || $getUser() == null || $isLogged() == null || $isLogged() == false) {
       $loggout()

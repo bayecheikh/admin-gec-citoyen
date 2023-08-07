@@ -34,18 +34,6 @@
             :type="passwordConfirmVisible ? 'text' : 'password'" @click:append="togglePasswordConfirmVisibility"
             :rules="getPasswordConfirmRules"></v-text-field>
         </v-col>
-        <!-- <v-col
-        lg="6"
-        md="6"
-        sm="12"
-      >
-      <v-text-field
-          label="Rôle"
-          dense outlined
-          v-model="model.role"
-          :rules="rules.roleRules"
-        ></v-text-field>
-      </v-col> -->
       </v-row>
 
       <v-btn :loading="loading" :disabled="true" class="mr-4 text-white" color="#1B73E8" @click="submitForm">
@@ -81,7 +69,6 @@ export default {
       lastname: '',
       adresse: '',
       telephone: '',
-      role: 'user',
       passwordConfirm: '',
       sexe: '',
       email: '',
@@ -101,9 +88,6 @@ export default {
         (v) => /^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/.test(v) || "Le nom ne doit contenir que des caractères alphabétiques et des caractères spéciaux tels que des espaces, des tirets et des apostrophes",
         (v) => (v && v.length <= 100) || "Le nom ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "Le nom doit contenir au moins 2 caractères"
-      ],
-      roleRules: [
-        v => (v && !!v.length) || 'Le rôle est obligatoire',
       ],
       telephoneRules: [
         (v) => /^[0-9]+$/.test(v) || "Le numéro de téléphone ne doit contenir que des chiffres",

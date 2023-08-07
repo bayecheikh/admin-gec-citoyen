@@ -2,19 +2,7 @@
   "role":"admin",
   "homePage":"/dashboard",
   "menuItems":[
-
-    {
-      "icon": "mdi-account-settings-outline",
-      "href": "/",
-      "title": "Rôles",
-      "name": "gerer-parametres"
-    },
-    {
-      "icon": "mdi-security",
-      "href": "/",
-      "title": "Permissions",
-      "name": "gerer-parametres"
-    },   
+  
     {
       "icon": "mdi-comment-text-multiple-outline",
       "href": "/foireauxquestions",
