@@ -31,11 +31,7 @@ export default {
     InfoFaq,
     ActionsFaq
   },
-  // middleware: function ({redirect,$hasPermission}) {
-  //   if(!$hasPermission('gerer-utilisateurs')){
-  //     return redirect('/')
-  //   }
-  // },
+  
   data() {
     return {
       headerItems: [

@@ -17,11 +17,7 @@ import PageHeader from '@/components/PageHeader';
 import ListModelesCourriers from '@/components/modelescourriers/ListModelesCourriers'
 export default {
   layout: "dashboard",
-  middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-parametres')) {
-      return redirect('/')
-    }
-  },
+  
   components: {
     PageHeader,
     ListModelesCourriers

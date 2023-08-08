@@ -16,11 +16,7 @@ import PageHeader from '@/components/PageHeader';
 import ListOrganismes from '@/components/organismes/ListOrganismes'
 export default {
   layout: "dashboard",
-  middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-parametres')) {
-      return redirect('/')
-    }
-  },
+  
   components: {
     PageHeader,
     ListOrganismes

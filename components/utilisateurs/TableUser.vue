@@ -7,7 +7,7 @@
     </v-card-title>
 
     <v-data-table v-model="selected" :headers="headers"
-      :items="tab == 'tout' ? listUsers.filter(user => user.roles[0] && user.roles[0].name != 'super_admin') : listUsers.filter(user => user.status === tab)"
+      :items="tab == 'tout' ? listUsers : listUsers.filter(user => user.status === tab)"
       :single-select="singleSelect" item-key="id"  class="flat pt-4" :loading="progress"
       loading-text="Loading... Please wait" hide-default-footer :search="search">
       <template v-slot:top="{}">
@@ -63,15 +63,10 @@
       </template>
       <template v-slot:[`item.status`]="{ item }">
         <v-switch :input-value="item.status == 'actif' ? true : false" color="success" hide-details
-          @change="actveDesactiveUser(item.id)" v-if="$hasRole('super_admin')"></v-switch>
-        <div v-else>{{ item.status == 'actif' ? 'Actif' : 'Inactif' }}</div>
+          @change="actveDesactiveUser(item.id)" ></v-switch>
       </template>
 
-      <template v-slot:[`item.roles`]="{ item }">
-        <v-chip color="primary" small outlined class="my-1 mr-1" v-for="role in item.roles" :key="role.value">
-          {{ role.description }}
-        </v-chip>
-      </template>
+      
       <template v-slot:[`item.actions`]="{ item }">
         <v-menu bottom left>
           <template v-slot:activator="{ on, attrs }">
@@ -94,7 +89,7 @@
                   <v-icon small class="mr-2"> mdi-pencil-outline </v-icon>Modifier
                 </v-list-item-title>
               </v-list-item>
-              <v-list-item v-if="$hasRole('super_admin')" @click="opendialog(item)"
+              <v-list-item @click="opendialog(item)"
                 class="custom-v-list-action pl-2 pr-1">
                 <v-list-item-title>
                   <v-icon small class="mr-2" v-bind="attrs" v-on="on">

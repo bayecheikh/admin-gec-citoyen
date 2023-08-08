@@ -21,12 +21,6 @@
               <p class="info-profil mb-4"><span>Prénom et Nom : </span>{{ detailUtilisateur.name }}</p>
 
               <p class="info-profil mb-4"><span>Email : </span>{{ detailUtilisateur.email }}</p>
-              <p class="info-profil mb-4"><span>Rôles : </span>
-                <v-chip color="primary" small outlined class="my-1 mr-1" v-for="role in detailUtilisateur.roles"
-                  :key="role.id">
-                  {{ role.description }}
-                </v-chip>
-              </p>
             </div>
           </div>
         </v-col>

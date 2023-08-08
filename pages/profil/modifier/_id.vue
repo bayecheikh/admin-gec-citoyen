@@ -18,20 +18,10 @@ import FormUpdateUser from '@/components/profil/modifier/FormUpdateUser';
 export default {
   layout: "dashboard",
   components: {
-    
     PageHeader,
     FormUpdateUser
   },
-  middleware: function ({ redirect, $hasPermission, $getUser }) {
-    /*  if($nuxt._route.params.id!=$getUser.id){
-       return redirect('/')
-     } */
-  },
-  mounted: function () {
-    this.$store.dispatch('roles/getList')
-    /* this.$store.dispatch('structures/getList')
-    this.$store.dispatch('fournisseurs/getList') */
-  },
+
   data() {
     return {
       headerItems: [

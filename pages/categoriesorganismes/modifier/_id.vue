@@ -20,11 +20,7 @@ export default {
     PageHeader,
     FormUpdateCategorieOrganisme
   },
-  middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-roles')) {
-      return redirect('/')
-    }
-  },
+ 
   mounted: function () {
     this.$store.dispatch('categoriesorganismes/getList')
   },

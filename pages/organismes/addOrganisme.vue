@@ -20,11 +20,7 @@ export default {
     PageHeader,
     FormAddOrganisme
   },
-  middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-parametres')) {
-      return redirect('/')
-    }
-  },
+  
   data() {
     return {
       headerItems: [

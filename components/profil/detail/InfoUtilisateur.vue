@@ -11,8 +11,6 @@
                 </span>{{ detailUtilisateur?.lastname }}</p>
               <p class="info-profil mb-4" v-if="detailUtilisateur?.sexe"><span>Sexe : </span>{{ detailUtilisateur?.sexe }}
               </p>
-              <p class="info-profil mb-4" v-if="detailUtilisateur?.role"><span>Rôles : </span>{{ detailUtilisateur?.role }}
-              </p>
             </div>
             <div class="col-md-6 border-left">
               <p class="info-profil mb-4" v-if="detailUtilisateur?.email"><span>Email :
