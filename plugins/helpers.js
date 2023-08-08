@@ -14,14 +14,13 @@ export default function ({store ,redirect}, inject) {
         return JSON.parse(localStorage.getItem('gecAdminIsAuthenticated'))
     }
 
-    /* const verifySession = () => {
+    const verifySession = () => {
      
         if(isLogged() & getUser!==null & getToken!==null)
         return true
         else
         return false
-    } */
-
+    } 
     const getUserRoles = () => {
         return getUser()?.roles
     }
