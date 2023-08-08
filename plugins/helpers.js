@@ -14,7 +14,7 @@ export default function ({store ,redirect}, inject) {
         return JSON.parse(localStorage.getItem('gecAdminIsAuthenticated'))
     }
 
-    /* const verifySession = () => {
+    const verifySession = () => {
      
         if(isLogged() & getUser!==null & getToken!==null)
         return true
@@ -22,8 +22,18 @@ export default function ({store ,redirect}, inject) {
         return false
     } */
 
+    const getUserRoles = () => {
+        return getUser()?.roles
+    }
 
-    //Cette fonction permet de créer le menu
+    const getUserPermissions = () => {
+        let permissions = []
+        getUserRoles()?.map((role)=>{permissions=[...permissions,...role.permissions]})
+        let allPermissions = removeDuplicates(permissions)
+     
+        return allPermissions
+    }
+    //Cette fonction permet de créer le menu a partir des permisions de l'utilisateur connecté
     const getUserMenu = (array) => {
         let layoutPrincipal = layout.menuItems
         let menu = []
