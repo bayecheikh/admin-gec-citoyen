@@ -32,7 +32,7 @@ export default {
     ActionsUtilisateur
   },
   middleware: function ({ redirect, $hasPermission, $getUser }) {
-    if ($nuxt._route.params.id != $getUser.id) {
+    if ($nuxt._route.params.id != $getUser._id) {
       return redirect('/')
     }
   },

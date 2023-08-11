@@ -23,19 +23,19 @@ export default function ({store ,redirect}, inject) {
         return allPermissions
     }
 
-    const hasPermission = (permission_name) => {
-        // let permissions = getUserPermissions()
-        // let checkpermission = permissions.filter(item => item.name === permission_name).length;
-        // if(checkpermission==1)
-        // return true
-        // else
-        // return false
+    const hasPermission = (permission_slug) => {
+        let permissions = getUserPermissions()
+        let checkpermission = permissions.filter(item => item.slug === permission_slug).length;
+        if(checkpermission==1)
         return true
+        else
+        return false
+        
     }
 
-    const hasRole = (role_name) => {
+    const hasRole = (role_slug) => {
         let roles = getUserRoles()
-        let checkRole = roles?.filter(item => item.name === role_name)?.length;
+        let checkRole = roles?.filter(item => item.slug === role_slug)?.length;
         if(checkRole==1)
         return true
         else

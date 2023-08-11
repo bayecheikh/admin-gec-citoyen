@@ -7,9 +7,9 @@
     </v-card-title>
 
     <v-data-table v-model="selected" :headers="headers"
-      :items="tab == 'tout' ? listUsers.filter(user => user.roles[0] && user.roles[0].name != 'super_admin') : listUsers.filter(user => user.status === tab)"
-      :single-select="singleSelect" item-key="id"  class="flat pt-4" :loading="progress"
-      loading-text="Loading... Please wait" hide-default-footer :search="search">
+      :items="tab == 'tout' ? listUsers.filter(user => user.roles.some(role => role.slug === 'super-admin') == false) : listUsers.filter(user => user.status === tab && user.roles.some(role => role.slug === 'super-admin') == false)" :single-select="singleSelect"
+      item-key="id" class="flat pt-4" :loading="progress" loading-text="Loading... Please wait" hide-default-footer
+      :search="search">
       <template v-slot:top="{}">
         <v-row class="mb-1 border-bottom-small d-flex">
           <v-col md="6" sm="12" lg="6" class="pb-0 pt-4">
@@ -61,15 +61,15 @@
           </div>
         </v-row>
       </template>
-      <template v-slot:[`item.status`]="{ item }">
+      <!-- <template v-slot:[`item.status`]="{ item }">
         <v-switch :input-value="item.status == 'actif' ? true : false" color="success" hide-details
-          @change="actveDesactiveUser(item.id)" v-if="$hasRole('super_admin')"></v-switch>
+          @change="actveDesactiveUser(item.id)" v-if="$hasRole('super-admin')"></v-switch>
         <div v-else>{{ item.status == 'actif' ? 'Actif' : 'Inactif' }}</div>
-      </template>
+      </template> -->
 
       <template v-slot:[`item.roles`]="{ item }">
         <v-chip color="primary" small outlined class="my-1 mr-1" v-for="role in item.roles" :key="role.value">
-          {{ role.description }}
+          {{ role.name }}
         </v-chip>
       </template>
       <template v-slot:[`item.actions`]="{ item }">
@@ -89,12 +89,13 @@
                   </v-icon>Détail
                 </v-list-item-title>
               </v-list-item>
-              <v-list-item @click="editItem(item)" link class="custom-v-list-action pl-2 pr-1">
+              <v-list-item v-if="!hasSuperAdminRole(item)" @click="editItem(item)" link
+                class="custom-v-list-action pl-2 pr-1">
                 <v-list-item-title>
                   <v-icon small class="mr-2"> mdi-pencil-outline </v-icon>Modifier
                 </v-list-item-title>
               </v-list-item>
-              <v-list-item v-if="$hasRole('super_admin')" @click="opendialog(item)"
+              <v-list-item v-if="$hasRole('super-admin') && !hasSuperAdminRole(item)" @click="opendialog(item)"
                 class="custom-v-list-action pl-2 pr-1">
                 <v-list-item-title>
                   <v-icon small class="mr-2" v-bind="attrs" v-on="on">
@@ -117,7 +118,7 @@ export default {
     RechercheUser
   },
   mounted: function () {
-    this.getList(1)
+    this.getList()
   },
   computed: mapGetters({
     listUsers: 'utilisateurs/listutilisateurs',
@@ -129,31 +130,38 @@ export default {
   props: ['tab'],
 
   methods: {
+    hasSuperAdminRole(item) {
+      return item.roles.some(role => role.slug === 'super-admin');
+    },
     getList(page) {
       this.progress = true
-      this.$gecApi.$get('/users?page=' + page)
+      let authToken = 'Bearer ' + localStorage.getItem('gecAdminToken');
+
+      let headers = {
+        Authorization: authToken, // Ajouter le token dans l'en-tête Authorization
+      };
+
+
+      this.$gecApi.$get('/users/back-office-users', { headers })
         .then(async (response) => {
-          
           let totalPages = Math.ceil(response.data.total / response.data.per_page)
           this.$store.dispatch('utilisateurs/getTotalPage', totalPages)
           this.$store.dispatch('utilisateurs/getPerPage', response.data.per_page)
           this.$store.dispatch('utilisateurs/getList', response.data.data)
-  
+
         }).catch((error) => {
           /* this.$toast.global.my_error().goAway(1500) */ //Using custom toast
           // this.$toast.error(error?.response?.data?.message).goAway(3000)
-          
         }).finally(() => {
-          
           this.progress = false
         });
-    
+
     },
     getResult(page, param) {
       this.progress = true
       this.$gecApi.get('/user-multiple-search/' + param + '?page=' + page)
         .then(async (response) => {
-          
+
           await this.$store.dispatch('utilisateurs/getList', response.data.data.data)
           let totalPages = Math.ceil(response.data.data.total / response.data.data.per_page)
           this.$store.dispatch('utilisateurs/getTotalPage', totalPages)
@@ -162,29 +170,28 @@ export default {
         }).catch((error) => {
           /* this.$toast.global.my_error().goAway(1500) */ //Using custom toast
           // this.$toast.error(error?.response?.data?.message).goAway(3000)
-          
+
         }).finally(() => {
-          
           this.progress = false;
         });
     },
     actveDesactiveUser(id) {
-   
+
       this.dialog = false
       this.$store.dispatch('toast/getMessage', { type: 'processing', text: 'Traitement en cours ...' })
       this.$gecApi.$get('/active_user/' + id)
         .then(async (response) => {
-      
+
           this.$store.dispatch('toast/getMessage', { type: 'success', text: response.data.message || 'Opération réussie' })
         }).catch((error) => {
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Opération échoué' })
-          
+
         }).finally(() => {
-          
+
         });
     },
     handlePageChange(value) {
-    
+
       if (this.datasearch == null)
         this.getList(value)
       else
@@ -193,31 +200,37 @@ export default {
     },
     visualiserItem(item) {
       this.$store.dispatch('utilisateurs/getDetail', item)
-      this.$router.push('/utilisateurs/detail/' + item.id);
+      this.$router.push('/utilisateurs/detail/' + item._id);
     },
     editItem(item) {
       this.$store.dispatch('utilisateurs/getDetail', item)
-      this.$router.push('/utilisateurs/modifier/' + item.id);
+      this.$router.push('/utilisateurs/modifier/' + item._id);
     },
     async deleteItem() {
       this.dialog = false
       this.$store.dispatch('toast/getMessage', { type: 'processing', text: 'Traitement en cours ...' })
-      this.$gecApi.$delete('/users/' + this.activeItem.id)
+      let authToken = 'Bearer ' + localStorage.getItem('gecAdminToken');
+
+      let headers = {
+        Authorization: authToken,
+      };
+      this.$gecApi.$delete('/users/' + this.activeItem._id, { headers })
         .then(async (response) => {
-          this.$store.dispatch('utilisateurs/deleteUtilisateur', this.activeItem.id)
-          this.$store.dispatch('toast/getMessage', { type: 'success', text: response.data.message || 'Suppression réussie' })
+          this.$store.dispatch('utilisateurs/deleteUtilisateur', this.activeItem._id)
+          this.$store.dispatch('toast/getMessage', { type: 'success', text: 'Suppression réussie' })
+    
         }).catch((error) => {
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la suppression' })
-          
+
         }).finally(() => {
-          
+
         });
     },
     opendialog(item) {
       this.dialog = true
       this.activeItem = item
     },
-    
+
     visualiser() {
       if (this.selected.length != 1)
         alert('Veuillez selectionner un element')

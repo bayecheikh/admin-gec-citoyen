@@ -2,13 +2,12 @@
   <v-card class="custom-card-user border-grey">
     <v-card-text>
       <v-row>
-        <v-col md="3" sm="12" lg="3" text-md-center>
-          <img src="@/static/avatar/default-user.png" class="user-profil" alt="Plateforme GEC CITOYEN">
-        </v-col>
         <v-col md="9" sm="12" lg="9" text-md-left>
           <div class="row">
             <div class="col-md-6 border-left">
-              <h3 class="mb-4">{{ detailpermission.nom }}</h3>
+              <p class="info-profil mb-4"><span>Nom :
+                </span>{{ detailpermission.name }}
+              </p>
               <p class="info-profil mb-4"><span>Description :
                 </span>{{ detailpermission.description }}
               </p>

@@ -77,14 +77,14 @@ export default {
     rules: {
       nameRules: [
         v => !!v || 'Le nom est obligatoire',
-        v => (v && v.length <= 50) || 'Le nom doit être inférieur à 50 caractères',
-        v => (v && v.length >= 2) || 'Le nom doit être supérieur à 2 caractères',
+        v => (v && v.length <= 100) || 'Le nom ne doit pas contenir plus de 100 caractères',
+        v => (v && v.length >= 2) || 'Le nom doit contenir au moins 2 caractères',
       ],
       descriptionRules: [
         v => !!v || 'La description est obligatoire',
-        v => (v && v.length <= 500) || 'La description doit être inférieure à 500 caractères',
-        v => (v && v.length >= 2) || 'La description doit être supérieure à 2 caractères',
-      ]
+        v => (v && v.length <= 500) || 'La description ne doit pas contenir plus de 500 caractères',
+        v => (v && v.length >= 2) || 'La description doit contenir au moins 2 caractères',
+      ],
     },
   }),
   methods: {
@@ -92,9 +92,9 @@ export default {
       let validation = this.$refs.form.validate()
       let selectedPermissions = this.selected.map((item) => { return item.id })
       let id = this.model.id
-      validation && this.$gecApi.put('/roles/' + id, { ...this.model, permissions: selectedPermissions })
+      validation && this.$gecApi.patch('/roles/' + id, { ...this.model, permissions: selectedPermissions })
         .then((res) => {
-          this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Modification réussie' })
+          this.$store.dispatch('toast/getMessage', { type: 'success', text: 'Modification réussie' })
           this.$router.push('/roles');
         })
         .catch((error) => {

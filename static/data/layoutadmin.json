@@ -5,21 +5,21 @@
 
     {
       "icon": "mdi-account-settings-outline",
-      "href": "/",
+      "href": "/roles",
       "title": "Rôles",
-      "name": "gerer-parametres"
+      "name": "gerer-roles"
     },
     {
       "icon": "mdi-security",
-      "href": "/",
+      "href": "/permissions",
       "title": "Permissions",
-      "name": "gerer-parametres"
+      "name": "gerer-permissions"
     },   
     {
       "icon": "mdi-comment-text-multiple-outline",
       "href": "/foireauxquestions",
       "title": "Foire aux questions",
-      "name": "gerer-parametres",
+      "name": "gerer-faq",
       "slug": "foire-aux-questions"
     },
  
@@ -27,28 +27,28 @@
       "icon": "mdi-home-modern",
       "href": "/organismes",
       "title": "Organismes",
-      "name": "gerer-parametres",
+      "name": "gerer-organismes",
       "slug": "organismes"
     },
     {
       "icon": "mdi-cog-outline",
       "href": "/categoriesorganismes",
       "title": "Types d'organisme",
-      "name": "gerer-parametres",
+      "name": "gerer-organismes",
       "slug": "categories-organismes"
     },
     {
       "icon": "mdi-tag-multiple-outline",
       "href": "/contenusdynamiques",
       "title": "Contenus dynamiques",
-      "name": "gerer-parametres",
+      "name": "gerer-contenus-dynamiques",
       "slug": "contenus-dynamiques"
     },
     {
       "icon": "mdi-cog-outline",
       "href": "/categoriescontenusdynamiques",
       "title": "Catégories de contenu",
-      "name": "gerer-parametres",
+      "name": "gerer-contenus-dynamiques",
       "slug": "categories-contenus-dynamiques"
     }
   ]

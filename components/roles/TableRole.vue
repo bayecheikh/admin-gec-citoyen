@@ -4,7 +4,7 @@
       <v-text-field v-model="search" append-icon="mdi-magnify" label="Rechercher" outlined rounded dense
         hide-details></v-text-field>
     </v-card-title>
-    <v-data-table :headers="headers" :items="tab == 'tout' ? listroles : listroles.filter(role => role.status === tab)"
+    <v-data-table :headers="headers" :items="tab == 'tout' ? listroles: listroles.filter(role => role.status === tab )"
       item-key="id" class="flat pt-4" :loading="listroles.length ? false : true" loading-text="Loading... Please wait"
        hide-default-footer :search="search">
       <template v-slot:top="{ pagination, options, updateOptions }">
@@ -57,7 +57,7 @@
       <template v-slot:[`item.permissions`]="{ item }">
         <v-chip color="primary" small outlined class="my-1 mr-1" v-for="permission in item.permissions"
           :key="permission.value">
-          {{ permission.description }}
+          {{ permission.name }}
         </v-chip>
       </template>
       <template v-slot:[`item.actions`]="{ item }">
@@ -70,7 +70,7 @@
 
           <v-list shaped>
             <v-item-group>
-              <!-- <v-list-item @click="visualiserItem(item)" link class="custom-v-list-action pl-2 pr-1">
+              <v-list-item @click="visualiserItem(item)" link class="custom-v-list-action pl-2 pr-1">
                 <v-list-item-title>
                   <v-icon
                     small
@@ -80,13 +80,13 @@
                     mdi-information-outline
                   </v-icon>Détail
                 </v-list-item-title>
-              </v-list-item> -->
-              <v-list-item @click="editItem(item)" link class="custom-v-list-action pl-2 pr-1">
+              </v-list-item>
+              <v-list-item v-if="item.slug!='super-admin'" @click="editItem(item)" link class="custom-v-list-action pl-2 pr-1">
                 <v-list-item-title>
                   <v-icon small class="mr-2"> mdi-pencil-outline </v-icon>Modifier
                 </v-list-item-title>
               </v-list-item>
-              <v-list-item v-if="$hasRole('super_admin')" @click="opendialog(item)"
+              <v-list-item v-if="$hasRole('super-admin') && item.slug!='super-admin'" @click="opendialog(item)"
                 class="custom-v-list-action pl-2 pr-1">
                 <v-list-item-title>
                   <v-icon small class="mr-2" v-bind="attrs" v-on="on">
@@ -123,7 +123,7 @@ export default {
       this.$gecApi.$delete('/roles/' + this.activeItem.id)
         .then(async (response) => {
           this.$store.dispatch('roles/deleteRole', this.activeItem.id)
-          this.$store.dispatch('toast/getMessage', { type: 'success', text: response.data.message || 'Suppression réussie' })
+          this.$store.dispatch('toast/getMessage', { type: 'success', text:'Suppression réussie' })
         }).catch((error) => {
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la suppression' })
         })

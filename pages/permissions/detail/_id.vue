@@ -26,7 +26,6 @@ import ActionsPermission from '@/components/permissions/detail/ActionsPermission
 export default {
   layout: "dashboard",
   components: {
-    
     PageHeader,
     InfoPermission,
     ActionsPermission

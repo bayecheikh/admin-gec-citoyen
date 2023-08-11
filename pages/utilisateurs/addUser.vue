@@ -17,7 +17,6 @@ import FormAddUser from '@/components/utilisateurs/FormAddUser';
 export default {
   layout: "dashboard",
   components: {
-    
     PageHeader,
     FormAddUser
   },
@@ -27,15 +26,14 @@ export default {
     }
   },
   mounted: function () {
-    /* this.$store.dispatch('roles/getList')
-    this.$store.dispatch('structures/getList')
-    this.$store.dispatch('fournisseurs/getList') */
+    this.$store.dispatch('roles/getList')
+   
   },
   data() {
     return {
       headerItems: [
         {
-          text: 'Ajouter un utilisateur',
+          text: 'Nouvel utilisateur',
           disabled: false,
           to: '/utilisateurs',
           exact: true

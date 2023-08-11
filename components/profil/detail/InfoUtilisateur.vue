@@ -5,13 +5,15 @@
         <v-col md="9" sm="12" lg="9" text-md-left>
           <div class="row">
             <div class="col-md-6 border-left">
-              <p class="info-profil mb-4" v-if="detailUtilisateur?.firstname"><span>Prénom :
-                </span>{{ detailUtilisateur?.firstname }}</p>
-              <p class="info-profil mb-4" v-if="detailUtilisateur?.lastname"><span>Nom :
-                </span>{{ detailUtilisateur?.lastname }}</p>
+              <p class="info-profil mb-4" v-if="detailUtilisateur?.name"><span>Prénom et nom :
+                </span>{{ detailUtilisateur?.name }}</p>
               <p class="info-profil mb-4" v-if="detailUtilisateur?.sexe"><span>Sexe : </span>{{ detailUtilisateur?.sexe }}
               </p>
-              <p class="info-profil mb-4" v-if="detailUtilisateur?.role"><span>Rôles : </span>{{ detailUtilisateur?.role }}
+              <p class="info-profil mb-4"><span>Rôles : </span>
+                <v-chip color="primary" small outlined class="my-1 mr-1" v-for="role in detailUtilisateur.roles"
+                  :key="role.id">
+                  {{ role.name }}
+                </v-chip>
               </p>
             </div>
             <div class="col-md-6 border-left">
@@ -50,16 +52,19 @@ export default {
       const loggedInUser = JSON.parse(localStorage.getItem('gecAdminLoggedInUser'))
      
       this.$store.dispatch('utilisateurs/getDetail', loggedInUser)
-      //   this.progress=true
-      //   this.$gecApi.$get('/users/'+id)
-      // .then(async (response) => {
-      //     this.$store.dispatch('utilisateurs/getDetail',response.data)
-      // }).catch((error) => {
-      //      this.$toast.error(error?.response?.data?.message).goAway(3000)
-      //     
-      // }).finally(() => {
-      //     
-      // });
+        this.progress=true
+        let authToken = 'Bearer ' + localStorage.getItem('gecAdminToken');
+
+      let headers = {
+        Authorization: authToken, 
+      };
+        this.$gecApi.$get('/users/'+id, {headers})
+      .then(async (response) => {
+          this.$store.dispatch('utilisateurs/getDetail',response.data.data)
+      }).catch((error) => {
+           this.$toast.error(error?.response?.data?.message).goAway(3000)
+          
+      })
     
     },
   },

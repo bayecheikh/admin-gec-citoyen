@@ -98,7 +98,7 @@ export default {
         })
         .catch((error) => {
           
-          this.message = error.response?.data?.message || 'Échec de la connection'
+          this.message = error.response?.data?.message || 'Échec de la connexion'
           this.color = 'red'
         }).finally(() => {
           this.loading = false;

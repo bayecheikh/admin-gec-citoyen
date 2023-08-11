@@ -3,7 +3,7 @@ export default {
       this.$gecApi.$get('/permissions')
       .then(async (response) => { 
         
-            await commit('initlist', response.data)
+            await commit('initlist', response.data.data)
           }).catch((error) => {
               
               // this.$toast.error(error?.response?.data?.message).goAway(3000)

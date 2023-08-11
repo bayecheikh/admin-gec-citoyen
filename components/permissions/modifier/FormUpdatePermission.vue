@@ -12,8 +12,8 @@
           ></v-text-field>
         </v-col>-->
         <v-col md="6" lg="6" sm="12">
-          <v-text-field label="Description" outlined dense v-model="model.description"
-            :rules="rules.descriptionRules"></v-text-field>
+          <v-textarea label="Description" outlined dense v-model="model.description"
+            :rules="rules.descriptionRules"></v-textarea>
         </v-col>
       </v-row>
       <v-btn :loading="loading" :disabled="!valid" depressed class="mr-4 text-white" color="#1B73E8" @click="submitForm">
@@ -47,13 +47,13 @@ export default {
     rules: {
       nameRules: [
         v => !!v || 'Le nom est obligatoire',
-        v => (v && v.length <= 50) || 'Le nom doit être inférieur à 50 caractères',
-        v => (v && v.length >= 2) || 'Le nom doit être supérieur à 2 caractères',
+        v => (v && v.length <= 100) || 'Le nom ne doit pas contenir plus de 100 caractères',
+        v => (v && v.length >= 2) || 'Le nom doit contenir au moins 2 caractères',
       ],
       descriptionRules: [
         v => !!v || 'La description est obligatoire',
-        v => (v && v.length <= 500) || 'La description doit être inférieure à 500 caractères',
-        v => (v && v.length >= 2) || 'La description doit être supérieure à 2 caractères',
+        v => (v && v.length <= 500) || 'La description ne doit pas contenir plus de 500 caractères',
+        v => (v && v.length >= 2) || 'La description doit contenir au moins 2 caractères',
       ],
     },
   }),
@@ -62,7 +62,7 @@ export default {
       this.loading = true;
       let validation = this.$refs.form.validate()
       this.loading = false;
-      validation && this.$gecApi.put('/permissions/' + this.model.id, { ...this.model })
+      validation && this.$gecApi.patch('/permissions/' + this.model.id, { ...this.model })
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Ajout réussi' })
           this.$router.push('/permissions');

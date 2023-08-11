@@ -3,24 +3,25 @@
     <v-form class="text-sm-center" v-model="valid" ref="form" enctype="multipart/form-data">
       <v-row>
         <v-col md="6" lg="6" sm="12">
-          <v-text-field label="Prénom et Nom" outlined dense v-model="model.name"
-            :rules="rules.firstnameRules"></v-text-field>
+          <v-text-field label="Prénom et nom" outlined dense v-model="model.name"
+            :rules="rules.nameRules"></v-text-field>
+        </v-col>
+        <v-col md="6" lg="6" sm="12">
+          <v-text-field label="Téléphone" outlined dense v-model="model.telephone"
+            :rules="rules.telephoneRules"></v-text-field>
+        </v-col>
+        <v-col md="6" lg="6" sm="12">
+          <v-select label="Sexe" outlined dense v-model="model.sexe" :items="sexOptions" :rules="rules.sexeRules"></v-select>
         </v-col>
         <v-col md="6" lg="6" sm="12">
           <v-text-field label="Adresse Email" outlined dense v-model="model.email"
             :rules="rules.emailRules"></v-text-field>
         </v-col>
-        <v-col lg="6" md="6" sm="12">
-          <v-autocomplete v-model="model.roles" :items="listroles" :rules="rules.rolesRules" outlined dense multiple
-            small-chips label="Role" item-text="description" item-value="id" clearable return-object @change="changeRole">
-          </v-autocomplete>
+        <v-col md="12" lg="12" sm="12">
+          <v-textarea label="Adresse" outlined dense v-model="model.adresse"
+            :rules="rules.adresseRules"></v-textarea>
         </v-col>
-        <v-col lg="6" md="6" sm="12">
-          <v-autocomplete v-model="model.structure_id"
-            :rules="this.showFournisseur == true ? rules.fournisseur_services_idRules : null" :items="liststructures" outlined
-            dense label="Structure" item-text="nom_structure" item-value="id" return-object v-if="showFournisseur">
-          </v-autocomplete>
-        </v-col>
+       
       </v-row>
       <v-btn :loading="loading" :disabled="!valid" class="mr-4 text-white" color="#1B73E8" @click="submitForm">
         Enregistrer
@@ -34,79 +35,74 @@ import { mapGetters } from 'vuex'
 export default {
   mounted: function () {
     this.getDetail(this.$nuxt._route.params.id)
-    this.$store.dispatch('structures/getSelectList')
+    this.loggedInUser = this.$getUser()
+    this.$store.dispatch('roles/getSelectList')
   },
   computed:
     mapGetters({
       listroles: 'roles/selectlistroles',
-      liststructures: 'structures/selectliststructures'
     }),
   data: () => ({
+    loggedInUser: null,
+    sexOptions: ['Homme', 'Femme'],
     loading: false,
     message: null,
     valid: true,
-    showFournisseur: false,
     model: {
       id: null,
-      avatar: '',
       name: '',
       firstname: '',
       lastname: '',
       email: '',
+      sexe: '',
       roles: null,
-      fournisseur_services_id: null,
-      country_code: '+229',
       telephone: '',
       adresse: '',
-      fonction: '',
-      structure_id: null
     },
     rules: {
-      firstnameRules: [
-        v => !!v || 'Prénom est obligatoire',
-        v => (v && v.length <= 50) || 'Prénom doit etre inférieur à 20 caratères',
-      ],
-      lastnameRules: [
-        v => !!v || 'Nom est obligatoire',
-        v => (v && v.length <= 50) || 'Nom doit etre inférieur à 10 caratères',
+      nameRules: [
+        v => !!v || 'Le nom est obligatoire',
+        v => (v && v.length <= 100) || 'Le nom ne doit pas contenir plus de 100 caractères',
       ],
       emailRules: [
-        v => !!v || 'E-mail est obligatoire',
-        v => /.+@.+\..+/.test(v) || 'E-mail mdoit etre valide',
-      ],
-      usernameRules: [
-        v => !!v || 'Login est obligatoire',
-        v => (v && v.length <= 10) || 'Nom doit etre inférieur à 10 caratères',
+        v => !!v || 'L\'adresse email est obligatoire',
+        v => /.+@.+\..+/.test(v) || 'L\'adresse email doit être valide',
       ],
       rolesRules: [
-        v => (v && !!v.length) || 'Role est obligatoire',
+        v => (v && !!v.length) || 'Le rôle est obligatoire',
+      ],
+      adresseRules: [
+        v => (!v || v.length <= 100) || 'L\'adresse ne doit pas dépasser 100 caractères',
       ],
       telephoneRules: [
-        v => !!v || 'Téléphone est obligatoire',
-      ],
-      country_codeRules: [
-        v => !!v || 'L\'indicatif du pays est obligatoire',
-      ],
-      fournisseur_services_idRules: [
-        v => (!!v) || 'Fournisseur est obligatoire',
-      ],
-      structure_idRules: [
-        v => (!!v) || 'Structure est obligatoire',
+        (v) => {
+          if (!v) return true; // Si le numéro de téléphone est vide, la validation réussit
+          return /^[0-9]+$/.test(v) || "Le numéro de téléphone ne doit contenir que des chiffres";
+        },
+        (v) => {
+          if (!v) return true; // Si le numéro de téléphone est vide, la validation réussit
+          return (v.length >= 8 && v.length <= 20) || "Le numéro de téléphone doit contenir entre 8 et 20 chiffres";
+        }
       ],
     },
   }),
   methods: {
     getDetail(id) {
       this.progress = true
-      this.$gecApi.$get('/users/' + id)
+      let authToken = 'Bearer ' + localStorage.getItem('gecAdminToken');
+      let headers = {
+        Authorization: authToken, 
+      };
+      this.$gecApi.$get('/users/' + id, { headers })
         .then(async (response) => { 
-          this.$store.dispatch('utilisateurs/getDetail', response.data)
-          this.model.id = response.data.id
-          this.model.name = response.data.name
-          this.model.email = response.data.email
-          this.model.roles = response.data.roles
-          this.model.structure_id = response.data.structures[0]?.id
-          await this.changeRole()
+          this.$store.dispatch('utilisateurs/getDetail', response.data.data)
+          this.model.id = response.data.data._id
+          this.model.name = response.data.data.name
+          this.model.telephone = response.data.data.telephone
+          this.model.sexe = response.data.data.sexe
+          this.model.adresse = response.data.data.adresse
+          this.model.email = response.data.data.email
+          this.model.roles = response.data.data.roles
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
         })
@@ -117,10 +113,15 @@ export default {
       let selectedRoles = this.model.roles.map((item) => { return item.id })
       this.model.roles = selectedRoles
       this.loading = true;
-      validation && this.$gecFileApi.put('/users/' + this.model.id, { ...this.model, roles: selectedRoles, ...this.model.avatar })
+      let authToken = 'Bearer ' + localStorage.getItem('gecAdminToken');
+
+  let headers = {
+    Authorization: authToken, 
+  };
+      validation && this.$gecApi.patch('/users/' + this.model.id, { ...this.model, roles: selectedRoles }, {headers})
         .then((res) => {
-          this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Modification réussie' })
-          this.$router.push('/utilisateurs');
+          this.$store.dispatch('toast/getMessage', { type: 'success', text: 'Modification réussie' })
+          this.$router.push('/profil/' + this.loggedInUser._id)
         })
         .catch((error) => {
           
@@ -128,13 +129,6 @@ export default {
         }).finally(() => {
           this.loading = false;
         });
-    },
-    async changeRole() {
-      let checkRole = this.model.roles.filter(item => (item && item.name === 'point_focal' || item && item.name === 'admin_structure' || item && item.name === 'DGES' || item && item.name === 'directeur_eps')).length;
-      if (checkRole == 1)
-        this.showFournisseur = true
-      else
-        this.showFournisseur = false
     },
   },
   

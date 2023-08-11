@@ -28,8 +28,7 @@ export default {
   },
   mounted: function () {
     this.$store.dispatch('roles/getList')
-    /* this.$store.dispatch('structures/getList')
-    this.$store.dispatch('fournisseurs/getList') */
+   
   },
   data() {
     return {

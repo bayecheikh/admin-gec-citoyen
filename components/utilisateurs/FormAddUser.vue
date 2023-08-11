@@ -10,7 +10,7 @@
           <v-text-field label="Nom" outlined dense v-model="model.lastname" :rules="rules.lastnameRules"></v-text-field>
         </v-col>
         <v-col md="6" lg="6" sm="12">
-          <v-text-field label="Sexe" outlined dense v-model="model.sexe" :rules="rules.sexeRules"></v-text-field>
+          <v-select label="Sexe" outlined dense v-model="model.sexe" :items="sexOptions"></v-select>
         </v-col>
         <v-col md="6" lg="6" sm="12">
           <v-text-field label="Adresse Email" outlined dense v-model="model.email"
@@ -23,32 +23,15 @@
         <v-col md="6" lg="6" sm="12">
           <v-text-field label="Adresse" outlined dense v-model="model.adresse" :rules="rules.adresseRules"></v-text-field>
         </v-col>
-        <v-col md="6" lg="6" sm="12">
-          <v-text-field label="Mot de passe" outlined dense v-model="model.password"
-            :append-icon="passwordVisible ? 'mdi-eye' : 'mdi-eye-off'" :type="passwordVisible ? 'text' : 'password'"
-            @click:append="togglePasswordVisibility" :rules="rules.passwordRules"></v-text-field>
+        <v-col lg="6" md="6" sm="12">
+          <v-autocomplete v-model="model.roles" :items="listroles.filter(item => (item && item.slug != 'super-admin'))"
+            :rules="rules.rolesRules" outlined dense multiple small-chips label="Rôle" item-text="name" item-value="id"
+            clearable return-object>
+          </v-autocomplete>
         </v-col>
-        <v-col md="6" lg="6" sm="12">
-          <v-text-field label="Confirmer mot de passe" outlined dense v-model="model.passwordConfirm"
-            :append-icon="passwordConfirmVisible ? 'mdi-eye' : 'mdi-eye-off'"
-            :type="passwordConfirmVisible ? 'text' : 'password'" @click:append="togglePasswordConfirmVisibility"
-            :rules="getPasswordConfirmRules"></v-text-field>
-        </v-col>
-        <!-- <v-col
-        lg="6"
-        md="6"
-        sm="12"
-      >
-      <v-text-field
-          label="Rôle"
-          dense outlined
-          v-model="model.role"
-          :rules="rules.roleRules"
-        ></v-text-field>
-      </v-col> -->
       </v-row>
 
-      <v-btn :loading="loading" :disabled="true" class="mr-4 text-white" color="#1B73E8" @click="submitForm">
+      <v-btn :loading="loading" :disabled="!valid" class="mr-4 text-white" color="#1B73E8" @click="submitForm">
         Enregistrer
       </v-btn>
     </v-form>
@@ -57,38 +40,38 @@
 </template>
 
 <script>
-
+import { mapGetters } from 'vuex'
 import Notification from '@/components/Notification'
 export default {
   components: {
     Notification
   },
+  mounted: function () {
+
+    this.$store.dispatch('roles/getList')
+  },
   computed: {
-    getPasswordConfirmRules() {
-      return [
-        (value) => !!value || 'Veuillez confirmer le mot de passe',
-        (value) => value === this.model.password || 'Les mots de passe ne correspondent pas'
-      ];
-    }
+    ...mapGetters({
+      listroles: 'roles/selectlistroles',
+    }),
   },
   data: () => ({
+    sexOptions: ['Homme', 'Femme'],
     loading: false,
     message: null,
     color: null,
     valid: true,
     model: {
       firstname: '',
+      name: '',
       lastname: '',
       adresse: '',
       telephone: '',
       role: 'user',
-      passwordConfirm: '',
+      roles: null,
       sexe: '',
       email: '',
-      password: '',
     },
-    passwordVisible: false,
-    passwordConfirmVisible: false,
     rules: {
       firstnameRules: [
         (v) => !!v || 'Le prénom est obligatoire',
@@ -106,40 +89,50 @@ export default {
         v => (v && !!v.length) || 'Le rôle est obligatoire',
       ],
       telephoneRules: [
-        (v) => /^[0-9]+$/.test(v) || "Le numéro de téléphone ne doit contenir que des chiffres",
-        (v) => (v.length >= 8 && v.length <= 20) || "Le numéro de téléphone doit contenir entre 8 et 20 chiffres"
+        (v) => {
+          if (!v) return true; // Si le numéro de téléphone est vide, la validation réussit
+          return /^[0-9]+$/.test(v) || "Le numéro de téléphone ne doit contenir que des chiffres";
+        },
+        (v) => {
+          if (!v) return true; // Si le numéro de téléphone est vide, la validation réussit
+          return (v.length >= 8 && v.length <= 20) || "Le numéro de téléphone doit contenir entre 8 et 20 chiffres";
+        }
       ],
       emailRules: [
         v => !!v || 'L\'adresse e-mail est obligatoire',
         v => /.+@.+\..+/.test(v) || 'L\'adresse e-mail doit être valide',
       ],
-      passwordRules: [
-        (v) => !!v || 'Le mot de passe est obligatoire',
-        (v) => (v && v.length >= 8) || "Le mot de passe doit contenir au moins 8 caractères",
-      ],
+      adresseRules: [
+        v => (!v || v.length <= 100) || 'L\'adresse ne doit pas dépasser 100 caractères',
+      ]
     },
   }),
   methods: {
-    togglePasswordVisibility() {
-      this.passwordVisible = !this.passwordVisible;
-    },
-    togglePasswordConfirmVisibility() {
-      this.passwordConfirmVisible = !this.passwordConfirmVisible;
-    },
     submitForm() {
-      let validation = this.$refs.form.validate()
+      let selectedRoles = this.model.roles.map((item) => { return item.id });
+      this.model.roles = selectedRoles;
+      let validation = this.$refs.form.validate();
       this.loading = true;
-      validation && this.$gecApi.post('/users/signup', { ...this.model })
+
+      let authToken = 'Bearer ' + localStorage.getItem('gecAdminToken');
+
+      let headers = {
+        Authorization: authToken,
+      };
+      let name = this.model.firstname + ' ' + this.model.lastname
+      validation && this.$gecApi.post('/users/signup', { ...this.model, roles: selectedRoles, name: name }, { headers })
         .then((res) => {
-          this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data?.message })
+          this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data?.message });
           this.$router.push('/utilisateurs');
         })
         .catch((error) => {
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de l\'ajout ' })
-        }).finally(() => {
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de l\'ajout ' });
+        })
+        .finally(() => {
           this.loading = false;
         });
     },
+
   },
 }
 </script>

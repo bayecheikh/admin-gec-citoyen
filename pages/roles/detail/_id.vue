@@ -40,13 +40,13 @@ export default {
     return {
       headerItems: [
         {
-          text: 'Rôles',
+          text: 'Rôle',
           disabled: false,
           to: '/roles',
           exact: true
         },
         {
-          text: 'Détail Role',
+          text: 'Détail',
           disabled: true,
           to: '/roles/94',
           exact: true

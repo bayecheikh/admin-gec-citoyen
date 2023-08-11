@@ -21,6 +21,7 @@ export default {
         state.dataSearch = newdatasearch
     },
     removeItem(state,payload) {
-        state.listutilisateurs = state.listutilisateurs.filter(item => item.id != payload)
+        state.listutilisateurs = state.listutilisateurs.filter(item => item._id != payload)
     }
+ 
 }

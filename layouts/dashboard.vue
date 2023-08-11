@@ -90,7 +90,7 @@
                 <div class="">
                   <h5>{{ loggedInUser && loggedInUser.name }}</h5>
                 </div>
-                <div class="">
+                <div class="d-flex align-center flex-column">
                   <p class="pb-0 mb-1">{{ loggedInUser && loggedInUser.email }}</p>
                 </div>
               </v-card>
@@ -178,7 +178,7 @@ export default {
       this.$router.push('login')
     },
     goToProfile() {
-      this.$router.push('/profil/' + this.loggedInUser.id);
+      this.$router.push('/profil/' + this.loggedInUser._id);
     },
   }
 }

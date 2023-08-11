@@ -3,8 +3,8 @@ export default {
         this.$gecApi.$get('roles')
         .then(async (response) => { 
         
-            await commit('initlist', response.data)
-            await commit('initSelectList', response.data)
+            await commit('initlist', response.data.data)
+            await commit('initSelectList', response.data.data)
             }).catch((error) => {
                 
             }).finally(() => {

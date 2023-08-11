@@ -123,7 +123,7 @@ export default {
         localStorage.setItem('gecAdminToken', response.data.token)
         localStorage.setItem('gecAdminLoggedInUser', JSON.stringify(response.data.data.user))
         localStorage.setItem('gecAdminIsAuthenticated', true)
-        this.$router.push({ path: '/parametres' });
+        this.$router.push({ path: '/' });
 
       }).
         catch((error) => {

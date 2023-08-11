@@ -11,8 +11,21 @@ export default {
     if (!isAuthenticate) {
       this.$router.push('/login')
     }
-    else
-      this.$router.push('/parametres')
+    else{
+      if (this.$hasPermission("voir-dashboard")) {
+        this.$router.push('/dashboard')
+        return
+        }
+      
+      if ((this.$hasPermission("gerer-roles") || this.$hasPermission("gerer-permissions") || this.$hasPermission("gerer-organismes") || this.$hasPermission("gerer-faq") || this.$hasPermission("gerer-contenus-dynamiques")) ) {
+        this.$router.push('/parametres')
+        return
+        }
+        if (this.$hasPermission("gerer-utilisateurs")) {
+        this.$router.push('/utilisateurs')
+        return
+        }
+    }
   }
 }
 </script>

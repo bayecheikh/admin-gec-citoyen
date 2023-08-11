@@ -29,20 +29,35 @@ export default function ({store ,redirect}, inject) {
         let permissions = []
         getUserRoles()?.map((role)=>{permissions=[...permissions,...role.permissions]})
         let allPermissions = removeDuplicates(permissions)
-     
         return allPermissions
     }
     //Cette fonction permet de créer le menu a partir des permisions de l'utilisateur connecté
     const getUserMenu = (array) => {
-        let layoutPrincipal = layout.menuItems
-        let menu = []
-        layoutPrincipal?.map((item)=>{
-            if(hasPermission(item.name))
-            menu=[...menu,item]
-        })
-        return menu
-    }
-    //Cette fonction permet de créer le menu a partir des permisions de l'utilisateur connecté
+        let layoutPrincipal = layout.menuItems;
+        let menu = [];
+      
+        layoutPrincipal?.forEach((item) => {
+          if (hasPermission(item.name)) {
+            menu.push(item);
+          }
+        });
+      
+        const parametresItem = {
+          "icon": "mdi-cog-outline",
+          "href": "/parametres",
+          "title": "Paramétrage",
+          "name": "gerer-parametres"
+        };
+      
+        const hasParametres = menu.some(item => item.name === "gerer-parametres");
+      
+        if ((hasPermission("gerer-roles") || hasPermission("gerer-permissions") || hasPermission("gerer-organismes") || hasPermission("gerer-faq") || hasPermission("gerer-contenus-dynamiques")) && !hasParametres) {
+          menu.push(parametresItem);
+        }
+      
+        return menu;
+      }
+    //Cette fonction permet de créer le menu à partir des permisions de l'utilisateur connecté
     const getParametreMenu = (array) => {
         let layoutPrincipal = layoutadmin.menuItems
         let menu = []
@@ -54,19 +69,19 @@ export default function ({store ,redirect}, inject) {
         return menu
     }
 
-    const hasPermission = (permission_name) => {
-        // let permissions = getUserPermissions()
-        // let checkpermission = permissions?.filter(item => item.name === permission_name).length;
-        // if(checkpermission==1)
-        // return true
-        // else
-        // return false
+    const hasPermission = (permission_slug) => {
+        let permissions = getUserPermissions()
+        let checkpermission = permissions?.filter(item => item.slug === permission_slug).length;
+        if(checkpermission==1)
         return true
+        else
+        return false
+     
     }
 
-    const hasRole = (role_name) => {
+    const hasRole = (role_slug) => {
         let roles = getUserRoles()
-        let checkRole = roles?.filter(item => item.name === role_name)?.length;
+        let checkRole = roles?.filter(item => item.slug === role_slug)?.length;
         if(checkRole==1)
         return true
         else

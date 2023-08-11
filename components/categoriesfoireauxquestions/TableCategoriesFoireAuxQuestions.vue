@@ -112,7 +112,7 @@ export default {
         .then(async (response) => {
           
           this.$store.dispatch('categoriesfoireauxquestions/deletecategoriefoireauxquestions', this.activeItem.id)
-          this.$store.dispatch('toast/getMessage', { type: 'success', text: response.data?.data?.message || 'Suppression réussie' })
+          this.$store.dispatch('toast/getMessage', { type: 'success', text: 'Suppression réussie' })
         }).catch((error) => {
           this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de la suppression' })
           

@@ -11,7 +11,7 @@
           <v-icon left>
             mdi-plus
           </v-icon>
-          Ajouter un modèle de courrier
+          Nouveau modèle de courrier
         </v-btn>
       </div>
     </div>

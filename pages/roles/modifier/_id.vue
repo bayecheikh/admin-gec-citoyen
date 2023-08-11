@@ -18,7 +18,6 @@ import FormUpdateRole from '@/components/roles/modifier/FormUpdateRole';
 export default {
   layout: "dashboard",
   components: {
-    
     PageHeader,
     FormUpdateRole
   },
@@ -34,7 +33,7 @@ export default {
     return {
       headerItems: [
         {
-          text: 'Role',
+          text: 'Rôle',
           disabled: false,
           to: '/roles',
           exact: true

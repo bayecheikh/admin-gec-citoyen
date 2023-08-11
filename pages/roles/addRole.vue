@@ -18,7 +18,6 @@ import FormAddRole from '@/components/roles/FormAddRole';
 export default {
   layout: "dashboard",
   components: {
-    
     PageHeader,
     FormAddRole
   },

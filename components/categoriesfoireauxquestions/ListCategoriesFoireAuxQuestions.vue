@@ -11,7 +11,7 @@
           <v-icon left>
             mdi-plus
           </v-icon>
-          Ajouter une catégorie de question/réponse
+          Nouvelle catégorie de question/réponse
         </v-btn>
       </div>
     </div>
