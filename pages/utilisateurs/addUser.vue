@@ -20,8 +20,6 @@ export default {
     PageHeader,
     FormAddUser
   },
-<<<<<<< HEAD
-=======
   middleware: function ({ redirect, $hasPermission }) {
     if (!$hasPermission('gerer-utilisateurs')) {
       return redirect('/')
@@ -31,7 +29,6 @@ export default {
     this.$store.dispatch('roles/getList')
    
   },
->>>>>>> yacine-v41
   data() {
     return {
       headerItems: [

@@ -20,7 +20,7 @@ export default function ({store ,redirect}, inject) {
         return true
         else
         return false
-    } */
+    } 
 
     const getUserRoles = () => {
         return getUser()?.roles
@@ -34,16 +34,6 @@ export default function ({store ,redirect}, inject) {
     }
     //Cette fonction permet de créer le menu a partir des permisions de l'utilisateur connecté
     const getUserMenu = (array) => {
-<<<<<<< HEAD
-        let layoutPrincipal = layout.menuItems
-        let menu = []
-        layoutPrincipal?.map((item)=>{
-            menu=[...menu,item]
-        })
-        return menu
-    }
-    //Cette fonction permet de créer le menu 
-=======
         let layoutPrincipal = layout.menuItems;
         let menu = [];
       
@@ -69,7 +59,6 @@ export default function ({store ,redirect}, inject) {
         return menu;
       }
     //Cette fonction permet de créer le menu à partir des permisions de l'utilisateur connecté
->>>>>>> yacine-v41
     const getParametreMenu = (array) => {
         let layoutPrincipal = layoutadmin.menuItems
         let menu = []
@@ -80,9 +69,6 @@ export default function ({store ,redirect}, inject) {
         return menu
     }
 
-<<<<<<< HEAD
-   
-=======
     const hasPermission = (permission_slug) => {
         let permissions = getUserPermissions()
         let checkpermission = permissions?.filter(item => item.slug === permission_slug).length;
@@ -101,7 +87,6 @@ export default function ({store ,redirect}, inject) {
         else
         return false
     }
->>>>>>> yacine-v41
 
     const removeDuplicates = (array) => {
         let uniq = {};

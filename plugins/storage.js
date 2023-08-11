@@ -12,8 +12,6 @@ export default function ({store ,redirect}, inject) {
         return JSON.parse(localStorage.getItem('gecAdminIsAuthenticated'))
     }
 
-<<<<<<< HEAD
-=======
     const getUserRoles = () => {
         return getUser().roles
     }
@@ -44,7 +42,6 @@ export default function ({store ,redirect}, inject) {
         return false
     }
 
->>>>>>> yacine-v41
     const removeDuplicates = (array) => {
         let uniq = {};
         return array.filter(obj => !uniq[obj.id] && (uniq[obj.id] = true))
