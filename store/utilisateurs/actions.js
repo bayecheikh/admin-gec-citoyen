@@ -22,4 +22,7 @@ export default {
     async getDataSearch({commit},payload){
         await commit('initdatasearch', payload)
     },
+    async deleteUtilisateur({commit,dispatch},payload){
+        await commit('removeItem',payload)
+    }
 }

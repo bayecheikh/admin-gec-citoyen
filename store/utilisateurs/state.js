@@ -10,10 +10,14 @@ export default () => ({
         }, */
         /* { text: 'Prénom', value: 'firstname' },
         { text: 'Nom', value: 'lastname' }, */
-        { text: 'Prénom et Nom', value: 'name' },
+        { text: 'Prénom et nom', value: 'name' },
         { text: 'Email', value: 'email' },
         /* { text: 'Téléphone', value: 'telephone' }, */
+<<<<<<< HEAD
         { text: 'Statut', value: 'status' },
+=======
+        { text: 'Rôles', value: 'roles' },
+>>>>>>> yacine-v41
         { text: 'Actions', value: 'actions', sortable: false },
     ],
     detailutilisateur :{},

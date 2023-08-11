@@ -1,11 +1,11 @@
 <template>
   <v-row align="center" justify="space-around">
-    <v-btn text outlined rounded color="primary" v-on:click="retour()">
+    <!-- <v-btn text outlined rounded color="primary" v-on:click="retour()">
       <v-icon left>
         mdi-arrow-left
       </v-icon>
       Retour
-    </v-btn>
+    </v-btn> -->
     <v-btn text rounded outlined v-on:click="modifier()">
       <v-icon left>
         mdi-pencil
@@ -26,16 +26,39 @@
           <v-container>
             <v-form class="row text-align-center pt-15 pb-15" v-model="valid" ref="form" lazy-validation>
               <v-text-field class="col-md-12 col-lg-12 col-sm-12 pl-4 pr-4 pt-0" dense outlined
-                append-icon="mdi-lock-outline" name="password" label="Nouveau mot de passe" id="password" type="password"
-                v-model="model.password" :rules="rules.passwordRules"></v-text-field>
-              <v-text-field class="col-md-12 col-lg-12 col-sm-12 pl-4 pr-4 pt-0" dense outlined
-                append-icon="mdi-lock-outline" name="password_confirmation" label="Confirmer mot de passe"
-                id="password_confirmation" type="password" v-model="model.password_confirmation"
-                :rules="confirm_passwordRules"></v-text-field>
+                :type="showPasswordCurrent ? 'text' : 'password'"
+                name="passwordCurrent" label="Mot de passe actuel" id="passwordCurrent"
+                v-model="model.passwordCurrent" :rules="rules.passwordCurrentRules">
+    <template v-slot:append>
+      <v-icon @click="togglePasswordCurrentVisibility">
+        {{ showPasswordCurrent ? 'mdi-eye-off' : 'mdi-eye' }}
+      </v-icon>
+    </template>
+  </v-text-field>
+  <v-text-field class="col-md-12 col-lg-12 col-sm-12 pl-4 pr-4 pt-0" dense outlined
+                :type="showPassword ? 'text' : 'password'"
+                name="password" label="Nouveau mot de passe" id="password"
+                v-model="model.password" :rules="rules.passwordRules">
+    <template v-slot:append>
+      <v-icon @click="togglePasswordVisibility">
+        {{ showPassword ? 'mdi-eye-off' : 'mdi-eye' }}
+      </v-icon>
+    </template>
+  </v-text-field>
+  <v-text-field class="col-md-12 col-lg-12 col-sm-12 pl-4 pr-4 pt-0" dense outlined
+                :type="showPasswordConfirm ? 'text' : 'password'"
+                name="passwordConfirm" label="Confirmer mot de passe" id="passwordConfirm"
+                v-model="model.passwordConfirm" :rules="rules.passwordConfirmRules">
+    <template v-slot:append>
+      <v-icon @click="togglePasswordConfirmVisibility">
+        {{ showPasswordConfirm ? 'mdi-eye-off' : 'mdi-eye' }}
+      </v-icon>
+    </template>
+  </v-text-field>
               <v-spacer></v-spacer>
               <div class="layout column align-center col-md-12 col-lg-12 col-sm-12 pt-0">
-                <v-btn depressed rounded block color="primary" class="pl-10 pr-10" @click="submitForm" :loading="loading"
-                  :disabled="!valid">Enregistrer</v-btn>
+                <v-btn depressed rounded block color="primary" class="pl-10 pr-10" @click="submitForm"
+                  :loading="loading">Enregistrer</v-btn>
               </div>
             </v-form>
           </v-container>
@@ -51,10 +74,10 @@ export default {
   mounted: function () {
     this.model.email = this.detailUtilisateur.email
   },
-  computed:{
+  computed: {
     ...mapGetters({
-    detailUtilisateur: 'utilisateurs/detailutilisateur'
-  }),
+      detailUtilisateur: 'utilisateurs/detailutilisateur'
+    }),
     confirm_passwordRules() {
       return [
         v => !!v || 'La confirmation du mot de passe est obligatoire',
@@ -64,36 +87,49 @@ export default {
     },
   },
   data: () => ({
+    showPassword: false,
+    showPasswordConfirm: false,
+    showPasswordCurrent: false,
     loading: false,
     dialog: false,
     model: {
       email: '',
+      passwordCurrent: '',
       password: '',
-      password_confirmation: '',
+      passwordConfirm: '',
     },
     rules: {
       passwordRules: [
-        v => !!v || 'Mot de passe est obligatoire',
-        v => (v && v.length >= 8) || 'Mot de passe doit etre superieur ou égal à 8 caracteres',
+        v => !!v || 'Le mot de passe est obligatoire',
+        v => (v && v.length >= 8) || 'Le mot de passe doit contenir au moins 8 caracteres',
       ],
-      emailRules: [
-        v => !!v || 'E-mail est obligatoire',
-        v => /.+@.+\..+/.test(v) || 'E-mail mdoit etre valide',
-      ]
     },
   }),
   methods: {
+    togglePasswordCurrentVisibility() {
+      this.showPasswordCurrent= !this.showPasswordCurrent;
+    },
+    togglePasswordVisibility() {
+      this.showPassword = !this.showPassword;
+    },
+    togglePasswordConfirmVisibility() {
+      this.showPasswordConfirm = !this.showPasswordConfirm;
+    },
     submitForm() {
       let validation = this.$refs.form.validate()
       this.loading = true;
-      validation && this.$gecApi.post('/update_password', { ...this.model })
+      let authToken = 'Bearer ' + localStorage.getItem('gecAdminToken');
+      let headers = {
+        Authorization: authToken,
+      };
+      validation && this.$gecApi.patch('/users/updateMyPassword', { ...this.model }, { headers })
         .then((res) => {
-          this.message = res.data.message
+          this.message = res.data?.data?.message
           this.color = 'success'
-          this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message })
+          this.$store.dispatch('toast/getMessage', { type: 'success', text: "Mot de passse réinitialisé !" })
         })
         .catch((error) => {
-          this.message = error.response?.data?.message || 'Échec de la connection'
+          this.message = error.response?.data?.message || 'Échec de la mise à jour'
           this.color = 'red'
         }).finally(() => {
           this.loading = false;
@@ -104,7 +140,7 @@ export default {
       this.$router.push('/');
     },
     modifier() {
-      this.$router.push('/profil/modifier/' + this.detailUtilisateur.id);
+      this.$router.push('/profil/modifier/' + this.detailUtilisateur._id);
     },
     reinitialiser() {
       this.dialog = true

@@ -12,6 +12,39 @@ export default function ({store ,redirect}, inject) {
         return JSON.parse(localStorage.getItem('gecAdminIsAuthenticated'))
     }
 
+<<<<<<< HEAD
+=======
+    const getUserRoles = () => {
+        return getUser().roles
+    }
+
+    const getUserPermissions = () => {
+        let permissions = []
+        getUserRoles().map((role)=>{permissions=[...permissions,...role.permissions]})
+        let allPermissions = this.$removeDuplicates(permissions)
+        return allPermissions
+    }
+
+    const hasPermission = (permission_slug) => {
+        let permissions = getUserPermissions()
+        let checkpermission = permissions.filter(item => item.slug === permission_slug).length;
+        if(checkpermission==1)
+        return true
+        else
+        return false
+        
+    }
+
+    const hasRole = (role_slug) => {
+        let roles = getUserRoles()
+        let checkRole = roles?.filter(item => item.slug === role_slug)?.length;
+        if(checkRole==1)
+        return true
+        else
+        return false
+    }
+
+>>>>>>> yacine-v41
     const removeDuplicates = (array) => {
         let uniq = {};
         return array.filter(obj => !uniq[obj.id] && (uniq[obj.id] = true))

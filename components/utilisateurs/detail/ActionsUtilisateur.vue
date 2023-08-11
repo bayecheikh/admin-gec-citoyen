@@ -51,10 +51,10 @@ export default {
   mounted: function () {
     this.model.email = this.detailUtilisateur.email
   },
-  computed:{
+  computed: {
     ...mapGetters({
-    detailUtilisateur: 'utilisateurs/detailutilisateur'
-  }),
+      detailUtilisateur: 'utilisateurs/detailutilisateur'
+    }),
     confirm_passwordRules() {
       return [
         v => !!v || 'La confirmation du mot de passe est obligatoire',
@@ -74,11 +74,11 @@ export default {
     rules: {
       passwordRules: [
         v => !!v || 'Le mot de passe est obligatoire',
-        v => (v && v.length >= 8) || 'Le mot de passe doit être supérieur ou égal à 8 caractères',
+        v => (v && v.length >= 8) || 'Le mot de passe doit contenir au moins 8 caractères',
       ],
       emailRules: [
-        v => !!v || 'L\'e-mail est obligatoire',
-        v => /.+@.+\..+/.test(v) || 'L\'e-mail doit être valide',
+        v => !!v || 'L\'adresse e-mail est obligatoire',
+        v => /.+@.+\..+/.test(v) || 'L\'adresse e-mail doit être valide',
       ]
     },
   }),
@@ -93,7 +93,7 @@ export default {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message })
         })
         .catch((error) => {
-          this.message = error.response?.data?.message || 'Échec de la connection'
+          this.message = error.response?.data?.message || 'Échec de la connexion'
           this.color = 'red'
         }).finally(() => {
           this.loading = false;
@@ -104,7 +104,7 @@ export default {
       this.$router.push('/utilisateurs');
     },
     modifier() {
-      this.$router.push('/utilisateurs/modifier/' + this.detailUtilisateur.id);
+      this.$router.push('/utilisateurs/modifier/' + this.detailUtilisateur._id);
     },
     reinitialiser() {
       this.dialog = true

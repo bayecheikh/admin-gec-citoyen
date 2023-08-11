@@ -21,6 +21,18 @@ export default {
     PageHeader,
     FormUpdateUser
   },
+<<<<<<< HEAD
+=======
+  middleware: function ({ redirect, $hasPermission }) {
+    if (!$hasPermission('gerer-utilisateurs')) {
+      return redirect('/')
+    }
+  },
+  mounted: function () {
+    this.$store.dispatch('roles/getList')
+   
+  },
+>>>>>>> yacine-v41
   data() {
     return {
       headerItems: [

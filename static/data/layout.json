@@ -1,28 +1,29 @@
 {
   "role":"admin",
-  "homePage":"/parametres",
+  "homePage":"/",
   "menuItems":[
-
+    
     {
-      "icon": "mdi-account-group-outline",
-      "href": "/utilisateurs",
-      "title": "Utilisateurs",
-      "name": "gerer-parametres"
+      "icon": "mdi-view-dashboard-outline",
+      "href": "/dashboard",
+      "title": "Tableau de bord",
+      "name":"voir-dashboard"
     },
-  
+
+    
     {
       "icon": "mdi-cog-outline",
       "href": "/parametres",
       "title": "Paramétrage",
       "name": "gerer-parametres"
     },
-  
     {
-      "icon": "mdi-view-dashboard-outline",
-      "href": "/dashboard",
-      "title": "Tableau de bord",
-      "name":"voir-dashboard"
+      "icon": "mdi-account-group-outline",
+      "href": "/utilisateurs",
+      "title": "Utilisateurs",
+      "name": "gerer-utilisateurs"
     }
+  
     
   ]
  }

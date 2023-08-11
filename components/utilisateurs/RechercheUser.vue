@@ -69,7 +69,14 @@ export default {
         v => /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/ || 'Type profile incorrecte',
       ],
       telephoneRules: [
-        v => /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/ || 'Téléphone incorrecte',
+        (v) => {
+          if (!v) return true; // Si le numéro de téléphone est vide, la validation réussit
+          return /^[0-9]+$/.test(v) || "Le numéro de téléphone ne doit contenir que des chiffres";
+        },
+        (v) => {
+          if (!v) return true; // Si le numéro de téléphone est vide, la validation réussit
+          return (v.length >= 8 && v.length <= 20) || "Le numéro de téléphone doit contenir entre 8 et 20 chiffres";
+        }
       ],
       addressRules: [
         v => /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/ || 'Adresse incorrecte',
@@ -115,7 +122,12 @@ export default {
       this.page = 1
       this.progress = true
       this.$store.dispatch('utilisateurs/getDataSearch', null)
-      this.$gecApi.$get('/users?page=1')
+      let authToken = 'Bearer ' + localStorage.getItem('gecAdminToken');
+
+let headers = {
+  Authorization: authToken, 
+};
+      this.$gecApi.$get('/users/back-office-users?page=1', {headers})
         .then(async (response) => {
           this.page = 1
           let totalPages = Math.ceil(response.data.data.total / response.data.data.per_page)

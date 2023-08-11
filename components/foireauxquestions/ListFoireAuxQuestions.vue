@@ -11,7 +11,7 @@
           <v-icon left>
             mdi-plus
           </v-icon>
-          Ajouter une question/réponse
+          Nouvelle question/réponse
         </v-btn>
       </div>
     </div>

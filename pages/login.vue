@@ -8,7 +8,7 @@
     layout: 'default',
     middleware({ redirect, $getToken, $getUser, $isLogged, $loggout }) {
       if ($getToken() != null & $getUser() != null & $isLogged() != null & $isLogged() != false) {
-        return redirect('/parametres')
+        return redirect('/')
       }
     },
     components: {

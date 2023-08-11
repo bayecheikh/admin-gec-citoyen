@@ -3,8 +3,7 @@
     <v-form class="text-sm-center" v-model="valid" ref="form" enctype="multipart/form-data">
       <v-row>
         <v-col md="6" lg="6" sm="12">
-          <v-text-field label="Prénom et Nom" outlined dense v-model="model.name"
-            :rules="rules.firstnameRules"></v-text-field>
+          <v-text-field label="Prénom et nom" outlined dense v-model="model.name" :rules="rules.nameRules"></v-text-field>
         </v-col>
         <v-col md="6" lg="6" sm="12">
           <v-text-field label="Adresse Email" outlined dense v-model="model.email"
@@ -14,10 +13,23 @@
           <v-text-field label="Téléphone" outlined dense v-model="model.telephone"
             :rules="rules.telephoneRules"></v-text-field>
         </v-col>
+<<<<<<< HEAD
         <v-col lg="6" md="6" sm="12">
           <v-autocomplete v-model="model.structure_id"
             :rules="this.showFournisseur == true ? rules.fournisseur_services_idRules : null" :items="liststructures" outlined
             dense label="Structure" item-text="nom_structure" item-value="id" return-object v-if="showFournisseur">
+=======
+        <v-col md="6" lg="6" sm="12">
+          <v-select label="Sexe" outlined dense v-model="model.sexe" :items="sexOptions"></v-select>
+        </v-col>
+        <v-col md="6" lg="6" sm="12">
+          <v-text-field label="Adresse" outlined dense v-model="model.adresse" :rules="rules.adresseRules"></v-text-field>
+        </v-col>
+        <v-col lg="6" md="6" sm="12">
+          <v-autocomplete  v-if="!hasSuperAdminRole" v-model="model.roles" :items="listroles.filter(item => (item && item.slug != 'super-admin'))"
+            :rules="rules.rolesRules" outlined dense multiple small-chips label="Rôle" item-text="name" item-value="id"
+            clearable return-object>
+>>>>>>> yacine-v41
           </v-autocomplete>
         </v-col>
       </v-row>
@@ -31,117 +43,122 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
- 
+
   mounted: function () {
     this.getDetail(this.$nuxt._route.params.id)
-    this.$store.dispatch('structures/getSelectList')
   },
+<<<<<<< HEAD
   computed:
     mapGetters({
       liststructures: 'structures/selectliststructures'
+=======
+  computed: {
+    ...mapGetters({
+      listroles: 'roles/selectlistroles',
+>>>>>>> yacine-v41
     }),
+  
+  },
+    
   data: () => ({
+    sexOptions: ['Homme', 'Femme'],
     loading: false,
     message: null,
     valid: true,
-    showFournisseur: false,
     model: {
       id: null,
-      avatar: '',
       name: '',
-      firstname: '',
-      lastname: '',
       email: '',
+<<<<<<< HEAD
 
       fournisseur_services_id: null,
       country_code: '+229',
+=======
+      sexe: '',
+      roles: null,
+>>>>>>> yacine-v41
       telephone: '',
       adresse: '',
-      fonction: '',
-      structure_id: null
     },
     rules: {
-      firstnameRules: [
-        (v) => !!v || 'Le prénom est obligatoire',
-        (v) => /^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/.test(v) || "Le prénom ne doit contenir que des caractères alphabétiques et des caractères spéciaux tels que des espaces, des tirets et des apostrophes",
-        (v) => (v && v.length <= 50) || "Le prénom ne doit pas dépasser 50 caractères",
-        (v) => (v && v.length >= 2) || "Le prénom doit contenir au moins 2 caractères"
-      ],
-      lastnameRules: [
+      nameRules: [
         (v) => !!v || 'Le nom est obligatoire',
         (v) => /^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/.test(v) || "Le nom ne doit contenir que des caractères alphabétiques et des caractères spéciaux tels que des espaces, des tirets et des apostrophes",
-        (v) => (v && v.length <= 50) || "Le nom ne doit pas dépasser 50 caractères",
+        (v) => (v && v.length <= 100) || "Le nom ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "Le nom doit contenir au moins 2 caractères"
       ],
       emailRules: [
         v => !!v || 'L\'adresse e-mail est obligatoire',
         v => /.+@.+\..+/.test(v) || 'L\'adresse e-mail doit être valide',
       ],
+<<<<<<< HEAD
       usernameRules: [
         v => !!v || 'Login est obligatoire',
         v => (v && v.length <= 10) || 'Login doit être inférieur à 10 caractères',
+=======
+      rolesRules: [
+        v => (v && !!v.length) || 'Le rôle est obligatoire',
+>>>>>>> yacine-v41
       ],
       telephoneRules: [
-        (v) => !!v || 'Le numéro de téléphone est obligatoire',
-        (v) => /^[0-9]+$/.test(v) || "Le numéro de téléphone ne doit contenir que des chiffres",
-        (v) => (v && v.length >= 8 && v.length <= 20) || "Le numéro de téléphone doit contenir entre 8 et 20 chiffres"
-      ],
-      country_codeRules: [
-        v => !!v || 'L\'indicatif du pays est obligatoire',
-      ],
-      fournisseur_services_idRules: [
-        v => (!!v) || 'Fournisseur est obligatoire',
-      ],
-      structure_idRules: [
-        v => (!!v) || 'Structure est obligatoire',
+        (v) => {
+          if (!v) return true; // Si le numéro de téléphone est vide, la validation réussit
+          return /^[0-9]+$/.test(v) || "Le numéro de téléphone ne doit contenir que des chiffres";
+        },
+        (v) => {
+          if (!v) return true; // Si le numéro de téléphone est vide, la validation réussit
+          return (v.length >= 8 && v.length <= 20) || "Le numéro de téléphone doit contenir entre 8 et 20 chiffres";
+        }
       ],
       adresseRules: [
-        v => !!v || 'Adresse est obligatoire',
-        v => (v && v.length <= 100) || 'Adresse doit être inférieur à 50 caractères',
+        v => (!v || v.length <= 100) || 'L\'adresse ne doit pas dépasser 100 caractères',
       ],
-      nationalityRules: [
-        v => !!v || 'Nationalité est obligatoire',
-        v => (v && v.length <= 50) || 'Nationalité doit être inférieur à 15 caractères',
-      ],
-      date_of_birthRules: [
-        v => !!v || 'Date de naissance est obligatoire',
-      ],
-      place_of_birthRules: [
-        v => !!v || 'Lieu de naissance est obligatoire',
-        v => (v && v.length <= 50) || 'Lieu de naissance doit être inférieur à 50 caractères',
-      ],
-      type_identificationRules: [
-        v => !!v || 'Type d\'identification est obligatoire',
-      ],
-      numero_identificationRules: [
-        v => !!v || 'Numéro d\'identification est obligatoire'
-      ],
-      fonctionRules: [
-        v => !!v || 'Fonction est obligatoire'
-      ]
     },
   }),
   methods: {
     getDetail(id) {
+      let authToken = 'Bearer ' + localStorage.getItem('gecAdminToken');
+      let headers = {
+        Authorization: authToken,
+      };
       this.progress = true
-      this.$gecApi.$get('/users/' + id)
+      this.$gecApi.$get('/users/' + id, { headers })
         .then(async (response) => {
+<<<<<<< HEAD
           this.$store.dispatch('utilisateurs/getDetail', response.data)
           this.model.id = response.data.id
           this.model.name = response.data.name
           this.model.email = response.data.email
           this.model.structure_id = response.data.structures[0]?.id
+=======
+          this.$store.dispatch('utilisateurs/getDetail', response.data.data)
+          this.model.id = response.data.data._id
+          this.model.name = response.data.data.name
+          this.model.email = response.data.data.email
+          this.model.telephone = response.data.data.telephone
+          this.model.adresse = response.data.data.adresse
+          this.model.sexe = response.data.data.sexe
+          this.model.roles = response.data.data.roles
+>>>>>>> yacine-v41
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
         })
     },
-  
+
     submitForm() {
       let validation = this.$refs.form.validate()
       this.loading = true;
+<<<<<<< HEAD
       validation && this.$gecFileApi.put('/users/' + this.model.id, { ...this.model, ...this.model.avatar })
+=======
+      let authToken = 'Bearer ' + localStorage.getItem('gecAdminToken');
+      let headers = {
+        Authorization: authToken,
+      };
+      validation && this.$gecApi.patch('/users/' + this.model.id, { ...this.model, roles: selectedRoles }, { headers })
+>>>>>>> yacine-v41
         .then((res) => {
-          this.$store.dispatch('toast/getMessage', { type: 'success', text: res.data.message || 'Modification réussie' })
+          this.$store.dispatch('toast/getMessage', { type: 'success', text: 'Modification réussie' })
           this.$router.push('/utilisateurs');
         })
         .catch((error) => {
@@ -150,7 +167,11 @@ export default {
           this.loading = false;
         });
     },
+<<<<<<< HEAD
    
+=======
+
+>>>>>>> yacine-v41
   },
 }
 </script>

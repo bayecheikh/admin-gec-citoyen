@@ -11,7 +11,7 @@
           <v-icon left>
             mdi-plus
           </v-icon>
-          Ajouter un type d'organisme
+          Nouveau type d'organisme
         </v-btn>
       </div>
     </div>

@@ -17,15 +17,26 @@ import FormAddUser from '@/components/utilisateurs/FormAddUser';
 export default {
   layout: "dashboard",
   components: {
-    
     PageHeader,
     FormAddUser
   },
+<<<<<<< HEAD
+=======
+  middleware: function ({ redirect, $hasPermission }) {
+    if (!$hasPermission('gerer-utilisateurs')) {
+      return redirect('/')
+    }
+  },
+  mounted: function () {
+    this.$store.dispatch('roles/getList')
+   
+  },
+>>>>>>> yacine-v41
   data() {
     return {
       headerItems: [
         {
-          text: 'Ajouter un utilisateur',
+          text: 'Nouvel utilisateur',
           disabled: false,
           to: '/utilisateurs',
           exact: true

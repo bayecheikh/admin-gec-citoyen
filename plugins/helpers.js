@@ -30,11 +30,11 @@ export default function ({store ,redirect}, inject) {
         let permissions = []
         getUserRoles()?.map((role)=>{permissions=[...permissions,...role.permissions]})
         let allPermissions = removeDuplicates(permissions)
-     
         return allPermissions
     }
     //Cette fonction permet de créer le menu a partir des permisions de l'utilisateur connecté
     const getUserMenu = (array) => {
+<<<<<<< HEAD
         let layoutPrincipal = layout.menuItems
         let menu = []
         layoutPrincipal?.map((item)=>{
@@ -43,6 +43,33 @@ export default function ({store ,redirect}, inject) {
         return menu
     }
     //Cette fonction permet de créer le menu 
+=======
+        let layoutPrincipal = layout.menuItems;
+        let menu = [];
+      
+        layoutPrincipal?.forEach((item) => {
+          if (hasPermission(item.name)) {
+            menu.push(item);
+          }
+        });
+      
+        const parametresItem = {
+          "icon": "mdi-cog-outline",
+          "href": "/parametres",
+          "title": "Paramétrage",
+          "name": "gerer-parametres"
+        };
+      
+        const hasParametres = menu.some(item => item.name === "gerer-parametres");
+      
+        if ((hasPermission("gerer-roles") || hasPermission("gerer-permissions") || hasPermission("gerer-organismes") || hasPermission("gerer-faq") || hasPermission("gerer-contenus-dynamiques")) && !hasParametres) {
+          menu.push(parametresItem);
+        }
+      
+        return menu;
+      }
+    //Cette fonction permet de créer le menu à partir des permisions de l'utilisateur connecté
+>>>>>>> yacine-v41
     const getParametreMenu = (array) => {
         let layoutPrincipal = layoutadmin.menuItems
         let menu = []
@@ -53,7 +80,28 @@ export default function ({store ,redirect}, inject) {
         return menu
     }
 
+<<<<<<< HEAD
    
+=======
+    const hasPermission = (permission_slug) => {
+        let permissions = getUserPermissions()
+        let checkpermission = permissions?.filter(item => item.slug === permission_slug).length;
+        if(checkpermission==1)
+        return true
+        else
+        return false
+     
+    }
+
+    const hasRole = (role_slug) => {
+        let roles = getUserRoles()
+        let checkRole = roles?.filter(item => item.slug === role_slug)?.length;
+        if(checkRole==1)
+        return true
+        else
+        return false
+    }
+>>>>>>> yacine-v41
 
     const removeDuplicates = (array) => {
         let uniq = {};

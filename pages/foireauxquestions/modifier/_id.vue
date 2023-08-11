@@ -34,7 +34,7 @@ export default {
           exact: true
         },
         {
-          text: 'Détail',
+          text: 'Modifier',
           disabled: true,
           to: '/',
           exact: true

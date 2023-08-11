@@ -21,7 +21,14 @@ export default {
     PageHeader,
     FormUpdateUser
   },
-
+  middleware: function ({ redirect, $hasPermission, $getUser }) {
+      if($nuxt._route.params._id!=$getUser._id){
+       return redirect('/')
+     } 
+  },
+  mounted: function () {
+    this.$store.dispatch('roles/getList')
+  },
   data() {
     return {
       headerItems: [

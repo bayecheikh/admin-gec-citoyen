@@ -11,7 +11,7 @@
           <v-icon left>
             mdi-plus
           </v-icon>
-          Ajouter une catégorie de modèle courrier
+          Nouvelle catégorie de modèle courrier
         </v-btn>
       </div>
     </div>
