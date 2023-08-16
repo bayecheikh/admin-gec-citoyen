@@ -19,12 +19,15 @@
 
 export default {
   layout: "dashboard",
-  // middleware: function ({redirect,$hasPermission}) {
-  //   // if(!$hasPermission('gerer-parametres')){
-  //   //   return redirect('/')
-  //   // }
-  // },
- 
+  middleware: function ({ redirect, $hasPermission }) {
+
+    if ((!$hasPermission("gerer-roles") && !$hasPermission("gerer-permissions") && !$hasPermission("gerer-organismes") && !$hasPermission("gerer-faq") && !$hasPermission("gerer-contenus-dynamiques"))) {
+
+      return redirect('/')
+    }
+
+  },
+
   mounted: async function () {
     this.layoutadmin = this.$getParametreMenu()
   },
