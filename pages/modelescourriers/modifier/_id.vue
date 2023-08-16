@@ -21,7 +21,7 @@ export default {
     FormUpdateModeleCourrier
   },
   middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-roles')) {
+    if (!$hasPermission('gerer-modeles-courriers')) {
       return redirect('/')
     }
   },

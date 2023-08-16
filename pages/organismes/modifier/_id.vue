@@ -21,7 +21,7 @@ export default {
     FormUpdateOrganisme
   },
   middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-roles')) {
+    if (!$hasPermission('gerer-organismes')) {
       return redirect('/')
     }
   },

@@ -18,7 +18,7 @@ import ListCategoriesOrganismes from '@/components/categoriesorganismes/ListCate
 export default {
   layout: "dashboard",
   middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-parametres')) {
+    if (!$hasPermission('gerer-organismes')) {
       return redirect('/')
     }
   },

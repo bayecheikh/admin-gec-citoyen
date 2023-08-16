@@ -17,7 +17,7 @@ import ListContenusDynamiques from '@/components/contenusdynamiques/ListContenus
 export default {
   layout: "dashboard",
   middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-parametres')) {
+    if (!$hasPermission('gerer-contenus-dynamiques')) {
       return redirect('/')
     }
   },

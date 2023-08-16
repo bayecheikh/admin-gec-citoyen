@@ -21,7 +21,7 @@ export default {
     FormUpdateCategorieFaq
   },
   middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-roles')) {
+    if (!$hasPermission('gerer-faq')) {
       return redirect('/')
     }
   },

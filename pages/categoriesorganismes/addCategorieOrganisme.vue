@@ -21,7 +21,7 @@ export default {
     FormAddCategorieOrganisme
   },
   middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-parametres')) {
+    if (!$hasPermission('gerer-organismes')) {
       return redirect('/')
     }
   },

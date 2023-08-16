@@ -17,7 +17,7 @@ import ListOrganismes from '@/components/organismes/ListOrganismes'
 export default {
   layout: "dashboard",
   middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-parametres')) {
+    if (!$hasPermission('gerer-organismes')) {
       return redirect('/')
     }
   },

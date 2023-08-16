@@ -21,7 +21,7 @@ export default {
     FormAddFaq
   },
   middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-parametres')) {
+    if (!$hasPermission('gerer-faq')) {
       return redirect('/')
     }
   },

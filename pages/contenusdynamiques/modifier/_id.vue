@@ -21,7 +21,7 @@ export default {
     FormUpdateContenuDynamique
   },
   middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-roles')) {
+    if (!$hasPermission('gerer-contenus-dynamiques')) {
       return redirect('/')
     }
   },

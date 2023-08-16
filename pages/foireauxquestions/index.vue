@@ -16,7 +16,7 @@ import ListFoireAuxQuestions from '@/components/foireauxquestions/ListFoireAuxQu
 export default {
   layout: "dashboard",
   middleware: function ({ redirect, $hasPermission }) {
-    if (!$hasPermission('gerer-parametres')) {
+    if (!$hasPermission('gerer-faq')) {
       return redirect('/')
     }
   },
