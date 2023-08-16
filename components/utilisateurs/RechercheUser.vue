@@ -228,25 +228,25 @@ export default {
     },
     rules: {
       dataSearchRules: [
-        v => /^[a-zA-Z0-9-_ @.+]+$/.test(v) || 'Champ obligatoire'
+        v => /^[a-zA-Z0-9-_ @.+]+$/.test(v) || 'Champ obligatoire.'
       ],
       firstnameRules: [
-        v => !!v || 'Champ obligatoire'
+        v => !!v || 'Champ obligatoire.'
       ],
       lastnameRules: [
-        v => !!v || 'Nom est obligatoire',
+        v => !!v || 'Nom est obligatoire.',
         v => /^[a-zA-Z0-9-_ ]+$/.test(v) || 'Nom incorrecte',
       ],
       emailRules: [
-        v => !!v || 'E-mail est obligatoire',
-        v => /.+@.+\..+/.test(v) || 'E-mail mdoit etre valide',
+        v => !!v || 'E-mail est obligatoire.',
+        v => /.+@.+\..+/.test(v) || 'E-mail doit etre valide',
       ],
       usernameRules: [
-        v => !!v || 'Login est obligatoire',
-        v => /^[a-zA-Z0-9-_]+$/.test(v) || 'Nom incorrecte',
+        v => !!v || 'Login est obligatoire.',
+        v => /^[a-zA-Z0-9-_]+$/.test(v) || 'Nom incorrect',
       ],
       type_profil_idRules: [
-        v => /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/ || 'Type profile incorrecte',
+        v => /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/ || 'Type profil incorrect',
       ],
       telephoneRules: [
         (v) => {
@@ -268,13 +268,13 @@ export default {
         v => /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/ || 'Date de naissance incorrecte',
       ],
       place_of_birthRules: [
-        v => /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/ || 'Lieu de naissance incorrecte',
+        v => /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/ || 'Lieu de naissance incorrect',
       ],
       type_identificationRules: [
-        v => /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/ || 'Type d\'identification incorrecte',
+        v => /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/ || 'Type d\'identification incorrect',
       ],
       numero_identificationRules: [
-        v => /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/ || 'Numéro d\'identification incorrecte',
+        v => /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/ || 'Numéro d\'identification incorrect',
       ],
       fonctionRules: [
         v => /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/ || 'Fonction incorrecte',

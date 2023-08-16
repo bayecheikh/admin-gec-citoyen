@@ -107,44 +107,44 @@ export default {
     },
     rules: {
       nameRules: [
-        (v) => !!v || 'Le nom de l\'instance est obligatoire',
+        (v) => !!v || 'Le nom de l\'instance est obligatoire.',
         (v) => (v && v.length <= 100) || "Le nom de l'instance ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "Le nom de l'instance doit contenir au moins 2 caractères"
       ],
       gedRules: [
-        (v) => !!v || 'La GED est obligatoire',
+        (v) => !!v || 'La GED est obligatoire.',
         (v) => (v && v.length <= 100) || "La GED ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "La GED doit contenir au moins 2 caractères"
       ],
       gecRules: [
-        (v) => !!v || 'La GEC est obligatoire',
+        (v) => !!v || 'La GEC est obligatoire.',
         (v) => (v && v.length <= 100) || "La GEC ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "La GEC doit contenir au moins 2 caractères"
       ],
       intituleRules: [
-        (v) => !!v || 'L\'intitulé de l\'organisme est obligatoire',
+        (v) => !!v || 'L\'intitulé de l\'organisme est obligatoire.',
         (v) => (v && v.length <= 100) || "L'intitulé de l'organisme ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "L'intitulé de l'organisme doit contenir au moins 2 caractères"
       ],
       descriptionRules: [
-        (v) => !!v || 'La description de l\'organisme est obligatoire',
+        (v) => !!v || 'La description de l\'organisme est obligatoire.',
         (v) => (v && v.length <= 500) || "La description de l'organisme ne doit pas dépasser 500 caractères",
         (v) => (v && v.length >= 2) || "La description de l'organisme doit contenir au moins 2 caractères"
       ],
       gecUrlRules: [
-        (v) => !!v || 'L\'URL de la GEC est obligatoire',
+        (v) => !!v || 'L\'URL de la GEC est obligatoire.',
         (v) => (v && v.length >= 2) || "L'URL de la GEC doit contenir au moins 2 caractères"
       ],
       baseUrlRules: [
-        (v) => !!v || 'La Base URL est obligatoire',
+        (v) => !!v || 'La Base URL est obligatoire.',
         (v) => (v && v.length >= 2) || "La Base URL doit contenir au moins 2 caractères"
       ],
       gedUrlRules: [
-        (v) => !!v || 'L\'URL de la GED est obligatoire',
+        (v) => !!v || 'L\'URL de la GED est obligatoire.',
         (v) => (v && v.length >= 2) || "L'URL de la GED doit contenir au moins 2 caractères"
       ],
       typeStructureRules: [
-        (v) => !!v || 'Le type de l\'organisme est obligatoire',
+        (v) => !!v || 'Le type de l\'organisme est obligatoire.',
         (v) => (v && v.length <= 100) || "Le type de l'organisme ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "Le type de l'organisme doit contenir au moins 2 caractères"
       ],

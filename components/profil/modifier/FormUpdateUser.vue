@@ -61,18 +61,18 @@ export default {
     },
     rules: {
       nameRules: [
-        v => !!v || 'Le nom est obligatoire',
-        v => (v && v.length <= 100) || 'Le nom ne doit pas contenir plus de 100 caractères',
+        v => !!v || 'Le nom est obligatoire.',
+        v => (v && v.length <= 100) || 'Le nom ne doit pas contenir plus de 100 caractères.',
       ],
       emailRules: [
-        v => !!v || 'L\'adresse email est obligatoire',
+        v => !!v || 'L\'adresse email est obligatoire.',
         v => /.+@.+\..+/.test(v) || 'L\'adresse email doit être valide',
       ],
       rolesRules: [
-        v => (v && !!v.length) || 'Le rôle est obligatoire',
+        v => (v && !!v.length) || 'Le rôle est obligatoire.',
       ],
       adresseRules: [
-        v => (!v || v.length <= 100) || 'L\'adresse ne doit pas dépasser 100 caractères',
+        v => (!v || v.length <= 100) || 'L\'adresse ne doit pas dépasser 100 caractères.',
       ],
       telephoneRules: [
         (v) => {

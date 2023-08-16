@@ -74,19 +74,19 @@ export default {
     },
     rules: {
       firstnameRules: [
-        (v) => !!v || 'Le prénom est obligatoire',
+        (v) => !!v || 'Le prénom est obligatoire.',
         (v) => /^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/.test(v) || "Le prénom ne doit contenir que des caractères alphabétiques et des caractères spéciaux tels que des espaces, des tirets et des apostrophes",
         (v) => (v && v.length <= 100) || "Le prénom ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "Le prénom doit contenir au moins 2 caractères"
       ],
       lastnameRules: [
-        (v) => !!v || 'Le nom est obligatoire',
+        (v) => !!v || 'Le nom est obligatoire.',
         (v) => /^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/.test(v) || "Le nom ne doit contenir que des caractères alphabétiques et des caractères spéciaux tels que des espaces, des tirets et des apostrophes",
         (v) => (v && v.length <= 100) || "Le nom ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "Le nom doit contenir au moins 2 caractères"
       ],
       roleRules: [
-        v => (v && !!v.length) || 'Le rôle est obligatoire',
+        v => (v && !!v.length) || 'Le rôle est obligatoire.',
       ],
       telephoneRules: [
         (v) => {
@@ -99,11 +99,11 @@ export default {
         }
       ],
       emailRules: [
-        v => !!v || 'L\'adresse e-mail est obligatoire',
+        v => !!v || 'L\'adresse e-mail est obligatoire.',
         v => /.+@.+\..+/.test(v) || 'L\'adresse e-mail doit être valide',
       ],
       adresseRules: [
-        v => (!v || v.length <= 100) || 'L\'adresse ne doit pas dépasser 100 caractères',
+        v => (!v || v.length <= 100) || 'L\'adresse ne doit pas dépasser 100 caractères.',
       ]
     },
   }),

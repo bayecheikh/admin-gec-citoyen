@@ -29,7 +29,7 @@
   item-value="id"
   return-object
   @change="changeCategorie"
-  :rules="[v => !!v || 'La catégorie est obligatoire']"
+  :rules="[v => !!v || 'La catégorie est obligatoire.']"
 >
   <template v-slot:item="{ item }">
     <div>{{ item.name }}</div>
@@ -92,17 +92,17 @@ export default {
     },
     rules: {
       questionRules: [
-        (v) => !!v || 'L\'intitulé de la question est obligatoire',
-        (v) => (v && v.length <= 100) || "L\'intitulé de la question ne doit pas dépasser 100 caractères",
-        (v) => (v && v.length >= 2) || "L\'intitulé de la question doit contenir au moins 2 caractères"
+        (v) => !!v || 'L\'intitulé de la question est obligatoire.',
+        (v) => (v && v.length <= 100) || "L\'intitulé de la question ne doit pas dépasser 100 caractères.",
+        (v) => (v && v.length >= 2) || "L\'intitulé de la question doit contenir au moins 2 caractères."
       ],
       reponseRules: [
-        (v) => !!v || 'La réponse est obligatoire',
-        (v) => (v && v.length <= 500) || "La réponse ne doit pas dépasser 500 caractères",
-        (v) => (v && v.length >= 2) || "La réponse doit contenir au moins 2 caractères"
+        (v) => !!v || 'La réponse est obligatoire.',
+        (v) => (v && v.length <= 500) || "La réponse ne doit pas dépasser 500 caractères.",
+        (v) => (v && v.length >= 2) || "La réponse doit contenir au moins 2 caractères."
       ],
       descriptionRules: [
-        v => (!v || v.length < 500) || 'La description doit être inférieure à 500 caractères',
+        v => (!v || v.length < 500) || 'La description doit être inférieure à 500 caractères.',
       ],
 
     },

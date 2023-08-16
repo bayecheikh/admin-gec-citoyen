@@ -33,12 +33,12 @@ export default {
     },
     rules: {
       libelleRules: [
-        (v) => !!v || 'Le libelle de la catégorie est obligatoire',
-        (v) => (v && v.length <= 100) || "Le libelle de la catégorie ne doit pas dépasser 100 caractères",
-        (v) => (v && v.length >= 2) || "Le libelle de la catégorie doit contenir au moins 2 caractères"
+        (v) => !!v || 'Le libellé de la catégorie est obligatoire.',
+        (v) => (v && v.length <= 100) || "Le libellé de la catégorie ne doit pas dépasser 100 caractères.",
+        (v) => (v && v.length >= 2) || "Le libellé de la catégorie doit contenir au moins 2 caractères."
       ],
       descriptionRules: [
-        (v) => (!v || v.length <= 500) || "La description ne doit pas dépasser 500 caractères",
+        (v) => (!v || v.length <= 500) || "La description ne doit pas dépasser 500 caractères.",
       ],
     },
   }),

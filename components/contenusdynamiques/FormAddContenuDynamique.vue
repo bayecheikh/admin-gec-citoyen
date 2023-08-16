@@ -111,21 +111,21 @@ export default {
     },
     rules: {
       titreRules: [
-        v => !!v || 'Le titre est obligatoire',
-        v => (v.length <= 50) || 'Le titre ne doit pas dépasser 50 caractères',
+        v => !!v || 'Le titre est obligatoire.',
+        v => (v.length <= 50) || 'Le titre ne doit pas dépasser 50 caractères.',
       ],
       resumeRules: [
-        v => (v.length <= 200) || 'La description ne doit pas dépasser 200 caractères',
+        v => (v.length <= 200) || 'La description ne doit pas dépasser 200 caractères.',
       ],
       bodyRules: [
-        v => !!v || 'Le body est obligatoire',
-        v => (v.length <= 200) || 'Le body ne doit pas dépasser 200 caractères',
+        v => !!v || 'Le body est obligatoire.',
+        v => (v.length <= 200) || 'Le body ne doit pas dépasser 200 caractères.',
       ],
       categoriesRules: [
-        v => !!v || 'La catégorie est obligatoire'
+        v => !!v || 'La catégorie est obligatoire.'
       ],
       lienRules: [
-        v => !v || /^(https?:\/\/|www\.)?([\w\d\-]+\.)+\w{2,}(\/[\w\d\-./?%=&]*)?$/i.test(v) || 'Le lien n\'est pas valide'
+        v => !v || /^(https?:\/\/|www\.)?([\w\d\-]+\.)+\w{2,}(\/[\w\d\-./?%=&]*)?$/i.test(v) || 'Le lien n\'est pas valide.'
       ],
 
     },

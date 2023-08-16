@@ -72,17 +72,17 @@ export default {
     },
     rules: {
       nameRules: [
-        (v) => !!v || 'Le nom du modèle est obligatoire',
+        (v) => !!v || 'Le nom du modèle est obligatoire.',
         (v) => (v && v.length <= 100) || "Le nom du modèle ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "Le nom du modèle doit contenir au moins 2 caractères"
       ],
       objetRules: [
-        (v) => !!v || 'L\'objet est obligatoire',
+        (v) => !!v || 'L\'objet est obligatoire.',
         (v) => (v && v.length <= 100) || "L'objet ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "L'objet doit contenir au moins 2 caractères"
       ],
       messageRules: [
-        (v) => !!v || 'Le corps du message est obligatoire',
+        (v) => !!v || 'Le corps du message est obligatoire.',
         (v) => (v && v.length >= 2) || "Le message doit contenir au moins 2 caractères"
       ],
 

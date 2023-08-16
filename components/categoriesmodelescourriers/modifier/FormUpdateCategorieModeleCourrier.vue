@@ -30,9 +30,9 @@ export default {
     },
     rules: {
       nameRules: [
-        (v) => !!v || 'Le nom de la catégorie est obligatoire',
-        (v) => (v && v.length <= 100) || "Le nom de la catégorie ne doit pas dépasser 100 caractères",
-        (v) => (v && v.length >= 2) || "Le nom de la catégorie doit contenir au moins 2 caractères"
+        (v) => !!v || 'Le nom de la catégorie est obligatoire.',
+        (v) => (v && v.length <= 100) || "Le nom de la catégorie ne doit pas dépasser 100 caractères.",
+        (v) => (v && v.length >= 2) || "Le nom de la catégorie doit contenir au moins 2 caractères."
       ],
     },
   }),

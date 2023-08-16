@@ -80,8 +80,8 @@ export default {
     }),
     confirm_passwordRules() {
       return [
-        v => !!v || 'La confirmation du mot de passe est obligatoire',
-        v => (v && v.length >= 8) || 'Le mot de passe doit contenir au moins 8 caractères',
+        v => !!v || 'La confirmation du mot de passe est obligatoire.',
+        v => (v && v.length >= 8) || 'Le mot de passe doit contenir au moins 8 caractères.',
         v => v === this.model.password || 'Les mots de passe ne sont pas identiques',
       ];
     },
@@ -100,7 +100,7 @@ export default {
     },
     rules: {
       passwordRules: [
-        v => !!v || 'Le mot de passe est obligatoire',
+        v => !!v || 'Le mot de passe est obligatoire.',
         v => (v && v.length >= 8) || 'Le mot de passe doit contenir au moins 8 caracteres',
       ],
     },

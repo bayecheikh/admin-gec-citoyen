@@ -91,12 +91,12 @@ export default {
     },
     rules: {
       questionRules: [
-        (v) => !!v || 'L\'intitulé de la question est obligatoire',
+        (v) => !!v || 'L\'intitulé de la question est obligatoire.',
         (v) => (v && v.length <= 100) || "L\'intitulé de la question ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "L\'intitulé de la question doit contenir au moins 2 caractères"
       ],
       reponseRules: [
-        (v) => !!v || 'La réponse est obligatoire',
+        (v) => !!v || 'La réponse est obligatoire.',
         (v) => (v && v.length <= 500) || "La réponse ne doit pas dépasser 500 caractères",
         (v) => (v && v.length >= 2) || "La réponse doit contenir au moins 2 caractères"
       ],
@@ -104,7 +104,7 @@ export default {
 
       descriptionRules: [
 
-        v => (!v || v.length <= 500) || 'La description ne doit pas dépasser 500 caractères',
+        v => (!v || v.length <= 500) || 'La description ne doit pas dépasser 500 caractères.',
       ],
 
     },

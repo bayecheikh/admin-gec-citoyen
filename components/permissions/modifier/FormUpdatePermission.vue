@@ -46,14 +46,14 @@ export default {
     },
     rules: {
       nameRules: [
-        v => !!v || 'Le nom est obligatoire',
-        v => (v && v.length <= 100) || 'Le nom ne doit pas contenir plus de 100 caractères',
-        v => (v && v.length >= 2) || 'Le nom doit contenir au moins 2 caractères',
+        v => !!v || 'Le nom est obligatoire.',
+        v => (v && v.length <= 100) || 'Le nom ne doit pas contenir plus de 100 caractères.',
+        v => (v && v.length >= 2) || 'Le nom doit contenir au moins 2 caractères.',
       ],
       descriptionRules: [
-        v => !!v || 'La description est obligatoire',
-        v => (v && v.length <= 500) || 'La description ne doit pas contenir plus de 500 caractères',
-        v => (v && v.length >= 2) || 'La description doit contenir au moins 2 caractères',
+        v => !!v || 'La description est obligatoire.',
+        v => (v && v.length <= 500) || 'La description ne doit pas contenir plus de 500 caractères.',
+        v => (v && v.length >= 2) || 'La description doit contenir au moins 2 caractères.',
       ],
     },
   }),
