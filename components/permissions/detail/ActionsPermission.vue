@@ -27,7 +27,7 @@ export default {
       this.$router.push('/permissions');
     },
     modifier() {
-      this.$router.push('/permissions/modifier/' + this.detailpermission.id);
+      this.$router.push('/permissions/modifier/'+ this.detailpermission.id);
     },
     
   },
