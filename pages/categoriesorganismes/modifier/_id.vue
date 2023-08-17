@@ -20,11 +20,15 @@ export default {
     PageHeader,
     FormUpdateCategorieOrganisme
   },
+<<<<<<< HEAD
   middleware: function ({ redirect, $hasPermission }) {
     if (!$hasPermission('gerer-organismes')) {
       return redirect('/')
     }
   },
+=======
+ 
+>>>>>>> 7ab479bfe2380ac396b36d3f49966d207aa94260
   mounted: function () {
     this.$store.dispatch('categoriesorganismes/getList')
   },

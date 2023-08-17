@@ -87,7 +87,6 @@
 import FormSendMail from '@/components/auth/FormSendMail'
 
 export default {
-  /* middleware:'guest', */
   components: {
     FormSendMail
   },

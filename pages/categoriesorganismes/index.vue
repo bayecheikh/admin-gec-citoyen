@@ -17,11 +17,15 @@ import PageHeader from '@/components/PageHeader';
 import ListCategoriesOrganismes from '@/components/categoriesorganismes/ListCategoriesOrganismes'
 export default {
   layout: "dashboard",
+<<<<<<< HEAD
   middleware: function ({ redirect, $hasPermission }) {
     if (!$hasPermission('gerer-organismes')) {
       return redirect('/')
     }
   },
+=======
+  
+>>>>>>> 7ab479bfe2380ac396b36d3f49966d207aa94260
   components: {
     
     PageHeader,

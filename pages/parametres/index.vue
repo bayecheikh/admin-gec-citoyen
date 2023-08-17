@@ -19,6 +19,7 @@
 
 export default {
   layout: "dashboard",
+<<<<<<< HEAD
   middleware: function ({ redirect, $hasPermission }) {
 
     if ((!$hasPermission("gerer-roles") && !$hasPermission("gerer-permissions") && !$hasPermission("gerer-organismes") && !$hasPermission("gerer-faq") && !$hasPermission("gerer-contenus-dynamiques"))) {
@@ -28,6 +29,10 @@ export default {
 
   },
 
+=======
+  
+ 
+>>>>>>> 7ab479bfe2380ac396b36d3f49966d207aa94260
   mounted: async function () {
     this.layoutadmin = this.$getParametreMenu()
   },

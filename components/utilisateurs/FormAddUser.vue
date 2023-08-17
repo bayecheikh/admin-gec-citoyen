@@ -29,6 +29,15 @@
             clearable return-object>
           </v-autocomplete>
         </v-col>
+<<<<<<< HEAD
+        <v-col md="6" lg="6" sm="12">
+          <v-text-field label="Confirmer mot de passe" outlined dense v-model="model.passwordConfirm"
+            :append-icon="passwordConfirmVisible ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="passwordConfirmVisible ? 'text' : 'password'" @click:append="togglePasswordConfirmVisibility"
+            :rules="getPasswordConfirmRules"></v-text-field>
+        </v-col>
+=======
+>>>>>>> yacine-v41
       </v-row>
 
       <v-btn :loading="loading" :disabled="!valid" class="mr-4 text-white" color="#1B73E8" @click="submitForm">
@@ -67,8 +76,12 @@ export default {
       lastname: '',
       adresse: '',
       telephone: '',
+<<<<<<< HEAD
+      passwordConfirm: '',
+=======
       role: 'user',
       roles: null,
+>>>>>>> yacine-v41
       sexe: '',
       email: '',
     },
@@ -85,9 +98,12 @@ export default {
         (v) => (v && v.length <= 100) || "Le nom ne doit pas dépasser 100 caractères",
         (v) => (v && v.length >= 2) || "Le nom doit contenir au moins 2 caractères"
       ],
+<<<<<<< HEAD
       roleRules: [
         v => (v && !!v.length) || 'Le rôle est obligatoire.',
       ],
+=======
+>>>>>>> 7ab479bfe2380ac396b36d3f49966d207aa94260
       telephoneRules: [
         (v) => {
           if (!v) return true; // Si le numéro de téléphone est vide, la validation réussit

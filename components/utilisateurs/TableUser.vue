@@ -7,9 +7,15 @@
     </v-card-title>
 
     <v-data-table v-model="selected" :headers="headers"
+<<<<<<< HEAD
+      :items="tab == 'tout' ? listUsers : listUsers.filter(user => user.status === tab)"
+      :single-select="singleSelect" item-key="id"  class="flat pt-4" :loading="progress"
+      loading-text="Loading... Please wait" hide-default-footer :search="search">
+=======
       :items="tab == 'tout' ? listUsers.filter(user => user.roles.some(role => role.slug === 'super-admin') == false) : listUsers.filter(user => user.status === tab && user.roles.some(role => role.slug === 'super-admin') == false)" :single-select="singleSelect"
       item-key="id" class="flat pt-4" :loading="progress" loading-text="Loading... Please wait" hide-default-footer
       :search="search">
+>>>>>>> yacine-v41
       <template v-slot:top="{}">
         <v-row class="mb-1 border-bottom-small d-flex">
           <v-col md="6" sm="12" lg="6" class="pb-0 pt-4">
@@ -63,6 +69,12 @@
       </template>
       <!-- <template v-slot:[`item.status`]="{ item }">
         <v-switch :input-value="item.status == 'actif' ? true : false" color="success" hide-details
+<<<<<<< HEAD
+          @change="actveDesactiveUser(item.id)" ></v-switch>
+      </template>
+
+      
+=======
           @change="actveDesactiveUser(item.id)" v-if="$hasRole('super-admin')"></v-switch>
         <div v-else>{{ item.status == 'actif' ? 'Actif' : 'Inactif' }}</div>
       </template> -->
@@ -72,6 +84,7 @@
           {{ role.name }}
         </v-chip>
       </template>
+>>>>>>> yacine-v41
       <template v-slot:[`item.actions`]="{ item }">
         <v-menu bottom left>
           <template v-slot:activator="{ on, attrs }">
@@ -95,7 +108,11 @@
                   <v-icon small class="mr-2"> mdi-pencil-outline </v-icon>Modifier
                 </v-list-item-title>
               </v-list-item>
+<<<<<<< HEAD
+              <v-list-item @click="opendialog(item)"
+=======
               <v-list-item v-if="$hasRole('super-admin') && !hasSuperAdminRole(item)" @click="opendialog(item)"
+>>>>>>> yacine-v41
                 class="custom-v-list-action pl-2 pr-1">
                 <v-list-item-title>
                   <v-icon small class="mr-2" v-bind="attrs" v-on="on">

@@ -49,7 +49,7 @@ export default {
   data() {
     return {
       pageNotFound: '404 Page introuvable',
-      otherError: ('Erreur ' + this.error.statusCode) + ' ' + (this.$hasRole('admin') ? this.error.message : '')
+      otherError: ('Erreur ' + this.error.statusCode) + ' ' + (this.error.message)
     }
   },
   head() {

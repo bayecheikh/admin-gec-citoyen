@@ -1,4 +1,4 @@
-export default function ({ $auth, redirect,$hasRole }) {
+export default function ({ $auth, redirect}) {
 
     let roles = JSON.parse(localStorage.getItem('gecAdminLoggedInUser'))?.roles 
 

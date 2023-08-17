@@ -30,11 +30,7 @@ export default {
     InfoOrganisme,
     ActionsOrganismes
   },
-  // middleware: function ({redirect,$hasPermission}) {
-  //   if(!$hasPermission('gerer-utilisateurs')){
-  //     return redirect('/')
-  //   }
-  // },
+  
   data() {
     return {
       headerItems: [

@@ -20,11 +20,15 @@ export default {
     PageHeader,
     FormUpdateCategorieModeleCourrier
   },
+<<<<<<< HEAD
   middleware: function ({ redirect, $hasPermission }) {
     if (!$hasPermission('gerer-modeles-courriers')) {
       return redirect('/')
     }
   },
+=======
+ 
+>>>>>>> 7ab479bfe2380ac396b36d3f49966d207aa94260
   mounted: function () {
     this.$store.dispatch('categoriesmodelescourriers/getList')
   },

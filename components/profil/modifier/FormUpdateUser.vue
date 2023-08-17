@@ -17,9 +17,17 @@
           <v-text-field label="Adresse Email" outlined dense v-model="model.email"
             :rules="rules.emailRules"></v-text-field>
         </v-col>
+<<<<<<< HEAD
+        <v-col lg="6" md="6" sm="12">
+          <v-autocomplete v-model="model.structure_id"
+            :rules="this.showFournisseur == true ? rules.fournisseur_services_idRules : null" :items="liststructures" outlined
+            dense label="Structure" item-text="nom_structure" item-value="id" return-object v-if="showFournisseur">
+          </v-autocomplete>
+=======
         <v-col md="12" lg="12" sm="12">
           <v-textarea label="Adresse" outlined dense v-model="model.adresse"
             :rules="rules.adresseRules"></v-textarea>
+>>>>>>> yacine-v41
         </v-col>
        
       </v-row>
@@ -40,7 +48,11 @@ export default {
   },
   computed:
     mapGetters({
+<<<<<<< HEAD
+      liststructures: 'structures/selectliststructures'
+=======
       listroles: 'roles/selectlistroles',
+>>>>>>> yacine-v41
     }),
   data: () => ({
     loggedInUser: null,
@@ -54,8 +66,13 @@ export default {
       firstname: '',
       lastname: '',
       email: '',
+<<<<<<< HEAD
+      fournisseur_services_id: null,
+      country_code: '+229',
+=======
       sexe: '',
       roles: null,
+>>>>>>> yacine-v41
       telephone: '',
       adresse: '',
     },
@@ -68,12 +85,15 @@ export default {
         v => !!v || 'L\'adresse email est obligatoire.',
         v => /.+@.+\..+/.test(v) || 'L\'adresse email doit être valide',
       ],
+<<<<<<< HEAD
+=======
       rolesRules: [
         v => (v && !!v.length) || 'Le rôle est obligatoire.',
       ],
       adresseRules: [
         v => (!v || v.length <= 100) || 'L\'adresse ne doit pas dépasser 100 caractères.',
       ],
+>>>>>>> yacine-v41
       telephoneRules: [
         (v) => {
           if (!v) return true; // Si le numéro de téléphone est vide, la validation réussit
@@ -95,6 +115,13 @@ export default {
       };
       this.$gecApi.$get('/users/' + id, { headers })
         .then(async (response) => { 
+<<<<<<< HEAD
+          this.$store.dispatch('utilisateurs/getDetail', response.data)
+          this.model.id = response.data.id
+          this.model.name = response.data.name
+          this.model.email = response.data.email
+          this.model.structure_id = response.data.structures[0]?.id
+=======
           this.$store.dispatch('utilisateurs/getDetail', response.data.data)
           this.model.id = response.data.data._id
           this.model.name = response.data.data.name
@@ -103,6 +130,7 @@ export default {
           this.model.adresse = response.data.data.adresse
           this.model.email = response.data.data.email
           this.model.roles = response.data.data.roles
+>>>>>>> yacine-v41
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
         })
@@ -110,15 +138,18 @@ export default {
 
     submitForm() {
       let validation = this.$refs.form.validate()
-      let selectedRoles = this.model.roles.map((item) => { return item.id })
-      this.model.roles = selectedRoles
+  
       this.loading = true;
+<<<<<<< HEAD
+      validation && this.$gecFileApi.put('/users/' + this.model.id, { ...this.model, ...this.model.avatar })
+=======
       let authToken = 'Bearer ' + localStorage.getItem('gecAdminToken');
 
   let headers = {
     Authorization: authToken, 
   };
       validation && this.$gecApi.patch('/users/' + this.model.id, { ...this.model, roles: selectedRoles }, {headers})
+>>>>>>> yacine-v41
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: 'Modification réussie' })
           this.$router.push('/profil/' + this.loggedInUser._id)

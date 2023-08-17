@@ -13,6 +13,12 @@
           <v-text-field label="Téléphone" outlined dense v-model="model.telephone"
             :rules="rules.telephoneRules"></v-text-field>
         </v-col>
+<<<<<<< HEAD
+        <v-col lg="6" md="6" sm="12">
+          <v-autocomplete v-model="model.structure_id"
+            :rules="this.showFournisseur == true ? rules.fournisseur_services_idRules : null" :items="liststructures" outlined
+            dense label="Structure" item-text="nom_structure" item-value="id" return-object v-if="showFournisseur">
+=======
         <v-col md="6" lg="6" sm="12">
           <v-select label="Sexe" outlined dense v-model="model.sexe" :items="sexOptions"></v-select>
         </v-col>
@@ -23,6 +29,7 @@
           <v-autocomplete  v-if="!hasSuperAdminRole" v-model="model.roles" :items="listroles.filter(item => (item && item.slug != 'super-admin'))"
             :rules="rules.rolesRules" outlined dense multiple small-chips label="Rôle" item-text="name" item-value="id"
             clearable return-object>
+>>>>>>> yacine-v41
           </v-autocomplete>
         </v-col>
       </v-row>
@@ -40,9 +47,15 @@ export default {
   mounted: function () {
     this.getDetail(this.$nuxt._route.params.id)
   },
+<<<<<<< HEAD
+  computed:
+    mapGetters({
+      liststructures: 'structures/selectliststructures'
+=======
   computed: {
     ...mapGetters({
       listroles: 'roles/selectlistroles',
+>>>>>>> yacine-v41
     }),
   
   },
@@ -56,8 +69,14 @@ export default {
       id: null,
       name: '',
       email: '',
+<<<<<<< HEAD
+
+      fournisseur_services_id: null,
+      country_code: '+229',
+=======
       sexe: '',
       roles: null,
+>>>>>>> yacine-v41
       telephone: '',
       adresse: '',
     },
@@ -72,8 +91,18 @@ export default {
         v => !!v || 'L\'adresse e-mail est obligatoire.',
         v => /.+@.+\..+/.test(v) || 'L\'adresse e-mail doit être valide',
       ],
+<<<<<<< HEAD
+      usernameRules: [
+        v => !!v || 'Login est obligatoire',
+        v => (v && v.length <= 10) || 'Login doit être inférieur à 10 caractères',
+=======
       rolesRules: [
+<<<<<<< HEAD
         v => (v && !!v.length) || 'Le rôle est obligatoire.',
+=======
+        v => (v && !!v.length) || 'Le rôle est obligatoire',
+>>>>>>> yacine-v41
+>>>>>>> 7ab479bfe2380ac396b36d3f49966d207aa94260
       ],
       telephoneRules: [
         (v) => {
@@ -99,6 +128,13 @@ export default {
       this.progress = true
       this.$gecApi.$get('/users/' + id, { headers })
         .then(async (response) => {
+<<<<<<< HEAD
+          this.$store.dispatch('utilisateurs/getDetail', response.data)
+          this.model.id = response.data.id
+          this.model.name = response.data.name
+          this.model.email = response.data.email
+          this.model.structure_id = response.data.structures[0]?.id
+=======
           this.$store.dispatch('utilisateurs/getDetail', response.data.data)
           this.model.id = response.data.data._id
           this.model.name = response.data.data.name
@@ -107,6 +143,7 @@ export default {
           this.model.adresse = response.data.data.adresse
           this.model.sexe = response.data.data.sexe
           this.model.roles = response.data.data.roles
+>>>>>>> yacine-v41
         }).catch((error) => {
           this.$toast.error(error?.response?.data?.message).goAway(3000)
         })
@@ -114,14 +151,16 @@ export default {
 
     submitForm() {
       let validation = this.$refs.form.validate()
-      let selectedRoles = this.model.roles.map((item) => { return item.id })
-      this.model.roles = selectedRoles
       this.loading = true;
+<<<<<<< HEAD
+      validation && this.$gecFileApi.put('/users/' + this.model.id, { ...this.model, ...this.model.avatar })
+=======
       let authToken = 'Bearer ' + localStorage.getItem('gecAdminToken');
       let headers = {
         Authorization: authToken,
       };
       validation && this.$gecApi.patch('/users/' + this.model.id, { ...this.model, roles: selectedRoles }, { headers })
+>>>>>>> yacine-v41
         .then((res) => {
           this.$store.dispatch('toast/getMessage', { type: 'success', text: 'Modification réussie' })
           this.$router.push('/utilisateurs');
@@ -132,7 +171,11 @@ export default {
           this.loading = false;
         });
     },
+<<<<<<< HEAD
+   
+=======
 
+>>>>>>> yacine-v41
   },
 }
 </script>

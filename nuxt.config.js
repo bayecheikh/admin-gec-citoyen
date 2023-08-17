@@ -94,9 +94,7 @@ export default {
     ]
   },
 
-  /*   router: {
-      middleware: ['isAdmin'],
-    }, */
+
 
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

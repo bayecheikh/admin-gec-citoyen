@@ -18,12 +18,15 @@
             <div class="col-md-6 border-left">
               <p class="info-profil mb-4"><span>Prénom et nom : </span>{{ detailUtilisateur.name }}</p>
               <p class="info-profil mb-4"><span>Email : </span>{{ detailUtilisateur.email }}</p>
+<<<<<<< HEAD
+=======
               <p class="info-profil mb-4"><span>Rôles : </span>
                 <v-chip color="primary" small outlined class="my-1 mr-1" v-for="role in detailUtilisateur.roles"
                   :key="role.id">
                   {{ role.name }}
                 </v-chip>
               </p>
+>>>>>>> yacine-v41
             </div>
             <div class="col-md-6 border-left">
 

@@ -2,6 +2,9 @@
   "role":"admin",
   "homePage":"/dashboard",
   "menuItems":[
+<<<<<<< HEAD
+  
+=======
 
     {
       "icon": "mdi-account-settings-outline",
@@ -15,6 +18,7 @@
       "title": "Permissions",
       "name": "gerer-permissions"
     },   
+>>>>>>> yacine-v41
     {
       "icon": "mdi-comment-text-multiple-outline",
       "href": "/foireauxquestions",

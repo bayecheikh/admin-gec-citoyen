@@ -20,11 +20,15 @@ export default {
     PageHeader,
     FormAddCategorieContenuDynamique
   },
+<<<<<<< HEAD
   middleware: function ({ redirect, $hasPermission }) {
     if (!$hasPermission('gerer-contenus-dynamiques')) {
       return redirect('/')
     }
   },
+=======
+  
+>>>>>>> 7ab479bfe2380ac396b36d3f49966d207aa94260
 
   data() {
     return {

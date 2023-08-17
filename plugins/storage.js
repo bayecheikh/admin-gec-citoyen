@@ -82,11 +82,6 @@ export default function ({store ,redirect}, inject) {
         await localStorage.removeItem('gecAdminIsAuthenticated') 
     }
 
-
-    inject('getUserPermissions', getUserPermissions)
-    inject('getUserRoles', getUserRoles) 
-    inject('hasRole', hasRole)
-    inject('hasPermission', hasPermission) 
     inject('getToken',getToken)
     inject('isLogged',isLogged)
     inject('loggout',loggout)

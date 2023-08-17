@@ -21,6 +21,7 @@ export default function ({store ,redirect}, inject) {
         else
         return false
     } 
+
     const getUserRoles = () => {
         return getUser()?.roles
     }
@@ -62,7 +63,6 @@ export default function ({store ,redirect}, inject) {
         let layoutPrincipal = layoutadmin.menuItems
         let menu = []
         layoutPrincipal?.map((item)=>{
-            if(hasPermission(item.name))
             menu=[...menu,item]
         })
 
@@ -130,10 +130,6 @@ export default function ({store ,redirect}, inject) {
 
 
     inject('getUser', getUser)
-    inject('getUserPermissions', getUserPermissions)
-    inject('getUserRoles', getUserRoles) 
-    inject('hasRole', hasRole)
-    inject('hasPermission', hasPermission) 
     inject('getToken',getToken)
     inject('isLogged',isLogged)
     inject('loggout',loggout)
