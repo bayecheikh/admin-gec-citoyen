@@ -13,12 +13,6 @@
           <v-text-field label="Téléphone" outlined dense v-model="model.telephone"
             :rules="rules.telephoneRules"></v-text-field>
         </v-col>
-<<<<<<< HEAD
-        <v-col lg="6" md="6" sm="12">
-          <v-autocomplete v-model="model.structure_id"
-            :rules="this.showFournisseur == true ? rules.fournisseur_services_idRules : null" :items="liststructures" outlined
-            dense label="Structure" item-text="nom_structure" item-value="id" return-object v-if="showFournisseur">
-=======
         <v-col md="6" lg="6" sm="12">
           <v-select label="Sexe" outlined dense v-model="model.sexe" :items="sexOptions"></v-select>
         </v-col>
@@ -29,7 +23,6 @@
           <v-autocomplete  v-if="!hasSuperAdminRole" v-model="model.roles" :items="listroles.filter(item => (item && item.slug != 'super-admin'))"
             :rules="rules.rolesRules" outlined dense multiple small-chips label="Rôle" item-text="name" item-value="id"
             clearable return-object>
->>>>>>> yacine-v41
           </v-autocomplete>
         </v-col>
       </v-row>
