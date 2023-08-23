@@ -36,7 +36,7 @@
 </template>
 <script>
 import Notification from '@/components/Notification'
-import layoutadmin from '@/static/data/layoutadmin'
+
 
 export default {
   /* middleware:'guest', */
@@ -67,9 +67,9 @@ export default {
       let validation = this.$refs.form.validate()
       this.loading = true;
       this.color = "success"
-      validation && this.$axios.post('/forget_password', { ...this.model })
+      validation && this.$gecApi.post('/users/forgotPassword', { ...this.model })
         .then((res) => {
-          this.$toast.success(res.data.message || 'Vérifiez votre boite de réception').goAway(4000)
+          this.$toast.success('Vérifiez votre boîte de réception').goAway(4000)
           
           setTimeout(() => {
             this.$router.push('/login');

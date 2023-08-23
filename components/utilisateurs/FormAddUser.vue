@@ -126,7 +126,8 @@ export default {
           this.$router.push('/utilisateurs');
         })
         .catch((error) => {
-          this.$store.dispatch('toast/getMessage', { type: 'error', text: error || 'Échec de l\'ajout ' });
+
+          this.$store.dispatch('toast/getMessage', { type: 'error', text: error.response.data.message || 'Échec de l\'ajout ' });
         })
         .finally(() => {
           this.loading = false;
