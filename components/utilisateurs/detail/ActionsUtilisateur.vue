@@ -12,7 +12,7 @@
       </v-icon>
       Modifier les infos
     </v-btn>
-    <v-dialog v-model="dialog" max-width="800px">
+    <!-- <v-dialog v-model="dialog" max-width="800px">
       <template v-slot:activator="{}">
         <v-btn text outlined rounded color="red" v-on:click="reinitialiser()">
           <v-icon left>
@@ -41,7 +41,7 @@
           </v-container>
         </v-card-text>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
   </v-row>
 </template>
 
